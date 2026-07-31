@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "7月31日 周五 17:00 | 下午LinkedIn检索",
+  time: "7月31日 周五 22:00 | 晚间微信检索",
   status: "red",
   statusText: "🔴 紧急（7/31 LinkedIn检索：无新增重大内容——本轮检索的OFAC sb0562新闻稿和红海7月综述均已在此前监测中覆盖）",
   vs: "vs早间/午间监测：本轮LinkedIn检索（17:00）搜索'SeaLead shipping OFAC制裁 2026'和'红海 航运 最新 2026年7月'，读取OFAC sb0562官方新闻稿和MaritimeNews.com红海7月综述。确认：①OFAC sb0562对SeaLead+50余主体的制裁新闻已在此前7/14-7/31监测中全面覆盖；②红海7月袭击事件、SCA附加费、马士基复航、联合国安理会报告等内容均已涵盖。无新增事件。",
@@ -1129,6 +1129,9 @@ const keyEvents = [
   ]},
   { date: "07-20", day: "20", title: "ESL发布SOC集装箱前缀禁令", desc: "Emirates Shipping Line发布BXAU/VOLU/VOTU/SLVU前缀禁令，制裁效应从政策层向实操层传导。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"行业传导"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。沙特联军启动防护部署。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
+  { date: "07-20", day: "20", title: "✨新增｜胡塞海上封锁升级：已确认击伤油轮ENCELIA，AIS过境225次/较前周降28%/暗航38次", desc: "胡塞7/20宣布对沙特'海上封锁'后已确认击伤油轮ENCELIA。劳合社情报监测：7/20-26 AIS可见过境225次（较前周311次降28%），含38次暗航。原油出口受创最大——7/23以来仅1艘原油轮靠泊沙特红海港口。集装箱板块保持韧性：仍有18家班轮公司通过曼德。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"通航数据"}], links: [
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ]},
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。红海航线挂靠港同时受胡塞风险封锁目标港影响。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
     { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260714A0001H00" },
     { text: "ccpitzj.gov.cn", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_a06bd6a7099c48f6948cc3542c66bb7a.html" }
@@ -1305,6 +1308,11 @@ const keyEvents = [
     { text: "海员之家（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9AnV1KuJKv79GNmeeRQcqNMktX4_F6-v9s0h9-6Q5-1waBIdKf9bsOuSB6toT8jTdpgCTyt98qWrQtUt9qjLJ19A-mQiDUUzdty1RsBc0OVCpONifs9_8GEwvREy4bYK7YgqjP1IHUMTTKsoU6dNlivizkUXsPFq4DR24mRYz906fxjh3za6jWA..&type=2&query=SeaLead%E5%88%B6%E8%A3%81&token=9F4DD7F759E3E22C5650000F905D891F57D113836A636EEE" },
     { text: "合规大使（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9_oom-fdkCK2h1oPDYocqonyZvwPZUAUrTxHsXK_Qk_LjQ_vsZvYjCLT-JMts8-d6hASmfKpQLjIdbbVDD1o7ZiMgCnCtGL8f4a4k6IuvQ6NWGQccj15H3ap5ah3Oz4eoKsq6ReqeuTkQOs-gjAj5gGLXQ-b5P_nm7FTqsitKhcZCy6umSSPEsg..&type=2&query=%E9%A6%99%E6%B8%AF%E8%88%AA%E8%BF%90%E5%88%B6%E8%A3%81SDN&token=9F4DD77C9DB7C9F88C8ADBD6DF7AD24C8DEDF1D86A636EEE" }
   ]},
+  
+  { date: "07-25", day: "25", title: "✨新增｜胡塞7/25打击沙特吉赞/延布能源设施，曼德海峡7/26骤降至11艘创数月最低", desc: "7/25胡塞武装使用导弹和无人机打击沙特吉赞和延布能源设施；沙特此前空袭胡塞控制的荷台达。冲突从港口封锁升级为基础设施打击，导致曼德海峡7/26日通行货船骤降至11艘创数月最低。7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ]},
   { date: "07-25", day: "25", title: "沙特主导多国联军7/25凌晨对胡塞武装军事目标实施打击", desc: "沙特主导的多国联军7月25日凌晨发表声明，对也门荷台达省胡塞武装军事目标实施打击。联军称行动针对与胡塞海上威胁直接相关的军事目标，未针对荷台达港；声明强调也门港口仍正常开放。这是自胡塞7/20宣布对沙特海上禁运、7/23袭击ENCELIA/LAYLA号油轮以来，沙特方面的首次军事反击。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
     { text: "腾讯新闻/新华社", url: "https://new.qq.com/rain/a/20260725A03E3P00?refer=cp_1009" },
     { text: "网易/新华社", url: "https://www.163.com/dy/article/L2LP0NOP0514R9OJ.html" }
@@ -1477,6 +1485,14 @@ const keyEvents = [
   ]},
   { date: "07-27", day: "27", title: "LinkedIn/中联航运CULines推出越南-印尼支线（MV1/MI1/IP1）巴生港中转规避双峡风险", desc: "中联航运LinkedIn官方7/9宣布推出三条东南亚支线MV1(胡志明-巴生港)、MI1(雅加达-巴生港)、IP1(雅加达-巴生港)，构建'东南亚支线+巴生港中转枢纽+干线'综合服务。越南/印尼出口货物3-4天内抵达巴生港接续中东/红海/地中海干线。在双峡同时受阻背景下，此中转模式为不穿越高风险区域提供服务替代方案，是CU Lines危机应对的重要战略布局。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
     { text: "LinkedIn/中联航运", url: "https://www.linkedin.com/posts/culiness_culines-launches-new-vietnam-indonesia-activity-7480823480855228417-4EnD" }
+  ]},
+  
+  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元/桶", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
+  ]},
+  
+  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
   ]},
   { date: "07-31", day: "31", title: "胡塞拟收红海\"过路费\"：中国船只可能免单，沙特推动组建新护航联盟", desc: "胡塞武装正在研究对通过曼德海峡的大多数商船收取通航费用，可能设立专门机构负责船舶登记和费用收取。消息人士称中国相关船舶可能被排除在收费范围之外。沙特正与数十个国家磋商组建新的国际护航联盟。曼德海峡通航量近期回升至39艘大宗商品运输船(7/28)。趋势：胡塞可能将军事威胁转化为常态化的船舶筛选、通航许可和收费机制。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
@@ -1760,6 +1776,11 @@ const redseaKeyEvents = [
   ]},
   { date: "07-25", day: "25", title: "400万桶沙特原油由中国VLCC选择性通过曼德海峡", desc: "约400万桶沙特原油装载在中国运营的VLCC上，在评估风险后选择性通过曼德海峡。中国航运企业正在采取'风险分级'策略——对高价值货物谨慎评估后选择性通行。可作为中联航运的参考。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
     { text: "Bloomberg", url: "https://www.bloomberg.com/" }
+  ]},
+  
+  { date: "07-25", day: "25", title: "✨新增｜胡塞导弹无人机打击沙特吉赞/延布能源设施，曼德7/26骤降至11艘", desc: "7/25胡塞武装使用导弹和无人机打击沙特阿美吉赞和延布能源设施，冲突从港口封锁升级为基础设施打击。曼德海峡7/26日通行货船骤降至11艘创数月最低，7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"实战袭击"}], links: [
+    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
   ]},
   { date: "07-26", day: "26", title: "胡塞7/25首次直接打击沙特阿美延布+吉赞炼油设施", desc: "胡塞武装7月25日用导弹和无人机打击沙特阿美在延布（Yanbu）和吉赞（Jizan）的设施，4年来首次直接打击沙特炼油设施。延布是沙特红海沿岸最重要的原油出口港（日均出口约490万桶）。布伦特冲破100美元后回落至89-90美元。胡塞打击范围从海上船舶扩展到陆地炼油基础设施。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
     { text: "The Hindu/AP", url: "https://www.thehindu.com/news/international/houthis-fire-missiles-drones-at-saudi-arabia-in-response-to-strikes-on-yemeni-city/article71267142.ece" },
