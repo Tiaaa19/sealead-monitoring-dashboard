@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeaLead / 中联航运 — 红海地缘风险监控仪表盘</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --danger: #f85149;
+    --warning: #d2991d;
+    --success: #3fb950;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 24px; max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; color: #f0f6fc; }
+  h2 { font-size: 1.2rem; margin: 24px 0 12px; color: #f0f6fc; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 1rem; margin: 16px 0 8px; color: #e6edf3; }
+  .meta { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px; }
+  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .card.danger { border-left: 3px solid var(--danger); }
+  .card.warning { border-left: 3px solid var(--warning); }
+  .card.info { border-left: 3px solid var(--accent); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 6px; margin-bottom: 4px; }
+  .tag-danger { background: rgba(248,81,73,0.15); color: var(--danger); }
+  .tag-warning { background: rgba(210,153,29,0.15); color: var(--warning); }
+  .tag-info { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .tag-success { background: rgba(63,185,80,0.15); color: var(--success); }
+  .summary-box { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.3); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+  .summary-box h3 { color: var(--danger); margin-top: 0; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer { text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .flex-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+  .stat { background: var(--bg); border-radius: 6px; padding: 12px 16px; text-align: center; min-width: 100px; flex: 1; }
+  .stat .value { font-size: 1.5rem; font-weight: 700; }
+  .stat .label { font-size: 0.75rem; color: var(--text-secondary); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-secondary); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>SeaLead / 中联航运 — 红海地缘风险监控</h1>
+<p class="meta">最后更新：2026-07-31 | 数据来源：搜狗微信搜索 (weixin.sogou.com) | 关键词：SeaLead / 中联航运 / 红海 / 曼德海峡 / 胡塞 / OFAC</p>
+
+<!-- 风险摘要 -->
+<div class="summary-box">
+  <h3>风险摘要 (2026年7月)</h3>
+  <p>SeaLead（海领船务）目前面临<strong>美国OFAC持续高压制裁</strong>，新加坡总部及多家子公司已被列入SDN制裁清单，多艘运营船舶被"拉黑"。美方指控其<strong>为伊朗利益网络及也门胡塞武装提供运输支持</strong>。同时红海-曼德海峡地缘局势持续紧张，胡塞武装威胁封锁曼德海峡。SeaLead运力已从峰值20.8万TEU断崖式下滑至约6.25万TEU。</p>
+</div>
+
+<!-- 关键指标 -->
+<h2>关键指标</h2>
+<div class="flex-row">
+  <div class="stat">
+    <div class="value" style="color: var(--danger);">~6.25万</div>
+    <div class="label">SeaLead当前运力 (TEU, 2026年4月)</div>
+  </div>
+  <div class="stat">
+    <div class="value" style="color: var(--danger);">-70%</div>
+    <div class="label">较2025年5月峰值下降</div>
+  </div>
+  <div class="stat">
+    <div class="value" style="color: var(--danger);">9+</div>
+    <div class="label">被制裁/涉事船舶数量</div>
+  </div>
+  <div class="stat">
+    <div class="value" style="color: var(--warning);">27艘/日</div>
+    <div class="label">曼德海峡日通行量 (7/22)</div>
+  </div>
+</div>
+
+<!-- 文章1：制裁 -->
+<h2>重点监控文章</h2>
+
+<div class="card danger">
+  <h3>又一轮制裁落地！6艘SeaLead集装箱船被美国拉黑</h3>
+  <div class="flex-row">
+    <span class="tag tag-danger">OFAC制裁</span>
+    <span class="tag tag-danger">SeaLead</span>
+    <span class="tag tag-warning">胡塞武装</span>
+    <span class="tag tag-danger">SDN清单</span>
+    <span class="tag tag-info">2026-07-26</span>
+  </div>
+  <p style="color: var(--text-secondary); font-size: 0.8rem;">来源：Mike外贸说 | 日期：2026年7月26日</p>
+
+  <h4>核心事实</h4>
+  <ul>
+    <li>OFAC在原有制裁基础上<strong>再度追加6艘SeaLead运营的巨型集装箱船</strong></li>
+    <li>SeaLead 7月中旬已遭制裁：<strong>新加坡总部 + 迪拜/马绍尔群岛/印度子公司</strong>被正式纳入SDN制裁清单</li>
+    <li>首批制裁3艘船舶："Shenton Way"、"Tanjong Pagar 1"、"Paya Lebar"</li>
+    <li>美方指控：SeaLead长期为<strong>伊朗相关利益网络</strong>提供海运服务</li>
+    <li>美司法部3月6日起诉SeaLead：指控为伊朗官员<strong>Ali Shamkhani</strong>控制利益方提供航运服务，涉及240万美元（来自1530万美元非法伊朗石油分销网络）</li>
+    <li>新增指控：SeaLead船舶承运物资<strong>向也门胡塞武装提供运输支持</strong></li>
+  </ul>
+
+  <h4>运力影响</h4>
+  <table>
+    <tr><th>时间点</th><th>运力</th></tr>
+    <tr><td>2025年5月（峰值）</td><td style="color: var(--success);">208,000 TEU</td></tr>
+    <tr><td>2026年4月</td><td style="color: var(--danger);">62,521 TEU（14艘）</td></tr>
+  </table>
+  <p>运力断崖式下滑约<strong>70%</strong>，跳港、延误、临时取消舱位概率持续走高。</p>
+
+  <h4>外贸风险场景</h4>
+  <ol>
+    <li><strong>货物途经美国港口</strong>：存在被扣、查验、滞留风险，衍生堆存费/柜租/拖车费</li>
+    <li><strong>收汇链路受阻</strong>：合作银行识别制裁承运人后可能暂缓结汇或冻结资金</li>
+    <li><strong>航线不确定性</strong>：临时甩柜、中转方案变更，物流时效失控</li>
+    <li><strong>企业合规污点</strong>：长期与被制裁主体合作，可能被OFAC持续监控</li>
+  </ol>
+</div>
+
+<!-- 文章2：匠歆海事快讯 -->
+<div class="card warning">
+  <h3>匠歆海事快讯：两艘中资VLCC穿越曼德海峡 + OFAC制裁Sea Lead</h3>
+  <div class="flex-row">
+    <span class="tag tag-warning">曼德海峡</span>
+    <span class="tag tag-info">VLCC油轮</span>
+    <span class="tag tag-danger">OFAC制裁</span>
+    <span class="tag tag-warning">胡塞封锁</span>
+    <span class="tag tag-info">2026-07-24</span>
+  </div>
+  <p style="color: var(--text-secondary); font-size: 0.8rem;">来源：ArtiMaritime 匠歆海事 | 日期：2026年7月24日</p>
+
+  <h4>曼德海峡动态</h4>
+  <ul>
+    <li>7月23日两艘中资VLCC成功穿越曼德海峡：<strong>"XIN LONG YANG"（新加坡旗）+"COSNEW LAKE"（中国旗）</strong></li>
+    <li>合计装载约<strong>400万桶沙特原油</strong>，由中石化旗下联合石化租用</li>
+    <li>过境期间主动突出"中国船员及中国关联"身份信息</li>
+    <li><strong>7月22日曼德海峡通行量降至27艘</strong>（前一日38艘），ENCELIA油轮在红海遭袭起火</li>
+    <li>至少还有两艘联合石化VLCC在亚丁湾减速/盘旋，尚未决定是否进入红海</li>
+    <li>此为胡塞武装宣布对沙特"海上封锁"后首批受关注的中资大型油轮过境</li>
+  </ul>
+
+  <h4>OFAC制裁Sea Lead详情</h4>
+  <ul>
+    <li>OFAC加大对伊朗<strong>穆罕默德·侯赛因·沙姆哈尼</strong>控制航运网络的打击</li>
+    <li>涉多家集装箱班轮公司、超过<strong>50名个人/实体/船舶</strong></li>
+    <li>Sea Lead被认定为沙姆哈尼网络中<strong>关键集装箱航运企业</strong>，被指为胡塞武装提供运输支持</li>
+    <li>制裁船舶：SHENTON WAY / TANJONG PAGAR 1 / PAYA LEBAR</li>
+    <li>香港Sai Wan Shipping Limited管理的多艘船舶也被制裁</li>
+  </ul>
+
+  <h4>黑海相关</h4>
+  <ul>
+    <li>俄乌冲突升级：俄军一个月内袭击28艘民用船舶，21人死亡</li>
+    <li>乌克兰黑海港口粮食出口能力损失约三分之一</li>
+    <li>马士基无限期暂停乌克兰乔尔诺莫尔斯克港 + 部分红海-中东陆路运输</li>
+  </ul>
+</div>
+
+<!-- 文章3：内部大换血 -->
+<div class="card info">
+  <h3>SeaLead突然宣布内部大换血：控股股东变更 + 董事总经理离职</h3>
+  <div class="flex-row">
+    <span class="tag tag-info">公司治理</span>
+    <span class="tag tag-warning">曼德海峡</span>
+    <span class="tag tag-info">红海航运</span>
+    <span class="tag tag-info">2024-02-17</span>
+  </div>
+  <p style="color: var(--text-secondary); font-size: 0.8rem;">来源：壹航运 | 日期：2024年2月17日</p>
+
+  <h4>核心变动</h4>
+  <ul>
+    <li><strong>控股股东变更</strong>（即刻生效）：Eurasia Capital（新加坡）、HCP Investments（毛里求斯）、Access Capital Funds（开曼群岛）、Saral Incorp VCC（毛里求斯）</li>
+    <li><strong>董事总经理Henry Schmidl离职</strong>，由SC Chan接管领导</li>
+    <li>将组建新董事会代表新所有者利益</li>
+  </ul>
+
+  <h4>SeaLead背景</h4>
+  <ul>
+    <li>成立于2017年，总部新加坡</li>
+    <li>当时运力：32艘 / 141,202 TEU，全球排名第16位（现已大幅萎缩至约6.25万TEU）</li>
+    <li>最初专注<strong>红海地区驳船航线</strong>，后扩展至美线、红海航运</li>
+    <li>在曼德海峡危机下的红海航运市场表现活跃</li>
+  </ul>
+
+  <h4>分析视角</h4>
+  <p>2024年2月的股东/管理层大换血，可能与后续2026年遭遇OFAC制裁存在关联——新股东背景复杂（涉及毛里求斯、开曼群岛等离岸司法管辖区），且在制裁升级前已出现治理变更。</p>
+</div>
+
+<!-- 中联航运历史参考 -->
+<h2>中联航运（CULines）历史参考</h2>
+<div class="card">
+  <p style="color: var(--text-secondary);">以下为2024年初中联航运（China United Lines）在红海危机中的相关报道摘要（未作为主文章深度提取，但提供背景参考）：</p>
+  <ul>
+    <li><strong>2024年1月</strong>：胡塞武装表示中、俄船只可安全通过红海，中联航运旗下红海快运（REX）服务被提及（运去哪，2024-01-19）</li>
+    <li><strong>2024年1月</strong>：中联航运宣布投入船舶参与红海航线运营（司马平邦说，2024-01-30）</li>
+    <li><strong>2024年2月</strong>：胡塞武装承诺导弹不打中国船，中联航运推出红海快运服务，2011年建造的2xxx TEU船投入运营（阿法牛AlphaBull，2024-02-18）</li>
+    <li><strong>2024年2月</strong>：中联航运开通专门红海航线（环亚看点，2024-02-01）</li>
+  </ul>
+  <p style="margin-top: 12px; color: var(--text-secondary); font-size: 0.85rem;">注意：以上均为2024年历史报道，本次搜索未发现2026年关于中联航运的最新制裁或风险事件。</p>
+</div>
+
+<!-- 搜索方法说明 -->
+<h2>搜索方法</h2>
+<table>
+  <tr><th>搜索词</th><th>结果数</th><th>说明</th></tr>
+  <tr><td>中联航运 红海 胡塞</td><td>约79条</td><td>多为2024年历史报道，中联航运开通红海快运</td></tr>
+  <tr><td>SeaLead 航运 红海</td><td>约109条</td><td>包含2026年制裁新闻，本轮核心发现来源</td></tr>
+  <tr><td>曼德海峡 航运 胡塞 2026</td><td>约405条</td><td>大量2026年曼德海峡封锁相关报道</td></tr>
+</table>
+
+<p style="color: var(--text-secondary); font-size: 0.8rem;">筛选方法：第一轮扫读标题+摘要过滤 → 第二轮关键词精确匹配（胡塞/曼德/制裁/中联/OFAC/油轮） → 最终点开4篇，成功提取3篇正文（1篇被反爬拦截）</p>
+
+<div class="footer">
+  <p>SeaLead 红海地缘风险监控仪表盘 | 自动生成于 2026-07-31</p>
+  <p>数据来源：搜狗微信搜索 weixin.sogou.com | 仅供内部参考，不构成决策建议</p>
+</div>
+
+</body>
+</html>
