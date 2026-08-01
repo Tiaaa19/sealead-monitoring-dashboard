@@ -1,635 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<title>SeaLead 制裁舆情监测仪表板 | CULines</title>
-<style>
-  :root {
-    --cu-blue: #005BAC;
-    --cu-blue-light: #E8F1FA;
-    --cu-blue-dark: #003D73;
-    --cu-red: #E53935;
-    --cu-red-bg: #FFEBEE;
-    --cu-yellow: #F9A825;
-    --cu-yellow-bg: #FFF8E1;
-    --cu-blue-info: #1E88E5;
-    --cu-blue-info-bg: #E3F2FD;
-    --cu-green: #43A047;
-    --cu-green-bg: #E8F5E9;
-    --cu-gray: #607D8B;
-    --cu-gray-bg: #ECEFF1;
-    --bg: #F5F7FA;
-    --card-bg: #FFFFFF;
-    --text: #1A1A2E;
-    --text-secondary: #546E7A;
-    --border: #E0E0E0;
-    --shadow: 0 2px 8px rgba(0,0,0,0.06);
-    --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
-    --radius: 12px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
-  /* Header */
-  .header {
-    background: linear-gradient(135deg, var(--cu-blue) 0%, var(--cu-blue-dark) 100%);
-    color: white;
-    padding: 20px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .header-left { display: flex; align-items: center; gap: 16px; }
-  .header-logo {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    background: rgba(255,255,255,0.15);
-    padding: 6px 16px;
-    border-radius: 8px;
-  }
-  .header-title h1 { font-size: 20px; font-weight: 600; }
-  .header-title p { font-size: 13px; opacity: 0.85; margin-top: 2px; }
-  .header-right { text-align: right; }
-  .header-right .time { font-size: 14px; font-weight: 500; }
-  .header-right .schedule { font-size: 12px; opacity: 0.8; margin-top: 2px; }
-  .live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.2);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-top: 4px;
-  }
-  .live-dot {
-    width: 8px; height: 8px;
-    background: #4CAF50;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 
-  /* Tab Navigation */
-  .tab-nav {
-    display: flex;
-    gap: 0;
-    background: var(--card-bg);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    overflow-x: auto;
-  }
-  .tab-btn {
-    padding: 14px 28px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    border: none;
-    background: none;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .tab-btn:hover { color: var(--cu-blue); background: var(--cu-blue-light); }
-  .tab-btn.active {
-    color: var(--cu-blue);
-    border-bottom-color: var(--cu-blue);
-    background: var(--cu-blue-light);
-  }
-  .tab-btn .tab-icon { font-size: 16px; }
-
-  /* Container */
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px 24px 60px; }
-
-  /* Page sections */
-  .page-section { display: none; }
-  .page-section.active { display: block; }
-
-  /* Latest Update Banner */
-  .latest-update {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    box-shadow: var(--shadow);
-    margin-bottom: 24px;
-    border-left: 5px solid var(--cu-red);
-  }
-  .latest-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .latest-badge {
-    font-size: 13px; font-weight: 700;
-    padding: 4px 12px; border-radius: 20px;
-    background: var(--cu-red-bg); color: var(--cu-red);
-  }
-  .latest-badge.yellow { background: var(--cu-yellow-bg); color: var(--cu-yellow); }
-  .latest-badge.blue { background: var(--cu-blue-info-bg); color: var(--cu-blue-info); }
-  .latest-badge.green { background: var(--cu-green-bg); color: var(--cu-green); }
-  .latest-time { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
-  .latest-vs { font-size: 12px; color: var(--cu-red); font-weight: 600; margin-left: auto; }
-  .latest-findings { display: flex; flex-direction: column; gap: 14px; }
-  .latest-finding {
-    padding: 12px 16px;
-    background: var(--bg);
-    border-radius: 8px;
-    border-left: 3px solid transparent;
-  }
-  .latest-finding.red { border-left-color: var(--cu-red); }
-  .latest-finding.yellow { border-left-color: var(--cu-yellow); }
-  .latest-finding.blue { border-left-color: var(--cu-blue-info); }
-  .latest-finding-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-  .latest-finding-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; }
-  .latest-cu-impact {
-    margin-top: 16px;
-    padding: 12px 16px;
-    background: var(--cu-blue-light);
-    border-radius: 8px;
-    border-left: 3px solid var(--cu-blue);
-    font-size: 13px;
-    color: var(--cu-blue-dark);
-    line-height: 1.7;
-  }
-  .latest-cu-impact strong { font-weight: 700; }
-
-  /* Source Links */
-  .source-link {
-    display: inline-block;
-    font-size: 11px;
-    color: var(--cu-blue);
-    text-decoration: none;
-    padding: 2px 8px;
-    background: var(--cu-blue-light);
-    border-radius: 4px;
-    margin-right: 6px;
-    margin-top: 4px;
-    transition: all 0.15s;
-    border: 1px solid transparent;
-  }
-  .source-link:hover {
-    background: var(--cu-blue);
-    color: white;
-    border-color: var(--cu-blue);
-  }
-  .event-links {
-    margin-top: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0;
-  }
-  .event-links-label {
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin-right: 4px;
-  }
-
-  /* Multi-source dropdown */
-  .src-dropdown {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
-  .src-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 11px;
-    color: var(--cu-blue);
-    text-decoration: none;
-    padding: 2px 10px;
-    background: var(--cu-blue-light);
-    border-radius: 4px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    margin-top: 4px;
-    font-weight: 600;
-    transition: all 0.15s;
-    user-select: none;
-  }
-  .src-trigger:hover {
-    background: var(--cu-blue);
-    color: #fff;
-    border-color: var(--cu-blue);
-  }
-  .src-menu {
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    margin-bottom: 4px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    padding: 4px 0;
-    min-width: 170px;
-    z-index: 999;
-  }
-  .src-menu.show { display: block; }
-  .src-menu a {
-    display: block;
-    padding: 7px 14px;
-    font-size: 13px;
-    color: var(--text);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.12s;
-  }
-  .src-menu a:hover {
-    background: var(--cu-blue-light);
-    color: var(--cu-blue);
-  }
-
-  /* Status Hero */
-  .status-hero {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    box-shadow: var(--shadow);
-    margin-bottom: 24px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 32px;
-    align-items: center;
-  }
-  .status-light {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px;
-    box-shadow: 0 0 20px rgba(229,57,53,0.3);
-  }
-  .status-light.red { background: var(--cu-red-bg); border: 3px solid var(--cu-red); }
-  .status-light.yellow { background: var(--cu-yellow-bg); border: 3px solid var(--cu-yellow); }
-  .status-light.blue { background: var(--cu-blue-info-bg); border: 3px solid var(--cu-blue-info); }
-  .status-light.green { background: var(--cu-green-bg); border: 3px solid var(--cu-green); }
-  .status-info h2 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-  .status-info .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-  .status-metrics { display: flex; gap: 24px; }
-  .metric { text-align: center; }
-  .metric .num { font-size: 28px; font-weight: 800; line-height: 1; }
-  .metric .label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-  /* Grid */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
-
-  /* Card */
-  .card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.2s;
-    margin-bottom: 24px;
-  }
-  .card:hover { box-shadow: var(--shadow-hover); }
-  .card-title {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--cu-blue-dark);
-  }
-  .card-title .icon { font-size: 18px; }
-
-  /* Timeline */
-  .timeline-badge {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    padding: 2px 8px; border-radius: 10px; margin-left: 8px;
-  }
-  .timeline-badge.red { background: var(--cu-red-bg); color: var(--cu-red); }
-  .timeline-badge.yellow { background: var(--cu-yellow-bg); color: var(--cu-yellow); }
-  .timeline-badge.blue { background: var(--cu-blue-info-bg); color: var(--cu-blue-info); }
-  .timeline-badge.green { background: var(--cu-green-bg); color: var(--cu-green); }
-
-  /* Route Risk Table */
-  .route-table { width: 100%; border-collapse: collapse; }
-  .route-table th {
-    text-align: left; font-size: 12px; font-weight: 600;
-    color: var(--text-secondary); text-transform: uppercase;
-    letter-spacing: 0.5px; padding: 8px 12px;
-    border-bottom: 2px solid var(--border);
-  }
-  .route-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .route-table tr:last-child td { border-bottom: none; }
-  .route-table tr:hover td { background: var(--cu-blue-light); }
-  .risk-badge {
-    display: inline-block; font-size: 11px; font-weight: 700;
-    padding: 3px 10px; border-radius: 12px;
-  }
-  .risk-badge.red { background: var(--cu-red-bg); color: var(--cu-red); }
-  .risk-badge.yellow { background: var(--cu-yellow-bg); color: var(--cu-yellow); }
-  .risk-badge.green { background: var(--cu-green-bg); color: var(--cu-green); }
-
-  /* Daily Cards */
-  .daily-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-  .daily-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    border-top: 4px solid var(--border);
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .daily-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-  .daily-card.red { border-top-color: var(--cu-red); }
-  .daily-card.yellow { border-top-color: var(--cu-yellow); }
-  .daily-card.blue { border-top-color: var(--cu-blue-info); }
-  .daily-card.green { border-top-color: var(--cu-green); }
-  .daily-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .daily-card-date { font-size: 16px; font-weight: 700; color: var(--cu-blue-dark); }
-  .daily-card-status { font-size: 20px; }
-  .daily-card-summary { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
-  .daily-card-stats { display: flex; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
-  .daily-stat { font-size: 11px; color: var(--text-secondary); }
-  .daily-stat strong { color: var(--cu-blue); font-size: 14px; }
-
-  /* CU Lines Impact Panel */
-  .timeline-cu {
-    margin-top: 8px; padding: 8px 12px;
-    background: var(--cu-blue-light); border-radius: 8px;
-    font-size: 12px; color: var(--cu-blue-dark);
-    border-left: 3px solid var(--cu-blue);
-  }
-
-  /* Key Events Timeline (vertical) */
-  .events-timeline { padding-right: 8px; }
-  .events-timeline::-webkit-scrollbar { width: 6px; }
-  .events-timeline::-webkit-scrollbar-track { background: var(--bg); border-radius: 3px; }
-  .events-timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .event-row {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .event-row:last-child { border-bottom: none; }
-  .event-date {
-    font-size: 12px; font-weight: 600; color: var(--text-secondary);
-    text-align: right;
-  }
-  .event-date .day { font-size: 18px; font-weight: 800; color: var(--cu-blue-dark); }
-  .event-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .event-content p { font-size: 12px; color: var(--text-secondary); }
-  .event-tags { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .event-tag {
-    font-size: 10px; padding: 1px 6px; border-radius: 4px;
-    font-weight: 600;
-  }
-  .event-tag.red { background: var(--cu-red-bg); color: var(--cu-red); }
-  .event-tag.yellow { background: var(--cu-yellow-bg); color: var(--cu-yellow); }
-  .event-tag.blue { background: var(--cu-blue-info-bg); color: var(--cu-blue-info); }
-  .event-tag.cat { background: var(--cu-gray-bg); color: var(--cu-gray); }
-
-  /* Info banner */
-  .info-banner {
-    background: var(--cu-blue-light);
-    border-left: 4px solid var(--cu-blue);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    color: var(--cu-blue-dark);
-    line-height: 1.7;
-  }
-  .info-banner strong { font-weight: 700; }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border);
-    margin-top: 32px;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .status-hero { grid-template-columns: 1fr; text-align: center; }
-    .status-metrics { justify-content: center; }
-  }
-  @media (max-width: 600px) {
-    .container { padding: 16px; }
-    .header { padding: 16px; }
-    .tab-btn { padding: 12px 16px; font-size: 13px; }
-  }
-</style>
-</head>
-<body>
-
-<!-- Header -->
-<div class="header">
-  <div class="header-left">
-    <div class="header-logo">CU Lines</div>
-    <div class="header-title">
-      <h1>SeaLead 制裁舆情监测仪表板</h1>
-      <p>美国制裁SeaLead动态 / 中联航运影响评估 / 中东地缘安全</p>
-    </div>
-  </div>
-  <div class="header-right">
-    <div class="time" id="updateTime">--</div>
-    <div class="schedule">微信 08:45/15:00/22:00 | 领英 08:45/17:00</div>
-    <div class="live-badge"><span class="live-dot"></span> 自动监测运行中</div>
-  </div>
-</div>
-
-<!-- Tab Navigation -->
-<div class="tab-nav">
-  <button class="tab-btn active" onclick="switchPage('summary', event)"><span class="tab-icon">📊</span> 汇总</button>
-  <button class="tab-btn" onclick="switchPage('sealead', event)"><span class="tab-icon">🚢</span> SeaLead 制裁</button>
-  <button class="tab-btn" onclick="switchPage('redsea', event)"><span class="tab-icon">⚠️</span> 红海胡塞危机</button>
-</div>
-
-<!-- ==================== PAGE 1: SUMMARY ==================== -->
-<div class="page-section active" id="page-summary">
-  <div class="container">
-
-    <!-- Latest Update (top of page) -->
-    <div class="latest-update" id="latestUpdate">
-      <div class="latest-header">
-        <span class="latest-badge">🔴 紧急</span>
-        <span class="latest-time" id="latestTime">2026-07-27 15:00 | 下午微信</span>
-        <span class="latest-vs" id="latestVs">vs早间监测（08:45）：新增3条核心数据更新——①Kpler双峡通行量具体数据（曼德11艘/霍尔木兹7艘创新低）；②中国VLCC穿越曼德海峡详细经过（AIS标注'中国船員及船東'获放行）；③沙特-胡塞冲突循环升级（导弹反击+延布港袭击）。其余为已知信息多源延伸。</span>
-      </div>
-      <div class="latest-findings" id="latestFindings"></div>
-      <div class="latest-cu-impact" id="latestCuImpact"></div>
-    </div>
-
-    <!-- Status Hero -->
-    <div class="status-hero" id="statusHero">
-      <div class="status-light red" id="statusLight">🔴</div>
-      <div class="status-info">
-        <h2 id="statusTitle">🔴 紧急 — 沙特联军反击胡塞 + 中资船被禁 + 古特雷斯呼吁降级 + 双峡分化</h2>
-        <p class="summary" id="statusSummary">沙特主导多国联军7/25凌晨对胡塞军事目标实施打击，冲突进入实战+反击阶段；中资汽车运输船获胡塞许可后又被取消并掉头，中国船豁免假设被证伪；联合国秘书长古特雷斯7/24呼吁立即降级；曼德海峡通航量回升至49艘但霍尔木兹海峡下降60%仅6艘。CU Lines RES航线挂靠吉达直接暴露于交叉火力范围，CGX/CGS经霍尔木兹外侧豪尔费坎分拨方案仍面临上游通道收窄风险。</p>
-      </div>
-      <div class="status-metrics">
-        <div class="metric"><div class="num" style="color:var(--cu-red)" id="metricRed">39</div><div class="label">紧急事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-yellow)" id="metricYellow">49</div><div class="label">重要事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-blue-info)" id="metricBlue">32</div><div class="label">关注事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-green)" id="metricSafe">9</div><div class="label">监测天数</div></div>
-      </div>
-    </div>
-
-    <!-- Daily Monitoring Details -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📑</span> 每日监测详情（点击展开 · 最新在前）</div>
-      <div class="daily-grid" id="dailyGrid"></div>
-    </div>
-
-    <!-- Key Events Timeline -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📅</span> 关键事件时间线（最新 → 最早）</div>
-      <div class="events-timeline" id="eventsTimeline"></div>
-    </div>
-
-    <!-- Route Risk Matrix -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🗺️</span> 中联航运航线风险矩阵</div>
-      <table class="route-table">
-        <thead>
-          <tr>
-            <th>航线</th>
-            <th>覆盖区域</th>
-            <th>当前风险</th>
-            <th>主要威胁</th>
-            <th>运营建议</th>
-          </tr>
-        </thead>
-        <tbody id="routeTableBody"></tbody>
-      </table>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==================== PAGE 2: SEALEAD SANCTIONS ==================== -->
-<div class="page-section" id="page-sealead">
-  <div class="container">
-
-    <!-- SeaLead Status Hero -->
-    <div class="status-hero">
-      <div class="status-light red">🚢</div>
-      <div class="status-info">
-        <h2>SeaLead 制裁态势 — SDN名单 + 运力崩溃</h2>
-        <p class="summary">OFAC 7/14将SeaLead公司本体及3家子公司列入SDN名单，同时14家关联实体+20艘船舶被制裁。运力从巅峰20.8万TEU暴跌95.2%至9431TEU，全球排名从第13跌至第79。2家中国香港航运企业被波及，OFAC制裁范围正式扩展到集装箱航运。</p>
-      </div>
-      <div class="status-metrics">
-        <div class="metric"><div class="num" style="color:var(--cu-red)">3</div><div class="label">SDN子公司</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">20</div><div class="label">制裁船舶</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">14</div><div class="label">关联实体</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">95.2%</div><div class="label">运力跌幅</div></div>
-      </div>
-    </div>
-
-    <div class="info-banner">
-      <strong>事件链：</strong>OFAC SDN指定（7/14）→ GL X1到期回滚（7/17）→ GL Z过渡期至9/12 → SeaLead运力崩溃95.2%（7/20）→ ESL集装箱前缀禁令 → 行业物理拦截阶段。中方反制工具：《反外国制裁法》首次适用。
-    </div>
-
-    <!-- SeaLead Daily Details -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📋</span> SeaLead 制裁每日进展（最新在前）</div>
-      <div class="daily-grid" id="sealeadDailyGrid"></div>
-    </div>
-
-    <!-- SeaLead Key Events Timeline -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📅</span> SeaLead 制裁关键事件（最新 → 最早）</div>
-      <div class="events-timeline" id="sealeadEventsTimeline"></div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==================== PAGE 3: RED SEA / HOUTHI CRISIS ==================== -->
-<div class="page-section" id="page-redsea">
-  <div class="container">
-
-    <!-- Red Sea Status Hero -->
-    <div class="status-hero">
-      <div class="status-light red">⚠️</div>
-      <div class="status-info">
-        <h2>红海/胡塞危机 — 准战争状态</h2>
-        <p class="summary">胡塞7/20宣布对沙特海上禁运 → 7/23实战袭击2艘沙特油轮（ENCELIA/LAYLA），UKMTO独立确认。伊朗IRGC声明完全封锁霍尔木兹。美军连续第12夜空袭。布伦特破95美元，战险保费飙至红海0.75%/集装箱0.5-1%。班轮公司集体启动EFS附加费。</p>
-      </div>
-      <div class="status-metrics">
-        <div class="metric"><div class="num" style="color:var(--cu-red)">2</div><div class="label">海峡危机</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">2</div><div class="label">油轮遇袭</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">$95+</div><div class="label">布伦特原油</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-red)">12</div><div class="label">美军空袭夜</div></div>
-      </div>
-    </div>
-
-    <div class="info-banner">
-      <strong>危机升级链：</strong>胡塞海上禁运宣布（7/20）→ 吉达港拥堵3.93天（7/22）→ 胡塞实战袭击沙特油轮+UKMTO确认（7/23）→ 伊朗霍尔木兹布雷+IRGC声明完全封锁 → 班轮公司EFS附加费集体启动 → 战争险飙升10-20倍。CU Lines RES/CGX/CGS航线全部进入高危区。
-    </div>
-
-    <!-- Red Sea Daily Details -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📋</span> 红海胡塞危机每日进展（最新在前）</div>
-      <div class="daily-grid" id="redseaDailyGrid"></div>
-    </div>
-
-    <!-- Red Sea Key Events Timeline -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📅</span> 红海胡塞危机关键事件（最新 → 最早）</div>
-      <div class="events-timeline" id="redseaEventsTimeline"></div>
-    </div>
-
-    <!-- Route Risk Matrix (Red Sea specific) -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🗺️</span> 中联航运航线风险矩阵（受红海危机影响）</div>
-      <table class="route-table">
-        <thead>
-          <tr>
-            <th>航线</th>
-            <th>覆盖区域</th>
-            <th>当前风险</th>
-            <th>主要威胁</th>
-            <th>运营建议</th>
-          </tr>
-        </thead>
-        <tbody id="redseaRouteTableBody"></tbody>
-      </table>
-    </div>
-
-  </div>
-</div>
-
-<div class="footer">
-  <p>SeaLead 制裁舆情监测系统 | 自动化运行 | 数据来源：微信公众号(搜狗) + LinkedIn + WebSearch</p>
-  <p>监测频率：微信每日3次（08:45/15:00/22:00）| 领英每日2次（08:45/17:00）| 晚间生成当日汇总</p>
-</div>
-
-<script>
 // ========== PAGE SWITCHING ==========
 function switchPage(pageId, ev) {
   document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
@@ -641,87 +10,67 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月1日 周六 22:00 | 晚间微信检索",
+  time: "7月31日 周五 15:00 | 下午微信检索",
   status: "red",
-  statusText: "🔴 紧急（8/1 下午微信检索：OFAC新一轮制裁重创SeaLead仅剩4艘/第80位+CULines/MSC接手退租运力+曼德通航暴跌56%+中国游轮安全通行+沙特冲突外溢至伊拉克）",
-  vs: "vs早间监测：本轮下午微信检索\"SeaLead 中联航运 制裁 红海 胡塞\"，命中CNSS/澎湃新闻/今日头条等中文航运媒体。焦点：①OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+3艘现役船入SDN仅剩4艘/第80位；②CULines与MSC租入SeaLead退租的5艘运力填补市场；③曼德海峡通航暴跌56%/7·26仅9艘驶出红海；④4艘中国游轮在胡塞封锁期间安全通行曼德；⑤沙特配合美军打击伊拉克亲伊朗民兵/冲突外溢。",
+  statusText: "🔴 紧急（7/31微信检索增量：胡塞拟收红海过路费+伊朗通知胡塞封锁曼德+OFAC制裁SeaLead持续发酵+中国六大港口台风中断）",
+  vs: "vs早间监测（08:45）：新增6条7/31微信检索增量——①胡塞拟收曼德海峡过路费（中国船只可能免单）；②伊朗通知胡塞武装封锁曼德（双海峡风险共振）；③匠歆海事确认OFAC制裁SeaLead定性升级；④OFAC制裁详情SeaLead排名暴跌至第80；⑤胡塞收费传闻辟谣及地缘分析；⑥中国六大港口台风中断（上海港延误4.56天）。",
   findings: [
     {
       level: "red",
-      title: "OFAC 7/24新一轮制裁：SeaLead新加坡/迪拜/马绍尔实体+3艘现役船列入SDN黑名单",
-      desc: "三艘被制裁船：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。SeaLead仅剩4艘船，Alphaliner排名跌至第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。",
+      title: "胡塞拟收红海\"过路费\"：中国船只可能免单，沙特推动组建新护航联盟",
+      desc: "胡塞武装正在研究对通过曼德海峡的大多数商船收取通航费用，可能设立专门机构负责船舶登记和费用收取。消息人士称中国相关船舶可能被排除在收费范围之外，但尚未得到正式确认。沙特正与数十个国家磋商组建新的国际护航联盟。曼德海峡通航量近期回升：7月28日39艘大宗商品运输船通过。趋势判断：胡塞可能将军事威胁转化为常态化的船舶筛选、通航许可和收费机制。",
       links: [
-        { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
-        { text: "Seafh", url: "https://seafh.com/x/4027" },
-        { text: "搜狐", url: "https://www.sohu.com/a/988791120_121124376" }
+        { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
       ]
     },
     {
       level: "red",
-      title: "胡塞考虑对曼德海峡商船征收通行费，红海战争险保费升至0.75%",
-      desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。7/20胡塞宣布对沙特海上禁运，多艘沙特油轮遭袭。曼德海峡通航量下降约50%。红海战争风险保费从0.3%升至0.75%。",
+      title: "伊朗通知胡塞武装：若美国动手就封锁曼德海峡——双海峡风险共振",
+      desc: "伊朗已向胡塞武装传递信息：若美国袭击伊朗电力基础设施，胡塞武装将封锁曼德海峡。胡塞已完成袭击航运准备，在荷台达、亚丁湾及曼德海峡附近部署导弹和无人机。驻也门IRGC人员掌握启动封锁的最终决定权。全球约7%能源供应经红海航线，若曼德+霍尔木兹同时受阻，将严重冲击全球能源供应和运价。双海峡风险共振：霍尔木兹（美伊对抗）+ 曼德（胡塞/伊朗联动）同时承压。",
       links: [
-        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" },
-        { text: "路透社", url: "https://www.reuters.com/" }
+        { text: "赛蒂国际物流", url: "https://weixin.sogou.com/weixin?type=2&query=封锁曼德海峡" }
       ]
     },
     {
       level: "red",
-      title: "沙特7/30牵头14国成立红海海上防御联盟，总部设沙特",
-      desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。",
-      links: []
+      title: "匠歆海事快讯：两艘中资VLCC穿越曼德海峡 + OFAC制裁Sea Lead Shipping定性升级",
+      desc: "本轮搜索重新命中匠歆海事7/24报道，关键增量发现：Sea Lead Shipping被OFAC正式认定为'为胡塞武装提供运输支持的关键集装箱航运企业'，这是此前未突出强调的定性升级。同期两艘中资VLCC（\u201cXIN LONG YANG\u201d新加坡旗 + \u201cCOSNEW LAKE\u201d中国旗）成功穿越曼德海峡，合计装载约400万桶沙特原油，由中石化联合石化租用。",
+      links: [
+        { text: "ArtiMaritime 匠歆海事", url: "https://weixin.sogou.com/weixin?type=2&query=匠歆海事SeaLead" }
+      ]
     },
     {
       level: "red",
-      title: "美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标，WTI涨6.35%至$84.33",
-      desc: "7/28-29日美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI油价涨6.35%至$84.33，布伦特涨5.75%至$86.79。",
+      title: "OFAC新一轮制裁SeaLead详情：从全球第13暴跌至第80，仅余4艘船",
+      desc: "OFAC于2026年7月24日将SeaLead设于新加坡、迪拜及马绍尔群岛的主要运营实体及印度代理公司列入黑名单。三艘现役集装箱船全被制裁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。SeaLead从2025年全球第13位(53艘船)暴跌至第80位，仅余4艘船。行业连锁：中联航运(CULines)与地中海航运(MSC)已迅速出手租入SeaLead退租的5艘运力。",
       links: [
-        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" }
+        { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
       ]
     },
     {
       level: "yellow",
-      title: "中国船舶获胡塞逐船协调安全通行曼德海峡——非全面豁免",
-      desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行曼德海峡。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。中方未确认\"全面豁免\"，外交辞令谨慎。",
+      title: "胡塞武装曼德海峡收费传闻：路透爆料后辟谣，美军护航陷入困境",
+      desc: "7月29日路透社报道胡塞考虑对曼德海峡商船征收过境费用、中国船只免单。7月30日胡塞高级官员公开辟谣否认制定收费方案。曼德海峡承担全球约12%海上贸易。美军'繁荣卫士'护航效果有限：百万美元拦截导弹面对廉价无人机成本不可持续。胡塞虽已辟谣但'中国船只免单'细节折射中国长期中东中立政策积累的战略资产。",
       links: [
-        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" },
-        { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" }
+        { text: "路透社", url: "https://www.reuters.com/" },
+        { text: "头条", url: "https://www.toutiao.com/" }
+      ]
+    },
+    {
+      level: "yellow",
+      title: "中国六大港口台风中断：双台风致上海/宁波/青岛等港严重延误",
+      desc: "双台风'巴威''红霞'先后影响华东、华南，六大集装箱港口全部标记为Heavily disrupted：上海、宁波、青岛、厦门、深圳、广州。上海港近七日平均延误4.56天，洋山非Gemini航线等泊时间达144小时。盐田港自7月27日起实施ETB-7进闸管控，每日限进港9000个集装箱。蛇口港8月3日起跟进实施ETB-7管理。对中联航运CULines亚洲区域内航线的潜在影响：密集挂靠的港口面临船期延误和甩柜风险。",
+      links: [
+        { text: "AMZ123", url: "https://weixin.sogou.com/weixin?type=2&query=中国港口台风" },
+        { text: "德迅", url: "https://weixin.sogou.com/weixin?type=2&query=台风港口中断" }
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — SeaLead仅剩4艘船/全球第80位仅余4艘船，CULines与MSC接手SeaLead退租运力（Express Berlin+Racine）。曼德通航暴跌56%+胡塞精准打击沙特船只+中国游轮获安全通行。沙特配合美军打击伊拉克民兵致冲突外溢。CULines RES/CGX/CGS航线维持此前风险评估，红海安全不确定性加剧。"
+   cuImpact: "🔴 紧急关注 — RES航线（挂靠吉达/沙特港）🔴极高危：劳合社战争险撤出+胡塞拟收费机制化+伊朗指示胡塞待命封锁，通行环境持续恶化；CGX航线（经红海）🔴高危：红海水域受胡塞袭击/收费双重风险；CGS航线（豪尔费坎）🟡中危：不经红海/曼德但上游通道收窄；KCI航线⚪低风险：不经三海峡持续安全阀。新增关注：中国六大港口台风中断可能造成CULines亚洲区域内航线船期延误和甩柜风险。SeaLead剩余4艘船+MSC/CULines瓜分残存运力格局已定，制裁影响趋于终结但合规风险持续。"
 };
 
 // ========== DAILY DATA ==========
 const dailyData = [
-  {
-    date: "2026-08-01", display: "8/1", weekday: "周六",
-    status: "red", statusText: "🔴 紧急",
-    eventCount: 5, redCount: 4, yellowCount: 1, blueCount: 0,
-    cuStatus: "接手Express Berlin+Racine扩张中东航线，RES/CGX/CGS风险同前",
-    summary: "OFAC 7/24新制裁：SeaLead实体+3艘船列入SDN仅剩4船/第80位；胡塞曼德收费计划+红海战争险0.75%；沙特14国护航联盟成立；美伊升级WTI涨6.35%；中国船舶获逐船通行便利",
-    keyEvents: [
-      "OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+印度代理及3艘现役船入SDN",
-      "SeaLead从第13暴跌至第80仅余4艘船，CULines/MSC接手退租运力",
-      "胡塞考虑对曼德商船征通行费，伊朗IRGC协助筹建收费机构",
-      "沙特7/30牵头14国成立红海防御联盟",
-      "美伊升级：美沙联合打击伊拉克80+目标，WTI涨6.35%",
-      "中国船舶获逐船协调安全通行曼德，中方未确认全面豁免"
-    ],
-    sealeadEvents: [
-      "OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理入SDN",
-      "3艘现役船全被锁：Paya Lebar(4211TEU)/Shenton Way(2008TEU)/Tanjong Pagar 1(920TEU)",
-      "SeaLead仅剩4船/第80位，CULines接手Express Berlin+Racine",
-      "中联航运(CULines)租入Express Berlin(10114TEU)和Racine(6758TEU)"
-    ],
-    redseaEvents: [
-      "胡塞考虑对曼德海峡商船征通行费，IRGC协助建收费机构",
-      "沙特7/30牵头14国成立红海防御联盟",
-      "美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标",
-      "中国船舶获胡塞逐船协调安全通行（非全面豁免）",
-      "红海战争风险保费0.3%→0.75%，曼德通航量下降约50%"
-    ]
-  },
   {
     date: "2026-07-17", display: "7/17", weekday: "周四",
     status: "red", statusText: "🔴 紧急",
@@ -1163,24 +512,6 @@ const dailyData = [
       "曼德海峡通航回升至39艘大宗商品运输船(7/28)"
     ]
   },
-  {
-    date: "2026-08-01", display: "8/1", weekday: "周六",
-    status: "red", statusText: "🔴 紧急",
-    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
-    new: true,
-    cuStatus: "未被制裁；RES🔴极高危/CGX🔴高危/CGS🟡中危/KCI⚪低风险；SeaLead SDN公告确认胡塞运输指控，曼德通行骤降推高风险",
-    summary: "8/1上午LinkedIn检索：OFAC正式公告SeaLead SDN制裁详情+红海曼德双峡危机7/26通行骤降至11艘",
-    keyEvents: [
-      "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司，3艘现役船全部被锁",
-      "✨新增｜红海与曼德海峡双重危机：7/26日通行骤降至11艘创数月最低，战争险保费达船值12%"
-    ],
-    sealeadEvents: [
-      "✨新增｜OFAC 7/14正式公告：SeaLead+Paya Lebar/Shenton Way/Tanjong Pagar 1列入SDN，被控为胡塞提供运输"
-    ],
-    redseaEvents: [
-      "✨新增｜7/26曼德海峡日通行骤降至11艘创数月最低，战争险保费最高达船值12%，沙特暂停曼德原油出口改道苏伊士"
-    ]
-  },
 ];
 
 const routeRisks = [
@@ -1193,53 +524,6 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
-  { date: "07-24", day: "24", title: "✨新增｜OFAC新一轮制裁重创Sea Lead:仅剩4艘船，排名跌至第80位", desc: "美国财政部OFAC于7月24日对Sea Lead Shipping及其迪拜、马绍尔群岛、印度关联企业实施新一轮制裁，同步制裁SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR等集装箱船。Sea Lead从2025年中的53艘船/全球第13位暴跌至仅剩4艘船/第80位，三艘现役船全被锁定，公司运营几近停摆。美司法部指控其充当伊朗"黑暗船队"合法门面。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
-    { text: "Seafh", url: "https://seafh.com/x/4027" }
-  ], new: true},
-  { date: "07-24", day: "24", title: "✨新增｜中联航运与MSC租入Sea Lead退租运力，填补市场空白", desc: "Sea Lead租用的5艘船舶退租给希腊船东Danaos后，中联航运（CULines）与地中海航运（MSC）已迅速出手租入这批运力，填补市场空白。CULines接手Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
-    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
-  ], new: true},
-  { date: "07-28", day: "28", title: "✨新增｜曼德海峡通航量暴跌56%，胡塞武装精准打击沙特船只", desc: "胡塞武装发布海上封锁声明后，曼德海峡整体通航量暴跌56%，7月26日全天仅9艘船驶出红海。胡塞武装采取精准区分式打击，锁定沙特港口及相关船只。7月28日胡塞发射弹道导弹袭击沙特游轮"夹扎乐号"于盐布港附近。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
-    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
-  ], new: true},
-  { date: "07-29", day: "29", title: "✨新增｜四艘中国游轮安全通过曼德海峡，中方提前沟通协调", desc: "4艘中国游轮在胡塞封锁期间安全通过曼德海峡。中方于7月20日即启动与胡塞武装沟通磋商，7月29日外交部回应称"国际航道安全需各国共同守护，呼吁各方克制、通过对话协商化解分歧"。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
-    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
-  ], new: true},
-  { date: "07-29", day: "29", title: "✨新增｜沙特宣布配合美军打击伊拉克亲伊朗民兵，红海冲突外溢", desc: "沙特国防部7月29日宣布配合美军打击伊拉克境内亲伊朗民兵武装，红海冲突不再局限于也门，开始外溢至伊拉克，中东矛盾链条被彻底拉长，全球供应链和国际能源安全面临更大风险。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"冲突外溢"}], links: [
-    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
-  ], new: true},
-
-  { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动(新闻稿sb0562): 美国财政部将新加坡Sea Lead Shipping PTE. Ltd.及迪拜、马绍尔、印度子公司列入SDN。SeaLead被认定为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。旗下SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计制裁超200个目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海海上防御联盟成立：土耳其、埃及、巴基斯坦加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特在利雅得召集43国与欧盟代表后宣布牵头14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25沙特联军空袭胡塞，曼德海峡通航量一周锐减56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
-    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高全球油轮运价，集装箱航运面临保费上涨+绕行成本双重压力", desc: "Lloyd's List/经济日报报道：霍尔木兹海峡危机叠加红海、黑海安全恶化，全球油轮市场面临"前所未有"扰动。蒂凯油轮CEO称被认定不安全的港口数量创历史新高；达米科CEO称地缘政治已成油轮市场主导因素。部分船东停止穿越红海或进入霍尔木兹，航程拉长推高即期运价。集装箱航运同样面临保费上涨、航线绕行成本增加压力，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
-    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
-  ], new: true},
-
-  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁: SeaLead实体+3艘现役船列入SDN，仅余4艘/第80位，CULines接手Express Berlin+Racine", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。从全球第13位(53艘)暴跌至第80位仅余4艘船。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
-    { text: "Seafh", url: "https://seafh.com/x/4027" },
-    { text: "搜狐", url: "https://www.sohu.com/a/988791120_121124376" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.3%→0.75%，曼德通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。7/20胡塞宣布对沙特海上禁运，多艘沙特油轮遭袭。红海战争风险保费从0.3%升至0.75%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
-    { text: "路透社", url: "https://www.reuters.com/" },
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特，阿曼/阿联酋未加入", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。联盟成立标志着红海安全格局从单边护航向多边合作转变。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标，WTI涨6.35%至$84.33", desc: "7/28-29日美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI油价涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认'全面豁免'", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行曼德海峡。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。中方外交辞令谨慎，未确认\"全面豁免\"安排。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
-    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" },
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。Shamkhani网络累计超200个指定主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "OFAC官方公告", url: "https://ofac.treasury.gov/recent_actions" }
   ]},
@@ -1255,9 +539,6 @@ const keyEvents = [
   ]},
   { date: "07-20", day: "20", title: "ESL发布SOC集装箱前缀禁令", desc: "Emirates Shipping Line发布BXAU/VOLU/VOTU/SLVU前缀禁令，制裁效应从政策层向实操层传导。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"行业传导"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。沙特联军启动防护部署。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
-  { date: "07-20", day: "20", title: "✨新增｜胡塞海上封锁升级：已确认击伤油轮ENCELIA，AIS过境225次/较前周降28%/暗航38次", desc: "胡塞7/20宣布对沙特'海上封锁'后已确认击伤油轮ENCELIA。劳合社情报监测：7/20-26 AIS可见过境225次（较前周311次降28%），含38次暗航。原油出口受创最大——7/23以来仅1艘原油轮靠泊沙特红海港口。集装箱板块保持韧性：仍有18家班轮公司通过曼德。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"通航数据"}], links: [
-    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
-  ]},
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。红海航线挂靠港同时受胡塞风险封锁目标港影响。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
     { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260714A0001H00" },
     { text: "ccpitzj.gov.cn", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_a06bd6a7099c48f6948cc3542c66bb7a.html" }
@@ -1434,11 +715,6 @@ const keyEvents = [
     { text: "海员之家（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9AnV1KuJKv79GNmeeRQcqNMktX4_F6-v9s0h9-6Q5-1waBIdKf9bsOuSB6toT8jTdpgCTyt98qWrQtUt9qjLJ19A-mQiDUUzdty1RsBc0OVCpONifs9_8GEwvREy4bYK7YgqjP1IHUMTTKsoU6dNlivizkUXsPFq4DR24mRYz906fxjh3za6jWA..&type=2&query=SeaLead%E5%88%B6%E8%A3%81&token=9F4DD7F759E3E22C5650000F905D891F57D113836A636EEE" },
     { text: "合规大使（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9_oom-fdkCK2h1oPDYocqonyZvwPZUAUrTxHsXK_Qk_LjQ_vsZvYjCLT-JMts8-d6hASmfKpQLjIdbbVDD1o7ZiMgCnCtGL8f4a4k6IuvQ6NWGQccj15H3ap5ah3Oz4eoKsq6ReqeuTkQOs-gjAj5gGLXQ-b5P_nm7FTqsitKhcZCy6umSSPEsg..&type=2&query=%E9%A6%99%E6%B8%AF%E8%88%AA%E8%BF%90%E5%88%B6%E8%A3%81SDN&token=9F4DD77C9DB7C9F88C8ADBD6DF7AD24C8DEDF1D86A636EEE" }
   ]},
-  
-  { date: "07-25", day: "25", title: "✨新增｜胡塞7/25打击沙特吉赞/延布能源设施，曼德海峡7/26骤降至11艘创数月最低", desc: "7/25胡塞武装使用导弹和无人机打击沙特吉赞和延布能源设施；沙特此前空袭胡塞控制的荷台达。冲突从港口封锁升级为基础设施打击，导致曼德海峡7/26日通行货船骤降至11艘创数月最低。7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
-    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
-    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
-  ]},
   { date: "07-25", day: "25", title: "沙特主导多国联军7/25凌晨对胡塞武装军事目标实施打击", desc: "沙特主导的多国联军7月25日凌晨发表声明，对也门荷台达省胡塞武装军事目标实施打击。联军称行动针对与胡塞海上威胁直接相关的军事目标，未针对荷台达港；声明强调也门港口仍正常开放。这是自胡塞7/20宣布对沙特海上禁运、7/23袭击ENCELIA/LAYLA号油轮以来，沙特方面的首次军事反击。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
     { text: "腾讯新闻/新华社", url: "https://new.qq.com/rain/a/20260725A03E3P00?refer=cp_1009" },
     { text: "网易/新华社", url: "https://www.163.com/dy/article/L2LP0NOP0514R9OJ.html" }
@@ -1612,14 +888,6 @@ const keyEvents = [
   { date: "07-27", day: "27", title: "LinkedIn/中联航运CULines推出越南-印尼支线（MV1/MI1/IP1）巴生港中转规避双峡风险", desc: "中联航运LinkedIn官方7/9宣布推出三条东南亚支线MV1(胡志明-巴生港)、MI1(雅加达-巴生港)、IP1(雅加达-巴生港)，构建'东南亚支线+巴生港中转枢纽+干线'综合服务。越南/印尼出口货物3-4天内抵达巴生港接续中东/红海/地中海干线。在双峡同时受阻背景下，此中转模式为不穿越高风险区域提供服务替代方案，是CU Lines危机应对的重要战略布局。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
     { text: "LinkedIn/中联航运", url: "https://www.linkedin.com/posts/culiness_culines-launches-new-vietnam-indonesia-activity-7480823480855228417-4EnD" }
   ]},
-  
-  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元/桶", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
-    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
-  ]},
-  
-  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
-    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
-  ]},
   { date: "07-31", day: "31", title: "胡塞拟收红海\"过路费\"：中国船只可能免单，沙特推动组建新护航联盟", desc: "胡塞武装正在研究对通过曼德海峡的大多数商船收取通航费用，可能设立专门机构负责船舶登记和费用收取。消息人士称中国相关船舶可能被排除在收费范围之外。沙特正与数十个国家磋商组建新的国际护航联盟。曼德海峡通航量近期回升至39艘大宗商品运输船(7/28)。趋势：胡塞可能将军事威胁转化为常态化的船舶筛选、通航许可和收费机制。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
   ], new: true},
@@ -1639,22 +907,10 @@ const keyEvents = [
     { text: "AMZ123", url: "https://weixin.sogou.com/weixin?type=2&query=港口台风" },
     { text: "德迅", url: "https://weixin.sogou.com/weixin?type=2&query=台风港口中断" }
   ], new: true},
-  
-  { date: "08-01", day: "1", title: "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司", desc: "美国财政部OFAC发布sb0562公告，正式宣布对Shamkhani网络的新一轮制裁。Sea Lead Shipping PTE. Ltd.（新加坡）及3家子公司（迪拜DMCC、马绍尔群岛Ltd、印度代理）被列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务，旗下SHENTON WAY (IMO 9146314)、TANJONG PAGAR 1 (IMO 9404508)、PAYA LEBAR (IMO 9134232) 被列为冻结资产。截至2026年3月，House of Shipping集团包括Sea Lead全部子公司。本次行动共制裁超50个实体/个人/船只，累计制裁Shamkhani网络超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
-  ], new: true},
-  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘创数月最低，战争险保费达船值12%", desc: "也门胡塞武装与沙特冲突升级导致全球两条关键航运要道同时告急。7/26曼德海峡日通行货船骤降至11艘（数月最低），战争风险保险费最高达船舶价值12%（战前约0.25%）。沙特暂停经曼德海峡原油出口改道苏伊士（出口量激增106%）。BIMCO秘书长警告长期中断将推高整个海事供应链成本。布伦特原油一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
-    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
-  ], new: true},
 ];
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
-  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理+3艘现役船全入SDN", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁。SeaLead仅剩4艘船/全球第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
-    { text: "Seafh", url: "https://seafh.com/x/4027" }
-  ], new: true},
-
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [] },
   { date: "07-14", day: "14", title: "2家中国香港航运企业被新制裁", desc: "Sai Wan Shipping + Ocean Searum One + 1艘船舶被列入SDN。OFAC制裁范围扩展到集装箱航运。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"香港实体"}], links: [] },
   { date: "07-17", day: "17", title: "OFAC伊朗石油豁免GL X1到期", desc: "40年最大制裁放宽→一周紧急回滚。所有涉伊朗石油新交易全面禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"政策逆转"}], links: [] },
@@ -1739,34 +995,10 @@ const sealeadKeyEvents = [
   { date: "07-31", day: "31", title: "SeaLead运力终局确认：从第13暴跌至第80仅余4艘船，CULines/MSC接手Express Berlin+Racine", desc: "OFAC 7/24正式将SeaLead新加坡/迪拜/马绍尔运营实体及3艘现役船列入黑名单。从2025年全球13位(53艘)暴跌至第80位仅余4艘船，运力蒸发超95%。CULines与MSC接手退租的5艘运力，Express Berlin(10114TEU)投入CGX航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力数据"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
   ], new: true},
-  { date: "08-01", day: "1", title: "✨新增｜OFAC正式公告SeaLead SDN制裁详情：被指控为胡塞武装提供运输支持", desc: "美国财政部OFAC 7/14发布sb0562公告确认Sea Lead Shipping PTE. Ltd.（新加坡）+3家子公司（迪拜DMCC、马绍尔群岛、印度代理）全部列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务。SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘现役船全部被列为冻结资产。本次行动制裁超50个主体，累计Shamkhani网络被制裁超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
-    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
-  ], new: true},
 ];
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
-  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海防御联盟成立：土耳其/埃及/巴基斯坦等加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特召集43国代表后宣布成立14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景链：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25空袭胡塞目标→曼德一周通航量骤降56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
-    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高油轮运价，集装箱航运同受保费+绕行成本压力", desc: "Lloyd's List/经济日报：霍尔木兹危机叠加红海、黑海安全恶化推高全球油轮运价。部分船东停止穿越红海/进入霍尔木兹，航程拉长推高即期运价。被认定不安全港口数创历史新高。集装箱航运同样面临保费上涨、航线绕行成本增加，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
-    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
-  ], new: true},
-
-  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.75%，通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。红海战争风险保费从0.3%升至0.75%。曼德海峡通航量下降约50%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
-    { text: "路透社", url: "https://www.reuters.com/" },
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克80+目标，WTI涨6.35%至$84.33", desc: "7/28-29美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
-    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
-  ], new: true},
-  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认全面豁免", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。逐船协调≠全面豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
-    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" }
-  ], new: true},
-
   { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。提箱延误6-8周。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
@@ -1939,11 +1171,6 @@ const redseaKeyEvents = [
   { date: "07-25", day: "25", title: "400万桶沙特原油由中国VLCC选择性通过曼德海峡", desc: "约400万桶沙特原油装载在中国运营的VLCC上，在评估风险后选择性通过曼德海峡。中国航运企业正在采取'风险分级'策略——对高价值货物谨慎评估后选择性通行。可作为中联航运的参考。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
     { text: "Bloomberg", url: "https://www.bloomberg.com/" }
   ]},
-  
-  { date: "07-25", day: "25", title: "✨新增｜胡塞导弹无人机打击沙特吉赞/延布能源设施，曼德7/26骤降至11艘", desc: "7/25胡塞武装使用导弹和无人机打击沙特阿美吉赞和延布能源设施，冲突从港口封锁升级为基础设施打击。曼德海峡7/26日通行货船骤降至11艘创数月最低，7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"实战袭击"}], links: [
-    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
-    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
-  ]},
   { date: "07-26", day: "26", title: "胡塞7/25首次直接打击沙特阿美延布+吉赞炼油设施", desc: "胡塞武装7月25日用导弹和无人机打击沙特阿美在延布（Yanbu）和吉赞（Jizan）的设施，4年来首次直接打击沙特炼油设施。延布是沙特红海沿岸最重要的原油出口港（日均出口约490万桶）。布伦特冲破100美元后回落至89-90美元。胡塞打击范围从海上船舶扩展到陆地炼油基础设施。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
     { text: "The Hindu/AP", url: "https://www.thehindu.com/news/international/houthis-fire-missiles-drones-at-saudi-arabia-in-response-to-strikes-on-yemeni-city/article71267142.ece" },
     { text: "CoinDesk", url: "https://www.coindesk.cc/houthis-strike-saudi-aramco-facilities-as-brent-crude-hits-100-crypto-pulls-back-91566.html" }
@@ -2020,9 +1247,6 @@ const redseaKeyEvents = [
   ], new: true},
   { date: "07-31", day: "31", title: "胡塞收费传闻辟谣：路透爆料后胡塞高官否认，美军护航成本不可持续", desc: "7/29路透爆胡塞拟收费、中国免单→7/30胡塞高官辟谣否认方案。曼德承担全球约12%海上贸易。美军百万美元拦截导弹vs廉价无人机成本不可持续。胡塞虽辟谣但'中国免单'折射中国中东中立战略资产。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"地缘安全"}], links: [
     { text: "路透社", url: "https://www.reuters.com/" }
-  ], new: true},
-  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘，战争险保费达船值12%", desc: "也门胡塞与沙特冲突升级致红海/曼德海峡告急。7/26曼德日通行货船骤降至11艘（数月最低），战争险保费最高达船舶价值12%（战前0.25%）。沙特暂停经曼德原油出口改道苏伊士（出口量激增106%）。BIMCO警告长期中断推高全海事供应链成本。布伦特一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
-    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
   ], new: true},
 ];
 
@@ -2247,8 +1471,3 @@ function toggleCard(el) {
   const detail = el.querySelector('.daily-detail');
   detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
 }
-</script>
-
-</body>
-</html>
-
