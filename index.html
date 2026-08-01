@@ -1163,6 +1163,24 @@ const dailyData = [
       "曼德海峡通航回升至39艘大宗商品运输船(7/28)"
     ]
   },
+  {
+    date: "2026-08-01", display: "8/1", weekday: "周六",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
+    new: true,
+    cuStatus: "未被制裁；RES🔴极高危/CGX🔴高危/CGS🟡中危/KCI⚪低风险；SeaLead SDN公告确认胡塞运输指控，曼德通行骤降推高风险",
+    summary: "8/1上午LinkedIn检索：OFAC正式公告SeaLead SDN制裁详情+红海曼德双峡危机7/26通行骤降至11艘",
+    keyEvents: [
+      "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司，3艘现役船全部被锁",
+      "✨新增｜红海与曼德海峡双重危机：7/26日通行骤降至11艘创数月最低，战争险保费达船值12%"
+    ],
+    sealeadEvents: [
+      "✨新增｜OFAC 7/14正式公告：SeaLead+Paya Lebar/Shenton Way/Tanjong Pagar 1列入SDN，被控为胡塞提供运输"
+    ],
+    redseaEvents: [
+      "✨新增｜7/26曼德海峡日通行骤降至11艘创数月最低，战争险保费最高达船值12%，沙特暂停曼德原油出口改道苏伊士"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1594,6 +1612,13 @@ const keyEvents = [
     { text: "AMZ123", url: "https://weixin.sogou.com/weixin?type=2&query=港口台风" },
     { text: "德迅", url: "https://weixin.sogou.com/weixin?type=2&query=台风港口中断" }
   ], new: true},
+  
+  { date: "08-01", day: "1", title: "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司", desc: "美国财政部OFAC发布sb0562公告，正式宣布对Shamkhani网络的新一轮制裁。Sea Lead Shipping PTE. Ltd.（新加坡）及3家子公司（迪拜DMCC、马绍尔群岛Ltd、印度代理）被列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务，旗下SHENTON WAY (IMO 9146314)、TANJONG PAGAR 1 (IMO 9404508)、PAYA LEBAR (IMO 9134232) 被列为冻结资产。截至2026年3月，House of Shipping集团包括Sea Lead全部子公司。本次行动共制裁超50个实体/个人/船只，累计制裁Shamkhani网络超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘创数月最低，战争险保费达船值12%", desc: "也门胡塞武装与沙特冲突升级导致全球两条关键航运要道同时告急。7/26曼德海峡日通行货船骤降至11艘（数月最低），战争风险保险费最高达船舶价值12%（战前约0.25%）。沙特暂停经曼德海峡原油出口改道苏伊士（出口量激增106%）。BIMCO秘书长警告长期中断将推高整个海事供应链成本。布伦特原油一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
+  ], new: true},
 ];
 
 // SeaLead-specific key events
@@ -1686,6 +1711,9 @@ const sealeadKeyEvents = [
   ], new: true},
   { date: "07-31", day: "31", title: "SeaLead运力终局确认：从第13暴跌至第80仅余4艘船，CULines/MSC接手Express Berlin+Racine", desc: "OFAC 7/24正式将SeaLead新加坡/迪拜/马绍尔运营实体及3艘现役船列入黑名单。从2025年全球13位(53艘)暴跌至第80位仅余4艘船，运力蒸发超95%。CULines与MSC接手退租的5艘运力，Express Berlin(10114TEU)投入CGX航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力数据"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜OFAC正式公告SeaLead SDN制裁详情：被指控为胡塞武装提供运输支持", desc: "美国财政部OFAC 7/14发布sb0562公告确认Sea Lead Shipping PTE. Ltd.（新加坡）+3家子公司（迪拜DMCC、马绍尔群岛、印度代理）全部列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务。SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘现役船全部被列为冻结资产。本次行动制裁超50个主体，累计Shamkhani网络被制裁超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
   ], new: true},
 ];
 
@@ -1958,6 +1986,9 @@ const redseaKeyEvents = [
   ], new: true},
   { date: "07-31", day: "31", title: "胡塞收费传闻辟谣：路透爆料后胡塞高官否认，美军护航成本不可持续", desc: "7/29路透爆胡塞拟收费、中国免单→7/30胡塞高官辟谣否认方案。曼德承担全球约12%海上贸易。美军百万美元拦截导弹vs廉价无人机成本不可持续。胡塞虽辟谣但'中国免单'折射中国中东中立战略资产。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"地缘安全"}], links: [
     { text: "路透社", url: "https://www.reuters.com/" }
+  ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘，战争险保费达船值12%", desc: "也门胡塞与沙特冲突升级致红海/曼德海峡告急。7/26曼德日通行货船骤降至11艘（数月最低），战争险保费最高达船舶价值12%（战前0.25%）。沙特暂停经曼德原油出口改道苏伊士（出口量激增106%）。BIMCO警告长期中断推高全海事供应链成本。布伦特一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
   ], new: true},
 ];
 
