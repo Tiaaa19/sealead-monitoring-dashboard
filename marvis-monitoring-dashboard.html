@@ -641,10 +641,10 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月1日 周六 08:45 | 上午LinkedIn检索",
+  time: "2026年8月1日 周六 15:00 | 下午微信检索",
   status: "red",
-  statusText: "🔴 紧急（8/1 上午微信检索：OFAC对SeaLead新一轮制裁/胡塞曼德收费计划/沙特14国护航联盟/美伊局势升级/中国船舶通行便利）",
-  vs: "vs早间监测：本轮微信检索\"SeaLead 中联航运 制裁 2026\"和\"红海 胡塞 航运 最新\"，命中CNSS/搜狐/Seafh等中文航运媒体。焦点：①OFAC 7/24新一轮制裁将SeaLead新加坡/迪拜/马绍尔实体+印度代理及3艘现役船列入黑名单；②胡塞考虑对曼德海峡商船征收通行费；③沙特7/30牵头14国成立红海防御联盟；④美伊局势升级，WTI涨6.35%；⑤中国船舶获胡塞逐船协调安全通行。",
+  statusText: "🔴 紧急（8/1 下午微信检索：OFAC新一轮制裁重创SeaLead仅剩4艘/第80位+CULines/MSC接手退租运力+曼德通航暴跌56%+中国游轮安全通行+沙特冲突外溢至伊拉克）",
+  vs: "vs早间监测：本轮下午微信检索\"SeaLead 中联航运 制裁 红海 胡塞\"，命中CNSS/澎湃新闻/今日头条等中文航运媒体。焦点：①OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+3艘现役船入SDN仅剩4艘/第80位；②CULines与MSC租入SeaLead退租的5艘运力填补市场；③曼德海峡通航暴跌56%/7·26仅9艘驶出红海；④4艘中国游轮在胡塞封锁期间安全通行曼德；⑤沙特配合美军打击伊拉克亲伊朗民兵/冲突外溢。",
   findings: [
     {
       level: "red",
@@ -689,7 +689,7 @@ const latestUpdateData = {
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — SeaLead仅剩4艘船/全球第80位，CULines接手Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。胡塞曼德收费计划+沙特14国护航联盟改变红海安全格局。CULines RES/CGX/CGS航线维持此前风险评估。"
+   cuImpact: "🔴 紧急关注 — SeaLead仅剩4艘船/全球第80位仅余4艘船，CULines与MSC接手SeaLead退租运力（Express Berlin+Racine）。曼德通航暴跌56%+胡塞精准打击沙特船只+中国游轮获安全通行。沙特配合美军打击伊拉克民兵致冲突外溢。CULines RES/CGX/CGS航线维持此前风险评估，红海安全不确定性加剧。"
 };
 
 // ========== DAILY DATA ==========
@@ -1193,6 +1193,23 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "07-24", day: "24", title: "✨新增｜OFAC新一轮制裁重创Sea Lead:仅剩4艘船，排名跌至第80位", desc: "美国财政部OFAC于7月24日对Sea Lead Shipping及其迪拜、马绍尔群岛、印度关联企业实施新一轮制裁，同步制裁SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR等集装箱船。Sea Lead从2025年中的53艘船/全球第13位暴跌至仅剩4艘船/第80位，三艘现役船全被锁定，公司运营几近停摆。美司法部指控其充当伊朗"黑暗船队"合法门面。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" }
+  ], new: true},
+  { date: "07-24", day: "24", title: "✨新增｜中联航运与MSC租入Sea Lead退租运力，填补市场空白", desc: "Sea Lead租用的5艘船舶退租给希腊船东Danaos后，中联航运（CULines）与地中海航运（MSC）已迅速出手租入这批运力，填补市场空白。CULines接手Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "07-28", day: "28", title: "✨新增｜曼德海峡通航量暴跌56%，胡塞武装精准打击沙特船只", desc: "胡塞武装发布海上封锁声明后，曼德海峡整体通航量暴跌56%，7月26日全天仅9艘船驶出红海。胡塞武装采取精准区分式打击，锁定沙特港口及相关船只。7月28日胡塞发射弹道导弹袭击沙特游轮"夹扎乐号"于盐布港附近。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+  { date: "07-29", day: "29", title: "✨新增｜四艘中国游轮安全通过曼德海峡，中方提前沟通协调", desc: "4艘中国游轮在胡塞封锁期间安全通过曼德海峡。中方于7月20日即启动与胡塞武装沟通磋商，7月29日外交部回应称"国际航道安全需各国共同守护，呼吁各方克制、通过对话协商化解分歧"。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+  { date: "07-29", day: "29", title: "✨新增｜沙特宣布配合美军打击伊拉克亲伊朗民兵，红海冲突外溢", desc: "沙特国防部7月29日宣布配合美军打击伊拉克境内亲伊朗民兵武装，红海冲突不再局限于也门，开始外溢至伊拉克，中东矛盾链条被彻底拉长，全球供应链和国际能源安全面临更大风险。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"冲突外溢"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+
   { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁: SeaLead实体+3艘现役船列入SDN，仅余4艘/第80位，CULines接手Express Berlin+Racine", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。从全球第13位(53艘)暴跌至第80位仅余4艘船。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
     { text: "Seafh", url: "https://seafh.com/x/4027" },
