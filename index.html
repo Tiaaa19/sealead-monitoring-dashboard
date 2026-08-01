@@ -641,26 +641,87 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "7月31日 周五 22:00 | 晚间微信检索",
+  time: "2026年8月1日 周六 08:45 | 上午微信检索",
   status: "red",
-  statusText: "🔴 紧急（7/31 LinkedIn检索：无新增重大内容——本轮检索的OFAC sb0562新闻稿和红海7月综述均已在此前监测中覆盖）",
-  vs: "vs早间/午间监测：本轮LinkedIn检索（17:00）搜索'SeaLead shipping OFAC制裁 2026'和'红海 航运 最新 2026年7月'，读取OFAC sb0562官方新闻稿和MaritimeNews.com红海7月综述。确认：①OFAC sb0562对SeaLead+50余主体的制裁新闻已在此前7/14-7/31监测中全面覆盖；②红海7月袭击事件、SCA附加费、马士基复航、联合国安理会报告等内容均已涵盖。无新增事件。",
+  statusText: "🔴 紧急（8/1 上午微信检索：OFAC对SeaLead新一轮制裁/胡塞曼德收费计划/沙特14国护航联盟/美伊局势升级/中国船舶通行便利）",
+  vs: "vs早间监测：本轮微信检索\"SeaLead 中联航运 制裁 2026\"和\"红海 胡塞 航运 最新\"，命中CNSS/搜狐/Seafh等中文航运媒体。焦点：①OFAC 7/24新一轮制裁将SeaLead新加坡/迪拜/马绍尔实体+印度代理及3艘现役船列入黑名单；②胡塞考虑对曼德海峡商船征收通行费；③沙特7/30牵头14国成立红海防御联盟；④美伊局势升级，WTI涨6.35%；⑤中国船舶获胡塞逐船协调安全通行。",
   findings: [
     {
-      level: "blue",
-      title: "本轮LinkedIn检索确认：无新增重大航运制裁/红海安全事件",
-      desc: "检索'SeaLead shipping OFAC制裁 2026'命中OFAC Treasury官方新闻稿sb0562（制裁SeaLead+50余主体）——此内容已在7/14-7/31多次监测中全面覆盖。检索'红海 航运 最新 2026年7月'命中MaritimeNews.com红海7月综述（袭击事件/SCA附加费/马士基复航/联合国安理会报告）——同样早在已有监测中涵盖。本轮未发现超出早间/午间范围的新增事件。",
+      level: "red",
+      title: "OFAC 7/24新一轮制裁：SeaLead新加坡/迪拜/马绍尔实体+3艘现役船列入SDN黑名单",
+      desc: "三艘被制裁船：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。SeaLead仅剩4艘船，Alphaliner排名跌至第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。",
       links: [
-        { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" },
-        { text: "MaritimeNews.com 红海7月综述", url: "https://www.maritimenews.com/red-sea/red-sea-shipping-july-2026-developments" }
+        { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+        { text: "Seafh", url: "https://seafh.com/x/4027" },
+        { text: "搜狐", url: "https://www.sohu.com/a/988791120_121124376" }
+      ]
+    },
+    {
+      level: "red",
+      title: "胡塞考虑对曼德海峡商船征收通行费，红海战争险保费升至0.75%",
+      desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。7/20胡塞宣布对沙特海上禁运，多艘沙特油轮遭袭。曼德海峡通航量下降约50%。红海战争风险保费从0.3%升至0.75%。",
+      links: [
+        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" },
+        { text: "路透社", url: "https://www.reuters.com/" }
+      ]
+    },
+    {
+      level: "red",
+      title: "沙特7/30牵头14国成立红海海上防御联盟，总部设沙特",
+      desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。",
+      links: []
+    },
+    {
+      level: "red",
+      title: "美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标，WTI涨6.35%至$84.33",
+      desc: "7/28-29日美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI油价涨6.35%至$84.33，布伦特涨5.75%至$86.79。",
+      links: [
+        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" }
+      ]
+    },
+    {
+      level: "yellow",
+      title: "中国船舶获胡塞逐船协调安全通行曼德海峡——非全面豁免",
+      desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行曼德海峡。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。中方未确认\"全面豁免\"，外交辞令谨慎。",
+      links: [
+        { text: "搜狐/综合报道", url: "https://www.sohu.com/a/1057366611_122340860" },
+        { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" }
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — 本轮LinkedIn检索无新增。维持午间评估：RES航线（挂靠吉达/沙特港）🔴极高危；CGX航线（经红海）🔴高危；CGS航线（豪尔费坎）🟡中危；KCI航线⚪低风险。SeaLead剩余4艘船+MSC/CULines瓜分残存运力格局已定。"
+   cuImpact: "🔴 紧急关注 — SeaLead仅剩4艘船/全球第80位，CULines接手Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。胡塞曼德收费计划+沙特14国护航联盟改变红海安全格局。CULines RES/CGX/CGS航线维持此前风险评估。"
 };
 
 // ========== DAILY DATA ==========
 const dailyData = [
+  {
+    date: "2026-08-01", display: "8/1", weekday: "周六",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 5, redCount: 4, yellowCount: 1, blueCount: 0,
+    cuStatus: "接手Express Berlin+Racine扩张中东航线，RES/CGX/CGS风险同前",
+    summary: "OFAC 7/24新制裁：SeaLead实体+3艘船列入SDN仅剩4船/第80位；胡塞曼德收费计划+红海战争险0.75%；沙特14国护航联盟成立；美伊升级WTI涨6.35%；中国船舶获逐船通行便利",
+    keyEvents: [
+      "OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+印度代理及3艘现役船入SDN",
+      "SeaLead从第13暴跌至第80仅余4艘船，CULines/MSC接手退租运力",
+      "胡塞考虑对曼德商船征通行费，伊朗IRGC协助筹建收费机构",
+      "沙特7/30牵头14国成立红海防御联盟",
+      "美伊升级：美沙联合打击伊拉克80+目标，WTI涨6.35%",
+      "中国船舶获逐船协调安全通行曼德，中方未确认全面豁免"
+    ],
+    sealeadEvents: [
+      "OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理入SDN",
+      "3艘现役船全被锁：Paya Lebar(4211TEU)/Shenton Way(2008TEU)/Tanjong Pagar 1(920TEU)",
+      "SeaLead仅剩4船/第80位，CULines接手Express Berlin+Racine",
+      "中联航运(CULines)租入Express Berlin(10114TEU)和Racine(6758TEU)"
+    ],
+    redseaEvents: [
+      "胡塞考虑对曼德海峡商船征通行费，IRGC协助建收费机构",
+      "沙特7/30牵头14国成立红海防御联盟",
+      "美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标",
+      "中国船舶获胡塞逐船协调安全通行（非全面豁免）",
+      "红海战争风险保费0.3%→0.75%，曼德通航量下降约50%"
+    ]
+  },
   {
     date: "2026-07-17", display: "7/17", weekday: "周四",
     status: "red", statusText: "🔴 紧急",
@@ -1114,6 +1175,26 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁: SeaLead实体+3艘现役船列入SDN，仅余4艘/第80位，CULines接手Express Berlin+Racine", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。从全球第13位(53艘)暴跌至第80位仅余4艘船。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" },
+    { text: "搜狐", url: "https://www.sohu.com/a/988791120_121124376" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.3%→0.75%，曼德通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。7/20胡塞宣布对沙特海上禁运，多艘沙特油轮遭袭。红海战争风险保费从0.3%升至0.75%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "路透社", url: "https://www.reuters.com/" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特，阿曼/阿联酋未加入", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。联盟成立标志着红海安全格局从单边护航向多边合作转变。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标，WTI涨6.35%至$84.33", desc: "7/28-29日美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI油价涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认'全面豁免'", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行曼德海峡。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。中方外交辞令谨慎，未确认\"全面豁免\"安排。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。Shamkhani网络累计超200个指定主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "OFAC官方公告", url: "https://ofac.treasury.gov/recent_actions" }
   ]},
@@ -1517,6 +1598,11 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理+3艘现役船全入SDN", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁。SeaLead仅剩4艘船/全球第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" }
+  ], new: true},
+
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [] },
   { date: "07-14", day: "14", title: "2家中国香港航运企业被新制裁", desc: "Sai Wan Shipping + Ocean Searum One + 1艘船舶被列入SDN。OFAC制裁范围扩展到集装箱航运。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"香港实体"}], links: [] },
   { date: "07-17", day: "17", title: "OFAC伊朗石油豁免GL X1到期", desc: "40年最大制裁放宽→一周紧急回滚。所有涉伊朗石油新交易全面禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"政策逆转"}], links: [] },
@@ -1605,6 +1691,20 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.75%，通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。红海战争风险保费从0.3%升至0.75%。曼德海峡通航量下降约50%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "路透社", url: "https://www.reuters.com/" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克80+目标，WTI涨6.35%至$84.33", desc: "7/28-29美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认全面豁免", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。逐船协调≠全面豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" }
+  ], new: true},
+
   { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。提箱延误6-8周。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
