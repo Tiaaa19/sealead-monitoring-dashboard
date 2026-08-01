@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月1日 周六 15:00 | 下午微信检索",
+  time: "2026年8月1日 周六 17:00 | 下午LinkedIn检索",
   status: "red",
   statusText: "🔴 紧急（8/1 下午微信检索：OFAC新一轮制裁重创SeaLead仅剩4艘/第80位+CULines/MSC接手退租运力+曼德通航暴跌56%+中国游轮安全通行+沙特冲突外溢至伊拉克）",
   vs: "vs早间监测：本轮下午微信检索\"SeaLead 中联航运 制裁 红海 胡塞\"，命中CNSS/澎湃新闻/今日头条等中文航运媒体。焦点：①OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+3艘现役船入SDN仅剩4艘/第80位；②CULines与MSC租入SeaLead退租的5艘运力填补市场；③曼德海峡通航暴跌56%/7·26仅9艘驶出红海；④4艘中国游轮在胡塞封锁期间安全通行曼德；⑤沙特配合美军打击伊拉克亲伊朗民兵/冲突外溢。",
@@ -1210,6 +1210,16 @@ const keyEvents = [
     { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
   ], new: true},
 
+  { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动(新闻稿sb0562): 美国财政部将新加坡Sea Lead Shipping PTE. Ltd.及迪拜、马绍尔、印度子公司列入SDN。SeaLead被认定为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。旗下SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计制裁超200个目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海海上防御联盟成立：土耳其、埃及、巴基斯坦加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特在利雅得召集43国与欧盟代表后宣布牵头14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25沙特联军空袭胡塞，曼德海峡通航量一周锐减56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高全球油轮运价，集装箱航运面临保费上涨+绕行成本双重压力", desc: "Lloyd's List/经济日报报道：霍尔木兹海峡危机叠加红海、黑海安全恶化，全球油轮市场面临"前所未有"扰动。蒂凯油轮CEO称被认定不安全的港口数量创历史新高；达米科CEO称地缘政治已成油轮市场主导因素。部分船东停止穿越红海或进入霍尔木兹，航程拉长推高即期运价。集装箱航运同样面临保费上涨、航线绕行成本增加压力，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
+    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
+  ], new: true},
+
   { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁: SeaLead实体+3艘现役船列入SDN，仅余4艘/第80位，CULines接手Express Berlin+Racine", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。从全球第13位(53艘)暴跌至第80位仅余4艘船。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
     { text: "Seafh", url: "https://seafh.com/x/4027" },
@@ -1640,6 +1650,10 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为Shamkhani网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动: 美国财政部认定新加坡Sea Lead Shipping及迪拜、马绍尔、印度子公司为Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计超200个制裁目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+
   { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理+3艘现役船全入SDN", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁。SeaLead仅剩4艘船/全球第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
     { text: "Seafh", url: "https://seafh.com/x/4027" }
@@ -1736,6 +1750,13 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海防御联盟成立：土耳其/埃及/巴基斯坦等加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特召集43国代表后宣布成立14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景链：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25空袭胡塞目标→曼德一周通航量骤降56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高油轮运价，集装箱航运同受保费+绕行成本压力", desc: "Lloyd's List/经济日报：霍尔木兹危机叠加红海、黑海安全恶化推高全球油轮运价。部分船东停止穿越红海/进入霍尔木兹，航程拉长推高即期运价。被认定不安全港口数创历史新高。集装箱航运同样面临保费上涨、航线绕行成本增加，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
+    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
+  ], new: true},
+
   { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.75%，通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。红海战争风险保费从0.3%升至0.75%。曼德海峡通航量下降约50%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "路透社", url: "https://www.reuters.com/" },
     { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
