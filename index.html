@@ -641,12 +641,21 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月3日 周一 15:00 | 下午微信检索",
+  time: "2026年8月3日 周一 17:00 | 下午LinkedIn检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "🔴 紧急（8/2 下午LinkedIn检索：OFAC sb0562制裁SeaLead+WeFreight/Volta确认+Lloyd's List曼德通行周降28%数据复盘+埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网）",
   vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead sanctions OFAC 2026\"+\"Red Sea Houthi Bab el-Mandeb shipping\"，命中US Treasury OFAC/Lloyd's List Intelligence/海运圈聚焦。焦点：①OFAC sb0562制裁SeaLead全子公司+We Freight/Volta（与已有记录一致）；②Lloyd's List确认曼德周通航225次降28%集装箱航运暂保韧性（与已有记录一致）；③埃及达米埃塔港遭无人机袭击+胡塞建索马里青年党合作网+IR Consilium警告（⬅新增）。",
   findings: [
+    {
+      level: "yellow",
+      title: "OFAC 7/29制裁6家中国航运企业+6艘船舶，波斯湾/霍尔木兹保险公司同入SDN",
+      desc: "OFAC 7/29以涉伊朗石油'影子舰队'为由制裁8家公司+8艘船舶。含6家中国香港企业：BILLION NEXUS、CONFIDENT APEX/帆起有限公司、MARINOVA FREIGHT、NEVADA SPIRIT、QI HANG SHIP MANAGEMENT/啟航船舶管理、VAST MIGHTY，及6艘关联船舶。同时制裁波斯湾海上保险公司和霍尔木兹安全海事服务管理局——制裁范围从SeaLead个案扩展至中国航运企业+海上保险全链条。来源：US Treasury sb0581/腾讯新闻。",
+      links: [
+        { text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" },
+        { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0581" }
+      ]
+    },
     {
       level: "red",
       title: "OFAC制裁Sea Lead Shipping及全部子公司——与已有sb0562记录一致（来源确认：home.treasury.gov）",
@@ -672,7 +681,7 @@ const latestUpdateData = {
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — LinkedIn下午检索确认OFAC制裁与Lloyd's List数据与已有记录一致。新增风险：埃及达米埃塔港遭无人机袭击标志着伊朗相关战事从中东核心区外溢至北非，胡塞-索马里青年党合作网络形成对亚丁湾-曼德海峡航运构成新威胁维度。SeaLead仅剩4艘/全球第80位，CULines RES/CGX/CGS航线维持此前风险评估，红海安全不确定性持续加剧。"
+   cuImpact: "OFAC 7/29新一轮制裁覆盖6家中国香港航运企业+海上保险/安全服务实体，制裁网向全链条收紧。中联航运需持续关注中国航运企业被制裁扩大的趋势，确保已接手SeaLead运力（Express Berlin/Racine）不触发次级制裁。中东航线RES/CGX/CGS应保持审慎合规审查。"
 };
 
 // ========== DAILY DATA ==========
@@ -1826,6 +1835,7 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜OFAC 7/29制裁霍尔木兹安全海事服务管理局+波斯湾海上保险公司，中东航运保险链受打击", desc: "OFAC 7/29将伊朗波斯湾海上保险公司（Persian Gulf Marine Insurance Company）与霍尔木兹安全海事服务管理局（HormuzSafe Marine Services Authority）列入SDN。美方称这两家机构拟强迫商船购买强制性海上'保险'才能通过霍尔木兹海峡。这是OFAC首次制裁中东海上保险和安全服务实体，进一步收紧霍尔木兹-红海航道合规要求。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" }], new: true },
   { date: "08-03", day: "03", title: "✨新增｜浙江贸促会综合：胡塞禁运后曼德通航量骤降近50%，霍尔木兹锐减至不足200万桶/日，沙特三面受压", desc: "浙江贸促会8月3日综合报道（来源：第一财经/新华社）：①胡塞7/20对沙特实施海上禁运、7/23以导弹+无人机袭击两艘沙特油轮后，克普勒公司数据显示曼德海峡运输量较袭击前平均水平骤降近50%；②胡塞武装高级官员阿萨德7月30日澄清胡塞无意收费，行动仅限于封锁沙特船只；③沙特三面受压：霍尔木兹海峡日通航量从7月初超800万桶锐减至不足200万桶/日，曼德海峡遭威胁，伊拉克方向无人机袭击沙特境内石油设施（沙特防空部队7/27拦截数架无人机）；④美军7月上旬重启对伊朗空袭，连续10余日，霍尔木兹再度梗阻。沙特被迫考虑绕行苏伊士运河出口原油（航程增约1个月+150万美元燃料+100万美元通行费）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"综合报告"}], links: [
     { text: "浙江省贸促会", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_c1f87983320e4a5e9bebba0682ed65d9.html" },
     { text: "第一财经/新华社", url: "https://new.qq.com/rain/a/20260727A033VF00" }

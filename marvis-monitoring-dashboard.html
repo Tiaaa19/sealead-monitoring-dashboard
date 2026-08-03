@@ -641,12 +641,21 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月3日 周一 15:00 | 下午微信检索",
+  time: "2026年8月3日 周一 17:00 | 下午LinkedIn检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "🔴 紧急（8/2 下午LinkedIn检索：OFAC sb0562制裁SeaLead+WeFreight/Volta确认+Lloyd's List曼德通行周降28%数据复盘+埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网）",
   vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead sanctions OFAC 2026\"+\"Red Sea Houthi Bab el-Mandeb shipping\"，命中US Treasury OFAC/Lloyd's List Intelligence/海运圈聚焦。焦点：①OFAC sb0562制裁SeaLead全子公司+We Freight/Volta（与已有记录一致）；②Lloyd's List确认曼德周通航225次降28%集装箱航运暂保韧性（与已有记录一致）；③埃及达米埃塔港遭无人机袭击+胡塞建索马里青年党合作网+IR Consilium警告（⬅新增）。",
   findings: [
+    {
+      level: "yellow",
+      title: "OFAC 7/29制裁6家中国航运企业+6艘船舶，波斯湾/霍尔木兹保险公司同入SDN",
+      desc: "OFAC 7/29以涉伊朗石油'影子舰队'为由制裁8家公司+8艘船舶。含6家中国香港企业：BILLION NEXUS、CONFIDENT APEX/帆起有限公司、MARINOVA FREIGHT、NEVADA SPIRIT、QI HANG SHIP MANAGEMENT/啟航船舶管理、VAST MIGHTY，及6艘关联船舶。同时制裁波斯湾海上保险公司和霍尔木兹安全海事服务管理局——制裁范围从SeaLead个案扩展至中国航运企业+海上保险全链条。来源：US Treasury sb0581/腾讯新闻。",
+      links: [
+        { text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" },
+        { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0581" }
+      ]
+    },
     {
       level: "red",
       title: "OFAC制裁Sea Lead Shipping及全部子公司——与已有sb0562记录一致（来源确认：home.treasury.gov）",
@@ -672,7 +681,7 @@ const latestUpdateData = {
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — LinkedIn下午检索确认OFAC制裁与Lloyd's List数据与已有记录一致。新增风险：埃及达米埃塔港遭无人机袭击标志着伊朗相关战事从中东核心区外溢至北非，胡塞-索马里青年党合作网络形成对亚丁湾-曼德海峡航运构成新威胁维度。SeaLead仅剩4艘/全球第80位，CULines RES/CGX/CGS航线维持此前风险评估，红海安全不确定性持续加剧。"
+   cuImpact: "OFAC 7/29新一轮制裁覆盖6家中国香港航运企业+海上保险/安全服务实体，制裁网向全链条收紧。中联航运需持续关注中国航运企业被制裁扩大的趋势，确保已接手SeaLead运力（Express Berlin/Racine）不触发次级制裁。中东航线RES/CGX/CGS应保持审慎合规审查。"
 };
 
 // ========== DAILY DATA ==========
@@ -1722,6 +1731,7 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜OFAC 7/29扩大制裁：6家中国香港航运企业+6艘船入SDN，制裁网向集装箱/船管/保险全链扩展", desc: "OFAC 7/29新制裁6家中国香港航运企业（BILLION NEXUS、帆起有限公司、MARINOVA FREIGHT、NEVADA SPIRIT、啟航船舶管理、VAST MIGHTY）及6艘关联船舶。同时制裁波斯湾海上保险公司和霍尔木兹安全海事服务管理局。制裁逻辑从SeaLead个案扩展到更广泛的中国航运企业，并覆盖海上保险和安全服务领域——全链条合规压力持续升级。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" }, { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0581" }], new: true },
   { date: "08-01", day: "01", title: "SeaLead运力仅4船/9431TEU，全球排名第80（制裁前第13）", desc: "海事服务网CNSS：SeaLead从巅峰20.8万TEU降至4船/9431TEU，全球排名从第13跌至第80。OFAC累计制裁22艘集装箱船，其中16艘由SeaLead租用，已全部终止租约。商业模式基本终结。", tags: [{t:"blue",l:"🔵关注"},{t:"cat",l:"运力数据"}], links: [
     { text: "海事服务网CNSS", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS55UVFEtPDlwn33bMZgcaZAa0hB9ofZfkFqXa8Fplpd9KRzxL2pqfobjnilMvA5ERZKKinBb16w5-NO2xzFbzh0Ivu1SRGvpEL9l91UnpL2UzXqgoup1L7hb6Z3dfLB4Ep7vaaReoDNT-BqRJp6zPffie2rl2RfAvDhlkqaRSBV-O5PbHciGeWa-i9-7m9t4giVqOpS1u88DeN3wUJtoiJwtPujwwRB2Pw..&type=2&query=%E4%B8%AD%E8%81%94%E8%88%AA%E8%BF%90+%E5%88%B6%E8%A3%81+SeaLead" }
   ]},
