@@ -1,0 +1,4 @@
+#!/bin/bash
+# SeaLead Dashboard pre-commit: JS syntax + ASCII quote validation
+cd "$(dirname "$0")/.." || exit 1
+bash validate.sh index.html || exit 1
