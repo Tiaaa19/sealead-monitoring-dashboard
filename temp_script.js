@@ -10,67 +10,130 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "7月31日 周五 15:00 | 下午微信检索",
+  time: "2026年8月3日 周一 08:45 | 上午微信检索",
+  source: "微信检索(web_search+web_fetch)",
   status: "red",
-  statusText: "🔴 紧急（7/31微信检索增量：胡塞拟收红海过路费+伊朗通知胡塞封锁曼德+OFAC制裁SeaLead持续发酵+中国六大港口台风中断）",
-  vs: "vs早间监测（08:45）：新增6条7/31微信检索增量——①胡塞拟收曼德海峡过路费（中国船只可能免单）；②伊朗通知胡塞武装封锁曼德（双海峡风险共振）；③匠歆海事确认OFAC制裁SeaLead定性升级；④OFAC制裁详情SeaLead排名暴跌至第80；⑤胡塞收费传闻辟谣及地缘分析；⑥中国六大港口台风中断（上海港延误4.56天）。",
+  statusText: "🔴 紧急（8/2 下午LinkedIn检索：OFAC sb0562制裁SeaLead+WeFreight/Volta确认+Lloyd's List曼德通行周降28%数据复盘+埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网）",
+  vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead sanctions OFAC 2026\"+\"Red Sea Houthi Bab el-Mandeb shipping\"，命中US Treasury OFAC/Lloyd's List Intelligence/海运圈聚焦。焦点：①OFAC sb0562制裁SeaLead全子公司+We Freight/Volta（与已有记录一致）；②Lloyd's List确认曼德周通航225次降28%集装箱航运暂保韧性（与已有记录一致）；③埃及达米埃塔港遭无人机袭击+胡塞建索马里青年党合作网+IR Consilium警告（⬅新增）。",
   findings: [
     {
       level: "red",
-      title: "胡塞拟收红海\"过路费\"：中国船只可能免单，沙特推动组建新护航联盟",
-      desc: "胡塞武装正在研究对通过曼德海峡的大多数商船收取通航费用，可能设立专门机构负责船舶登记和费用收取。消息人士称中国相关船舶可能被排除在收费范围之外，但尚未得到正式确认。沙特正与数十个国家磋商组建新的国际护航联盟。曼德海峡通航量近期回升：7月28日39艘大宗商品运输船通过。趋势判断：胡塞可能将军事威胁转化为常态化的船舶筛选、通航许可和收费机制。",
+      title: "OFAC制裁Sea Lead Shipping及全部子公司——与已有sb0562记录一致（来源确认：home.treasury.gov）",
+      desc: "下午LinkedIn检索确认OFAC行动将新加坡Sea Lead Shipping PTE. Ltd.、迪拜Sea Lead Shipping DMCC、马绍尔Sea Lead Shipping Marshall Islands Ltd、印度Sea Lead Shipping Agency India Private Limited列入SDN。We Freight Shipping LLC、Volta Shipping Services LLC等关联实体同被制裁。与上午/昨日sb0562条目完全一致，来源已交叉确认。Shamkhani网络累计超200个制裁目标。",
       links: [
-        { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
-      ]
-    },
-    {
-      level: "red",
-      title: "伊朗通知胡塞武装：若美国动手就封锁曼德海峡——双海峡风险共振",
-      desc: "伊朗已向胡塞武装传递信息：若美国袭击伊朗电力基础设施，胡塞武装将封锁曼德海峡。胡塞已完成袭击航运准备，在荷台达、亚丁湾及曼德海峡附近部署导弹和无人机。驻也门IRGC人员掌握启动封锁的最终决定权。全球约7%能源供应经红海航线，若曼德+霍尔木兹同时受阻，将严重冲击全球能源供应和运价。双海峡风险共振：霍尔木兹（美伊对抗）+ 曼德（胡塞/伊朗联动）同时承压。",
-      links: [
-        { text: "赛蒂国际物流", url: "https://weixin.sogou.com/weixin?type=2&query=封锁曼德海峡" }
-      ]
-    },
-    {
-      level: "red",
-      title: "匠歆海事快讯：两艘中资VLCC穿越曼德海峡 + OFAC制裁Sea Lead Shipping定性升级",
-      desc: "本轮搜索重新命中匠歆海事7/24报道，关键增量发现：Sea Lead Shipping被OFAC正式认定为'为胡塞武装提供运输支持的关键集装箱航运企业'，这是此前未突出强调的定性升级。同期两艘中资VLCC（\u201cXIN LONG YANG\u201d新加坡旗 + \u201cCOSNEW LAKE\u201d中国旗）成功穿越曼德海峡，合计装载约400万桶沙特原油，由中石化联合石化租用。",
-      links: [
-        { text: "ArtiMaritime 匠歆海事", url: "https://weixin.sogou.com/weixin?type=2&query=匠歆海事SeaLead" }
-      ]
-    },
-    {
-      level: "red",
-      title: "OFAC新一轮制裁SeaLead详情：从全球第13暴跌至第80，仅余4艘船",
-      desc: "OFAC于2026年7月24日将SeaLead设于新加坡、迪拜及马绍尔群岛的主要运营实体及印度代理公司列入黑名单。三艘现役集装箱船全被制裁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。SeaLead从2025年全球第13位(53艘船)暴跌至第80位，仅余4艘船。行业连锁：中联航运(CULines)与地中海航运(MSC)已迅速出手租入SeaLead退租的5艘运力。",
-      links: [
-        { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+        { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
       ]
     },
     {
       level: "yellow",
-      title: "胡塞武装曼德海峡收费传闻：路透爆料后辟谣，美军护航陷入困境",
-      desc: "7月29日路透社报道胡塞考虑对曼德海峡商船征收过境费用、中国船只免单。7月30日胡塞高级官员公开辟谣否认制定收费方案。曼德海峡承担全球约12%海上贸易。美军'繁荣卫士'护航效果有限：百万美元拦截导弹面对廉价无人机成本不可持续。胡塞虽已辟谣但'中国船只免单'细节折射中国长期中东中立政策积累的战略资产。",
+      title: "Lloyd's List红海简报复盘：曼德海峡周通航量降28%至225次——与已有记录一致",
+      desc: "Lloyd's List Intelligence 7/30简报：7月20-26日曼德AIS通航225次（前周311次），环比降28%。原油出口受创最重，7/23后仅1艘原油轮挂靠沙特红海港口。中国国有VLCC运营商撤出红海贸易。集装箱航运暂保韧性，仍有18家班轮公司通过曼德。劳氏警告局势与2023-24年红海危机初期高度相似。与仪表盘已有07-20条目数据完全一致。",
       links: [
-        { text: "路透社", url: "https://www.reuters.com/" },
-        { text: "头条", url: "https://www.toutiao.com/" }
+        { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
       ]
     },
     {
-      level: "yellow",
-      title: "中国六大港口台风中断：双台风致上海/宁波/青岛等港严重延误",
-      desc: "双台风'巴威''红霞'先后影响华东、华南，六大集装箱港口全部标记为Heavily disrupted：上海、宁波、青岛、厦门、深圳、广州。上海港近七日平均延误4.56天，洋山非Gemini航线等泊时间达144小时。盐田港自7月27日起实施ETB-7进闸管控，每日限进港9000个集装箱。蛇口港8月3日起跟进实施ETB-7管理。对中联航运CULines亚洲区域内航线的潜在影响：密集挂靠的港口面临船期延误和甩柜风险。",
+      level: "red",
+      title: "🆕 埃及达米埃塔港遭无人机袭击，胡塞武装搭建索马里青年党合作网络",
+      desc: "海运圈聚焦7/31报道：埃及达米埃塔港发生不明来源无人机袭击，伊朗相关战事向中东其他区域外溢风险加剧。胡塞武装已搭建与索马里青年党(al-Shabaab)等地区武装的合作网络。海事安全专家IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道的决心。",
       links: [
-        { text: "AMZ123", url: "https://weixin.sogou.com/weixin?type=2&query=中国港口台风" },
-        { text: "德迅", url: "https://weixin.sogou.com/weixin?type=2&query=台风港口中断" }
+        { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
       ]
     }
   ],
-   cuImpact: "🔴 紧急关注 — RES航线（挂靠吉达/沙特港）🔴极高危：劳合社战争险撤出+胡塞拟收费机制化+伊朗指示胡塞待命封锁，通行环境持续恶化；CGX航线（经红海）🔴高危：红海水域受胡塞袭击/收费双重风险；CGS航线（豪尔费坎）🟡中危：不经红海/曼德但上游通道收窄；KCI航线⚪低风险：不经三海峡持续安全阀。新增关注：中国六大港口台风中断可能造成CULines亚洲区域内航线船期延误和甩柜风险。SeaLead剩余4艘船+MSC/CULines瓜分残存运力格局已定，制裁影响趋于终结但合规风险持续。"
+   cuImpact: "🔴 紧急关注 — LinkedIn下午检索确认OFAC制裁与Lloyd's List数据与已有记录一致。新增风险：埃及达米埃塔港遭无人机袭击标志着伊朗相关战事从中东核心区外溢至北非，胡塞-索马里青年党合作网络形成对亚丁湾-曼德海峡航运构成新威胁维度。SeaLead仅剩4艘/全球第80位，CULines RES/CGX/CGS航线维持此前风险评估，红海安全不确定性持续加剧。"
 };
 
 // ========== DAILY DATA ==========
 const dailyData = [
+  {
+    date: "2026-08-03", display: "8/3", weekday: "周一",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 3, redCount: 3, yellowCount: 0, blueCount: 0,
+    cuStatus: "OFAC确认SeaLead为Shamkhani核心集装箱实体+曼德海峡通航锐减56%+中资VLCC成功穿越，CULines RES/CGX/CGS航线持续评估中东航运风险",
+    summary: "上午LinkedIn检索：OFAC sb0562确认SeaLead Shipping全子公司SDN制裁+曼德海峡通航量锐减56%+两艘中资VLCC穿越曼德海峡",
+    keyEvents: [
+      "LinkedIn检索：OFAC 7/14 sb0562确认Sea Lead Shipping（新加坡）+迪拜/马绍尔/印度子公司列入SDN，定性为Shamkhani非法航运网络核心集装箱实体，为胡塞武装运送物资",
+      "LinkedIn检索：胡塞封锁后曼德海峡通航量锐减56%（7/26 34→15艘），沙特绕行非洲出口石油运输+1月成本翻倍，油轮ENCELIA在红海遭袭",
+      "LinkedIn检索：两艘中资VLCC（XIN LONG YANG/COSNEW LAKE）载400万桶沙特原油穿越曼德海峡驶往中国，XIN LONG YANG曾一度掉头停航评估风险，业内认为成功过境≠红海航运恢复"
+    ],
+    sealeadEvents: [
+      "OFAC sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司全入SDN，SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘船列为封锁财产，累计制裁超200实体"
+    ],
+    redseaEvents: [
+      "曼德海峡通航量锐减56%（34→15艘），沙特绕行非洲出口石油运输+1月成本翻倍，油轮ENCELIA在红海遭袭",
+      "两艘中资VLCC（XIN LONG YANG/COSNEW LAKE）载约400万桶沙特原油穿越曼德海峡驶往中国，业内认为成功过境≠红海航运恢复，风险仍高度不确定"
+    ]
+  },
+  {
+    date: "2026-08-02", display: "8/2", weekday: "周日",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 1, redCount: 1, yellowCount: 0, blueCount: 0,
+    cuStatus: "埃及达米埃塔港遭无人机袭击+胡塞-索马里青年党合作网，CULines RES/CGX/CGS航线持续评估中东航线新增风险",
+    summary: "下午LinkedIn检索：OFAC sb0562制裁再确认+Lloyd's List曼德数据复盘+新增埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网",
+    keyEvents: [
+      "LinkedIn检索：OFAC sb0562制裁SeaLead全子公司+We Freight/Volta实体确认（与上午记录一致）",
+      "LinkedIn检索：Lloyd's List曼德海峡周通航量降28%至225次数据复盘（与已有记录一致）",
+      "LinkedIn检索：海运圈聚焦——埃及达米埃塔港遭无人机袭击，胡塞建索马里青年党合作网，IR Consilium警告"
+    ],
+    sealeadEvents: [
+      "OFAC sb0562制裁细节再确认含We Freight Shipping LLC+Volta Shipping Services LLC新实体信息"
+    ],
+    redseaEvents: [
+      "埃及达米埃塔港遭无人机袭击，伊朗相关战事外溢至北非",
+      "胡塞武装搭建与索马里青年党(al-Shabaab)合作网络，亚丁湾-曼德海峡面临新威胁",
+      "IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道决心"
+    ]
+  },
+  {
+    date: "2026-08-02", display: "8/2", weekday: "周日",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 3, redCount: 3, yellowCount: 0, blueCount: 0,
+    cuStatus: "关注SeaLead制裁后续+CULines接手退租运力，HRX/HSC中东航线持续评估风险",
+    summary: "上午LinkedIn检索：OFAC新制裁SeaLead实体+3艘船入SDN仅剩4船/第80位；红海+波斯湾双峡同时告急BIMCO警告战争险达船值12%；曼德海峡通航量锐减56%绕行苏伊士成本翻倍",
+    keyEvents: [
+      "LinkedIn检索：CNSS报道OFAC新制裁SeaLead新加坡/迪拜/马绍尔实体+印度代理+3艘船入SDN，仅剩4船/第80位",
+      "LinkedIn检索：新浪财经/澎湃——红海+波斯湾双峡同时告急，BIMCO警告战争险达船值12%油价或长期>$120",
+      "LinkedIn检索：新华社——胡塞封锁沙特后曼德海峡通航量锐减56%（7/26仅15艘），绕行苏伊士成本翻倍"
+    ],
+    sealeadEvents: [
+      "CNSS深度：OFAC新制裁SeaLead实体+3艘船入SDN，Paya Lebar号4次穿霍尔木兹引美警觉",
+      "SeaLead仅剩4船/第80位，CULines与MSC接手退租5艘运力填补市场"
+    ],
+    redseaEvents: [
+      "双峡同时告急：红海+波斯湾，BIMCO警告战争险达船值12%，油价长期>$120风险上升",
+      "曼德海峡通航量锐减56%（7/26仅15艘 vs 7/20的34艘），沙特暂停经曼德原油出口",
+      "沙特改道苏伊士运河绕行非洲出口石油，运输时间+1月成本翻倍"
+    ]
+  },
+  {
+    date: "2026-08-01", display: "8/1", weekday: "周六",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 5, redCount: 4, yellowCount: 1, blueCount: 0,
+    cuStatus: "接手Express Berlin+Racine扩张中东航线，RES/CGX/CGS风险同前",
+    summary: "OFAC 7/24新制裁：SeaLead实体+3艘船列入SDN仅剩4船/第80位；胡塞曼德收费计划+红海战争险0.75%；沙特14国护航联盟成立；美伊升级WTI涨6.35%；中国船舶获逐船通行便利",
+    keyEvents: [
+      "OFAC 7/24新一轮制裁SeaLead新加坡/迪拜/马绍尔实体+印度代理及3艘现役船入SDN",
+      "SeaLead从第13暴跌至第80仅余4艘船，CULines/MSC接手退租运力",
+      "胡塞考虑对曼德商船征通行费，伊朗IRGC协助筹建收费机构",
+      "沙特7/30牵头14国成立红海防御联盟",
+      "美伊升级：美沙联合打击伊拉克80+目标，WTI涨6.35%",
+      "中国船舶获逐船协调安全通行曼德，中方未确认全面豁免"
+    ],
+    sealeadEvents: [
+      "OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理入SDN",
+      "3艘现役船全被锁：Paya Lebar(4211TEU)/Shenton Way(2008TEU)/Tanjong Pagar 1(920TEU)",
+      "SeaLead仅剩4船/第80位，CULines接手Express Berlin+Racine",
+      "中联航运(CULines)租入Express Berlin(10114TEU)和Racine(6758TEU)"
+    ],
+    redseaEvents: [
+      "胡塞考虑对曼德海峡商船征通行费，IRGC协助建收费机构",
+      "沙特7/30牵头14国成立红海防御联盟",
+      "美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标",
+      "中国船舶获胡塞逐船协调安全通行（非全面豁免）",
+      "红海战争风险保费0.3%→0.75%，曼德通航量下降约50%"
+    ]
+  },
   {
     date: "2026-07-17", display: "7/17", weekday: "周四",
     status: "red", statusText: "🔴 紧急",
@@ -506,10 +569,29 @@ const dailyData = [
       "SeaLead运力终局：从第13暴跌至第80仅余4艘船，CULines/MSC接手Express Berlin+Racine"
     ],
     redseaEvents: [
+      "胡塞封锁致曼德油轮通航周环比暴跌40.7%，苏伊士运河同比下滑6%，大量商船关闭AIS绕航",
       "胡塞拟收红海过路费：可能设立专门机构负责船舶登记和费用收取",
       "伊朗通知胡塞武装封锁曼德海峡：IRGC人员掌握启动封锁最终决定权",
       "胡塞收费传闻辟谣：7/30胡塞高官否认制定收费方案",
       "曼德海峡通航回升至39艘大宗商品运输船(7/28)"
+    ]
+  },
+  {
+    date: "2026-08-01", display: "8/1", weekday: "周六",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
+    new: true,
+    cuStatus: "未被制裁；RES🔴极高危/CGX🔴高危/CGS🟡中危/KCI⚪低风险；SeaLead SDN公告确认胡塞运输指控，曼德通行骤降推高风险",
+    summary: "8/1上午LinkedIn检索：OFAC正式公告SeaLead SDN制裁详情+红海曼德双峡危机7/26通行骤降至11艘",
+    keyEvents: [
+      "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司，3艘现役船全部被锁",
+      "✨新增｜红海与曼德海峡双重危机：7/26日通行骤降至11艘创数月最低，战争险保费达船值12%"
+    ],
+    sealeadEvents: [
+      "✨新增｜OFAC 7/14正式公告：SeaLead+Paya Lebar/Shenton Way/Tanjong Pagar 1列入SDN，被控为胡塞提供运输"
+    ],
+    redseaEvents: [
+      "✨新增｜7/26曼德海峡日通行骤降至11艘创数月最低，战争险保费最高达船值12%，沙特暂停曼德原油出口改道苏伊士"
     ]
   },
 ];
@@ -524,6 +606,84 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜胡塞拟在红海设卡收费：伊朗革命卫队顾问赴荷台达指导建立收费机构，联合国报告月收1.8亿美元", desc: "路透社/法新社8月3日报道：本月初胡塞官员赴德黑兰参加哈梅内伊葬礼期间与伊朗讨论对过境红海船只收费。伊朗革命卫队顾问已在荷台达等地直接指导胡塞建立规范化的海上收费流程与管理架构，具体比照伊朗海上收费运作模式。也门信息部长埃尔亚尼向法新社确认：胡塞正试图让红海成为主要资金来源。联合国专家小组此前报告胡塞曾月收1.8亿美元海上安全通行费。来源：网易/路透社。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D5I0420556974J.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：OFAC 7/14 sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司列入SDN，因向胡塞运送物资", desc: "上午LinkedIn检索：美国财政部OFAC于7月14日发布新闻稿sb0562，将新加坡Sea Lead Shipping PTE. Ltd.及其迪拜、马绍尔群岛、印度三家子公司列入SDN名单，定性为Shamkhani非法航运网络核心集装箱实体，被指为胡塞武装运送物资。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船只列为封锁财产。累计制裁超200实体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：曼德海峡通航量锐减56%，沙特绕行非洲出口石油运输+1月成本翻倍", desc: "上午LinkedIn检索：胡塞封锁沙特后，曼德海峡通航量从34艘降至15艘，锐减56%。沙特被迫绕行非洲出口石油，运输时间增加约一个月、成本翻倍。沙特油轮ENCELIA在红海遭袭。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"曼德海峡"}], links: [
+    { text: "新华社/阿联酋国民报", url: "https://www.163.com/dy/article/L2UUN94205346RC6.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：两艘中资VLCC载400万桶沙特原油成功穿越曼德海峡，XIN LONG YANG曾掉头停航评估风险", desc: "上午LinkedIn检索：两艘中资关联VLCC（XIN LONG YANG、COSNEW LAKE）载约400万桶沙特原油穿越曼德海峡驶往中国。XIN LONG YANG曾一度掉头停航评估风险。业内认为成功过境不等于红海航运恢复，风险仍高度不确定。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/维运网", url: "https://www.weiyun001.com/news/8qgsJj9tmT8zECAL0Nsagw%3D%3D/MJ0YTbUgoIN5lEifKa7nkQ%3D%3D" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜胡塞武装逼退8艘沙特油轮，沙特急组14国海上防务联盟", desc: "胡塞武装7月20日宣布对沙特实施红海海上封锁，截至8月初已逼退8艘沙特油轮。沙特于7月31日宣布组建14国多国海上防务联盟（含科威特、卡塔尔、巴林、土耳其、巴基斯坦、约旦、埃及、苏丹、索马里、吉布提等），在红海、亚丁湾和曼德海峡开展协同行动。曼德海峡油轮通航量周环比暴跌40.7%。霍尔木兹海峡已事实上关闭，沙特两条核心能源出口通道同时受威胁。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海封锁"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D417O4055616WO.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜中方与胡塞建立直接沟通渠道，4艘中国VLCC安全通过曼德海峡", desc: "路透社7月28日报道，中方已与胡塞武装建立直接通行协调渠道，逐艘核对拟通行中国油轮信息并通报伊朗。7月下旬至少4艘装载沙特原油的中国VLCC（新龙洋号、远新湖号、新探索者号、新珍珠号）安全通过曼德海峡，全程开启AIS标注中国船员及船东身份。外交部回应称“国际航道安全畅通应当共同守护”。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/今日头条", url: "https://www.toutiao.com/w/1872429627361291/" }
+  ], new: true},
+  { date: "08-02", day: "02", title: "✨新增｜埃及达米埃塔港遭无人机袭击，胡塞武装搭建索马里青年党合作网络", desc: "海运圈聚焦7/31报道：埃及达米埃塔港发生不明来源无人机袭击，伊朗相关战事向中东其他区域外溢风险加剧。胡塞武装已搭建与索马里青年党(al-Shabaab)等地区武装的合作网络。海事安全专家IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道的决心。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
+  ], new: true},
+  { date: "07-24", day: "24", title: "✨新增｜OFAC新一轮制裁重创Sea Lead:仅剩4艘船，排名跌至第80位", desc: "美国财政部OFAC于7月24日对Sea Lead Shipping及其迪拜、马绍尔群岛、印度关联企业实施新一轮制裁，同步制裁SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR等集装箱船。Sea Lead从2025年中的53艘船/全球第13位暴跌至仅剩4艘船/第80位，三艘现役船全被锁定，公司运营几近停摆。美司法部指控其充当伊朗“黑暗船队”合法门面。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" }
+  ], new: true},
+  { date: "07-24", day: "24", title: "✨新增｜中联航运与MSC租入Sea Lead退租运力，填补市场空白", desc: "Sea Lead租用的5艘船舶退租给希腊船东Danaos后，中联航运（CULines）与地中海航运（MSC）已迅速出手租入这批运力，填补市场空白。CULines接手Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "07-28", day: "28", title: "✨新增｜曼德海峡通航量暴跌56%，胡塞武装精准打击沙特船只", desc: "胡塞武装发布海上封锁声明后，曼德海峡整体通航量暴跌56%，7月26日全天仅9艘船驶出红海。胡塞武装采取精准区分式打击，锁定沙特港口及相关船只。7月28日胡塞发射弹道导弹袭击沙特游轮“夹扎乐号”于盐布港附近。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+  { date: "07-29", day: "29", title: "✨新增｜四艘中国游轮安全通过曼德海峡，中方提前沟通协调", desc: "4艘中国游轮在胡塞封锁期间安全通过曼德海峡。中方于7月20日即启动与胡塞武装沟通磋商，7月29日外交部回应称“国际航道安全需各国共同守护，呼吁各方克制、通过对话协商化解分歧”。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+  { date: "07-29", day: "29", title: "✨新增｜沙特宣布配合美军打击伊拉克亲伊朗民兵，红海冲突外溢", desc: "沙特国防部7月29日宣布配合美军打击伊拉克境内亲伊朗民兵武装，红海冲突不再局限于也门，开始外溢至伊拉克，中东矛盾链条被彻底拉长，全球供应链和国际能源安全面临更大风险。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"冲突外溢"}], links: [
+    { text: "今日头条/综合", url: "https://www.toutiao.com/article/7668637495407542790/" }
+  ], new: true},
+  { date: "07-25", day: "25", title: "✨新增｜沙特联军空袭荷台达胡塞军事目标，胡塞以导弹反击沙特贾赞市", desc: "7月25日沙特联军空袭也门荷台达胡塞武装军事目标，胡塞随后以弹道导弹打击沙特南部贾赞市作为报复。特朗普同日在社交媒体警告将对胡塞武装及伊朗施以\"重大军事惩罚\"，称已授权美军必要时采取行动。胡塞-沙特冲突全面升级，红海安全局势急剧恶化。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事冲突"}], links: [
+    { text: "BBC中文", url: "https://www.bbc.com/zhongwen/articles/c4g63djrgy8o/simp" }
+  ], new: true},
+  { date: "07-28", day: "28", title: "✨新增｜中国新闻周刊报道\"红海大战开打\"，曼德海峡单日仅11艘大宗商品货船通过", desc: "中国新闻周刊7/28报道\"红海大战开打\"。也门政府警告胡塞武装或效仿伊朗控制曼德海峡。曼德海峡单日仅11艘大宗商品货船通过，通行量骤降近50%。胡塞武装正将曼德海峡作为战略筹码配合伊朗对美施压。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "中国新闻周刊", url: "https://www.fj.chinanews.com.cn/news/2026/2026-07-28/588242.html" },
+    { text: "BBC中文", url: "https://www.bbc.com/zhongwen/articles/c4g63djrgy8o/simp" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动(新闻稿sb0562): 美国财政部将新加坡Sea Lead Shipping PTE. Ltd.及迪拜、马绍尔、印度子公司列入SDN。SeaLead被认定为伊朗Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。旗下SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计制裁超200个目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海海上防御联盟成立：土耳其、埃及、巴基斯坦加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特在利雅得召集43国与欧盟代表后宣布牵头14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25沙特联军空袭胡塞，曼德海峡通航量一周锐减56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高全球油轮运价，集装箱航运面临保费上涨+绕行成本双重压力", desc: "Lloyd's List/经济日报报道：霍尔木兹海峡危机叠加红海、黑海安全恶化，全球油轮市场面临“前所未有”扰动。蒂凯油轮CEO称被认定不安全的港口数量创历史新高；达米科CEO称地缘政治已成油轮市场主导因素。部分船东停止穿越红海或进入霍尔木兹，航程拉长推高即期运价。集装箱航运同样面临保费上涨、航线绕行成本增加压力，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
+    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁: SeaLead实体+3艘现役船列入SDN，仅余4艘/第80位，CULines接手Express Berlin+Racine", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁：Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)。从全球第13位(53艘)暴跌至第80位仅余4艘船。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" },
+    { text: "搜狐", url: "https://www.sohu.com/a/988791120_121124376" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.3%→0.75%，曼德通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。7/20胡塞宣布对沙特海上禁运，多艘沙特油轮遭袭。红海战争风险保费从0.3%升至0.75%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "路透社", url: "https://www.reuters.com/" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特，阿曼/阿联酋未加入", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。联盟成立标志着红海安全格局从单边护航向多边合作转变。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克亲伊朗民兵80+目标，WTI涨6.35%至$84.33", desc: "7/28-29日美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI油价涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认'全面豁免'", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行曼德海峡。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。中方外交辞令谨慎，未确认\"全面豁免\"安排。逐船协调≠全面长期制度化豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。Shamkhani网络累计超200个指定主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "OFAC官方公告", url: "https://ofac.treasury.gov/recent_actions" }
   ]},
@@ -539,6 +699,9 @@ const keyEvents = [
   ]},
   { date: "07-20", day: "20", title: "ESL发布SOC集装箱前缀禁令", desc: "Emirates Shipping Line发布BXAU/VOLU/VOTU/SLVU前缀禁令，制裁效应从政策层向实操层传导。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"行业传导"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。沙特联军启动防护部署。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
+  { date: "07-20", day: "20", title: "✨新增｜胡塞海上封锁升级：已确认击伤油轮ENCELIA，AIS过境225次/较前周降28%/暗航38次", desc: "胡塞7/20宣布对沙特'海上封锁'后已确认击伤油轮ENCELIA。劳合社情报监测：7/20-26 AIS可见过境225次（较前周311次降28%），含38次暗航。原油出口受创最大——7/23以来仅1艘原油轮靠泊沙特红海港口。集装箱板块保持韧性：仍有18家班轮公司通过曼德。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"通航数据"}], links: [
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ]},
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。红海航线挂靠港同时受胡塞风险封锁目标港影响。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
     { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260714A0001H00" },
     { text: "ccpitzj.gov.cn", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_a06bd6a7099c48f6948cc3542c66bb7a.html" }
@@ -715,6 +878,11 @@ const keyEvents = [
     { text: "海员之家（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9AnV1KuJKv79GNmeeRQcqNMktX4_F6-v9s0h9-6Q5-1waBIdKf9bsOuSB6toT8jTdpgCTyt98qWrQtUt9qjLJ19A-mQiDUUzdty1RsBc0OVCpONifs9_8GEwvREy4bYK7YgqjP1IHUMTTKsoU6dNlivizkUXsPFq4DR24mRYz906fxjh3za6jWA..&type=2&query=SeaLead%E5%88%B6%E8%A3%81&token=9F4DD7F759E3E22C5650000F905D891F57D113836A636EEE" },
     { text: "合规大使（搜狗跳转）", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7NgZgeD6x4mbGk2DOHEDzqJDRQSeLTRm1qXa8Fplpd9_oom-fdkCK2h1oPDYocqonyZvwPZUAUrTxHsXK_Qk_LjQ_vsZvYjCLT-JMts8-d6hASmfKpQLjIdbbVDD1o7ZiMgCnCtGL8f4a4k6IuvQ6NWGQccj15H3ap5ah3Oz4eoKsq6ReqeuTkQOs-gjAj5gGLXQ-b5P_nm7FTqsitKhcZCy6umSSPEsg..&type=2&query=%E9%A6%99%E6%B8%AF%E8%88%AA%E8%BF%90%E5%88%B6%E8%A3%81SDN&token=9F4DD77C9DB7C9F88C8ADBD6DF7AD24C8DEDF1D86A636EEE" }
   ]},
+  
+  { date: "07-25", day: "25", title: "✨新增｜胡塞7/25打击沙特吉赞/延布能源设施，曼德海峡7/26骤降至11艘创数月最低", desc: "7/25胡塞武装使用导弹和无人机打击沙特吉赞和延布能源设施；沙特此前空袭胡塞控制的荷台达。冲突从港口封锁升级为基础设施打击，导致曼德海峡7/26日通行货船骤降至11艘创数月最低。7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ]},
   { date: "07-25", day: "25", title: "沙特主导多国联军7/25凌晨对胡塞武装军事目标实施打击", desc: "沙特主导的多国联军7月25日凌晨发表声明，对也门荷台达省胡塞武装军事目标实施打击。联军称行动针对与胡塞海上威胁直接相关的军事目标，未针对荷台达港；声明强调也门港口仍正常开放。这是自胡塞7/20宣布对沙特海上禁运、7/23袭击ENCELIA/LAYLA号油轮以来，沙特方面的首次军事反击。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
     { text: "腾讯新闻/新华社", url: "https://new.qq.com/rain/a/20260725A03E3P00?refer=cp_1009" },
     { text: "网易/新华社", url: "https://www.163.com/dy/article/L2LP0NOP0514R9OJ.html" }
@@ -888,6 +1056,17 @@ const keyEvents = [
   { date: "07-27", day: "27", title: "LinkedIn/中联航运CULines推出越南-印尼支线（MV1/MI1/IP1）巴生港中转规避双峡风险", desc: "中联航运LinkedIn官方7/9宣布推出三条东南亚支线MV1(胡志明-巴生港)、MI1(雅加达-巴生港)、IP1(雅加达-巴生港)，构建'东南亚支线+巴生港中转枢纽+干线'综合服务。越南/印尼出口货物3-4天内抵达巴生港接续中东/红海/地中海干线。在双峡同时受阻背景下，此中转模式为不穿越高风险区域提供服务替代方案，是CU Lines危机应对的重要战略布局。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"CU Lines"}], links: [
     { text: "LinkedIn/中联航运", url: "https://www.linkedin.com/posts/culiness_culines-launches-new-vietnam-indonesia-activity-7480823480855228417-4EnD" }
   ]},
+  
+  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元/桶", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
+  ]},
+  
+  { date: "07-28", day: "28", title: "✨新增｜霍尔木兹与曼德双峡同时告急，BIMCO警告油价或长期高于120美元", desc: "霍尔木兹海峡与曼德海峡同时告急——两个海峡的航运量均处低点。BIMCO秘书长警告：若持续到夏末，布伦特原油价格可能长期高于120美元/桶。战争风险保费最高达船舶价值12%（战前约0.25%）。BIMCO估计全球石油库存可能在2026年内耗尽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
+  ]},
+  { date: "07-31", day: "31", title: "✨新增｜红海局势持续升级：截至7/26至少5艘沙特油轮遇袭、16艘船调头，曼德油轮周通航环比暴跌40.7%", desc: "南方周末7月31日报道：自7月20日胡塞武装宣布对沙特海上禁运以来，截至7月26日至少5艘沙特油轮遇袭、16艘船只被迫调头。劳氏情报数据：曼德海峡油轮周通航量较前一周环比暴跌40.7%。新华社援引外媒称这是2022年以来最严重冲突，可能终结四年非正式停火。胡塞警告若局势恶化曼德海峡恐将关闭。来源：南方周末。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "南方周末", url: "https://www.infzm.com/contents/327453" }
+  ], new: true},
   { date: "07-31", day: "31", title: "胡塞拟收红海\"过路费\"：中国船只可能免单，沙特推动组建新护航联盟", desc: "胡塞武装正在研究对通过曼德海峡的大多数商船收取通航费用，可能设立专门机构负责船舶登记和费用收取。消息人士称中国相关船舶可能被排除在收费范围之外。沙特正与数十个国家磋商组建新的国际护航联盟。曼德海峡通航量近期回升至39艘大宗商品运输船(7/28)。趋势：胡塞可能将军事威胁转化为常态化的船舶筛选、通航许可和收费机制。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
   ], new: true},
@@ -907,10 +1086,32 @@ const keyEvents = [
     { text: "AMZ123", url: "https://weixin.sogou.com/weixin?type=2&query=港口台风" },
     { text: "德迅", url: "https://weixin.sogou.com/weixin?type=2&query=台风港口中断" }
   ], new: true},
+  
+  { date: "08-01", day: "1", title: "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司", desc: "美国财政部OFAC发布sb0562公告，正式宣布对Shamkhani网络的新一轮制裁。Sea Lead Shipping PTE. Ltd.（新加坡）及3家子公司（迪拜DMCC、马绍尔群岛Ltd、印度代理）被列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务，旗下SHENTON WAY (IMO 9146314)、TANJONG PAGAR 1 (IMO 9404508)、PAYA LEBAR (IMO 9134232) 被列为冻结资产。截至2026年3月，House of Shipping集团包括Sea Lead全部子公司。本次行动共制裁超50个实体/个人/船只，累计制裁Shamkhani网络超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘创数月最低，战争险保费达船值12%", desc: "也门胡塞武装与沙特冲突升级导致全球两条关键航运要道同时告急。7/26曼德海峡日通行货船骤降至11艘（数月最低），战争风险保险费最高达船舶价值12%（战前约0.25%）。沙特暂停经曼德海峡原油出口改道苏伊士（出口量激增106%）。BIMCO秘书长警告长期中断将推高整个海事供应链成本。布伦特原油一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
+  ], new: true},
 ];
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：OFAC sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司全入SDN，三艘船被冻结，累计制裁超200实体", desc: "上午LinkedIn检索确认：美国财政部OFAC 7/14 sb0562将新加坡Sea Lead Shipping PTE. Ltd.及迪拜、马绍尔、印度子公司全列入SDN，定性为Shamkhani非法航运网络核心集装箱实体，为胡塞武装运送物资。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船只列为封锁财产。累计制裁超200实体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为Shamkhani网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动: 美国财政部认定新加坡Sea Lead Shipping及迪拜、马绍尔、印度子公司为Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计超200个制裁目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜OFAC 7/24制裁：SeaLead新加坡/迪拜/马绍尔实体+印度代理+3艘现役船全入SDN", desc: "OFAC 7/24将SeaLead新加坡/迪拜/马绍尔运营实体及印度代理公司列入黑名单。三艘现役船全被锁。SeaLead仅剩4艘船/全球第80位。CULines租入Express Berlin(10114TEU)和Racine(6758TEU)扩张远东-中东航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" },
+    { text: "Seafh", url: "https://seafh.com/x/4027" }
+  ], new: true},
+
   { date: "07-14", day: "14", title: "OFAC将SeaLead公司本体列入SDN名单", desc: "SeaLead Shipping PTE. Ltd.及3家子公司被制裁，同时14家关联实体+20艘船舶列入SDN。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [] },
   { date: "07-14", day: "14", title: "2家中国香港航运企业被新制裁", desc: "Sai Wan Shipping + Ocean Searum One + 1艘船舶被列入SDN。OFAC制裁范围扩展到集装箱航运。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"香港实体"}], links: [] },
   { date: "07-17", day: "17", title: "OFAC伊朗石油豁免GL X1到期", desc: "40年最大制裁放宽→一周紧急回滚。所有涉伊朗石油新交易全面禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"政策逆转"}], links: [] },
@@ -995,10 +1196,64 @@ const sealeadKeyEvents = [
   { date: "07-31", day: "31", title: "SeaLead运力终局确认：从第13暴跌至第80仅余4艘船，CULines/MSC接手Express Berlin+Racine", desc: "OFAC 7/24正式将SeaLead新加坡/迪拜/马绍尔运营实体及3艘现役船列入黑名单。从2025年全球13位(53艘)暴跌至第80位仅余4艘船，运力蒸发超95%。CULines与MSC接手退租的5艘运力，Express Berlin(10114TEU)投入CGX航线。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力数据"}], links: [
     { text: "CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
   ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜OFAC正式公告SeaLead SDN制裁详情：被指控为胡塞武装提供运输支持", desc: "美国财政部OFAC 7/14发布sb0562公告确认Sea Lead Shipping PTE. Ltd.（新加坡）+3家子公司（迪拜DMCC、马绍尔群岛、印度代理）全部列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务。SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘现役船全部被列为冻结资产。本次行动制裁超50个主体，累计Shamkhani网络被制裁超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
 ];
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜胡塞拟在红海设卡收费：伊朗革命卫队顾问赴荷台达指导建立收费机构，联合国报告月收1.8亿美元", desc: "路透社/法新社8月3日报道：本月初胡塞官员赴德黑兰参加哈梅内伊葬礼期间与伊朗讨论对过境红海船只收费。伊朗革命卫队顾问已在荷台达等地直接指导胡塞建立规范化的海上收费流程与管理架构。也门信息部长向法新社确认胡塞正试图让红海成为主要资金来源。联合国此前报告胡塞曾月收1.8亿美元通行费。来源：网易/路透社。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D5I0420556974J.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜胡塞武装逼退8艘沙特油轮，沙特急组14国海上防务联盟", desc: "胡塞武装7月20日宣布对沙特实施红海海上封锁，截至8月初已逼退8艘沙特油轮。沙特于7月31日宣布组建14国多国海上防务联盟（含科威特、卡塔尔、巴林、土耳其、巴基斯坦、约旦、埃及、苏丹、索马里、吉布提等），在红海、亚丁湾和曼德海峡开展协同行动。曼德海峡油轮通航量周环比暴跌40.7%。霍尔木兹海峡已事实上关闭，沙特两条核心能源出口通道同时受威胁。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海封锁"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D417O4055616WO.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜中方与胡塞建立直接沟通渠道，4艘中国VLCC安全通过曼德海峡", desc: "路透社7月28日报道，中方已与胡塞武装建立直接通行协调渠道，逐艘核对拟通行中国油轮信息并通报伊朗。7月下旬至少4艘装载沙特原油的中国VLCC（新龙洋号、远新湖号、新探索者号、新珍珠号）安全通过曼德海峡，全程开启AIS标注中国船员及船东身份。外交部回应称“国际航道安全畅通应当共同守护”。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/今日头条", url: "https://www.toutiao.com/w/1872429627361291/" }
+  ], new: true},
+  { date: "08-02", day: "02", title: "✨新增｜埃及达米埃塔港遭无人机袭击，胡塞武装搭建索马里青年党合作网络", desc: "海运圈聚焦7/31报道：埃及达米埃塔港发生不明来源无人机袭击，伊朗相关战事向中东其他区域外溢风险加剧。胡塞武装已搭建与索马里青年党(al-Shabaab)等地区武装的合作网络。海事安全专家IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道的决心。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
+  ], new: true},
+  { date: "08-02", day: "02", title: "✨新增｜LinkedIn检索：红海+波斯湾双峡同时告急，BIMCO警告战争险达船值12%，油价长期>$120风险上升", desc: "早上LinkedIn检索：也门胡塞武装与沙特冲突致曼德+霍尔木兹双峡同时告急。BIMCO警告战争险达船值12%（战前0.25%）。高盛：曼德日均900万桶石油流通中400万桶极难改道。若冲突持续到夏末，布伦特站上$120并非不可能。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "新浪财经/澎湃", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
+  ], new: true},
+  { date: "08-02", day: "02", title: "✨新增｜LinkedIn检索：胡塞封锁后曼德海峡通航量锐减56%（7/26仅15艘），沙特改道苏伊士成本翻倍", desc: "早上LinkedIn检索：胡塞封锁沙特后曼德海峡通航量锐减56%。沙特暂停经曼德原油出口，全面改道苏伊士运河绕行非洲，运输时间+1月、成本翻倍。对苏伊士型/阿芙拉型船只需求大幅上升。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"曼德海峡"}], links: [
+    { text: "新华社/网易", url: "https://www.163.com/dy/article/L30BR63H0514CQIE.html" }
+  ], new: true},
+  { date: "08-02", day: "02", title: "✨新增｜LinkedIn检索：沙特暂停经曼德海峡原油出口，延布港遇袭后日均出货量升至400万桶面临威胁", desc: "早上LinkedIn检索：沙特已将超70%原油出口从波斯湾转至红海延布港经曼德海峡出口，日均出货量从97万升至400万桶。延布遇袭后经曼德出口已暂停。面向亚洲运输改道苏伊士，出口量激增106%达日均106万桶。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"能源安全"}], links: [
+    { text: "新浪财经/澎湃", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜胡塞HOCC 8/1声明曼德海峡通行完全免费，禁运仅针对沙特船只", desc: "胡塞武装8月1日通过人道主义行动协调中心(HOCC)发布声明，否认计划对曼德海峡商船征收通行费，称安全通行服务完全免费，仅针对沙特船只实施海上禁运。此前路透社报道胡塞考虑对曼德商船征收通行费、伊朗革命卫队协助筹建收费监管机构，HOCC声明为对此的直接否认。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞声明"}], links: [], new: true},
+  { date: "07-28", day: "28", title: "✨新增｜中国新闻周刊报道\"红海大战开打\"，曼德海峡单日仅11艘大宗商品货船通过", desc: "中国新闻周刊7/28报道\"红海大战开打\"。也门政府警告胡塞武装或效仿伊朗控制曼德海峡。曼德海峡单日仅11艘大宗商品货船通过，通行量骤降近50%。胡塞武装正将曼德海峡作为战略筹码配合伊朗施压。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
+    { text: "中国新闻周刊", url: "https://www.fj.chinanews.com.cn/news/2026/2026-07-28/588242.html" }
+  ], new: true},
+  { date: "07-25", day: "25", title: "✨新增｜沙特联军空袭荷台达，胡塞导弹反击贾赞市；特朗普警告\"重大军事惩罚\"", desc: "7月25日沙特联军空袭也门荷台达胡塞军事目标，胡塞以弹道导弹打击沙特贾赞市。特朗普警告将对胡塞及伊朗施以\"重大军事惩罚\"。胡塞-沙特冲突全面升级。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事冲突"}], links: [
+    { text: "BBC中文", url: "https://www.bbc.com/zhongwen/articles/c4g63djrgy8o/simp" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜沙特牵头14国红海防御联盟成立：土耳其/埃及/巴基斯坦等加入，阿联酋阿曼未加入，曼德通航量一周锐减56%", desc: "7月30日沙特召集43国代表后宣布成立14国海上防御联盟(土耳其、埃及、巴基斯坦、约旦、巴林、卡塔尔、科威特、也门政府、孟加拉国、尼日利亚、苏丹、吉布提、索马里)，维护红海/曼德海峡/亚丁湾航运安全。阿联酋、阿曼未加入。背景链：7/20胡塞宣布对沙特海上禁运→7/23袭击两艘沙特油轮→7/25空袭胡塞目标→曼德一周通航量骤降56%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "今日头条", url: "https://www.toutiao.com/w/1872282879866953/" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜Lloyd's List: 霍尔木兹+红海+黑海三重危机推高油轮运价，集装箱航运同受保费+绕行成本压力", desc: "Lloyd's List/经济日报：霍尔木兹危机叠加红海、黑海安全恶化推高全球油轮运价。部分船东停止穿越红海/进入霍尔木兹，航程拉长推高即期运价。被认定不安全港口数创历史新高。集装箱航运同样面临保费上涨、航线绕行成本增加，红海/中东航线运费或持续走高。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运价影响"}], links: [
+    { text: "Lloyd's List/经济日报", url: "https://finance.sina.com.cn/jjxw/2026-08-01/doc-inikvanc0426915.shtml" }
+  ], new: true},
+
+  { date: "08-01", day: "01", title: "✨新增｜胡塞考虑对曼德海峡商船征收通行费，红海战争险0.75%，通航量下降约50%", desc: "胡塞武装考虑对曼德海峡商船征收通行费，伊朗革命卫队协助筹建收费监管机构。红海战争风险保费从0.3%升至0.75%。曼德海峡通航量下降约50%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
+    { text: "路透社", url: "https://www.reuters.com/" },
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特7/30牵头14国成立红海海上防御联盟，总部设沙特", desc: "7月30日沙特牵头14国成立红海海上防御联盟，定位纯防御。阿曼、阿联酋未加入，美国尚未决定参与。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜美伊局势升级：美沙联合打击伊拉克80+目标，WTI涨6.35%至$84.33", desc: "7/28-29美沙联合打击伊拉克亲伊朗民兵80+目标；伊朗向约旦美军基地发射弹道导弹；特朗普威胁打击伊朗\"镐山\"地下设施。WTI涨6.35%至$84.33，布伦特涨5.75%至$86.79。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事升级"}], links: [
+    { text: "搜狐/综合", url: "https://www.sohu.com/a/1057366611_122340860" }
+  ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜中国船舶获胡塞逐船协调安全通行曼德海峡，中方未确认全面豁免", desc: "中国与胡塞建立直接沟通渠道，中国油轮获逐船协调安全通行。7/23中国旗VLCC\"COSNEW LAKE\"轮经曼德海峡驶离红海。逐船协调≠全面豁免。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "网易/彭博社", url: "https://www.163.com/dy/article/L37RU94K0556BPXJ.html" }
+  ], new: true},
+
   { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] },
   { date: "07-20", day: "20", title: "胡塞武装宣布对沙特实施海上禁运", desc: "胡塞军事发言人宣布对沙特海上禁运，威胁关闭曼德海峡。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [] },
   { date: "07-22", day: "22", title: "吉达港严重拥堵升级", desc: "堆场90%利用率/等泊3.93天(危机前23倍)。提箱延误6-8周。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"港口运营"}], links: [
@@ -1171,6 +1426,11 @@ const redseaKeyEvents = [
   { date: "07-25", day: "25", title: "400万桶沙特原油由中国VLCC选择性通过曼德海峡", desc: "约400万桶沙特原油装载在中国运营的VLCC上，在评估风险后选择性通过曼德海峡。中国航运企业正在采取'风险分级'策略——对高价值货物谨慎评估后选择性通行。可作为中联航运的参考。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
     { text: "Bloomberg", url: "https://www.bloomberg.com/" }
   ]},
+  
+  { date: "07-25", day: "25", title: "✨新增｜胡塞导弹无人机打击沙特吉赞/延布能源设施，曼德7/26骤降至11艘", desc: "7/25胡塞武装使用导弹和无人机打击沙特阿美吉赞和延布能源设施，冲突从港口封锁升级为基础设施打击。曼德海峡7/26日通行货船骤降至11艘创数月最低，7/28反弹至39艘但仍低于月内峰值46艘。中国大型国有油轮运营商正从红海贸易中撤出VLCC。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"实战袭击"}], links: [
+    { text: "澎湃新闻/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" },
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ]},
   { date: "07-26", day: "26", title: "胡塞7/25首次直接打击沙特阿美延布+吉赞炼油设施", desc: "胡塞武装7月25日用导弹和无人机打击沙特阿美在延布（Yanbu）和吉赞（Jizan）的设施，4年来首次直接打击沙特炼油设施。延布是沙特红海沿岸最重要的原油出口港（日均出口约490万桶）。布伦特冲破100美元后回落至89-90美元。胡塞打击范围从海上船舶扩展到陆地炼油基础设施。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
     { text: "The Hindu/AP", url: "https://www.thehindu.com/news/international/houthis-fire-missiles-drones-at-saudi-arabia-in-response-to-strikes-on-yemeni-city/article71267142.ece" },
     { text: "CoinDesk", url: "https://www.coindesk.cc/houthis-strike-saudi-aramco-facilities-as-brent-crude-hits-100-crypto-pulls-back-91566.html" }
@@ -1239,6 +1499,10 @@ const redseaKeyEvents = [
     { text: "新华社英文/gmw.cn", url: "https://en.gmw.cn/2026-07/27/content_38909552.htm" },
     { text: "UKMTO/新华社英文", url: "https://english.news.cn/20260726/2164bdd532744d9493ed48210e962187/c.html" }
   ]},
+
+  { date: "07-31", day: "31", title: "✨新增｜红海局势持续升级：截至7/26至少5艘沙特油轮遇袭、16艘船调头，曼德油轮周通航环比暴跌40.7%", desc: "南方周末7月31日报道：自7月20日胡塞武装宣布对沙特海上禁运以来，截至7月26日至少5艘沙特油轮遇袭、16艘船只被迫调头。劳氏情报数据：曼德海峡油轮周通航量较前一周环比暴跌40.7%。新华社援引外媒称这是2022年以来最严重冲突，可能终结四年非正式停火。胡塞警告若局势恶化曼德海峡恐将关闭。来源：南方周末。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "南方周末", url: "https://www.infzm.com/contents/327453" }
+  ], new: true},
   { date: "07-31", day: "31", title: "胡塞拟收红海通航费用：中国船只可能免单，沙特推动新护航联盟", desc: "胡塞武装研究对曼德海峡商船收取通航费用，可能设专门机构负责登记和收费。消息称中国船舶可能免单。沙特与数十国磋商组建新国际护航联盟。曼德7/28通航39艘大宗商品运输船。趋势：军事威胁向常态化收费机制转化。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "Seawaymaritime", url: "https://weixin.sogou.com/weixin?type=2&query=胡塞过路费" }
   ], new: true},
@@ -1247,6 +1511,9 @@ const redseaKeyEvents = [
   ], new: true},
   { date: "07-31", day: "31", title: "胡塞收费传闻辟谣：路透爆料后胡塞高官否认，美军护航成本不可持续", desc: "7/29路透爆胡塞拟收费、中国免单→7/30胡塞高官辟谣否认方案。曼德承担全球约12%海上贸易。美军百万美元拦截导弹vs廉价无人机成本不可持续。胡塞虽辟谣但'中国免单'折射中国中东中立战略资产。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"地缘安全"}], links: [
     { text: "路透社", url: "https://www.reuters.com/" }
+  ], new: true},
+  { date: "08-01", day: "1", title: "✨新增｜红海与曼德海峡双重危机：7/26通行骤降至11艘，战争险保费达船值12%", desc: "也门胡塞与沙特冲突升级致红海/曼德海峡告急。7/26曼德日通行货船骤降至11艘（数月最低），战争险保费最高达船舶价值12%（战前0.25%）。沙特暂停经曼德原油出口改道苏伊士（出口量激增106%）。BIMCO警告长期中断推高全海事供应链成本。布伦特一度突破$100/桶，高盛估计曼德近月日均石油流通约900万桶。全球约30%集装箱运输经红海，占全球贸易12-15%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}], links: [
+    { text: "澎湃新闻/今日头条", url: "https://www.toutiao.com/article/7667504740510466560/" }
   ], new: true},
 ];
 
