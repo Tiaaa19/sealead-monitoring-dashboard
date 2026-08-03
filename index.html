@@ -641,7 +641,8 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "8月2日 周日 22:00 | 晚间微信检索",
+  time: "2026年8月3日 周一 08:45 | 上午微信检索",
+  source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "🔴 紧急（8/2 下午LinkedIn检索：OFAC sb0562制裁SeaLead+WeFreight/Volta确认+Lloyd's List曼德通行周降28%数据复盘+埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网）",
   vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead sanctions OFAC 2026\"+\"Red Sea Houthi Bab el-Mandeb shipping\"，命中US Treasury OFAC/Lloyd's List Intelligence/海运圈聚焦。焦点：①OFAC sb0562制裁SeaLead全子公司+We Freight/Volta（与已有记录一致）；②Lloyd's List确认曼德周通航225次降28%集装箱航运暂保韧性（与已有记录一致）；③埃及达米埃塔港遭无人机袭击+胡塞建索马里青年党合作网+IR Consilium警告（⬅新增）。",
@@ -676,6 +677,25 @@ const latestUpdateData = {
 
 // ========== DAILY DATA ==========
 const dailyData = [
+  {
+    date: "2026-08-03", display: "8/3", weekday: "周一",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 3, redCount: 3, yellowCount: 0, blueCount: 0,
+    cuStatus: "OFAC确认SeaLead为Shamkhani核心集装箱实体+曼德海峡通航锐减56%+中资VLCC成功穿越，CULines RES/CGX/CGS航线持续评估中东航运风险",
+    summary: "上午LinkedIn检索：OFAC sb0562确认SeaLead Shipping全子公司SDN制裁+曼德海峡通航量锐减56%+两艘中资VLCC穿越曼德海峡",
+    keyEvents: [
+      "LinkedIn检索：OFAC 7/14 sb0562确认Sea Lead Shipping（新加坡）+迪拜/马绍尔/印度子公司列入SDN，定性为Shamkhani非法航运网络核心集装箱实体，为胡塞武装运送物资",
+      "LinkedIn检索：胡塞封锁后曼德海峡通航量锐减56%（7/26 34→15艘），沙特绕行非洲出口石油运输+1月成本翻倍，油轮ENCELIA在红海遭袭",
+      "LinkedIn检索：两艘中资VLCC（XIN LONG YANG/COSNEW LAKE）载400万桶沙特原油穿越曼德海峡驶往中国，XIN LONG YANG曾一度掉头停航评估风险，业内认为成功过境≠红海航运恢复"
+    ],
+    sealeadEvents: [
+      "OFAC sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司全入SDN，SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘船列为封锁财产，累计制裁超200实体"
+    ],
+    redseaEvents: [
+      "曼德海峡通航量锐减56%（34→15艘），沙特绕行非洲出口石油运输+1月成本翻倍，油轮ENCELIA在红海遭袭",
+      "两艘中资VLCC（XIN LONG YANG/COSNEW LAKE）载约400万桶沙特原油穿越曼德海峡驶往中国，业内认为成功过境≠红海航运恢复，风险仍高度不确定"
+    ]
+  },
   {
     date: "2026-08-02", display: "8/2", weekday: "周日",
     status: "red", statusText: "🔴 紧急",
@@ -1217,6 +1237,15 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜胡塞武装逼退8艘沙特油轮，沙特急组14国海上防务联盟", desc: "胡塞武装7月20日宣布对沙特实施红海海上封锁，截至8月初已逼退8艘沙特油轮。沙特于7月31日宣布组建14国多国海上防务联盟（含科威特、卡塔尔、巴林、土耳其、巴基斯坦、约旦、埃及、苏丹、索马里、吉布提等），在红海、亚丁湾和曼德海峡开展协同行动。曼德海峡油轮通航量周环比暴跌40.7%。霍尔木兹海峡已事实上关闭，沙特两条核心能源出口通道同时受威胁。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海封锁"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D417O4055616WO.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜中方与胡塞建立直接沟通渠道，4艘中国VLCC安全通过曼德海峡", desc: "路透社7月28日报道，中方已与胡塞武装建立直接通行协调渠道，逐艘核对拟通行中国油轮信息并通报伊朗。7月下旬至少4艘装载沙特原油的中国VLCC（新龙洋号、远新湖号、新探索者号、新珍珠号）安全通过曼德海峡，全程开启AIS标注中国船员及船东身份。外交部回应称"国际航道安全畅通应当共同守护"。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/今日头条", url: "https://www.toutiao.com/w/1872429627361291/" }
+  ], new: true},
   { date: "08-02", day: "02", title: "✨新增｜埃及达米埃塔港遭无人机袭击，胡塞武装搭建索马里青年党合作网络", desc: "海运圈聚焦7/31报道：埃及达米埃塔港发生不明来源无人机袭击，伊朗相关战事向中东其他区域外溢风险加剧。胡塞武装已搭建与索马里青年党(al-Shabaab)等地区武装的合作网络。海事安全专家IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道的决心。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
     { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
   ], new: true},
@@ -1684,6 +1713,9 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
+  ], new: true},
   { date: "08-01", day: "01", title: "✨新增｜OFAC新闻稿sb0562: SeaLead为Shamkhani网络核心集装箱航运公司，为胡塞武装运货，3艘船被冻结", desc: "OFAC 7/14行动: 美国财政部认定新加坡Sea Lead Shipping及迪拜、马绍尔、印度子公司为Shamkhani走私网络核心集装箱航运公司，为胡塞武装(Ansarallah)运送货物。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船被冻结。本轮涉及50+实体/个人/船只，Shamkhani网络累计超200个制裁目标。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
   ], new: true},
@@ -1784,6 +1816,12 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜胡塞武装逼退8艘沙特油轮，沙特急组14国海上防务联盟", desc: "胡塞武装7月20日宣布对沙特实施红海海上封锁，截至8月初已逼退8艘沙特油轮。沙特于7月31日宣布组建14国多国海上防务联盟（含科威特、卡塔尔、巴林、土耳其、巴基斯坦、约旦、埃及、苏丹、索马里、吉布提等），在红海、亚丁湾和曼德海峡开展协同行动。曼德海峡油轮通航量周环比暴跌40.7%。霍尔木兹海峡已事实上关闭，沙特两条核心能源出口通道同时受威胁。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海封锁"}], links: [
+    { text: "网易", url: "https://www.163.com/dy/article/L3D417O4055616WO.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜中方与胡塞建立直接沟通渠道，4艘中国VLCC安全通过曼德海峡", desc: "路透社7月28日报道，中方已与胡塞武装建立直接通行协调渠道，逐艘核对拟通行中国油轮信息并通报伊朗。7月下旬至少4艘装载沙特原油的中国VLCC（新龙洋号、远新湖号、新探索者号、新珍珠号）安全通过曼德海峡，全程开启AIS标注中国船员及船东身份。外交部回应称"国际航道安全畅通应当共同守护"。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/今日头条", url: "https://www.toutiao.com/w/1872429627361291/" }
+  ], new: true},
   { date: "08-02", day: "02", title: "✨新增｜埃及达米埃塔港遭无人机袭击，胡塞武装搭建索马里青年党合作网络", desc: "海运圈聚焦7/31报道：埃及达米埃塔港发生不明来源无人机袭击，伊朗相关战事向中东其他区域外溢风险加剧。胡塞武装已搭建与索马里青年党(al-Shabaab)等地区武装的合作网络。海事安全专家IR Consilium警告外界严重低估胡塞切断沙特海上商贸通道的决心。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [
     { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
   ], new: true},
