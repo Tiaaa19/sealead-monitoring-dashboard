@@ -1237,6 +1237,15 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：OFAC 7/14 sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司列入SDN，因向胡塞运送物资", desc: "上午LinkedIn检索：美国财政部OFAC于7月14日发布新闻稿sb0562，将新加坡Sea Lead Shipping PTE. Ltd.及其迪拜、马绍尔群岛、印度三家子公司列入SDN名单，定性为Shamkhani非法航运网络核心集装箱实体，被指为胡塞武装运送物资。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船只列为封锁财产。累计制裁超200实体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：曼德海峡通航量锐减56%，沙特绕行非洲出口石油运输+1月成本翻倍", desc: "上午LinkedIn检索：胡塞封锁沙特后，曼德海峡通航量从34艘降至15艘，锐减56%。沙特被迫绕行非洲出口石油，运输时间增加约一个月、成本翻倍。沙特油轮ENCELIA在红海遭袭。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"曼德海峡"}], links: [
+    { text: "新华社/阿联酋国民报", url: "https://www.163.com/dy/article/L2UUN94205346RC6.html" }
+  ], new: true},
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：两艘中资VLCC载400万桶沙特原油成功穿越曼德海峡，XIN LONG YANG曾掉头停航评估风险", desc: "上午LinkedIn检索：两艘中资关联VLCC（XIN LONG YANG、COSNEW LAKE）载约400万桶沙特原油穿越曼德海峡驶往中国。XIN LONG YANG曾一度掉头停航评估风险。业内认为成功过境不等于红海航运恢复，风险仍高度不确定。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"中国船企"}], links: [
+    { text: "路透社/维运网", url: "https://www.weiyun001.com/news/8qgsJj9tmT8zECAL0Nsagw%3D%3D/MJ0YTbUgoIN5lEifKa7nkQ%3D%3D" }
+  ], new: true},
   { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
   ], new: true},
@@ -1713,6 +1722,9 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜LinkedIn检索：OFAC sb0562确认Sea Lead Shipping新加坡/迪拜/马绍尔/印度子公司全入SDN，三艘船被冻结，累计制裁超200实体", desc: "上午LinkedIn检索确认：美国财政部OFAC 7/14 sb0562将新加坡Sea Lead Shipping PTE. Ltd.及迪拜、马绍尔、印度子公司全列入SDN，定性为Shamkhani非法航运网络核心集装箱实体，为胡塞武装运送物资。SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR三艘船只列为封锁财产。累计制裁超200实体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
   { date: "08-03", day: "03", title: "✨新增｜OFAC新一轮制裁：SeaLead核心实体及3艘集装箱船被列入黑名单，船队仅剩4艘排名骤降至第80", desc: "美国财政部OFAC于7月下旬将海领船务(Sea Lead Shipping)新加坡、迪拜及马绍尔群岛运营实体及印度代理列入黑名单，并制裁Paya Lebar号(4211TEU)、Shenton Way号(2008TEU)、Tanjong Pagar 1号(920TEU)三艘集装箱船。SeaLead从2025年中53艘船舶/全球第13位骤降至仅4艘/第80位，三艘现役船均被锁定。Paya Lebar号曾在伊朗冲突期间4次穿越霍尔木兹海峡。中联航运(CULines)与地中海航运(MSC)迅速接手其退租运力。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }
   ], new: true},
