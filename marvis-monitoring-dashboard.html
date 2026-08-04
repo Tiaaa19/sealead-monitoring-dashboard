@@ -641,10 +641,10 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月3日 周一 17:00 | 下午LinkedIn检索",
+  time: "2026年8月4日 周二 08:45 | 上午微信检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
-  statusText: "🔴 紧急（8/2 下午LinkedIn检索：OFAC sb0562制裁SeaLead+WeFreight/Volta确认+Lloyd's List曼德通行周降28%数据复盘+埃及达米埃塔港遭无人机袭击胡塞建索马里青年党合作网）",
+  statusText: "\ud83d\udd34 紧急（8/4 下午LinkedIn检索：曼德+霍尔木兹双海峡通行量同步骤降，沙特油轮关AIS偷渡红海，UKMTO通报3起新袭击，特朗普取消对伊打击美伊开启谈判）",
   vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead sanctions OFAC 2026\"+\"Red Sea Houthi Bab el-Mandeb shipping\"，命中US Treasury OFAC/Lloyd's List Intelligence/海运圈聚焦。焦点：①OFAC sb0562制裁SeaLead全子公司+We Freight/Volta（与已有记录一致）；②Lloyd's List确认曼德周通航225次降28%集装箱航运暂保韧性（与已有记录一致）；③埃及达米埃塔港遭无人机袭击+胡塞建索马里青年党合作网+IR Consilium警告（⬅新增）。",
   findings: [
     {
@@ -679,9 +679,25 @@ const latestUpdateData = {
       links: [
         { text: "海运圈聚焦", url: "https://www.hyqfocus.com/jsp/model.jsp?id=39860&modelType=1" }
       ]
+    },
+    {
+      level: "red",
+      title: "\ud83c\udd95 曼德+霍尔木兹双海峡通行量同步骤降\u2014\u2014曼德周日18艘/霍尔木兹仅1艘LPG船",
+      desc: "Kpler数据：8月3日周日曼德海峡仅18艘商品运输船通过（周六27艘/周五28艘），较袭击前平均水平骤降近50%。霍尔木兹海峡周日仅1艘LPG船通过（周六10艘/周五19艘），双海峡同时受阻。两艘沙特油轮（莱斯沃斯号100万桶/迪什\u00b7维巴夫号200万桶）关闭AIS偷偷驶离红海。英国UKMTO通报周末3起新油轮袭击。来源：网易/克普勒/Kpler。",
+      links: [
+        { text: "网易", url: "https://www.163.com/dy/article/L3FNOT2H0556BW7G.html" }
+      ]
+    },
+    {
+      level: "yellow",
+      title: "\ud83c\udd95 特朗普取消对伊朗军事打击，宣布美伊8月3日开启谈判",
+      desc: "特朗普8月1日取消对伊朗军事打击（此前扬言\u2018迄今最猛烈轰炸\u2019），8月2日宣布美伊将于3日谈判。伊朗及其他中东国家向美方请求暂缓袭击，各方已初步达成协议框架。布伦特原油此前跌破90美元/桶。来源：今日头条。",
+      links: [
+        { text: "今日头条", url: "https://www.toutiao.com/article/7669625199482815012/" }
+      ]
     }
   ],
-   cuImpact: "OFAC 7/29新一轮制裁覆盖6家中国香港航运企业+海上保险/安全服务实体，制裁网向全链条收紧。中联航运需持续关注中国航运企业被制裁扩大的趋势，确保已接手SeaLead运力（Express Berlin/Racine）不触发次级制裁。中东航线RES/CGX/CGS应保持审慎合规审查。"
+   cuImpact: "OFAC 7/29制裁6家中国航运企业+海上保险实体，制裁网向全链条收紧。胡塞继续封锁沙特，曼德+霍尔木兹双海峡通行量同步骤降，沙特油轮被迫关AIS偷渡。特朗普取消对伊打击开启谈判，但双峡同时受阻背景下红海/中东航线运价持续承压。中联航运RES/CGX/CGS航线需持续审慎合规审查。"
 };
 
 // ========== DAILY DATA ==========
@@ -1234,6 +1250,30 @@ const dailyData = [
       "✨新增｜7/26曼德海峡日通行骤降至11艘创数月最低，战争险保费最高达船值12%，沙特暂停曼德原油出口改道苏伊士"
     ]
   },
+  {
+    date: "2026-08-04", display: "8/4", weekday: "周二",
+    status: "red", statusText: "\ud83d\udd34 紧急",
+    eventCount: 4, redCount: 3, yellowCount: 1, blueCount: 0,
+    new: true,
+    cuStatus: "未被制裁；RES\ud83d\udd34极高危/CGX\ud83d\udd34高危/CGS\ud83d\udfe1中危/KCI\u26aa低风险；双海峡同步骤降推高中东航线风险，运价持续承压",
+    summary: "8/4下午LinkedIn检索：曼德+霍尔木兹双海峡通行量同步骤降（曼德18艘/霍尔木兹1艘LPG），两艘沙特油轮关AIS载300万桶偷渡红海，UKMTO通报3起新袭击，特朗普取消对伊打击美伊开启谈判",
+    keyEvents: [
+      "\u3010下午领英\u3011曼德海峡周日(8/3)通行降至18艘（周六27/周五28），霍尔木兹仅1艘LPG船（周六10/周五19）\u2014\u2014双海峡同步骤降",
+      "\u3010下午领英\u3011两艘沙特油轮\u201c莱斯沃斯\u201d号(100万桶)和\u201c迪什\u00b7维巴夫\u201d号(200万桶)关闭AIS偷偷驶离红海",
+      "\u3010下午领英\u3011英国UKMTO通报周末3起新油轮袭击，双海峡安全形势持续恶化",
+      "\u3010下午领英\u3011特朗普取消对伊朗军事打击，宣布美伊8月3日开启谈判\u2014\u2014布油此前跌破90美元"
+    ],
+    sealeadEvents: [
+      "\u3010下午领英\u3011本次LinkedIn检索无SeaLead重大新动态，之前OFAC制裁及运力萎缩信息已覆盖"
+    ],
+    redseaEvents: [
+      "曼德海峡周日(8/3)通行仅18艘（周六27艘/周五28艘），较袭击前骤降近50%",
+      "霍尔木兹海峡周日仅1艘LPG船通过（周六10艘/周五19艘），双海峡同步受阻",
+      "两艘沙特油轮\u201c莱斯沃斯\u201d号+\u201c迪什\u00b7维巴夫\u201d号载300万桶关AIS偷渡红海",
+      "英国UKMTO通报周末3起新油轮袭击",
+      "特朗普取消对伊朗军事打击，宣布美伊8月3日谈判"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1731,7 +1771,6 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
-  { date: "08-03", day: "03", title: "✨新增｜OFAC 7/29扩大制裁：6家中国香港航运企业+6艘船入SDN，制裁网向集装箱/船管/保险全链扩展", desc: "OFAC 7/29新制裁6家中国香港航运企业（BILLION NEXUS、帆起有限公司、MARINOVA FREIGHT、NEVADA SPIRIT、啟航船舶管理、VAST MIGHTY）及6艘关联船舶。同时制裁波斯湾海上保险公司和霍尔木兹安全海事服务管理局。制裁逻辑从SeaLead个案扩展到更广泛的中国航运企业，并覆盖海上保险和安全服务领域——全链条合规压力持续升级。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" }, { text: "US Treasury OFAC", url: "https://home.treasury.gov/news/press-releases/sb0581" }], new: true },
   { date: "08-01", day: "01", title: "SeaLead运力仅4船/9431TEU，全球排名第80（制裁前第13）", desc: "海事服务网CNSS：SeaLead从巅峰20.8万TEU降至4船/9431TEU，全球排名从第13跌至第80。OFAC累计制裁22艘集装箱船，其中16艘由SeaLead租用，已全部终止租约。商业模式基本终结。", tags: [{t:"blue",l:"🔵关注"},{t:"cat",l:"运力数据"}], links: [
     { text: "海事服务网CNSS", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS55UVFEtPDlwn33bMZgcaZAa0hB9ofZfkFqXa8Fplpd9KRzxL2pqfobjnilMvA5ERZKKinBb16w5-NO2xzFbzh0Ivu1SRGvpEL9l91UnpL2UzXqgoup1L7hb6Z3dfLB4Ep7vaaReoDNT-BqRJp6zPffie2rl2RfAvDhlkqaRSBV-O5PbHciGeWa-i9-7m9t4giVqOpS1u88DeN3wUJtoiJwtPujwwRB2Pw..&type=2&query=%E4%B8%AD%E8%81%94%E8%88%AA%E8%BF%90+%E5%88%B6%E8%A3%81+SeaLead" }
   ]},
@@ -1836,6 +1875,7 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-03", day: "03", title: "✨新增｜OFAC 7/29制裁霍尔木兹安全海事服务管理局+波斯湾海上保险公司，中东航运保险链受打击", desc: "OFAC 7/29将伊朗波斯湾海上保险公司（Persian Gulf Marine Insurance Company）与霍尔木兹安全海事服务管理局（HormuzSafe Marine Services Authority）列入SDN。美方称这两家机构拟强迫商船购买强制性海上'保险'才能通过霍尔木兹海峡。这是OFAC首次制裁中东海上保险和安全服务实体，进一步收紧霍尔木兹-红海航道合规要求。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "腾讯新闻", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_6036a6b76b301252" }], new: true },
   { date: "08-03", day: "03", title: "✨新增｜浙江贸促会综合：胡塞禁运后曼德通航量骤降近50%，霍尔木兹锐减至不足200万桶/日，沙特三面受压", desc: "浙江贸促会8月3日综合报道（来源：第一财经/新华社）：①胡塞7/20对沙特实施海上禁运、7/23以导弹+无人机袭击两艘沙特油轮后，克普勒公司数据显示曼德海峡运输量较袭击前平均水平骤降近50%；②胡塞武装高级官员阿萨德7月30日澄清胡塞无意收费，行动仅限于封锁沙特船只；③沙特三面受压：霍尔木兹海峡日通航量从7月初超800万桶锐减至不足200万桶/日，曼德海峡遭威胁，伊拉克方向无人机袭击沙特境内石油设施（沙特防空部队7/27拦截数架无人机）；④美军7月上旬重启对伊朗空袭，连续10余日，霍尔木兹再度梗阻。沙特被迫考虑绕行苏伊士运河出口原油（航程增约1个月+150万美元燃料+100万美元通行费）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"综合报告"}], links: [
     { text: "浙江省贸促会", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_c1f87983320e4a5e9bebba0682ed65d9.html" },
     { text: "第一财经/新华社", url: "https://new.qq.com/rain/a/20260727A033VF00" }
@@ -1843,6 +1883,7 @@ const redseaKeyEvents = [
   { date: "08-03", day: "03", title: "✨新增｜胡塞拟在红海设卡收费：伊朗革命卫队顾问赴荷台达指导建立收费机构，联合国报告月收1.8亿美元", desc: "路透社/法新社8月3日报道：本月初胡塞官员赴德黑兰参加哈梅内伊葬礼期间与伊朗讨论对过境红海船只收费。伊朗革命卫队顾问已在荷台达等地直接指导胡塞建立规范化的海上收费流程与管理架构。也门信息部长向法新社确认胡塞正试图让红海成为主要资金来源。联合国此前报告胡塞曾月收1.8亿美元通行费。来源：网易/路透社。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [
     { text: "网易", url: "https://www.163.com/dy/article/L3D5I0420556974J.html" }
   ], new: true},
+  { date: "08-01", day: "01", title: "✨新增｜沙特在利雅得举办多国海上防卫联盟会议（43国+欧盟），14国联合声明总部设沙特", desc: "8月1日，沙特国防部在利雅得主办多国海上防卫联盟会议，43国和欧盟代表参加。沙特、科威特、巴林等14国发表联合声明支持成立联盟，总部设在沙特。联盟旨在共同应对红海、曼德海峡和亚丁湾的海上威胁，包括商船袭击、能源运输船安全和供应链风险。阿联酋和阿曼缺席。分析人士认为联盟可能导致胡塞武装调整海上行动策略。来源：新华社。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边安全"}], links: [{ text: "新华社/今日头条", url: "https://www.toutiao.com/article/7668992896955122228/" }], new: true},
   { date: "08-01", day: "01", title: "✨新增｜LinkedIn检索：沙特暂停经曼德海峡原油出口，延布港遇袭后日均出货量升至400万桶面临威胁", desc: "早上LinkedIn检索：沙特已将超70%原油出口从波斯湾转至红海延布港经曼德海峡出口，日均出货量从97万升至400万桶。延布遇袭后经曼德出口已暂停。面向亚洲运输改道苏伊士，出口量激增106%达日均106万桶。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"能源安全"}], links: [
     { text: "新浪财经/澎湃", url: "https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaf0338960.shtml" }
   ], new: true},
