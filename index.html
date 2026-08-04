@@ -2297,7 +2297,7 @@ keyEvents.forEach(e => {
   const linksHtml = renderLinks(e.links);
   eventsContainer.innerHTML += `
     <div class="event-row">
-      <div class="event-date">7月<div class="day">${e.day}</div></div>
+      <div class="event-date">${e.date.split('-')[0]}月<div class="day">${e.day}</div></div>
       <div class="event-content">
         <h4>${e.title}</h4>
         <p>${e.desc}</p>
@@ -2341,7 +2341,7 @@ sealeadKeyEvents.forEach(e => {
   const linksHtml = renderLinks(e.links);
   sealeadEventsContainer.innerHTML += `
     <div class="event-row">
-      <div class="event-date">7月<div class="day">${e.day}</div></div>
+      <div class="event-date">${e.date.split('-')[0]}月<div class="day">${e.day}</div></div>
       <div class="event-content">
         <h4>${e.title}</h4>
         <p>${e.desc}</p>
@@ -2385,7 +2385,7 @@ redseaKeyEvents.forEach(e => {
   const linksHtml = renderLinks(e.links);
   redseaEventsContainer.innerHTML += `
     <div class="event-row">
-      <div class="event-date">7月<div class="day">${e.day}</div></div>
+      <div class="event-date">${e.date.split('-')[0]}月<div class="day">${e.day}</div></div>
       <div class="event-content">
         <h4>${e.title}</h4>
         <p>${e.desc}</p>
