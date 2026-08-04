@@ -2292,7 +2292,7 @@ const dailyGrid = document.getElementById('dailyGrid');
 
 // --- Summary page: Events Timeline ---
 const eventsContainer = document.getElementById('eventsTimeline');
-[...keyEvents].reverse().forEach(e => {
+keyEvents.forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   eventsContainer.innerHTML += `
@@ -2336,7 +2336,7 @@ const sealeadDailyGrid = document.getElementById('sealeadDailyGrid');
 
 // --- SeaLead page: Events Timeline ---
 const sealeadEventsContainer = document.getElementById('sealeadEventsTimeline');
-[...sealeadKeyEvents].reverse().forEach(e => {
+sealeadKeyEvents.forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   sealeadEventsContainer.innerHTML += `
@@ -2380,7 +2380,7 @@ const redseaDailyGrid = document.getElementById('redseaDailyGrid');
 
 // --- Red Sea page: Events Timeline ---
 const redseaEventsContainer = document.getElementById('redseaEventsTimeline');
-[...redseaKeyEvents].reverse().forEach(e => {
+redseaKeyEvents.forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   redseaEventsContainer.innerHTML += `
