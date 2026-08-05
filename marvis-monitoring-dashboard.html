@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月4日 周二 22:00 | 晚间微信检索（无新增）",
+  time: "2026年8月5日 周三 08:45 | 上午微信检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "\ud83d\udd34 紧急（8/4 下午LinkedIn检索：曼德+霍尔木兹双海峡通行量同步骤降，沙特油轮关AIS偷渡红海，UKMTO通报3起新袭击，特朗普取消对伊打击美伊开启谈判）",
@@ -1278,6 +1278,24 @@ const dailyData = [
       "美国MARAD发布商船安全指引：关闭AIS、远离也门海岸、遇登船不强行抵抗"
     ]
   },
+  {
+    date: "2026-08-05", display: "8/5", weekday: "周三",
+    status: "red", statusText: "\ud83d\udd34 紧急",
+    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
+    new: true,
+    cuStatus: "未被制裁；RES\ud83d\udd34极高危/CGX\ud83d\udd34高危/CGS\ud83d\udfe1中危/KCI\u26aa低风险；SeaLead终止被制裁船舶合同船队降至第19位，胡塞恢复红海攻击击沉Eternity C号",
+    summary: "8/5下午LinkedIn检索：SeaLead终止被制裁船舶合同船队降至第19位，胡塞恢复攻击击沉Eternity C号",
+    keyEvents: [
+      "\u2728\u65b0\u589e\uff5cSeaLead\u7ec8\u6b62\u5168\u90e8\u88ab\u5236\u88c1\u8239\u8236\u5408\u540c\uff0c\u8239\u961f\u964d\u81f3\u7b2c19\u4f4d\uff0836\u8247/131,710 TEU\uff09",
+      "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6b66\u88c5\u6062\u590d\u7ea2\u6d77\u653b\u51fb\uff0cEternity C\u53f7\u88ab\u51fb\u6c89\uff0c\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u7eed\u7ed5\u597d\u671b\u89d2"
+    ],
+    sealeadEvents: [
+      "\u2728\u65b0\u589e\uff5cSeaLead\u7ec8\u6b62\u88ab\u5236\u88c1\u8239\u8236\u5168\u90e8\u5408\u540c\uff0c16\u8247\u88ab\u5236\u88c1\u8239\u66fe\u5728\u5176\u8fd0\u8425\uff0c\u8239\u961f\u4ece20.8\u4e07TEU\u6807\u81f370,000TEU\u4ee5\u4e0b"
+    ],
+    redseaEvents: [
+      "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6062\u590d\u653b\u51fb\u5e76\u51fb\u6c89Eternity C\u53f7\uff0c\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1779,11 +1797,28 @@ const keyEvents = [
   ]},
   { date: "07-14", day: "14", title: "✨新增｜OFAC 7/14正式公告SeaLead SDN制裁详情——Shamkhani网络关键集装箱航运公司", desc: "美国财政部OFAC发布sb0562公告，正式宣布对Shamkhani网络的新一轮制裁。Sea Lead Shipping PTE. Ltd.（新加坡）及3家子公司（迪拜DMCC、马绍尔群岛Ltd、印度代理）被列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务，旗下SHENTON WAY (IMO 9146314)、TANJONG PAGAR 1 (IMO 9404508)、PAYA LEBAR (IMO 9134232) 被列为冻结资产。截至2026年3月，House of Shipping集团包括Sea Lead全部子公司。本次行动共制裁超50个实体/个人/船只，累计制裁Shamkhani网络超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5cSeaLead\u7ec8\u6b62\u5168\u90e8\u88ab\u5236\u88c1\u8239\u8236\u5408\u540c", desc: "SeaLead 7\u670831\u65e5\u786e\u8ba4\u7ec8\u6b62\u4e0eOFAC\u5236\u88c1\u540d\u5355\u4e0a\u6240\u6709\u8239\u8236\u7684\u79df\u8239\u5408\u540c\uff0c16\u8247\u88ab\u5236\u88c1\u8239\u4e2d\u539f\u7531\u5176\u8fd0\u8425\u3002\u8239\u961f\u6392\u540d\u4ece\u5168\u7403\u7b2c13\u4f4d\u964d\u81f3\u7b2c19\u4f4d\uff0c\u8fd0\u842536\u8247/131,710 TEU\u3002", tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"SeaLead"}], links: [
+    { text: "LinkedIn\u2014Craig Jallal", url: "https://www.linkedin.com/posts/craigjallal_sealead-shipping-ends-contracts-for-sanctioned-activity-7358470581916237825-2sMR" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6b66\u88c5\u6062\u590d\u7ea2\u6d77\u653b\u51fb\uff0cEternity C\u53f7\u88ab\u51fb\u6c89", desc: "\u80e1\u585e\u6b66\u88c52025\u5e747\u6708\u6062\u590d\u653b\u51fb\u540e\u6301\u7eed\u5347\u7ea7\uff0cEternity C\u53f7\u88ab\u51fb\u6c89\u3002\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929\u3002\u822a\u8fd0\u516c\u53f8\u52a0\u6536\u9644\u52a0\u8d39\u8986\u76d6\u989d\u5916\u6210\u672c\u3002", tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u80e1\u585e"}], links: [
+    { text: "Freightways Global", url: "https://freightwaysglobal.com/Red-sea-update" }
   ], new: true}
 ];;;
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-05", day: "05", title: "✨新增｜OFAC 7/24制裁Sea Lead新加坡/迪拜/马绍尔实体+印度代理+3艘集装箱船，运力从第13暴跌至第80仅余4艘", desc: "OFAC 7/24将Sea Lead Shipping新加坡、迪拜、马绍尔群岛运营实体及印度代理列入黑名单。同步制裁Paya Lebar(4211TEU)、Shenton Way(2008TEU)、Tanjong Pagar 1(920TEU)三艘集装箱船。SeaLead从全球第13跌至第80，仅剩4艘船，运营几近停摆。Paya Lebar号曾在美伊冲突期间4次穿越霍尔木兹海峡。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}],
+    links: [{ text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }, { text: "Seafh", url: "https://seafh.com/x/4027" }], new: true},
+
+  { date: "08-05", day: "05", title: "✨新增｜中联航运(CULines)与MSC迅速接手SeaLead退租的5艘Danaos船舶运力", desc: "SeaLead此前租用的5艘船舶退租希腊船东Danaos后，中联航运与地中海航运(MSC)迅速出手租入这批运力。CULines借此扩张远东-中东航线运力。需持续关注是否引发次级制裁风险。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}],
+    links: [{ text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }], new: true},
+
+  { date: "08-05", day: "05", title: "✨新增｜美国司法部3/6起诉SeaLead：指控其充当伊朗侯赛因·沙姆哈尼“黑暗船队”网络合法门面", desc: "2026年3月6日，美国司法部对SeaLead提起诉讼，指控其充当伊朗核心人物侯赛因·沙姆哈尼(Hossein Shamkhani)旗下“黑暗船队”网络的合法门面。司法部律师在民事没收诉状中指控SeaLead与沙姆哈尼旗下Admiral Shipping品牌区隔“目的就是为了规避制裁”。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"司法诉讼"}],
+    links: [{ text: "海事服务网CNSS", url: "https://www.cnss.com.cn/html/cnss/finance/article/2026/84c179daf8e04c80bb7f3fc1bf7f4c5d.html" }], new: true},
   { date: "08-04", day: "04", title: "\u672c\u6b21LinkedIn\u68c0\u7d22\u65e0SeaLead\u91cd\u5927\u65b0\u52a8\u6001\uff0c\u4e4b\u524dOFAC\u5236\u88c1\u53ca\u8fd0\u529b\u840e\u7f29\u4fe1\u606f\u5df2\u5145\u5206\u8986\u76d6", desc: "SeaLead\u5236\u88c1\u4e8b\u4ef6\u5728\u884c\u4e1a\u5185\u6301\u7eed\u53d1\u9175\uff0c\u4f468\u67084\u65e5\u4e0b\u5348LinkedIn\u68c0\u7d22\uff08keyword=SeaLead sealead shipping red sea houthi container\uff09\u672a\u53d1\u73b0\u8d85\u8d8a\u5df2\u6709\u8bb0\u5f55\u7684\u5b9e\u8d28\u65b0\u52a8\u6001\u3002CNSS/\u6d77\u5458\u4e4b\u5bb6\u7b49\u4e2d\u6587\u822a\u8fd0\u5a92\u4f53\u4ecd\u5728\u4f20\u64ad7\u6708\u5236\u88c1\u8be6\u60c5\u3002", tags: [{t:"blue",l:"\ud83d\udd35\u5173\u6ce8"},{t:"cat",l:"LinkedIn\u68c0\u7d22"}], links: [] },
   { date: "08-01", day: "01", title: "SeaLead运力仅4船/9431TEU，全球排名第80（制裁前第13）", desc: "海事服务网CNSS：SeaLead从巅峰20.8万TEU降至4船/9431TEU，全球排名从第13跌至第80。OFAC累计制裁22艘集装箱船，其中16艘由SeaLead租用，已全部终止租约。商业模式基本终结。", tags: [{t:"blue",l:"🔵关注"},{t:"cat",l:"运力数据"}], links: [
     { text: "海事服务网CNSS", url: "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS55UVFEtPDlwn33bMZgcaZAa0hB9ofZfkFqXa8Fplpd9KRzxL2pqfobjnilMvA5ERZKKinBb16w5-NO2xzFbzh0Ivu1SRGvpEL9l91UnpL2UzXqgoup1L7hb6Z3dfLB4Ep7vaaReoDNT-BqRJp6zPffie2rl2RfAvDhlkqaRSBV-O5PbHciGeWa-i9-7m9t4giVqOpS1u88DeN3wUJtoiJwtPujwwRB2Pw..&type=2&query=%E4%B8%AD%E8%81%94%E8%88%AA%E8%BF%90+%E5%88%B6%E8%A3%81+SeaLead" }
@@ -1884,11 +1919,25 @@ const sealeadKeyEvents = [
   ]},
   { date: "07-14", day: "14", title: "✨新增｜OFAC正式公告SeaLead SDN制裁详情：被指控为胡塞武装提供运输支持", desc: "美国财政部OFAC 7/14发布sb0562公告确认Sea Lead Shipping PTE. Ltd.（新加坡）+3家子公司（迪拜DMCC、马绍尔群岛、印度代理）全部列入SDN。OFAC指控SeaLead为胡塞武装（Ansarallah）提供运输服务。SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘现役船全部被列为冻结资产。本次行动制裁超50个主体，累计Shamkhani网络被制裁超200主体。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
     { text: "OFAC Treasury sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5cSeaLead\u7ec8\u6b62\u88ab\u5236\u88c1\u8239\u8236\u5168\u90e8\u5408\u540c", desc: "SeaLead\u786e\u8ba4\u5df2\u7ec8\u6b62\u4e0eOFAC\u5236\u88c1\u540d\u5355\u4e0a\u6240\u6709\u8239\u8236\u7684\u79df\u8239\u5408\u540c\u548c\u76f8\u5173\u534f\u8bae\u300216\u8247\u88ab\u5236\u88c1\u8239\u66fe\u5728\u5176\u8fd0\u8425\u3002\u8239\u961f\u4ece5\u6708208,000 TEU\u6808\u8dcc\u81f370,000 TEU\u4ee5\u4e0b\u3002", tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"SeaLead\u5236\u88c1"}], links: [
+    { text: "LinkedIn\u2014Craig Jallal", url: "https://www.linkedin.com/posts/craigjallal_sealead-shipping-ends-contracts-for-sanctioned-activity-7358470581916237825-2sMR" }
   ], new: true}
 ];;;
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-05", day: "05", title: "✨新增｜胡塞武装7/20宣布对沙特实施海上禁运，警告与沙特港口贸易船只可能遭军事打击", desc: "2026年7月20日，也门胡塞武装宣布对沙特阿拉伯实施海上禁运，警告国际航运公司与沙特港口开展贸易往来的船只可能面临军事打击。曼德海峡船舶通行量大幅下降，航运绕行风险与保费成本显著上升。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}],
+    links: [{ text: "人民网", url: "https://world.people.com.cn/n1/2026/0803/c1002-40773164.html" }, { text: "南方周末", url: "https://www.infzm.com/wap#/content/327453" }], new: true},
+
+  { date: "08-05", day: "05", title: "✨新增｜截至7/26至少5艘沙特油轮遇袭、16艘船只被迫调头，曼德海峡通行量骤降", desc: "据胡塞武装披露数据，截至7月26日至少5艘沙特油轮遇袭，16艘船只被迫调头。曼德海峡船舶通行量大幅下降，航运企业绕行风险与保费成本显著上升，地区供应链不确定性持续加剧。全球约12%的海运石油经此运输。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}],
+    links: [{ text: "人民网", url: "https://world.people.com.cn/n1/2026/0803/c1002-40773164.html" }, { text: "南方周末", url: "https://www.infzm.com/wap#/content/327453" }], new: true},
+
+  { date: "08-05", day: "05", title: "✨新增｜导火索：7/13沙特主导联军空袭萨那机场跑道阻止伊朗航班降落，四年事实停火破裂", desc: "2026年7月13日，一架搭载胡塞武装代表团的伊朗客机计划降落萨那国际机场，也门政府军空袭机场跑道阻止其降落。胡塞武装将此次行动归咎于沙特主导的联军，随即对也门政府军阵地发动袭击。双方从机场设施攻防扩展至全域火力互袭，也门持续近四年的事实停火格局宣告破裂。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}],
+    links: [{ text: "人民网", url: "https://world.people.com.cn/n1/2026/0803/c1002-40773164.html" }, { text: "南方周末", url: "https://www.infzm.com/wap#/content/327453" }], new: true},
   { date: "08-04", day: "04", title: "\u2728\u65b0\u589e\uff5cmaritimenews 7\u6708\u7ea2\u6d77\u7efc\u5408\u62a5\u544a\uff1a\u8377\u53f0\u8fbe\u5c0f\u8247\u88ad\u51fb+\u5b89\u7406\u4f1a\u51b3\u8bae2812\u5ef6\u957f\u6708\u62a5\u4e49\u52a1+MARAD\u5546\u8239\u5b89\u5168\u6307\u5f15", desc: "\u24607\u6708\u521d\u8377\u53f0\u8fbe\u6d77\u57df\u8d27\u8239\u906d\u5c0f\u8247\u88ad\u51fb\uff08\u5b89\u4fdd\u4eba\u5458\u8fd8\u51fb\u903c\u9000\uff0c\u8239\u5458\u5b89\u5168\uff09\uff1b\u2461UN\u5b89\u7406\u4f1a\u51b3\u8bae2812\u5ef6\u957f\u7ea2\u6d77\u88ad\u51fb\u6708\u62a5\u4e49\u52a1\u81f32026\u5e747\u670815\u65e5\uff1b\u2462\u7f8e\u56fdMARAD\u53d1\u5e03\u5546\u8239\u5b89\u5168\u6307\u5f15\uff08\u5173\u95edAIS\u3001\u8fdc\u79bb\u4e5f\u95e8\u6d77\u5cb8\u3001\u5411NAVCENT\u6c47\u62a5\u4f4d\u7f6e\u3001\u9047\u767b\u8239\u4e0d\u5f3a\u884c\u62b5\u6297\uff09\uff1b\u2463\u82cf\u4f0a\u58eb\u8fd0\u6cb3\u901a\u822a\u91cf\u6062\u590d\u81f32025\u5e74\u524d\u6c34\u5e73\uff1b\u2464\u627f\u8fd0\u4eba\u91c7\u53d6\u6df7\u5408\u7b56\u7565\u3002\u6765\u6e90\uff1amaritimenews.com\u3002", tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"\u7ea2\u6d77\u5b89\u5168\u5206\u6790"}], links: [
     { text: "maritimenews.com", url: "https://www.maritimenews.com/red-sea/red-sea-shipping-july-2026-developments" }
   ], new: true},
@@ -2206,7 +2255,10 @@ const redseaKeyEvents = [
     { text: "航运界/网易", url: "https://www.163.com/dy/article/L1T4N56M051985LJ.html" },
     { text: "搜狐", url: "https://www.sohu.com/a/1052717658_122014422" }
   ]},
-  { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] }
+  { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] },
+  { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6062\u590d\u653b\u51fb\u5e76\u51fb\u6c89Eternity C\u53f7", desc: "\u80e1\u585e\u6b66\u88c52025\u5e747\u6708\u6062\u590d\u7ea2\u6d77\u653b\u51fb\uff0cEternity C\u53f7\u88ab\u51fb\u6c89\u3002\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929\u3002US\u53ca\u5176\u76df\u53cb\u6301\u7eed\u519b\u4e8b\u54cd\u5e94\u3002", tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u80e1\u585e\u7ea2\u6d77"}], links: [
+    { text: "Freightways Global", url: "https://freightwaysglobal.com/Red-sea-update" }
+  ], new: true}
 ];;;
 
 // ========== HELPER: Render source links ==========
