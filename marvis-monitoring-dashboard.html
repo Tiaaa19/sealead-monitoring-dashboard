@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月5日 下午微信检索",
+  time: "2026-08-05 下午LinkedIn检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "\ud83d\udd34 紧急（8/4 下午LinkedIn检索：曼德+霍尔木兹双海峡通行量同步骤降，沙特油轮关AIS偷渡红海，UKMTO通报3起新袭击，特朗普取消对伊打击美伊开启谈判）",
@@ -1269,7 +1269,8 @@ const dailyData = [
     ],
     redseaEvents: [
       "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6062\u590d\u653b\u51fb\u5e76\u51fb\u6c89Eternity C\u53f7\uff0c\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929"
-    ]
+    ],
+  },
   {
     date: "2026-08-05", display: "8/5", weekday: "周三",
     status: "red", statusText: "🔴 紧急",
@@ -1288,7 +1289,6 @@ const dailyData = [
       "✨新增｜7/28曼德海峡通行骤降至11艘，战争保费飙至船价12%，沙特原油暂停经曼德出口改道苏伊士",
       "✨新增｜胡塞7/20对沙海上禁运，6艘沙特油轮绕行好望角，沙特7/30邀数十国筹建多国海上防卫联盟"
     ]
-  },
   },
 ];
 
@@ -1797,6 +1797,15 @@ const keyEvents = [
   ], new: true},
   { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6b66\u88c5\u6062\u590d\u7ea2\u6d77\u653b\u51fb\uff0cEternity C\u53f7\u88ab\u51fb\u6c89", desc: "\u80e1\u585e\u6b66\u88c52025\u5e747\u6708\u6062\u590d\u653b\u51fb\u540e\u6301\u7eed\u5347\u7ea7\uff0cEternity C\u53f7\u88ab\u51fb\u6c89\u3002\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929\u3002\u822a\u8fd0\u516c\u53f8\u52a0\u6536\u9644\u52a0\u8d39\u8986\u76d6\u989d\u5916\u6210\u672c\u3002", tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u80e1\u585e"}], links: [
     { text: "Freightways Global", url: "https://freightwaysglobal.com/Red-sea-update" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "✨新增｜Lloyd's List Intelligence：7月20-26日曼德海峡AIS可追踪过境225次降28%，暗航增加，中国国有VLCC撤出红海", desc: "Lloyd's List红海简报7/30：AIS可追踪过境225次（前周311次），暗航38次。仅1艘原油油轮7/23后挂靠沙特红海港。7/27日11艘压载原油油轮在延布附近关闭AIS。中国大型国有油轮运营商撤出红海贸易。集装箱板块保持韧性：18家集运公司在7/21-27间通过曼德海峡。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海数据"}], links: [
+    { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "✨新增｜霍尔木兹海峡7/28仅8艘商船通过降约90%，VLCC降95%；曼德7/28反弹至39艘", desc: "ShipUniverse 7/29：7/28仅8艘商船通过霍尔木兹（5进3出），较冲突前降约90%。同期VLCC降95%。曼德海峡7/28反弹至39艘（前日28艘），月峰值46艘（7/14）。两条关键航道通行严重分化：Bab ≈ 5× Hormuz。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"霍尔木兹"}], links: [
+    { text: "ShipUniverse", url: "https://www.shipuniverse.com/news/red-sea-traffic-rebounds-to-39-ships-as-hormuz-remains-severely-constrained" }
+  ], new: true},
+  { date: "08-05", day: "05", title: "✨新增｜马士基第三条航线WAF6重返苏伊士-红海，AE15/MECL/WAF6三线复航", desc: "继AE15、MECL航线后，马士基7/13宣布WAF6航线重返苏伊士运河-红海航行。WAF6连接中东-地中海-西非市场。截至7/27已有18家集运公司通行曼德海峡，集装箱板块保持韧性。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"马士基"}], links: [
+    { text: "浙江省贸促会", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_eeee3b1212c347199db425cd3d230a4a.html" }
   ], new: true}
 ];;;
 
@@ -1916,14 +1925,16 @@ const sealeadKeyEvents = [
   ], new: true},
   { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5cSeaLead\u7ec8\u6b62\u88ab\u5236\u88c1\u8239\u8236\u5168\u90e8\u5408\u540c", desc: "SeaLead\u786e\u8ba4\u5df2\u7ec8\u6b62\u4e0eOFAC\u5236\u88c1\u540d\u5355\u4e0a\u6240\u6709\u8239\u8236\u7684\u79df\u8239\u5408\u540c\u548c\u76f8\u5173\u534f\u8bae\u300216\u8247\u88ab\u5236\u88c1\u8239\u66fe\u5728\u5176\u8fd0\u8425\u3002\u8239\u961f\u4ece5\u6708208,000 TEU\u6808\u8dcc\u81f370,000 TEU\u4ee5\u4e0b\u3002", tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"SeaLead\u5236\u88c1"}], links: [
     { text: "LinkedIn\u2014Craig Jallal", url: "https://www.linkedin.com/posts/craigjallal_sealead-shipping-ends-contracts-for-sanctioned-activity-7358470581916237825-2sMR" }
-  ], new: true}
+  ], new: true},
 
   { date: "08-05", day: "05", title: "✨新增｜OFAC 7/24制裁Sea Lead新加坡/迪拜/马绍尔/印度全子公司+3艘集装箱船，指控其为伊朗Shamkhani网络核心、向胡塞提供运输支持", desc: "2026年7月24日OFAC将Sea Lead Shipping PTE. Ltd.（海领船务）新加坡总部、迪拜DMCC、马绍尔群岛、印度代理全部列入SDN，同步制裁SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘集装箱船。SeaLead被定性为沙姆哈尼非法航运网络关键集装箱实体，向胡塞武装提供运输支持。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}],
-    links: [{ text: "壹航运/网易", url: "https://www.163.com/dy/article/L2K2JUC90534WH9H.html" }, { text: "OFAC sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }], new: true},];;;
+    links: [{ text: "壹航运/网易", url: "https://www.163.com/dy/article/L2K2JUC90534WH9H.html" }, { text: "OFAC sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }], new: true}];;;
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-05", day: "05", title: "✨新增｜Lloyd's List Intelligence：7月20-26日曼德海峡AIS可追踪过境225次降28%，暗航增加，中国国有VLCC撤出红海", desc: "Lloyd's List红海简报7/30：AIS可追踪过境225次（前周311次），暗航38次。仅1艘原油油轮7/23后挂靠沙特红海港。7/27日11艘压载原油油轮在延布附近关闭AIS。中国大型国有油轮运营商撤出红海贸易。集装箱板块保持韧性：18家集运公司在7/21-27间通过曼德海峡。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海数据"}], links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }], new: true},
+  { date: "08-05", day: "05", title: "✨新增｜霍尔木兹海峡7/28仅8艘商船通过降约90%，VLCC降95%；曼德7/28反弹至39艘", desc: "ShipUniverse 7/29：7/28仅8艘商船通过霍尔木兹（5进3出），较冲突前降约90%。同期VLCC降95%。曼德海峡7/28反弹至39艘（前日28艘），月峰值46艘（7/14）。两条关键航道通行严重分化：Bab ≈ 5× Hormuz。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"霍尔木兹"}], links: [{ text: "ShipUniverse", url: "https://www.shipuniverse.com/news/red-sea-traffic-rebounds-to-39-ships-as-hormuz-remains-severely-constrained" }], new: true},
   { date: "08-05", day: "05", title: "✨新增｜胡塞武装7/20宣布对沙特实施海上禁运，警告与沙特港口贸易船只可能遭军事打击", desc: "2026年7月20日，也门胡塞武装宣布对沙特阿拉伯实施海上禁运，警告国际航运公司与沙特港口开展贸易往来的船只可能面临军事打击。曼德海峡船舶通行量大幅下降，航运绕行风险与保费成本显著上升。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}],
     links: [{ text: "人民网", url: "https://world.people.com.cn/n1/2026/0803/c1002-40773164.html" }, { text: "南方周末", url: "https://www.infzm.com/wap#/content/327453" }], new: true},
@@ -2255,7 +2266,7 @@ const redseaKeyEvents = [
   { date: "07-16", day: "16", title: "美军重新封锁伊朗港口", desc: "20余艘战舰+数百架军机部署中东，商业船舶进出伊朗港口被禁止。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"军事行动"}], links: [] },
   { date: "08-05", day: "05", title: "\u2728\u65b0\u589e\uff5c\u80e1\u585e\u6062\u590d\u653b\u51fb\u5e76\u51fb\u6c89Eternity C\u53f7", desc: "\u80e1\u585e\u6b66\u88c52025\u5e747\u6708\u6062\u590d\u7ea2\u6d77\u653b\u51fb\uff0cEternity C\u53f7\u88ab\u51fb\u6c89\u3002\u5927\u591a\u6570\u96c6\u88c5\u7bb1\u8239\u4ecd\u7ed5\u9053\u597d\u671b\u89d2\uff0c\u822a\u7a0b\u5ef6\u957f14-30\u5929\u3002US\u53ca\u5176\u76df\u53cb\u6301\u7eed\u519b\u4e8b\u54cd\u5e94\u3002", tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u80e1\u585e\u7ea2\u6d77"}], links: [
     { text: "Freightways Global", url: "https://freightwaysglobal.com/Red-sea-update" }
-  ], new: true}
+  ], new: true},
 
   { date: "08-05", day: "05", title: "✨新增｜7/28红海波斯湾双要道同时告急：曼德26日仅11艘货船，战争保费飙至船价12%，BIMCO警告油价或站上120美元", desc: "2026年7月28日曼德海峡与霍尔木兹海峡同时告急。26日曼德通行货船骤降至11艘创数月最低。战争风险保费飙至船价12%。沙特经曼德海峡原油出口实际暂停，改道苏伊士运河南下亚洲航线航程翻倍。BIMCO警告双海峡若长期中断全球石油库存年内耗尽。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}],
