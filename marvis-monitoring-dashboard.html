@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-06 下午LinkedIn检索·无新增",
+  time: "2026-08-06 上午微信检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "\ud83d\udd34 紧急（8/6 下午LinkedIn检索：所有检索结果均为已记录事件重复，无新增内容。红海局势：曼德+霍尔木兹双海峡通行量维持低位，胡塞持续打击沙特关联油轮，劳合社多家战争险承保商撤保。）",
@@ -1290,6 +1290,50 @@ const dailyData = [
       "✨新增｜胡塞7/20对沙海上禁运，6艘沙特油轮绕行好望角，沙特7/30邀数十国筹建多国海上防卫联盟"
     ]
   },
+  {
+    date: "2026-08-06", display: "8/6", weekday: "周四",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 4, redCount: 4, yellowCount: 0, blueCount: 0,
+    cuStatus: "SeaLead入清算，胡塞加剧红海攻击击沉印度货船，伦敦保险商扩大红海高风险区，战争保费预计涨超50%",
+    summary: "8/6 LinkedIn检索：SeaLead入清算+胡塞加剧红海攻击击沉货船+伦敦保险商扩大高风险区+胡塞否认收费计划",
+    keyEvents: [
+      "✨新增｜SeaLead正式进入清算程序（cosimo Borrelli任清算人），宣称净资产$37.4M能偿还所有债务，从全球第13跌至第80",
+      "✨新增｜胡塞加剧红海攻势：导弹袭击荷台达港+沙特油轮，16名沙特士兵丧生，印度货船被击沉",
+      "✨新增｜伦敦海上保险商扩大红海高风险区，战争保费预计一周内涨超50%，船东面临绕行/付费/改港三选一",
+      "✨新增｜货船FAIZE NOORE OLIYA号红海被袭沉没，14名船员全部获救（13印度+1也门），归咎胡塞武装"
+    ],
+    sealeadEvents: [
+      "✨新增｜SeaLead停止运营进入自愿清算，委任Admiralty Asia Partners的Cosimo Borrelli为清算人，宣称净资产$37.4M可在一年内偿还所有债务。OFAC制裁、DoJ民事没收$2.4M、美伊冲突三重打击导致其崩溃。股东：Meteor Capital 33%、Hummingbird Capital 32%、Preetha Sunil Kumar 20%、Access Capital Funds 15%"
+    ],
+    redseaEvents: [
+      "✨新增｜胡塞8月5日加剧红海攻势：导弹袭击荷台达港造成16名沙特士兵丧生22人受伤，宣布将\u201c关闭所有通往沙特石油运输的通道\u201d，印度货船在也门海岸被击沉",
+      "✨新增｜伦敦JWC扩大红海高风险区，战争保费预计一周内涨超50%，航程延长10-14天+燃料增耗800-1000吨/航次，熔断失成本不能自动转嫁承租人",
+      "✨新增｜胡塞HOCC 8月1日否认收费计划，声称\u201c安全通行\u201d服务完全自愿且免费，警告船东不要向任何声称代表其的组织付费",
+      "✨新增｜8月4日货船FAIZE NOORE OLIYA号在荷台达港以南约13海里被装有爆炸物船只袭击后沉没，14名船员全部获救（13印度+1也门），也门政府军归咎胡塞"
+    ]
+  },
+  {
+    date: "2026-08-06", display: "8/6", weekday: "周四",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 5, redCount: 5, yellowCount: 0, blueCount: 0,
+    cuStatus: "OFAC正式制裁Sea Lead全子公司；胡塞首次击沉非沙特商船（印度货轮），红海风险升级至所有商船；中远海能VLCC绕行非洲",
+    summary: "上午微信检索：OFAC正式制裁SeaLead及10+艘集装箱船；胡塞一天两次袭击沙特油轮；印度货轮被击沉；中远海能VLCC绕行非洲",
+    keyEvents: [
+      "OFAC 7/24正式制裁海领船务Sea Lead及10+艘集装箱船",
+      "中联航运接手SeaLead两艘万箱船扩张远东-中东航线",
+      "胡塞武装8/5两次袭击沙特油轮累计8艘被袭",
+      "印度货轮奥利娅号红海被击沉——胡塞首次袭击非沙特船只",
+      "中远海能VLCC远喜湖绕行非洲规避红海封锁"
+    ],
+    sealeadEvents: [
+      "OFAC 7/24正式制裁Sea Lead Shipping及10+艘集装箱船，中联航运接手Express Berlin/Racine"
+    ],
+    redseaEvents: [
+      "胡塞8/5两次袭击沙特油轮累计8艘被袭",
+      "印度奥利娅号被击沉——红海风险升至所有商船",
+      "中远海能VLCC远喜湖绕行非洲"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1929,7 +1973,14 @@ const sealeadKeyEvents = [
 
   { date: "08-05", day: "05", title: "✨新增｜OFAC 7/24制裁Sea Lead新加坡/迪拜/马绍尔/印度全子公司+3艘集装箱船，指控其为伊朗Shamkhani网络核心、向胡塞提供运输支持", desc: "2026年7月24日OFAC将Sea Lead Shipping PTE. Ltd.（海领船务）新加坡总部、迪拜DMCC、马绍尔群岛、印度代理全部列入SDN，同步制裁SHENTON WAY/TANJONG PAGAR 1/PAYA LEBAR三艘集装箱船。SeaLead被定性为沙姆哈尼非法航运网络关键集装箱实体，向胡塞武装提供运输支持。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}],
-    links: [{ text: "壹航运/网易", url: "https://www.163.com/dy/article/L2K2JUC90534WH9H.html" }, { text: "OFAC sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }], new: true}];;;
+    links: [{ text: "壹航运/网易", url: "https://www.163.com/dy/article/L2K2JUC90534WH9H.html" }, { text: "OFAC sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }], new: true},
+
+  { date: "08-06", day: "06", title: "✨新增｜OFAC正式制裁Sea Lead Shipping及10+艘集装箱船", desc: "美国财政部OFAC宣布制裁海领船务(Sea Lead Shipping)及其迪拜、马绍尔群岛、印度关联企业，同步制裁SHENTON WAY、TANJONG PAGAR 1、PAYA LEBAR等十余艘集装箱船，所有在美资产遭冻结，美企及非美企业均不得与其交易。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}],
+    links: [{ text: "seafh.com", url: "https://seafh.com/x/4027" }], new: true},
+  { date: "08-06", day: "06", title: "✨新增｜中联航运接手SeaLead两艘万箱船扩张远东-中东航线", desc: "希腊船东Danaos Corp将此前租给海领船务的5艘船解约，中联航运租入Express Berlin(10114TEU)和Racine(6758TEU)两艘，用于扩大远东至中东航线服务。SeaLead船队从峰值20.8万TEU锐减至约5万TEU，全球排名从第13跌至第35。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}],
+    links: [{ text: "海事服务网CNSS", url: "http://www.e-hang.net/wap/detail/post-575525.html" }], new: true},];;;
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
@@ -2273,7 +2324,17 @@ const redseaKeyEvents = [
     links: [{ text: "澎湃新闻/网易", url: "https://www.163.com/dy/article/L2ULNRNR05567I2C.html" }], new: true},
   { date: "08-05", day: "05", title: "✨新增｜胡塞7/20对沙禁运后6艘沙特油轮绕行好望角，沙特7/30筹建多国海上防卫联盟，亚欧海运格局面临重构", desc: "2026年8月调研：胡塞武装7月20日宣布对沙特实施曼德海峡海上禁运后，6艘沙特油轮改道非洲南部绕行好望角。7月30日沙特邀请数十国筹建多国海上防卫联盟。胡塞被指定向针对沙特船只，全面封锁国际航道可能性低但航线长期不稳定将重构亚欧海运格局。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘安全"}],
-    links: [{ text: "环球时报/搜狐", url: "https://www.sohu.com/a/1058876268_162522" }], new: true},];;;
+    links: [{ text: "环球时报/搜狐", url: "https://www.sohu.com/a/1058876268_162522" }], new: true},
+
+  { date: "08-06", day: "06", title: "✨新增｜胡塞武装一天内两次袭击沙特油轮，累计8艘被袭", desc: "胡塞武装8月5日发射弹道导弹击中\u201c黛西\u201d号油轮并迫使其返航，同日还袭击了红海北部延布附近另一艘沙特油轮。自7月下旬对沙特实施海上封锁以来，已累计袭击8艘沙特油轮，拦截并迫使29艘返航。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞武装"}],
+    links: [{ text: "新华网", url: "https://www.news.cn/milpro/20260806/bef93fe56c4b4b01b49d3330844d630a/c.html" }], new: true},
+  { date: "08-06", day: "06", title: "✨新增｜印度货轮\u201c奥利娅\u201d号红海被击沉——首艘非沙特船只遭袭", desc: "悬挂印度国旗的\u201c奥利娅\u201d号货轮在红海被击中后倾覆沉没，14名船员全部获救(13名印度籍)。这是胡塞武装首次袭击非沙特关联商船，标志着红海风险升级至所有商船均可能成为目标。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}],
+    links: [{ text: "网易新闻", url: "https://www.163.com/dy/article/L3KGDMAI05564850.html" }], new: true},
+  { date: "08-06", day: "06", title: "✨新增｜中远海能VLCC\u201c远喜湖\u201d绕行非洲规避红海封锁", desc: "中远海运集团旗下33万吨级VLCC\u201c远喜湖\u201d号以空载状态通过苏伊士运河，目的地埃及西迪基里尔码头。该船此前因胡塞武装封锁滞留在沙特延布港外海，现改为绕行非洲航线。港股中远海能(01138)早盘跌近6%。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"中国船企"}],
+    links: [{ text: "智通财经", url: "https://www.zhitongcaijing.com/content/detail/1476604.html" }], new: true},];;;
 
 // ========== HELPER: Render source links ==========
 let _srcId = 0;
