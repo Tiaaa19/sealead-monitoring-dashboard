@@ -641,42 +641,58 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-06 下午LinkedIn检索·无新增",
+  time: "2026年8月6日 周四 08:45 | 上午微信检索",
   source: "微信检索(web_search+web_fetch)",
   status: "red",
-  statusText: "\ud83d\udd34 紧急（8/6 下午LinkedIn检索：所有检索结果均为已记录事件重复，无新增内容。红海局势：曼德+霍尔木兹双海峡通行量维持低位，胡塞持续打击沙特关联油轮，劳合社多家战争险承保商撤保。）",
-  vs: "vs上午监测：本轮下午LinkedIn检索\"SeaLead shipping OFAC制裁 2026\"+\"红海 航运 最新 2026年7月\"，所有命中结果（OFAC sb0562制裁SeaLead子公司/SHENTON WAY等3艘船/CULines租入Express Berlin/胡塞封锁沙特/曼德通航降28%/劳合社撤保/双峡告急/马士基MECL重返/Suez附加费）均与现有new:true条目高度重合，无新增。",
-  findings: [    {
+  statusText: "\ud83d\udd34 紧急（8/6上午微信检索：胡塞一天两次袭击沙特油轮+印度货船首沉红海，胡塞累计袭击8艘/拦截29艘沙特油轮，风险向曼德海峡和苏伊士运河蔓延）",
+  vs: "vs上午监测：本轮上午微信检索\"SeaLead 中联航运 制裁 2026\"+\"红海 胡塞 航运 最新\"，命中新华网/新浪财经+网易。焦点：①胡塞8/5一天两次袭击沙特油轮（亚丁湾“黛西”号+红海北部延布附近），累计袭击8艘/拦截29艘；②印度货船“法伊兹·努尔·奥利亚”号首沉红海，14船员获救，战事外溢至曼德-苏伊士全线（⬅新增）；③SeaLead/CULines无新增制裁动态。"
+  findings: [
+    {
       level: "red",
-      title: "✨新增｜OFAC 7/24制裁Sea Lead Shipping（海领船务）新加坡/迪拜/马绍尔/印度子公司+3艘集装箱船",
-      desc: "美国财政部OFAC于2026年7月24日将新加坡注册的Sea Lead Shipping PTE. Ltd.及迪拜Sea Lead Shipping DMCC、马绍尔Sea Lead Shipping Marshall Islands Ltd、印度Sea Lead Shipping Agency India Private Limited全部列入SDN制裁名单，指控其为伊朗沙姆哈尼网络的关键集装箱航运企业、向胡塞武装提供运输支持。同步制裁巴拿马旗SHENTON WAY(IMO:9146314)、TANJONG PAGAR 1(IMO:9404508)、安提瓜和巴布达旗PAYA LEBAR(IMO:9134232)三艘集装箱船。来源：壹航运/网易。",
+      title: "\ud83d\udd34 胡塞8/5一天内袭击两艘沙特油轮——亚丁湾“黛西”号+红海北部延布附近，累计袭击8艘/拦截29艘",
+      desc: "新华社8月5日电：胡塞武装5日两次宣布袭击沙特油轮。晚间发射弹道导弹击中亚丁湾“黛西”号(Daisy)，该船被迫返航；上午发射多枚弹道导弹精准打击红海北部延布港附近一艘沙特油轮。自7月下旬对沙特实施海上封锁以来，胡塞已累计袭击8艘沙特油轮，在红海和阿拉伯海累计拦截并迫使29艘沙特油轮返航。胡塞称正密切监视沙特油轮，将阻止它们通过红海南部和北部。来源：新华网/新浪财经。",
       links: [
-        { text: "OFAC sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" },
-        { text: "壹航运/网易", url: "https://www.163.com/dy/article/L2K2JUC90534WH9H.html" }
+        { text: "新华网/新浪财经", url: "https://finance.sina.com.cn/jjxw/2026-08-06/doc-inimiqxt4064996.shtml" }
       ]
     },
     {
       level: "red",
-      title: "✨新增｜7/28红海与波斯湾双要道同时告急：曼德海峡26日仅11艘货船创数月最低，战争保费飙至船价12%",
-      desc: "2026年7月28日，曼德海峡与霍尔木兹海峡同时告急。26日曼德海峡通行货船骤降至11艘创数月最低。战争风险保费飙升至船价12%（战前0.25%）。沙特经曼德海峡原油出口实际暂停，改道苏伊士运河南下亚洲航线航程翻倍。BIMCO警告双海峡若长期中断，全球石油库存年内耗尽，油价或持续站上120美元/桶。来源：澎湃新闻/网易。",
+      title: "\ud83d\udd34 印度货船“法伊兹·努尔·奥利亚”号在红海沉没——印度船只首次遇袭，14名船员获救",
+      desc: "网易8月6日报道：8月4日印度籍货船“法伊兹·努尔·奥利亚”(Faiz Nur Oliya)号在也门荷台达以南约13海里处遭一艘装载爆炸物的小船袭击后倾覆沉没。船上14名船员（13名印度人+1名外籍）被也门海岸警卫队救起，全部安全。这是印度船只首次在红海遇袭沉没。印度外交部强烈谴责并呼吁停止对商船的袭击。袭击表明战事已超出霍尔木兹海峡，航运风险蔓延至曼德海峡和苏伊士运河等关键水道。沙特通过西部港口绕开霍尔木兹出口石油的战略受到威胁。来源：网易。",
       links: [
-        { text: "澎湃新闻/网易", url: "https://www.163.com/dy/article/L2ULNRNR05567I2C.html" }
+        { text: "网易", url: "https://www.163.com/dy/article/L3K6TR56055616WO.html" }
       ]
     },
     {
       level: "yellow",
-      title: "✨新增｜8月调研：胡塞7/20宣布对沙海上禁运，6艘沙特油轮绕行好望角，沙特筹建多国海上防卫联盟",
-      desc: "2026年8月调研显示：胡塞武装7月20日宣布对沙特实施曼德海峡海上禁运后，6艘沙特油轮改道非洲南部绕行好望角。7月30日沙特邀请数十国筹建多国海上防卫联盟。胡塞被指定向针对沙特船只，全面封锁国际航道可能性低，但航线长期不稳定将重构亚欧海运格局。来源：环球时报/搜狐。",
-      links: [
-        { text: "环球时报/搜狐", url: "https://www.sohu.com/a/1058876268_162522" }
-      ]
+      title: "本轮检索无SeaLead/CULines新增制裁动态——OFAC 7/24制裁信息已充分覆盖",
+      desc: "上午微信检索SeaLead/CULines制裁相关关键词（“SeaLead 中联航运 制裁 2026”），搜索结果集中于此前已录入的OFAC 7/24制裁（SeaLead实体+船舶入SDN）、CULines/MSC接手退租运力等既有事件，未发现超越已有记录的实质新增制裁动态。SeaLead相关事件仍在行业内持续发酵。",
+      links: []
     }
   ],
-   cuImpact: "OFAC 7/24制裁SeaLead全子公司+3艘集装箱船，覆盖新加坡/迪拜/马绍尔/印度运营实体，SeaLead被定性为Shamkhani核心集装箱实体+胡塞运输支持方。红海曼德+霍尔木兹双海峡同时告急，沙特原油出口B计划遭重创，油价面临120美元上行风险。中联航运RES/CGX/CGS航线中东风险持续升温，需审慎合规审查。"
-};
+   cuImpact: "胡塞8/5一天两次袭击沙特油轮，累计袭击8艘/拦截29艘。印度货船首沉红海，战事从霍尔木兹外溢至曼德海峡-苏伊士运河全线。双海峡通行量同步骤降背景下，中联航运RES/CGX/CGS中东航线需持续审慎合规审查，关注红海绕行成本上升对运价的影响。"
+};;
 
 // ========== DAILY DATA ==========
 const dailyData = [
+  {
+    date: "2026-08-06", display: "8/6", weekday: "周四",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
+    cuStatus: "胡塞8/5一天两次袭击沙特油轮+印度货船首沉红海，战事从霍尔木兹外溢至曼德-苏伊士全线，CULines RES/CGX/CGS中东航线持续审慎合规审查",
+    summary: "上午微信检索：胡塞8/5一天两次袭击沙特油轮（累计袭击8艘/拦截29艘）+印度货船首沉红海，14船员获救",
+    keyEvents: [
+      "上午微信检索：胡塞8/5一天两次袭击沙特油轮（亚丁湾‘黛西’号中弹返航+延布港附近遭多枚弹道导弹打击），累计袭击8艘/拦截29艘",
+      "上午微信检索：印度货船首沉红海——‘法伊兹·努尔·奥利亚’号在荷台达附近遭小船炸弹袭击沉没，14船员获救，风险蔓延至曼德-苏伊士全线"
+    ],
+    sealeadEvents: [
+      "本轮微信检索无SeaLead/CULines新增制裁动态，OFAC 7/24制裁信息已充分覆盖"
+    ],
+    redseaEvents: [
+      "胡塞8/5一天两次袭击沙特油轮（累计8/拦截29），胡塞声明阻止沙特油轮通过红海南北部",
+      "印度货船‘法伊兹·努尔·奥利亚’号首沉红海，14船员获救，战事外溢至曼德-苏伊士全线"
+    ]
+  },
   {
     date: "2026-08-03", display: "8/3", weekday: "周一",
     status: "red", statusText: "🔴 紧急",
@@ -1302,9 +1318,17 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-06", day: "06", title: "\u2728\u65b0\u589e胡塞8/5一天内两次袭击沙特油轮——亚丁湾“黛西”号中弹返航+延布港附近遭多枚弹道导弹精准打击", desc: "新华社8月5日电：胡塞武装5日两次宣布袭击沙特油轮。晚间发射弹道导弹击中亚丁湾“黛西”号(Daisy)，该船被迫返航；上午发射多枚弹道导弹精准打击红海北部延布港附近一艘沙特油轮。自7月下旬对沙特实施海上封锁以来，胡塞已累计袭击8艘沙特油轮，阻截并迫使29艘返航。胡塞声明将阻止沙特油轮通过红海南部和北部。来源：新华网。", tags: [{t:"red",l: "🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [{ text: "新华网", url: "https://finance.sina.com.cn/jjxw/2026-08-06/doc-inimiqxt4064996.shtml" }], new: true},
+
+  { date: "08-06", day: "06", title: "\u2728\u65b0\u589e印度货船首沉红海——“法伊兹·努尔·奥利亚”号在荷台达附近遭小船炸弹袭击沉没，14船员获救", desc: "8月4日印度籍货船“法伊兹·努尔·奥利亚”号在也门荷台达以南13海里处遭装载爆炸物的小船袭击后沉没。14名船员（13印度+1外籍）全部获救。这是印度船只首次在红海遇袭沉没，表明战事已超出霍尔木兹、风险蔓延至曼德海峡-苏伊士运河全线。印度强烈谴责并呼吁停止袭击商船。来源：网易。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [{ text: "网易", url: "https://www.163.com/dy/article/L3K6TR56055616WO.html" }], new: true},
+
   { date: "08-04", day: "04", title: "\u2728\u65b0\u589e\uff5cmaritimenews 7\u6708\u7ea2\u6d77\u7efc\u5408\u62a5\u544a\uff1a\u8377\u53f0\u8fbe\u5c0f\u8247\u88ad\u51fb+\u5b89\u7406\u4f1a\u51b3\u8bae2812\u5ef6\u957f\u6708\u62a5\u4e49\u52a1+MARAD\u5546\u8239\u5b89\u5168\u6307\u5f15", desc: "maritimenews\u7efc\u5408\u62a5\u544a\uff1a\u24607\u6708\u521d\u8377\u53f0\u8fbe\u6d77\u57df\u8d27\u8239\u906d\u5c0f\u8247\u88ad\u51fb\uff08\u5b89\u4fdd\u4eba\u5458\u8fd8\u51fb\u903c\u9000\uff0c\u8239\u5458\u5b89\u5168\uff09\uff1b\u2461UN\u5b89\u7406\u4f1a\u51b3\u8bae2812\u5ef6\u957f\u7ea2\u6d77\u88ad\u51fb\u6708\u62a5\u4e49\u52a1\u81f32026\u5e747\u670815\u65e5\uff1b\u2462\u7f8e\u56fdMARAD\u53d1\u5e03\u7ea2\u6d77/\u66fc\u5fb7\u6d77\u5ce1/\u4e9a\u4e01\u6e7e\u5546\u8239\u5b89\u5168\u6307\u5f15\uff08\u5efa\u8bae\u5173\u95edAIS\u3001\u8fdc\u79bb\u4e5f\u95e8\u6d77\u5cb8\u3001\u5b9a\u65f6\u5411NAVCENT\u6c47\u62a5\u4f4d\u7f6e\u3001\u9047\u767b\u8239\u4e0d\u5f3a\u884c\u62b5\u6297\uff09\uff1b\u2463\u82cf\u4f0a\u58eb\u8fd0\u6cb3\u901a\u822a\u91cf\u6062\u590d\u81f32025\u5e74\u524d\u6c34\u5e73\uff1b\u2464\u627f\u8fd0\u4eba\u91c7\u53d6\u6df7\u5408\u7b56\u7565\u3002\u6765\u6e90\uff1amaritimenews.com\u3002", tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"\u7ea2\u6d77\u5b89\u5168"}], links: [
     { text: "maritimenews.com", url: "https://www.maritimenews.com/red-sea/red-sea-shipping-july-2026-developments" }
   ], new: true},
+  { date: "08-06", day: "06", title: "\u2728\u65b0\u589e胡塞8/5一天内两次袭击沙特油轮——亚丁湾“黛西”号中弹返航+延布港附近遭多枚弹道导弹精准打击", desc: "新华社8月5日电：胡塞武装5日两次宣布袭击沙特油轮。晚间发射弹道导弹击中亚丁湾“黛西”号(Daisy)，该船被迫返航；上午发射多枚弹道导弹精准打击红海北部延布港附近一艘沙特油轮。自7月下旬对沙特实施海上封锁以来，胡塞已累计袭击8艘沙特油轮，阻截并迫使29艘返航。胡塞声明将阻止沙特油轮通过红海南部和北部。来源：新华网。", tags: [{t:"red",l: "🔴紧急"},{t:"cat",l:"胡塞武装"}], links: [{ text: "新华网", url: "https://finance.sina.com.cn/jjxw/2026-08-06/doc-inimiqxt4064996.shtml" }], new: true},
+
+  { date: "08-06", day: "06", title: "\u2728\u65b0\u589e印度货船首沉红海——“法伊兹·努尔·奥利亚”号在荷台达附近遭小船炸弹袭击沉没，14船员获救", desc: "8月4日印度籍货船“法伊兹·努尔·奥利亚”号在也门荷台达以南13海里处遭装载爆炸物的小船袭击后沉没。14名船员（13印度+1外籍）全部获救。这是印度船只首次在红海遇袭沉没，表明战事已超出霍尔木兹、风险蔓延至曼德海峡-苏伊士运河全线。印度强烈谴责并呼吁停止袭击商船。来源：网易。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [{ text: "网易", url: "https://www.163.com/dy/article/L3K6TR56055616WO.html" }], new: true},
+
   { date: "08-04", day: "04", title: "\u2728\u65b0\u589e\uff5cLinkedIn\u68c0\u7d22\uff1a\u66fc\u5fb7+\u970d\u5c14\u6728\u5179\u53cc\u6d77\u5ce1\u901a\u884c\u91cf\u540c\u6b65\u9aa4\u964d\uff0c\u66fc\u5fb718\u8247/\u970d\u5c14\u6728\u5179\u4ec51\u8247LPG\uff0c\u6c99\u7279\u6cb9\u8f6e\u5173AIS\u5077\u6e21", desc: "Kpler\u6570\u636e\uff1a8\u67083\u65e5\u5468\u65e5\u66fc\u5fb7\u6d77\u5ce1\u4ec518\u8247\u5546\u54c1\u8fd0\u8f93\u8239\u901a\u8fc7\uff08\u5468\u516d27/\u5468\u4e9428\uff09\u3002\u970d\u5c14\u6728\u5179\u5468\u65e5\u4ec51\u8247LPG\u8239\u901a\u8fc7\uff08\u5468\u516d10/\u5468\u4e9419\uff09\u3002\u4e24\u8247\u6c99\u7279\u6cb9\u8f6e\u5173\u95edAIS\u5077\u5077\u9a76\u79bb\u7ea2\u6d77\u2014\u2014\u83b1\u65af\u6c83\u65af\u53f7\u8f7d100\u4e07\u6876\u3001\u8fea\u4ec0\u00b7\u7ef4\u5df4\u592b\u53f7\u8f7d200\u4e07\u6876\u3002\u82f1\u56fdUKMTO\u901a\u62a5\u5468\u672b3\u8d77\u65b0\u6cb9\u8f6e\u88ad\u51fb\u3002\u80e1\u585e7/20\u5bf9\u6c99\u7279\u7981\u8fd0\u4ee5\u6765\u53cc\u6d77\u5ce1\u901a\u884c\u91cf\u6301\u7eed\u6076\u5316\u3002\u6765\u6e90\uff1a\u7f51\u6613/Kpler\u3002", tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u66fc\u5fb7\u6d77\u5ce1"}], links: [
     { text: "\u7f51\u6613/Kpler", url: "https://www.163.com/dy/article/L3FNOT2H0556BW7G.html" }
   ], new: true},
