@@ -1333,6 +1333,16 @@ const dailyData = [
       "中远海能VLCC远喜湖绕行非洲"
     ]
   },
+  {
+    date: "2026-08-07", display: "8/7", weekday: "周五",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 5, redCount: 5, yellowCount: 0, blueCount: 0,
+    cuStatus: "胡塞封锁沙特港口；OFAC制裁SeaLead；伊朗威胁Bab al-Mandeb",
+    summary: "胡塞封锁沙特港口；OFAC制裁SeaLead；伊朗威胁Bab al-Mandeb",
+    keyEvents: [],
+    sealeadEvents: [],
+    redseaEvents: []
+  },
 ];
 
 const routeRisks = [
@@ -1862,6 +1872,21 @@ const keyEvents = [
   ], new: true},
   { date: "08-05", day: "05", title: "✨新增｜马士基第三条航线WAF6重返苏伊士-红海，AE15/MECL/WAF6三线复航", desc: "继AE15、MECL航线后，马士基7/13宣布WAF6航线重返苏伊士运河-红海航行。WAF6连接中东-地中海-西非市场。截至7/27已有18家集运公司通行曼德海峡，集装箱板块保持韧性。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"马士基"}], links: [
     { text: "浙江省贸促会", url: "https://www.ccpitzj.gov.cn/col/col1229557691/art/2026/art_eeee3b1212c347199db425cd3d230a4a.html" }
+  ], new: true},
+  { date: "07-23", day: "23", title: "✨新增｜US Treasury OFAC Sanctions SeaLead Shipping, Fleet Shrinks to Under 70,000 TEU", desc: "美国财政部OFAC将SeaLead及其新加坡、迪拜、马绍尔群岛子公司及6艘船舶列入制裁名单，指控其为胡塞武装转运货物。SeaLead运力已从2025年5月的208,000 TEU暴跌至不足70,000 TEU，Alphaliner排名从全球第13跌至第80位。中国联合航运(CU Lines)已接手部分被退回的租船。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "Seatrade Maritime / TZP News", url: "https://www.seatrade-maritime.com/security/top-maritime-news-stories-for-week-ended-25-july" }
+  ], new: true},
+  { date: "07-20", day: "20", title: "✨新增｜Houthis Declare Complete Naval Blockade of Saudi Arabia", desc: "胡塞武装于7月20日宣布对沙特实施全面海上封锁，作为对7月13日沙特空袭萨那机场的回应。至少7艘驶往沙特的货船已调头。沙特油轮NCC Masa在红海遭袭船体受损，另一艘沙特油轮Encelia被击中起火。胡塞随后声称袭击了吉赞和延布的沙特炼油厂，威胁到延布原油出口（自霍尔木兹海峡关闭以来已增长四倍）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞封锁"}], links: [
+    { text: "LinkedIn / Lloyd's List / The Washington Institute", url: "https://www.linkedin.com/pulse/houthi-blockade-saudi-port-reroute-emergency-supply-chain-51dvf" }
+  ], new: true},
+  { date: "07-25", day: "25", title: "✨新增｜Iran Escalates: \u201cResistance Front Views Bab al-Mandeb as Hormuz\u201d", desc: "哈梅内伊顾问Ali Akbar Velayati公开宣称\u201c抵抗阵线视Bab al-Mandeb如同Hormuz\u201d，暗示伊朗系武装可能封锁该海峡。若Bab al-Mandeb与Hormuz同时关闭，全球约25%能源供应及亚洲-欧洲集装箱贸易主干线将被阻断。\u201c双咽喉\u201d情景成为最大尾部风险。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"地缘政治"}], links: [
+    { text: "LinkedIn (Jochen Pirklbauer / 7Seas360)", url: "https://www.linkedin.com/posts/jochen-pirklbauer_7seas360-oceanintel-redsea-activity-7452886867512975360-ZYpA" }
+  ], new: true},
+  { date: "07-27", day: "27", title: "✨新增｜Red Sea Return Plans Shelved: Carriers Revert to Cape of Good Hope", desc: "2026年1月CMA CGM VERDI完成INDAMEX航线首次完整苏伊士回环、MAERSK DENVER测试MECL1航线后，2月美以联合打击伊朗及随后报复行动彻底粉碎集装箱航运分阶段重返红海的计划。Maersk/CMA CGM暂停返航仅选择性过境苏伊士；MSC/Hapag-Lloyd/Evergreen/ONE/HMM坚定走好望角。苏伊士集装箱过境量较2023年10月下降约79%。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"航运"}], links: [
+    { text: "LinkedIn (Jochen Pirklbauer / 7Seas360)", url: "https://www.linkedin.com/posts/jochen-pirklbauer_7seas360-oceanintel-redsea-activity-7452886867512975360-ZYpA" }
+  ], new: true},
+  { date: "07-26", day: "26", title: "✨新增｜Saudi Refineries in Jizan and Yanbu Attacked, Bunker Supply Fragments", desc: "胡塞声称袭击吉赞和延布沙特炼油厂。延布南终端处理近600万桶/日（自Ras Tanura 3月关闭以来成为关键出口通道），现面临Hormuz上游供应紧缩与胡塞下游封锁双重压力。替代港口Sohar/Dammam拥堵加剧，南非港口燃油需求飙升30%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"能源安全"}], links: [
+    { text: "Lloyd's List / Peninsula / Seatrade Maritime", url: "https://www.seatrade-maritime.com/security/top-maritime-news-stories-for-week-ended-25-july" }
   ], new: true}
 ];;;
 
@@ -2000,7 +2025,13 @@ const sealeadKeyEvents = [
     links: [{ text: "seafh.com", url: "https://seafh.com/x/4027" }], new: true},
   { date: "08-06", day: "06", title: "✨新增｜中联航运接手SeaLead两艘万箱船扩张远东-中东航线", desc: "希腊船东Danaos Corp将此前租给海领船务的5艘船解约，中联航运租入Express Berlin(10114TEU)和Racine(6758TEU)两艘，用于扩大远东至中东航线服务。SeaLead船队从峰值20.8万TEU锐减至约5万TEU，全球排名从第13跌至第35。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}],
-    links: [{ text: "海事服务网CNSS", url: "http://www.e-hang.net/wap/detail/post-575525.html" }], new: true},];;;
+    links: [{ text: "海事服务网CNSS", url: "http://www.e-hang.net/wap/detail/post-575525.html" }], new: true},
+  { date: "07-23", day: "23", title: "✨新增｜OFAC Directly Sanctions SeaLead: Fleet Collapses from 208K to Under 70K TEU", desc: "美国财政部首次将SeaLead直接列入OFAC制裁名单，涉及新加坡、迪拜、马绍尔群岛子公司及6艘船舶（约10,500 TEU）。4月DOJ已起诉SeaLead为伊朗官员Ali Shamkhani控制的利益方提供航运服务。目前SeaLead运力不足70,000 TEU，Alphaliner排名从第13暴跌至第80。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"}], links: [
+    { text: "Seatrade Maritime / TZP News", url: "https://tzp.news/en/news/2026-07-23-abd-hazinesi-sealead-alti-gemi-ofac-yaptirim-listesi" }
+  ], new: true},
+  { date: "07-27", day: "27", title: "✨新增｜China United Lines Takes Over SeaLead\u2019s Returned Vessels, Fills Capacity Gap", desc: "中国联合航运(CU Lines)接手了SeaLead提前退还给希腊船东Danaos的船舶，包括10,114 TEU的Express Berlin。随着多条独立及联营航线撤销，SeaLead运力大幅缩水约11万TEU，市场竞争格局正被重塑。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"船队"}], links: [
+    { text: "Seatrade Maritime / TZP News", url: "https://www.seatrade-maritime.com/security/top-maritime-news-stories-for-week-ended-25-july" }
+  ], new: true},];;;
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
@@ -2375,7 +2406,19 @@ const redseaKeyEvents = [
     links: [{ text: "网易新闻", url: "https://www.163.com/dy/article/L3KGDMAI05564850.html" }], new: true},
   { date: "08-06", day: "06", title: "✨新增｜中远海能VLCC\u201c远喜湖\u201d绕行非洲规避红海封锁", desc: "中远海运集团旗下33万吨级VLCC\u201c远喜湖\u201d号以空载状态通过苏伊士运河，目的地埃及西迪基里尔码头。该船此前因胡塞武装封锁滞留在沙特延布港外海，现改为绕行非洲航线。港股中远海能(01138)早盘跌近6%。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"中国船企"}],
-    links: [{ text: "智通财经", url: "https://www.zhitongcaijing.com/content/detail/1476604.html" }], new: true},];;;
+    links: [{ text: "智通财经", url: "https://www.zhitongcaijing.com/content/detail/1476604.html" }], new: true},
+  { date: "07-20", day: "20", title: "✨新增｜Houthi Naval Blockade of Saudi Arabia Declared & Enforced", desc: "胡塞武装宣布对沙特实施全面海上封锁，至少7艘货船调头。沙特油轮NCC Masa被击中船体受损，Encelia被击中起火。延布港面临Hormuz上游紧缩与胡塞下游封锁双重压力，威胁沙特约600万桶/日原油出口。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞封锁"}], links: [
+    { text: "LinkedIn / Lloyd\u2019s List / The Washington Institute", url: "https://www.linkedin.com/pulse/houthi-blockade-saudi-port-reroute-emergency-supply-chain-51dvf" }
+  ], new: true},
+  { date: "07-25", day: "25", title: "✨新增｜Iran Declares Bab al-Mandeb Equivalent to Hormuz \u2014 \u201cDouble Chokepoint\u201d Scenario", desc: "哈梅内伊顾问Ali Akbar Velayati公开宣称\u201c抵抗阵线视Bab al-Mandeb如同Hormuz\u201d，暗示可能关闭该海峡。若双咽喉同时封闭，全球约25%能源供应及亚欧集装箱贸易主干线将被阻断，这成为目前市场最大的尾部风险。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"双海峡危机"}], links: [
+    { text: "LinkedIn (Jochen Pirklbauer / 7Seas360 Update #08)", url: "https://www.linkedin.com/posts/jochen-pirklbauer_7seas360-oceanintel-redsea-activity-7452886867512975360-ZYpA" }
+  ], new: true},
+  { date: "07-27", day: "27", title: "✨新增｜All Major Carriers Shelve Red Sea Return; Suez Transits Down 79%", desc: "2月美以联合打击伊朗后，所有主要船公司搁置重返红海计划。Maersk/CMA CGM仅选择性过境苏伊士；MSC/Hapag-Lloyd/Evergreen/ONE/HMM坚定走好望角。苏伊士集装箱过境120艘（2025年11月）vs 583艘（2023年10月），降幅约79%。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"苏伊士运河"}], links: [
+    { text: "LinkedIn (Jochen Pirklbauer / 7Seas360 Update #08)", url: "https://www.linkedin.com/posts/jochen-pirklbauer_7seas360-oceanintel-redsea-activity-7452886867512975360-ZYpA" }
+  ], new: true},
+  { date: "07-26", day: "26", title: "✨新增｜Houthi Attacks on Saudi Refineries; Bunker Supply Crisis at Alternative Ports", desc: "胡塞声称袭击吉赞和延布炼油厂。延布南终端日处理近600万桶，现面临双线压力。Sohar/Dammam拥堵严重，南非港口（开普敦/德班）燃油需求飙升30%。Peninsula警告称吨英里需求空前激增正与地中海排放法规叠加，或使运营成本翻倍。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"能源供应"}], links: [
+    { text: "Lloyd\u2019s List / Peninsula / Seatrade Maritime", url: "https://www.seatrade-maritime.com/security/top-maritime-news-stories-for-week-ended-25-july" }
+  ], new: true},];;;
 
 // ========== HELPER: Render source links ==========
 let _srcId = 0;
