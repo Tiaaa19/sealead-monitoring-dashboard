@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-10 LinkedIn\u68c0\u7d22\uff08\u6765\u6e90\uff1aweb_search + web_fetch\uff09",
+  time: "2026年8月11日 周二 22:00 | 晚间微信检索",
   source: "LinkedIn\u68c0\u7d22(ai_search+web_fetch)",
   status: "red",
   statusText: "\ud83d\udd34 \u7d27\u6025\uff088/6 \u4e0b\u5348LinkedIn\u68c0\u7d22\uff1a5\u9879\u65b0\u589e\u2014\u2014OFAC sb0562\u786e\u8ba4SeaLead\u56db\u5bb6\u5b50\u516c\u53f8+We Freight/Volta\u5173\u8054\u5b9e\u4f53\u5165SDN\uff1b\u8377\u53f0\u8fbe\u6d77\u57df\u5c0f\u8247\u5f00\u706b\u4e8b\u4ef6\uff1b\u9a6c\u58eb\u57faWAF6\u6062\u590d\u7ea2\u6d77\uff1b\u5b89\u7406\u4f1a\u6216\u5ef6\u957f2722/2812\u53f7\u51b3\u8bae\u6708\u62a5\u4e49\u52a1\uff1b\u82cf\u4f0a\u58eb\u8fd0\u6cb37/15\u8d77\u52a0\u5f81\u9644\u52a0\u8d39\u3002\uff09",
@@ -1355,6 +1355,9 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-07", day: "07", title: "✨新增｜SeaLead正式清算，CULines/MSC瓜分其运力", desc: "新加坡海领船务因OFAC制裁正式停止运营并提交清算，资产约5,440万美元。CULines接手Express Berlin和Racine两艘集装箱船拓展远东-中东航线，MSC接手另外三艘。SeaLead的退出标志着美国对涉伊航运制裁的又一重大案例。来源：中国航务周刊，2026-08-07。",
+    tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"SeaLead"},{t:"cat",l:"CULines"}],
+    links: [{ text: "\u4e2d\u56fd\u822a\u52a1\u5468\u520a", url: "https://www.163.com/dy/article/L3OD9RUF0530KEJV.html" }], new: true},
   { date: "08-06", day: "06", title: "\u2728\u65b0\u589e\uff5cSeaLead\u8fdb\u5165\u81ea\u613f\u6e05\u7b97\uff1a\u5df2\u505c\u6b62\u8fd0\u8425\uff0c\u6e05\u7b97\u4eba\u4efb\u547d\uff0c\u5ba3\u79f0\u51c0\u8d44\u4ea7$37.4M\u53ef\u507f\u8fd8\u6240\u6709\u503a\u52a1", desc: "\u65b0\u52a0\u5761SeaLead Shipping\u56e0OFAC\u5236\u88c1\u4e1a\u52a1\u762b\u75ea\uff0c7\u6708\u4e0b\u65ec\u7533\u8bf7\u81ea\u613f\u6e05\u7b97\uff0cCosimo Borrelli\u88ab\u4efb\u547d\u4e3a\u6e05\u7b97\u4eba\u3002\u516c\u53f8\u58f0\u660e\u51c0\u8d44\u4ea7$37.4M\uff0c\u5dc5\u5cf0\u65f6\u5168\u7403\u7b2c13/53\u8258\u8239/20.8\u4e07TEU\uff0c\u73b0\u4ec5\u4f594\u8258\u8dcc\u81f3\u7b2c80\u3002iff\u6e05\u7b97\u987a\u5229\uff0c\u6807\u5fd7\u7f51\u7edcSlaughter and May\u5df2\u52a0\u5165\u3002\u6765\u6e90\uff1atzp.news\u3002",
     tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"SeaLead\u6e05\u7b97"}],
     links: [{ text: "tzp.news", url: "https://tzp.news/en/news/2026-08-05-sealead-shipping-tasfiye-abd-iran-yaptirimlari-singapur" }], new: true},
@@ -1896,6 +1899,12 @@ const keyEvents = [
 
 // SeaLead-specific key events
 const sealeadKeyEvents = [
+  { date: "08-07", day: "07", title: "✨新增｜SeaLead Shipping正式停止运营并提交自愿清算", desc: "新加坡海领船务（SeaLead Shipping）因美国制裁已停止运营，于7月下旬提交自愿清算申请。8月3日，香港鼋晋（Admiralty Asia Partners）的Cosimo Borrelli被指定为清算人。公司资产包括现金690万美元、船舶1990万美元、集装箱2620万美元，无长期债务。2026年7月，OFAC将SeaLead连同其印度、马绍尔群岛、阿联酋子公司一并列入制裁名单，成为压跨公司的最后一击。来源：中国航务周刊/网易，2026-08-07。",
+    tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u5236\u88c1\u6e05\u7b97"},{t:"cat",l:"OFAC"}],
+    links: [{ text: "\u4e2d\u56fd\u822a\u52a1\u5468\u520a/\u7f51\u6613", url: "https://www.163.com/dy/article/L3OD9RUF0530KEJV.html" }], new: true},
+  { date: "08-11", day: "11", title: "✨新增｜CULines接手SeaLead两艘集装箱船，MSC瓜分另外三艘", desc: "SeaLead释放的运力被市场迅速纳。CULines（中联航运）租入两艘集装箱船——Express Berlin（10,114 TEU）和Racine（6,758 TEU），用于扩大远东至中东航线服务。MSC接手Express Athens、Suez Canal和Express Rome三艘。SeaLead核心波斯湾班轮航线因霍尔木兹海峡关闭而暂停。来源：e-hang.net/Linerlytica，2026-08。",
+    tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"CULines"},{t:"cat",l:"\u8fd0\u529b\u8f6c\u79fb"}],
+    links: [{ text: "e-hang.net/Linerlytica", url: "http://www.e-hang.net/wap/detail/post-575525.html" }], new: true},
   { date: "08-11", day: "11", title: "\u2728\u65b0\u589e\uff5cCorten Shipping\u63a5\u7ba1SeaLead\u96c6\u88c5\u7bb1\u8bbe\u5907\uff1bCULines\u63a5\u624bDanaos\u8239\u8236\u79df\u7ea6\uff0c\u8239\u961f\u6269\u81f348\u8247\uff0c\u63a8\u8fdb\u8ba2\u90206\u8258\u65b0\u8239", desc: "Corten Shipping\u5df2\u63a5\u7ba1SeaLead\u5927\u90e8\u5206\u96c6\u88c5\u7bb1\u8bbe\u5907\uff0c\u5176\u4e3b\u8981\u7ecf\u8425\u4fc4\u7f57\u65af\u53ca\u6ce2\u65af\u6e7e\u76f8\u5173\u822a\u7ebf\u3002\u4e2d\u8054\u822a\u8fd0\uff08CULines\uff09\u901a\u8fc7\u591a\u8f6e\u4ea4\u6613\u63a5\u624bSeaLead\u6b64\u524d\u4ece\u5e0c\u814a\u8239\u4e1cDanaos\u79df\u8d41\u7684\u5927\u90e8\u5206\u8239\u8236\u79df\u7ea6\uff0c\u8fd0\u8425\u8239\u961f\u89c4\u6a21\u5df2\u6269\u5927\u81f348\u8258\u96c6\u88c5\u7bb1\u8239\uff0c\u5e76\u8fdb\u4e00\u6b65\u63a8\u8fdb\u8ba2\u90206\u8258\u65b0\u8239\uff0c\u5176\u4e2d4\u82586400TEU\u7531\u4e2d\u56fd\u8239\u8236\u96c6\u56e2\u65d7\u4e0b\u9ec4\u57d4\u6587\u51b2\u8239\u8236\u6709\u9650\u516c\u53f8\u5efa\u9020\u3002\u6765\u6e90\uff1ain-supply.co.uk/\u540c\u82b1\u987a\uff0c2026-08-10\u3002",
     tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"SeaLead\u8d44\u4ea7\u91cd\u7ec4"}],
     links: [{ text: "in-supply.co.uk", url: "https://in-supply.co.uk/sealead-assets-move-to-rival-container-operators" }, { text: "\u540c\u82b1\u987a", url: "https://news.10jqka.com.cn/20260810/c678796145.shtml" }], new: true},
@@ -2054,6 +2063,15 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-06", day: "06", title: "✨新增｜胡塞武装累计袭击8艘沙特油轮，曼德海峡通行量骤降", desc: "胡塞武装自7月20日对沙特实施海上封锁以来，已累计袭击8艘沙特油轮，拦截并迫使29艘返航。8月5日在红海北部延布附近和亚丁湾各击中一艘沙特油轮。曼德海峡日通行量从封锁前的30-50艘降至不足20艘。Lloyd\u2019s List数据显示7月20-26日AIS可见通行225艘（前周311艘），下降28%。11艘空载油轮7月27日在延布附近关闭AIS以规避追踪。来源：Lloyd\u2019s List Intelligence/新华社/国际在线，2026-08-06。",
+    tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u80e1\u585e\u6b66\u88c5"},{t:"cat",l:"\u66fc\u5fb7\u6d77\u5ce1"}],
+    links: [{ text: "Lloyd\u2019s List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-30-july-2026" }], new: true},
+  { date: "08-06", day: "06", title: "✨新增｜胡塞扩大红海封锁至北部苏伊士运河方向，油价上涨", desc: "胡塞武装宣布将扩大对沙特的封锁范围，在驶往苏伊士运河的水域袭击沙特油轮。分析认为此举意在策应伊朗在美伊霍尔木兹谈判中的筹码地位，同时形成曼德海峡与霍尔木兹海峡联动态势。全球油价8月5日上涨1%至每桶80美元。中国国有油轮运营商已开始撤出红海VLCC贸易。来源：国际在线/中国现代国际关系研究院，2026-08-06。",
+    tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u82cf\u4f0a\u58eb\u8fd0\u6cb3"},{t:"cat",l:"\u6cb9\u4ef7"}],
+    links: [{ text: "\u56fd\u9645\u5728\u7ebf", url: "https://www.toutiao.com/article/7670911879161578027/" }], new: true},
+  { date: "08-06", day: "06", title: "✨新增｜沙特牵头成立多国海上防卫联盟，但前景不被看好", desc: "沙特于7月底与十几个国家组建多国海上防卫联盟，应对红海、曼德海峡和亚丁湾的海上威胁，矛头直指胡塞武装。参与国包括埃及、土耳其、巴基斯坦、约旦等，但缺乏美国和西欧大国参与。分析指出该联盟海上防卫能力较弱、行动力差，短期内难以形成有效护航能力。沙特同时对胡塞控制的荷台达进行了有限空袭。来源：新华社/国际在线，2026-08-06。",
+    tags: [{t:"yellow",l:"\ud83d\udfe1\u91cd\u8981"},{t:"cat",l:"\u6c99\u7279"},{t:"cat",l:"\u591a\u56fd\u8054\u76df"}],
+    links: [{ text: "\u65b0\u534e\u793e/\u56fd\u9645\u5728\u7ebf", url: "https://www.toutiao.com/article/7670762883898163738/" }], new: true},
   { date: "08-11", day: "11", title: "\u2728\u65b0\u589e\uff5c\u73af\u7403\u65f6\u62a5\u6df1\u5ea6\uff1a8/3\u8239\u8236\u8ffd\u8e2a\u663e\u793a6\u8258\u6c99\u7279\u6cb9\u8f6e\u7ed5\u884c\u597d\u671b\u89d2\u907f\u5f00\u66fc\u5fb7\u6d77\u5ce1", desc: "\u300a\u73af\u7403\u65f6\u62a5\u300b8\u67085\u65e5\u62a5\u9053\uff1a8\u67083\u65e5\u8239\u8236\u8ffd\u8e2a\u663e\u793a6\u8258\u6c99\u7279\u6cb9\u8f6e\u4ece\u4e9a\u4e01\u6e7e\u7ed5\u884c\u597d\u671b\u89d2\u907f\u5f00\u66fc\u5fb7\u6d77\u5ce1\u548c\u7ea2\u6d77\u3002\u6c99\u72797\u670830\u65e5\u9080\u8bf7\u6570\u5341\u56fd\u4ee3\u8868\u8ba8\u8bba\u7b79\u5efa\u591a\u56fd\u6d77\u4e0a\u9632\u536b\u8054\u76df\u3002\u80e1\u585e\u6b66\u88c5\u5cb8\u57fa\u706b\u529b\u8986\u76d6\u66fc\u5fb7\u6d77\u5ce1\u4e3b\u822a\u9053\uff08\u4e1c\u4fa7\u5c0f\u5ce1\u5bbd\u4ec53.2km\uff09\u3002\u7ed5\u884c\u597d\u671b\u89d2\u822a\u7a0b\u589e\u52a0\u4e0a\u4e07\u6d77\u91cc\uff0c\u591a\u51fa30\u5929\u4ee5\u4e0a\uff0c\u71c3\u6cb9/\u4fdd\u9669/\u7269\u6d41\u6210\u672c\u8fdb\u4e00\u6b65\u62ac\u5347\u3002\u6765\u6e90\uff1a\u73af\u7403\u65f6\u62a5\uff0c2026-08-05\u3002",
     tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"\u66fc\u5fb7\u6d77\u5ce1"}],
     links: [{ text: "\u73af\u7403\u65f6\u62a5", url: "https://dy.163.com/article/L3I578R90514R9OJ.html" }], new: true},
