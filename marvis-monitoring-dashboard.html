@@ -1384,7 +1384,7 @@ const dailyData = [
     keyEvents: [],
     sealeadEvents: [],
     redseaEvents: []
-  },  { "date": "2026-08-10", "sealeadEvents": 3, "redseaEvents": 2, "totalEvents": 5, "note": "LinkedIn\u68c0\u7d22\uff1aSeaLead\u6e05\u7b97\u7ec8\u70b9\u4e0e\u5236\u88c1\u5347\u7ea7" },
+  },
   {
     "date": "2026-08-12", "display": "8/12", "weekday": "周三",
     "status": "red", "statusText": "\ud83d\udd34 \u7d27\u6025",
@@ -2671,7 +2671,8 @@ routeRisks.forEach(r => {
 
 // --- Summary page: Daily Cards ---
 const dailyGrid = document.getElementById('dailyGrid');
-[...dailyData].reverse().forEach((d, i) => {
+[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
+  if (!d.date || !Array.isArray(d.keyEvents)) return;
   const detailDisplay = i === 0 ? 'block' : 'none';
   dailyGrid.innerHTML += `
     <div class="daily-card ${d.status}" onclick="toggleCard(this)">
@@ -2715,8 +2716,8 @@ const eventsContainer = document.getElementById('eventsTimeline');
 
 // --- SeaLead page: Daily Cards (filtered) ---
 const sealeadDailyGrid = document.getElementById('sealeadDailyGrid');
-[...dailyData].reverse().forEach((d, i) => {
-  if (d.sealeadEvents.length === 0) return;
+[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
+  if (!Array.isArray(d.sealeadEvents) || d.sealeadEvents.length === 0) return;
   const detailDisplay = i === 0 ? 'block' : 'none';
   sealeadDailyGrid.innerHTML += `
     <div class="daily-card ${d.status}" onclick="toggleCard(this)">
@@ -2759,8 +2760,8 @@ sealeadKeyEvents.forEach(e => {
 
 // --- Red Sea page: Daily Cards (filtered) ---
 const redseaDailyGrid = document.getElementById('redseaDailyGrid');
-[...dailyData].reverse().forEach((d, i) => {
-  if (d.redseaEvents.length === 0) return;
+[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
+  if (!Array.isArray(d.redseaEvents) || d.redseaEvents.length === 0) return;
   const detailDisplay = i === 0 ? 'block' : 'none';
   redseaDailyGrid.innerHTML += `
     <div class="daily-card ${d.status}" onclick="toggleCard(this)">
