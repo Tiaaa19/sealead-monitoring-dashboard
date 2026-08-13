@@ -641,11 +641,11 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月13日 周四 | LinkedIn检索",
-  source: "LinkedIn检索(web_search+web_fetch)",
+  time: "2026年8月13日 周四 | 晚间微信检索",
+  source: "晚间微信检索(web_search+web_fetch)",
   status: "red",
-  statusText: "\ud83d\udd34 \u7d27\u6025\uff088/6 \u4e0b\u5348LinkedIn\u68c0\u7d22\uff1a5\u9879\u65b0\u589e\u2014\u2014OFAC sb0562\u786e\u8ba4SeaLead\u56db\u5bb6\u5b50\u516c\u53f8+We Freight/Volta\u5173\u8054\u5b9e\u4f53\u5165SDN\uff1b\u8377\u53f0\u8fbe\u6d77\u57df\u5c0f\u8247\u5f00\u706b\u4e8b\u4ef6\uff1b\u9a6c\u58eb\u57faWAF6\u6062\u590d\u7ea2\u6d77\uff1b\u5b89\u7406\u4f1a\u6216\u5ef6\u957f2722/2812\u53f7\u51b3\u8bae\u6708\u62a5\u4e49\u52a1\uff1b\u82cf\u4f0a\u58eb\u8fd0\u6cb37/15\u8d77\u52a0\u5f81\u9644\u52a0\u8d39\u3002\uff09",
-  vs: "vs\u4e0a\u5348\u76d1\u6d4b\uff1a\u672c\u8f6e\u4e0b\u5348\u5fae\u4fe1\u68c0\u7d22\u201cSeaLead \u822a\u8fd0 \u5236\u88c1\u201d+\u201c\u7ea2\u6d77 \u80e1\u585e \u66fc\u5fb7\u6d77\u5ce1 2026\u201d\uff0c\u65b0\u589e3\u6761\u7ea2\u6d77\u81f4\u547d\u88ad\u51fb\u4e8b\u4ef6\u5df2\u589e\u91cf\u5199\u5165\u4eea\u8868\u76d8\u3002",
+  statusText: "🔴 紧急（8/13 晚间微信检索：2项新增——中联航运接手SeaLead/Danaos大部分租约扩至48艘并订6船；SeaLead清算资产处置Corten接管箱队+清算人Cosimo Borrelli任命+OFAC GL Z至9/12。）",
+  vs: "vs上午监测：本轮晚间微信检索“SeaLead 航运 制裁”+“红海 胡塞 曼德海峡 2026”，新增2条SeaLead/CULines事件已增量写入仪表盘，红海无新增。",
   findings: [    {
       level: "red",
       title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348LinkedIn\u68c0\u7d22\uff1aOFAC sb0562\u786e\u8ba4SeaLead\u56db\u5bb6\u5b50\u516c\u53f8+\u5173\u8054\u5b9e\u4f53\u5165SDN\uff0c\u6307\u5411\u4e3a\u80e1\u585e\u8fd0\u8f93",
@@ -685,9 +685,26 @@ const latestUpdateData = {
       links: [
         { text: "\u91d1\u878d\u754c/\u667a\u901a\u8d22\u7ecf", url: "https://futures.jrj.com.cn/2026/08/12144658086789.shtml" }
       ]
+    },
+    {
+      level: "red",
+      title: "✨新增｜晚间微信检索：中联航运接手SeaLead大部分Danaos租约，船队扩至48艘并订造6艘新船",
+      desc: "中联航运通过多轮交易接手SeaLead此前从希腊船东Danaos租赁的大部分船舶租约，运营船队扩大至48艘集装箱船，并推进新船投资计划订造6艘新船，其中4艘6400TEU传统燃料动力船由中国船舶集团旗下黄埔文冲建造。",
+      links: [
+        { text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }
+      ]
+    },
+    {
+      level: "red",
+      title: "✨新增｜晚间微信检索：SeaLead清算资产处置，Corten接管集装箱设备，清算人Cosimo Borrelli任命，GL Z至9/12",
+      desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。",
+      links: [
+        { text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" },
+        { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }
+      ]
     }
   ],
-  cuImpact: "\u672c\u8f6e\u4e0b\u5348\u5fae\u4fe1\u68c0\u7d22\u65e0\u65b0\u589eSeaLead\u5236\u88c1\u52a8\u6001\uff08\u5df2\u6709\u8bb0\u5f55\u5df2\u8986\u76d6OFAC sb0562\u5236\u88c1\u3001\u6e05\u7b97\u3001GL Z\u3001CULines\u63a5\u624b\u8fd0\u529b\u7b49\uff09\uff0cCULines\u4e2d\u4e1c\u822a\u7ebf\u6218\u4e89\u98ce\u9669\u9644\u52a0\u8d39\uff08WRS\uff09\u6700\u9ad8USD4000/\u67dc\u4ecd\u9700\u6301\u7eed\u5173\u6ce8\u3002\u7ea2\u6d77\u65b9\u9762\uff1a\u66fc\u5fb7\u6d77\u5ce18/11-12\u63a5\u8fde\u4e24\u8d77\u81f4\u547d\u88ad\u51fb\uff08\u7d2f\u8ba19\u6b7b\uff09\uff0c\u7ea2\u6d77\u822a\u8fd0\u5b89\u5168\u5f62\u52bf\u6025\u5267\u6076\u5316\uff0c\u5e03\u6cb9\u903c\u8fd1$90\u3002\u4e2d\u8054\u822a\u8fd0\u4e2d\u4e1c/\u7ea2\u6d77\u822a\u7ebf\u987b\u5bc6\u5207\u8bc4\u4f30\u8239\u5458\u5b89\u5168\u4e0e\u4fdd\u8d39\u6210\u672c\u3002"
+  cuImpact: "本轮晚间微信检索新增2条SeaLead/CULines关键动态：①中联航运（CU Lines）通过多轮交易接手SeaLead此前从Danaos租赁的大部分船舶租约，运营船队扩至48艘并订造6艘新船（其中4艘6400TEU由黄埔文冲建造），承接SeaLead退出后的运力缺口；②SeaLead清算资产处置推进，Corten Shipping接管大部分集装箱设备，8/3任命Cosimo Borrelli为清算人，OFAC签发General License Z允许SeaLead及三艘被封锁船舶有限清算至9/12。中联航运中东/红海航线受益于SeaLead运力退出，但须持续评估船员安全与保费成本；SeaLead清算进程与GL Z窗口（至9/12）需持续跟踪。"
 };
 
 // ========== DAILY DATA ==========
@@ -1955,6 +1972,9 @@ const keyEvents = [
   { date: "08-12", day: "12", title: "✨新增｜胡塞曼德海峡袭击埃及籍Tihamah号致6死10伤，美军阿曼湾地狱火击瘫Vela Nova", desc: "8月11日胡塞武装在曼德海峡佩里姆岛东北锚地突袭埃及货轮Tihamah号，4名船员当场死亡（3巴基斯坦籍+1印尼籍），救援行动中胡塞二次打击击中救援船再致2名救援人员死亡，累计6死10伤，为2/28伊朗战争爆发以来胡塞袭船首次造成人员死亡。同日美军在阿曼湾向巴拿马旗集装箱船Vela Nova发射地狱火导弹击瘫转向系统。曼德海峡日均通行仅32艘（封锁前50艘），霍尔木兹8/10仅6艘。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [{ text: "网易", url: "https://www.163.com/dy/article/L44LCG2705568W0A.html" }], new: true },
   { date: "08-08", day: "08", title: "✨新增｜SeaLead正式进入清算：8/4任命Kroll的Cosimo Borrelli为清算人，主航线已停运", desc: "新加坡SeaLead Shipping 7月底申请自愿清算，8月4日任命Cosimo Borrelli（Kroll亚太重组主管即Admiralty Asia Partners）为清算人，Lloyd's List报道恰逢OFAC首次制裁一周年。亚洲-中东-地中海-波罗的海主航线已停运。清算前几天董事仍声明公司有偿付能力、净资产3740万美元可一年内清偿。崩溃源于美财政部对Shamkhani网络三波制裁（2025/7/30超115主体、2026/4/15 Economic Fury等）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
   { date: "08-07", day: "07", title: "✨新增｜Linerlytica周报：CMA CGM/Maersk持续增加苏伊士-红海过境，绕行好望角运力降至5.2%创2024年以来新低", desc: "Linerlytica Market Pulse Week 31：SCFI综合指数回升4.7%，中东紧张未阻承运人使用苏伊士航线，绕行好望角运力降至全球船队5.2%（2024年1月以来最低），绕行船数跌破300艘（运力410万TEU）。CMA CGM与Maersk持续推动提前回归苏伊士-红海航线（EPIC/AE11西行），曼德海峡集装箱船过境持续。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"红海航运动态"}], links: [{ text: "Linerlytica", url: "https://www.linerlytica.com/post/market-pulse-2026-week-31" }], new: true }
+,
+  { date: "08-13", day: "13", title: "✨新增｜中联航运(CULines)接手SeaLead大部分Danaos租约，船队扩至48艘并订造6艘新船", desc: "中联航运通过多轮交易接手SeaLead此前从希腊船东Danaos租赁的大部分船舶租约，运营船队扩大至48艘集装箱船，并推进新船投资计划订造6艘新船，其中4艘6400TEU传统燃料动力船由中国船舶集团旗下黄埔文冲建造。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }], new: true },
+  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true }
 ];;;
 
 // SeaLead-specific key events
@@ -2127,6 +2147,9 @@ const sealeadKeyEvents = [
   { "date": "08-12", "day": "12", "title": "\u2728\u65b0\u589e\uff5cSeaLead\u4e8e7\u670831\u65e5\u5728\u65b0\u52a0\u5761\u542f\u52a8\u6210\u5458\u81ea\u613f\u6e05\u7b97\uff0c\u8fd0\u529b\u964d\u81f314\u8258\u7ea66.25\u4e07TEU", "desc": "SeaLead\u4e8e7\u670831\u65e5\u5728\u65b0\u52a0\u5761\u542f\u52a8\u6210\u5458\u81ea\u613f\u6e05\u7b97\uff0c\u81ea\u9648\u51c0\u8d44\u4ea7\u7ea63740\u4e07\u7f8e\u5143\uff0c\u9884\u8ba1\u4e00\u5e74\u5185\u6e05\u507f\u5168\u90e8\u503a\u52a1\uff1b\u516c\u53f8\u8fd0\u8425\u8fd0\u529b\u5df2\u964d\u81f314\u8258\u7ea66.25\u4e07TEU\u3002\u6765\u6e90\uff1a\u540c\u82b1\u987a\uff0c2026-08-10\u3002", "tags": [{"t":"red","l":"\ud83d\udd34\u7d27\u6025"},{"t":"cat","l":"SeaLead\u6e05\u7b97"},{"t":"cat","l":"\u8fd0\u529b\u840e\u7f29"}], "links": [{"text": "\u540c\u82b1\u987a", "url": "https://news.10jqka.com.cn/20260810/c678796145.shtml"}], "new": true},
   { "date": "08-12", "day": "12", "title": "\u2728\u65b0\u589e\uff5cCorten\u63a5\u7ba1SeaLead\u96c6\u88c5\u7bb1\u8bbe\u5907\uff0c\u4e2d\u8054\u822a\u8fd0\u63a5\u624bDanaos\u79df\u7ea6\u6269\u81f348\u8258", "desc": "Corten Shipping\u63a5\u7ba1SeaLead\u5927\u90e8\u5206\u96c6\u88c5\u7bb1\u8bbe\u5907\uff1b\u4e2d\u8054\u822a\u8fd0\uff08CU Lines\uff09\u63a5\u624bSeaLead\u6b64\u524d\u4ece\u5e0c\u814a\u8239\u4e1cDanaos\u79df\u8d41\u7684\u5927\u90e8\u5206\u8239\u8236\u79df\u7ea6\uff0c\u8fd0\u8425\u8239\u961f\u6269\u81f348\u8258\uff0c\u63a8\u8fdb6\u8258\u65b0\u8239\u8ba2\u9020\uff08\u5176\u4e2d4\u82586400TEU\u7531\u9ec4\u57d4\u6587\u51b2\u5efa\u9020\uff09\u3002\u6765\u6e90\uff1a\u540c\u82b1\u987a/IN Supply\uff0c2026-08-10\u3002", "tags": [{"t":"red","l":"\ud83d\udd34\u7d27\u6025"},{"t":"cat","l":"\u8d44\u4ea7\u91cd\u7ec4"},{"t":"cat","l":"CU Lines"}], "links": [{"text": "\u540c\u82b1\u987a", "url": "https://news.10jqka.com.cn/20260810/c678796145.shtml"}, {"text": "IN Supply", "url": "https://in-supply.co.uk/sealead-assets-move-to-rival-container-operators"}], "new": true},
   { date: "08-08", day: "08", title: "✨新增｜SeaLead正式进入清算：8/4任命Kroll的Cosimo Borrelli为清算人，主航线已停运", desc: "新加坡SeaLead Shipping 7月底申请自愿清算，8月4日任命Cosimo Borrelli（Kroll亚太重组主管即Admiralty Asia Partners）为清算人，Lloyd's List报道恰逢OFAC首次制裁一周年。亚洲-中东-地中海-波罗的海主航线已停运。清算前几天董事仍声明公司有偿付能力、净资产3740万美元可一年内清偿。崩溃源于美财政部对Shamkhani网络三波制裁（2025/7/30超115主体、2026/4/15 Economic Fury等）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true }
+,
+  { date: "08-13", day: "13", title: "✨新增｜中联航运(CULines)接手SeaLead大部分Danaos租约，船队扩至48艘并订造6艘新船", desc: "中联航运通过多轮交易接手SeaLead此前从希腊船东Danaos租赁的大部分船舶租约，运营船队扩大至48艘集装箱船，并推进新船投资计划订造6艘新船，其中4艘6400TEU传统燃料动力船由中国船舶集团旗下黄埔文冲建造。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }], new: true },
+  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true }
 ];;;
 
 // Red Sea / Houthi-specific key events
