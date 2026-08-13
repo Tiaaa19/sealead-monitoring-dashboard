@@ -641,7 +641,7 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026年8月13日 周四 | 上午微信检索",
+  time: "2026-08-13 下午微信检索",
   source: "上午微信检索(web_search+web_fetch)",
   status: "red",
   statusText: "🔴 紧急（8/13 上午微信检索：1项新增——沙特延布港油轮全面无信号“暗航”致红海原油出口监测机制失效，曼德海峡日均通航降至32艘。）",
@@ -2150,6 +2150,9 @@ const sealeadKeyEvents = [
 ,
   { date: "08-13", day: "13", title: "✨新增｜中联航运(CULines)接手SeaLead大部分Danaos租约，船队扩至48艘并订造6艘新船", desc: "中联航运通过多轮交易接手SeaLead此前从希腊船东Danaos租赁的大部分船舶租约，运营船队扩大至48艘集装箱船，并推进新船投资计划订造6艘新船，其中4艘6400TEU传统燃料动力船由中国船舶集团旗下黄埔文冲建造。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CU Lines"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }], new: true },
   { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true }
+,
+  { date: "08-13", day: "13", title: "✨新增｜丹麦商人Martin Kaalund（SeaLead前董事、House of Shipping前全球CFO）7月14日被OFAC制裁", desc: "丹麦商人Martin Kaalund于7月14日被美国OFAC制裁，与SeaLead、House of Shipping、We Freight同批列入制裁名单。Kaalund现居迪拜，曾任SeaLead董事、House of Shipping全球CFO，OFAC称其在Shamkhani网络航运监管公司House of Shipping Investment FZCO中担任全球CFO这一\u201c关键角色\u201d。Kaalund否认全部指控并寻求法律途径挑战制裁。来源：danwatch.dk，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"Shamkhani网络"}], links: [{ text: "Danwatch", url: "https://danwatch.dk/en/danish-businessman-sanctioned-by-us-for-iran-ties/" }], new: true },
+  { date: "08-13", day: "13", title: "✨新增｜OFAC指控SeaLead向胡塞运送\u201c合法及非法货物\u201d，2026年3月没收1550万丹麦克朗", desc: "OFAC指控SeaLead向也门胡塞武装运送\u201c合法及非法货物\u201d，并称掌握内部组织架构图证明SeaLead实为Shamkhani网络成员。2026年3月OFAC从SeaLead没收1550万丹麦克朗（涉非法运输伊朗受制裁货物所得）。SeaLead因制裁已进入清算。来源：danwatch.dk，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "Danwatch", url: "https://danwatch.dk/en/danish-businessman-sanctioned-by-us-for-iran-ties/" }], new: true }
 ];;;
 
 // Red Sea / Houthi-specific key events
@@ -2585,6 +2588,9 @@ const redseaKeyEvents = [
   { date: "08-12", day: "12", title: "✨新增｜胡塞曼德海峡袭击埃及籍Tihamah号致6死10伤，美军阿曼湾地狱火击瘫Vela Nova", desc: "8月11日胡塞武装在曼德海峡佩里姆岛东北锚地突袭埃及货轮Tihamah号，4名船员当场死亡（3巴基斯坦籍+1印尼籍），救援行动中胡塞二次打击击中救援船再致2名救援人员死亡，累计6死10伤，为2/28伊朗战争爆发以来胡塞袭船首次造成人员死亡。同日美军在阿曼湾向巴拿马旗集装箱船Vela Nova发射地狱火导弹击瘫转向系统。曼德海峡日均通行仅32艘（封锁前50艘），霍尔木兹8/10仅6艘。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}], links: [{ text: "网易", url: "https://www.163.com/dy/article/L44LCG2705568W0A.html" }], new: true },
   { date: "08-07", day: "07", title: "✨新增｜Linerlytica周报：CMA CGM/Maersk持续增加苏伊士-红海过境，绕行好望角运力降至5.2%创2024年以来新低", desc: "Linerlytica Market Pulse Week 31：SCFI综合指数回升4.7%，中东紧张未阻承运人使用苏伊士航线，绕行好望角运力降至全球船队5.2%（2024年1月以来最低），绕行船数跌破300艘（运力410万TEU）。CMA CGM与Maersk持续推动提前回归苏伊士-红海航线（EPIC/AE11西行），曼德海峡集装箱船过境持续。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"红海航运动态"}], links: [{ text: "Linerlytica", url: "https://www.linerlytica.com/post/market-pulse-2026-week-31" }], new: true },
   { date: "08-13", day: "13", title: "✨新增｜沙特延布港油轮全面无信号“暗航”，红海原油出口监测机制失效", desc: "8月上旬红海原油出口监测机制失效。截至8月12日，沙特延布港原油装载全面进入无信号“暗航”，船只主动关闭AIS以规避胡塞武装打击。Vortexa测算延布港装载量降至238万桶/日、Kpler降至178万桶/日、AXSMarine逆势升至85万桶/日，数据严重背离；8月沙特西海岸原油装载船近70%脱离连续AIS覆盖。曼德海峡日均通航从50艘锐减至32艘，DHT旗下VLCC船队被迫全面停止经曼德海峡驶离红海。沙特将红海运力转向北方，经苏伊士运河及埃及SUMED管线转移，埃及西迪基里尔终端8月第一周装载量飙至217万桶/日（环比+50%，约90%来自沙特）。来源：企鹅号，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油轮暗航"}], links: [{ text: "企鹅号", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_1666a7d090303252" }], new: true }
+,
+  { date: "08-13", day: "13", title: "✨新增｜胡塞向曼德海峡佩里姆岛附近埃及籍商船Tihamah发射3枚弹道导弹致6死10伤", desc: "8月11日胡塞武装向曼德海峡佩里姆岛附近埃及籍商船Tihamah发射3枚弹道导弹，致4名船员及2名救援人员死亡、10人受伤，死者含巴基斯坦、印尼船员。胡塞称目标为运载沙特军事装备船只，但未公布船名、未出示可独立核实的证据。来源：今日头条，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"胡塞袭击"}], links: [{ text: "今日头条", url: "https://www.toutiao.com/article/7673096131089302022/" }], new: true },
+  { date: "08-13", day: "13", title: "✨新增｜红海油轮\u201c暗航\u201d潮：延布港全面无AIS信号，沙特转用苏麦德管线经西迪基里尔出口", desc: "截至8月12日沙特延布港原油装载全面进入无AIS信号状态，西海岸近70%原油装载船脱离连续AIS覆盖，曼德海峡日均通航从封锁前50艘锐减至32艘。VLCC巨头DHT旗下船队已停止经曼德海峡，沙特转用苏麦德管线经埃及西迪基里尔终端出口，装载量升至217万桶/日。来源：腾讯新闻，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油轮暗航"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260813A03SGT00?refer=cp_1009" }], new: true }
 ];;;
 
 // ========== HELPER: Render source links ==========
