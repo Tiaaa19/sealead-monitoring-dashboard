@@ -2698,7 +2698,7 @@ const dailyGrid = document.getElementById('dailyGrid');
 
 // --- Summary page: Events Timeline ---
 const eventsContainer = document.getElementById('eventsTimeline');
-keyEvents.forEach(e => {
+[...keyEvents].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   eventsContainer.innerHTML += `
@@ -2786,7 +2786,7 @@ const redseaDailyGrid = document.getElementById('redseaDailyGrid');
 
 // --- Red Sea page: Events Timeline ---
 const redseaEventsContainer = document.getElementById('redseaEventsTimeline');
-redseaKeyEvents.forEach(e => {
+[...redseaKeyEvents].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   redseaEventsContainer.innerHTML += `
