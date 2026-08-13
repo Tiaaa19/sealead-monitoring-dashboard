@@ -2743,7 +2743,7 @@ const sealeadDailyGrid = document.getElementById('sealeadDailyGrid');
 
 // --- SeaLead page: Events Timeline ---
 const sealeadEventsContainer = document.getElementById('sealeadEventsTimeline');
-sealeadKeyEvents.forEach(e => {
+[...sealeadKeyEvents].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach(e => {
   const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
   const linksHtml = renderLinks(e.links);
   sealeadEventsContainer.innerHTML += `
