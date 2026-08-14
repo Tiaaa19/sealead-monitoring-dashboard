@@ -642,8 +642,8 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-14 “上午微信检索”",
-  source: "上午微信检索(web_search+web_fetch)：新增3条红海安全动态",
+  time: "2026-08-14 “LinkedIn检索+上午微信检索”",
+  source: "上午微信检索(web_search+web_fetch)：新增3条红海安全动态；LinkedIn检索(web_search+web_fetch)：新增SeaLead清算与红海运力动态",
   status: "red",
   statusText: "🔴 紧急（8/14 上午微信检索：新增3条红海安全动态——霍尔木兹5日移动均约13艘、麦加共同防务协议、雷扎伊停战条件表态。）",
   vs: "vs上午监测：本轮上午微信检索“SeaLead 中联航运 制裁”+“红海 航运 2026”，新增3条红海安全动态——霍尔木兹5日移动均约13艘（近3个月低位）、8/7《麦加共同防务协议》、雷扎伊停战条件表态；SeaLead清算、Corten接管、GL Z至9/12、提哈马号、延布港暗航、SUMED改道等均已在库，本轮跳过。",
@@ -1436,6 +1436,22 @@ const dailyData = [
       "CMA CGM/Maersk持续增加苏伊士-红海过境，绕行好望角运力降至5.2%"
     ]
   },
+  {
+    date: "2026-08-12", display: "8/12", weekday: "周三",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 1, redCount: 1, yellowCount: 0, blueCount: 0,
+    cuStatus: "红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%，SeaLead与HMM占缩减主要部分，CULines承接运力需持续关注航线调整",
+    summary: "LinkedIn检索：Alphaliner数据显示东亚至印度次大陆部署运力同比减少约31.2万TEU，SeaLead清算撤出6.6万TEU、HMM撤出11.5万TEU，CMA CGM/MSC反向增补",
+    keyEvents: [
+      "东印度次大陆自东亚集运运力同比下降14%，SeaLead与HMM占运力缩减主要部分"
+    ],
+    sealeadEvents: [
+      "SeaLead清算撤出6.6万TEU，成为东印度次大陆运力缩减主因之一"
+    ],
+    redseaEvents: [
+      "红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%，HMM撤出11.5万TEU、SeaLead撤出6.6万TEU"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -2001,7 +2017,9 @@ const keyEvents = [
   { date: "08-08", day: "08", title: "✨新增｜SeaLead正式进入清算：8/4任命Kroll的Cosimo Borrelli为清算人，主航线已停运", desc: "新加坡SeaLead Shipping 7月底申请自愿清算，8月4日任命Cosimo Borrelli（Kroll亚太重组主管即Admiralty Asia Partners）为清算人，Lloyd's List报道恰逢OFAC首次制裁一周年。亚洲-中东-地中海-波罗的海主航线已停运。清算前几天董事仍声明公司有偿付能力、净资产3740万美元可一年内清偿。崩溃源于美财政部对Shamkhani网络三波制裁（2025/7/30超115主体、2026/4/15 Economic Fury等）。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
   { date: "08-07", day: "07", title: "✨新增｜Linerlytica周报：CMA CGM/Maersk持续增加苏伊士-红海过境，绕行好望角运力降至5.2%创2024年以来新低", desc: "Linerlytica Market Pulse Week 31：SCFI综合指数回升4.7%，中东紧张未阻承运人使用苏伊士航线，绕行好望角运力降至全球船队5.2%（2024年1月以来最低），绕行船数跌破300艘（运力410万TEU）。CMA CGM与Maersk持续推动提前回归苏伊士-红海航线（EPIC/AE11西行），曼德海峡集装箱船过境持续。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"红海航运动态"}], links: [{ text: "Linerlytica", url: "https://www.linerlytica.com/post/market-pulse-2026-week-31" }], new: true }
 ,
-  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true }
+  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true },
+  { date: "08-12", day: "12", title: "✨新增｜东印度次大陆自东亚集运运力同比下降14%", desc: "红海与霍尔木兹海峡冲突持续重塑亚洲航线部署，SeaLead 与 HMM 占运力缩减主要部分；CMA CGM、MSC 等反向增补运力。来源：Seatrade Maritime / Alphaliner。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true },
+  { date: "08-08", day: "08", title: "✨新增｜SeaLead 停运清算，CULines 承接部分运力并扩至48艘", desc: "中联航运 CULines 接收 SeaLead 相关运力后船队扩至48艘，并订造6艘新船。来源：AMZ123。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"CULines"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/GyRSbH8o" }], new: true }
 ];;;
 
 // SeaLead-specific key events
@@ -2180,7 +2198,9 @@ const sealeadKeyEvents = [
   { date: "08-13", day: "13", title: "✨新增｜丹麦商人Martin Kaalund（SeaLead前董事、House of Shipping前全球CFO）7月14日被OFAC制裁", desc: "丹麦商人Martin Kaalund于7月14日被美国OFAC制裁，与SeaLead、House of Shipping、We Freight同批列入制裁名单。Kaalund现居迪拜，曾任SeaLead董事、House of Shipping全球CFO，OFAC称其在Shamkhani网络航运监管公司House of Shipping Investment FZCO中担任全球CFO这一\u201c关键角色\u201d。Kaalund否认全部指控并寻求法律途径挑战制裁。来源：danwatch.dk，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"Shamkhani网络"}], links: [{ text: "Danwatch", url: "https://danwatch.dk/en/danish-businessman-sanctioned-by-us-for-iran-ties/" }], new: true },
   { date: "08-13", day: "13", title: "✨新增｜OFAC指控SeaLead向胡塞运送\u201c合法及非法货物\u201d，2026年3月没收1550万丹麦克朗", desc: "OFAC指控SeaLead向也门胡塞武装运送\u201c合法及非法货物\u201d，并称掌握内部组织架构图证明SeaLead实为Shamkhani网络成员。2026年3月OFAC从SeaLead没收1550万丹麦克朗（涉非法运输伊朗受制裁货物所得）。SeaLead因制裁已进入清算。来源：danwatch.dk，2026-08-13。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "Danwatch", url: "https://danwatch.dk/en/danish-businessman-sanctioned-by-us-for-iran-ties/" }], new: true },
   { date: "08-13", day: "13", title: "✨新增｜OFAC 7/14制裁清单细节：冻结SeaLead三艘关联集装箱船Paya Lebar、Shenton Way、Tanjong Pagar 1，累计制裁超200项", desc: "OFAC于7月14日将Sea Lead Shipping Pte Ltd及迪拜、马绍尔群岛、印度子公司一并列入SDN名单，同时制裁Shamkhani网络超50个个人、实体与船只（含We Freight集团、Volta Shipping、Aare Lines、Hansa Shipping等），累计制裁超200项；冻结三艘SeaLead关联集装箱船Paya Lebar、Shenton Way、Tanjong Pagar 1。来源：nationaldossier.com/owlbrief.com/trasportoeuropa.it。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"SDN名单"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
-  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算净资产明细：690万现金+1990万船舶+2620万集装箱，无长期债务", desc: "SeaLead Shipping于8月4日启动自愿清算，任命Cosimo Borrelli（Kroll亚太重组负责人）为清算人。公司7月底提交清算申请，净资产约3740万美元（含690万现金、1990万船舶、2620万集装箱），无长期债务，董事会称一年内可清偿全部负债。来源：trasportoeuropa.it/同花顺财经/出海网。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }, { text: "同花顺财经", url: "https://m.10jqka.com.cn/20260807/c678765204.shtml" }], new: true }
+  { date: "08-13", day: "13", title: "✨新增｜SeaLead清算净资产明细：690万现金+1990万船舶+2620万集装箱，无长期债务", desc: "SeaLead Shipping于8月4日启动自愿清算，任命Cosimo Borrelli（Kroll亚太重组负责人）为清算人。公司7月底提交清算申请，净资产约3740万美元（含690万现金、1990万船舶、2620万集装箱），无长期债务，董事会称一年内可清偿全部负债。来源：trasportoeuropa.it/同花顺财经/出海网。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }, { text: "同花顺财经", url: "https://m.10jqka.com.cn/20260807/c678765204.shtml" }], new: true },
+  { date: "08-11", day: "11", title: "✨新增｜海领船务 SeaLead 因美国制裁停止运营并进入自愿清算", desc: "7月下旬提交自愿清算申请，8月3日 Admiralty Asia Partners 合伙人 Cosimo Borrelli 被任命为清算人；公司净资产约3740万美元，无长期债务，流动负债含供应商1500万美元、员工薪酬50万美元。来源：中国船舶代理及无船承运人协会。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "中国船舶代理及无船承运人协会", url: "http://www.casa.org.cn/col/col18053/art/2026/art_b23f2a2e946c4ac0b60b9ccc58a57806.html" }], new: true },
+  { date: "08-07", day: "07", title: "✨新增｜SeaLead 仅剩4艘船，退出集运市场并启动清算", desc: "从全球第13位、峰值运力约20.8万TEU跌至仅剩4艘船（不足1万TEU），跌出 Alphaliner 全球百强。来源：AMZ123 / The Loadstar。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"运力萎缩"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/IhCpsPDd" }, { text: "The Loadstar", url: "https://theloadstar.com/us-treasury-sanctions-six-vessels-of-struggling-sealead/" }], new: true }
 ];;;
 
 // Red Sea / Houthi-specific key events
@@ -2622,7 +2642,8 @@ const redseaKeyEvents = [
   { date: "08-13", day: "13", title: "✨新增｜沙特红海出口改道苏伊士：7月前三周经苏伊士海运石油量创两年半新高，绕行增加20-30天", desc: "沙特红海出口通道（延布港+东西输油管道）承压，多艘油轮改道苏伊士运河、绕行好望角，绕行航程增加约20-30天；沙特7月前三周经苏伊士运河海运石油量创两年半新高。来源：网易/al-monitor.com。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"航运改道"}], links: [], new: true },
   { date: "08-14", day: "14", title: "✨新增｜霍尔木兹海峡通行船舶降至近3个月低位，5日移动均约13艘", desc: "截至8月11日（周二），经霍尔木兹海峡通行船舶数量5日移动平均约13艘，接近今年5月12日以来最低点，涵盖货轮、油轮等全部船舶类型。美国能源部长称美方护航下经霍尔木兹海峡石油7日均出口量接近每日900万桶，远高于独立追踪机构数据，航运动态缺乏透明度。来源：新浪财经/每日经济新闻，2026-08-13。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹海峡"}], links: [{ text: "新浪财经", url: "https://finance.sina.com.cn/roll/2026-08-13/doc-inineuqm9917194.shtml" }], new: true },
   { date: "08-14", day: "14", title: "✨新增｜沙特、土耳其、巴基斯坦签署《麦加共同防务协议》", desc: "8月7日，沙特王储兼首相穆罕默德、土耳其总统埃尔多安、巴基斯坦总理夏巴兹在沙特麦加共同签署《麦加共同防务协议》，核心条款规定对三国中任一国的武装攻击视为对三国全体攻击（被类比为“中东版北约第五条”）。协议签署4天后胡塞武装即对红海沙特商船发动袭击，其实际效力受外界审视。来源：今日头条，2026-08-12。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边防务"},{t:"cat",l:"麦加协议"}], links: [{ text: "今日头条", url: "https://www.toutiao.com/article/7672996512208536104" }], new: true },
-  { date: "08-14", day: "14", title: "✨新增｜伊朗最高安全官员雷扎伊：不接受停战条件则霍尔木兹海峡不开放", desc: "伊朗最高安全官员穆赫辛·雷扎伊（Mohsen Rezaei）8月12日表态：除非美国接受伊朗停战条件——解冻被冻结资产并结束包括黎巴嫩和加沙在内的整个地区战事，否则霍尔木兹海峡不会重新开放。这是当前最明确的信号之一，意味着该关键能源通道短期内重开可能性下降。来源：金十数据，2026-08-12。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"霍尔木兹海峡"},{t:"cat",l:"伊朗表态"}], links: [{ text: "金十数据", url: "https://xnews.jin10.com/details/227186" }], new: true }
+  { date: "08-14", day: "14", title: "✨新增｜伊朗最高安全官员雷扎伊：不接受停战条件则霍尔木兹海峡不开放", desc: "伊朗最高安全官员穆赫辛·雷扎伊（Mohsen Rezaei）8月12日表态：除非美国接受伊朗停战条件——解冻被冻结资产并结束包括黎巴嫩和加沙在内的整个地区战事，否则霍尔木兹海峡不会重新开放。这是当前最明确的信号之一，意味着该关键能源通道短期内重开可能性下降。来源：金十数据，2026-08-12。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"霍尔木兹海峡"},{t:"cat",l:"伊朗表态"}], links: [{ text: "金十数据", url: "https://xnews.jin10.com/details/227186" }], new: true },
+  { date: "08-12", day: "12", title: "✨新增｜红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%", desc: "据 Alphaliner，东亚至印度次大陆航线部署运力同比减少约31.2万TEU，其中 HMM 撤出11.5万TEU、SeaLead 清算撤出6.6万TEU为主因。来源：Seatrade Maritime。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true }
 ];;;
 
 // ========== HELPER: Render source links ==========
