@@ -642,12 +642,31 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-14 下午LinkedIn检索（无新增）",
-  source: "下午LinkedIn检索(web_search+web_fetch)：检索“SeaLead shipping OFAC制裁 2026”+“红海 航运 最新 2026年7月”，抓取danwatch/trasportoeuropa/Lloyd's List 3篇高质量正文，筛选后全部内容均已在库（SeaLead清算与三波制裁、Martin Kaalund被OFAC制裁、OFAC 3月没收1550万丹麦克朗、DOJ民事没收1530万美元、曼德海峡周通航降28%、中国与胡塞直接对话、中资VLCC穿越曼德、CULines接手SeaLead运力等），本轮无新增",
+  time: "2026-08-17 下午微信检索",
+  source: "下午微信检索(web_search+web_fetch)：检索“SeaLead 航运 制裁 最新消息”+“红海 胡塞 曼德海峡 2026”，抓取腾讯新闻《红海惊雷再起》/南方周末《海上迷航》/themaritimeblog 3篇高质量正文。SeaLead相关（清算、三波制裁、Corten/CULines接手、General License Z、Martin Kaalund、DOJ没收）均已在库无新增；红海新增2条：伊朗议长卡利巴夫称霍尔木兹不会恢复至战前状态（双峡协同锁喉、油价或飙至120-130美元）、绕行好望角燃料成本从126万飙升至287万美元",
   status: "red",
-  statusText: "🔴 紧急（8/14 下午LinkedIn检索：无新增——SeaLead清算、Martin Kaalund被制裁、曼德海峡封锁、中国-胡塞对话、CULines接手运力等均已在库。）",
-  vs: "vs下午微信检索：本轮下午LinkedIn检索“SeaLead shipping OFAC制裁”+“红海 航运 最新 2026年7月”，抓取danwatch/trasportoeuropa/Lloyd's List正文，SeaLead清算与三波制裁、Martin Kaalund被制裁、DOJ民事没收、曼德海峡周通航降28%、中国-胡塞直接对话、中资VLCC穿越、CULines接手运力等均已在库，本轮无新增。",
+  statusText: "🔴 紧急（8/17 下午微信检索：SeaLead无新增；红海新增2条——伊朗议长称霍尔木兹不会恢复至战前状态、绕行好望角成本激增。）",
+  vs: "vs上午检索：本轮下午微信检索“SeaLead 航运 制裁”+“红海 胡塞 曼德海峡 2026”，SeaLead清算与资产处置均已在库无新增；红海新增伊朗议长卡利巴夫“霍尔木兹不会恢复至战前状态”表态（双峡协同锁喉、油价或飙至120-130美元）及绕行好望角燃料成本126万→287万美元2条新事件。",
   findings: [
+    {
+      level: "red",
+      date: "08-17",
+      title: "✨新增｜下午微信检索：伊朗议长卡利巴夫称霍尔木兹海峡局势不会恢复至战前状态，与胡塞红海袭船形成“两峡”协同锁喉",
+      desc: "伊朗议长卡利巴夫7月22日明确表示“霍尔木兹海峡局势不会恢复至战前状态”。分析人士指出，胡塞武装在红海的袭击正是为伊朗提供谈判筹码，在“霍尔木兹-曼德海峡”两峡形成协同“锁喉”之势。若两大航道同时长期中断，油价可能飙升至每桶120-130美元，全球通胀将全面反弹。来源：腾讯新闻/南方周末，2026-08-06/08-01。",
+      links: [
+        { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" },
+        { text: "南方周末", url: "https://news.qq.com/rain/a/20260801A00YB100" }
+      ]
+    },
+    {
+      level: "yellow",
+      date: "08-17",
+      title: "✨新增｜下午微信检索：绕行好望角成本激增，航程增加19天，燃料成本从126万飙升至287万美元",
+      desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。",
+      links: [
+        { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }
+      ]
+    },
     {
       level: "red",
       date: "08-14",
@@ -732,7 +751,7 @@ const latestUpdateData = {
     }
   ],
 
-  cuImpact: "本轮下午LinkedIn检索无新增：SeaLead清算与三波制裁、Martin Kaalund被OFAC制裁、OFAC 3月没收1550万丹麦克朗、DOJ民事没收1530万美元、曼德海峡周通航降28%、中国-胡塞直接对话、中资VLCC穿越曼德、CULines接手SeaLead运力等均已在库。中联航运中东/红海航线须持续评估霍尔木兹与曼德海峡双重阻塞下的船员安全、保费成本及绕行成本。"
+  cuImpact: "本轮下午微信检索：SeaLead清算与资产处置均已在库无新增；红海新增2条——伊朗议长卡利巴夫称霍尔木兹不会恢复至战前状态（与胡塞红海袭船形成“两峡”协同锁喉，双峡长期中断油价或飙至120-130美元）、绕行好望角燃料成本从126万飙升至287万美元。中联航运中东/红海航线须持续评估霍尔木兹与曼德海峡双重阻塞下的船员安全、保费成本及绕行成本。"
 };
 
 // ========== DAILY DATA ==========
@@ -2019,7 +2038,9 @@ const keyEvents = [
 ,
   { date: "08-13", day: "13", title: "✨新增｜SeaLead清算资产处置：Corten Shipping接管集装箱设备，清算人Cosimo Borrelli任命，General License Z至9/12", desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" }, { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }], new: true },
   { date: "08-12", day: "12", title: "✨新增｜东印度次大陆自东亚集运运力同比下降14%", desc: "红海与霍尔木兹海峡冲突持续重塑亚洲航线部署，SeaLead 与 HMM 占运力缩减主要部分；CMA CGM、MSC 等反向增补运力。来源：Seatrade Maritime / Alphaliner。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true },
-  { date: "08-08", day: "08", title: "✨新增｜SeaLead 停运清算，CULines 承接部分运力并扩至48艘", desc: "中联航运 CULines 接收 SeaLead 相关运力后船队扩至48艘，并订造6艘新船。来源：AMZ123。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"CULines"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/GyRSbH8o" }], new: true }
+  { date: "08-08", day: "08", title: "✨新增｜SeaLead 停运清算，CULines 承接部分运力并扩至48艘", desc: "中联航运 CULines 接收 SeaLead 相关运力后船队扩至48艘，并订造6艘新船。来源：AMZ123。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"CULines"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/GyRSbH8o" }], new: true },
+  { date: "08-17", day: "17", title: "✨新增｜伊朗议长卡利巴夫：霍尔木兹海峡局势不会恢复至战前状态，与胡塞红海袭船形成“两峡”协同锁喉", desc: "伊朗议长卡利巴夫7月22日明确表示“霍尔木兹海峡局势不会恢复至战前状态”。分析人士指出，胡塞武装在红海的袭击正是为伊朗提供谈判筹码，在“霍尔木兹-曼德海峡”两峡形成协同“锁喉”之势。若两大航道同时长期中断，油价可能飙升至每桶120-130美元，全球通胀将全面反弹。来源：腾讯新闻/南方周末，2026-08-06/08-01。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油价"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }, { text: "南方周末", url: "https://news.qq.com/rain/a/20260801A00YB100" }], new: true },
+  { date: "08-17", day: "17", title: "✨新增｜绕行好望角成本激增：航程增加19天，燃料成本从126万飙升至287万美元", desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"成本传导"},{t:"cat",l:"红海安全"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }], new: true }
 ];;;
 
 // SeaLead-specific key events
@@ -2643,7 +2664,9 @@ const redseaKeyEvents = [
   { date: "08-14", day: "14", title: "✨新增｜霍尔木兹海峡通行船舶降至近3个月低位，5日移动均约13艘", desc: "截至8月11日（周二），经霍尔木兹海峡通行船舶数量5日移动平均约13艘，接近今年5月12日以来最低点，涵盖货轮、油轮等全部船舶类型。美国能源部长称美方护航下经霍尔木兹海峡石油7日均出口量接近每日900万桶，远高于独立追踪机构数据，航运动态缺乏透明度。来源：新浪财经/每日经济新闻，2026-08-13。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹海峡"}], links: [{ text: "新浪财经", url: "https://finance.sina.com.cn/roll/2026-08-13/doc-inineuqm9917194.shtml" }], new: true },
   { date: "08-14", day: "14", title: "✨新增｜沙特、土耳其、巴基斯坦签署《麦加共同防务协议》", desc: "8月7日，沙特王储兼首相穆罕默德、土耳其总统埃尔多安、巴基斯坦总理夏巴兹在沙特麦加共同签署《麦加共同防务协议》，核心条款规定对三国中任一国的武装攻击视为对三国全体攻击（被类比为“中东版北约第五条”）。协议签署4天后胡塞武装即对红海沙特商船发动袭击，其实际效力受外界审视。来源：今日头条，2026-08-12。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"多边防务"},{t:"cat",l:"麦加协议"}], links: [{ text: "今日头条", url: "https://www.toutiao.com/article/7672996512208536104" }], new: true },
   { date: "08-14", day: "14", title: "✨新增｜伊朗最高安全官员雷扎伊：不接受停战条件则霍尔木兹海峡不开放", desc: "伊朗最高安全官员穆赫辛·雷扎伊（Mohsen Rezaei）8月12日表态：除非美国接受伊朗停战条件——解冻被冻结资产并结束包括黎巴嫩和加沙在内的整个地区战事，否则霍尔木兹海峡不会重新开放。这是当前最明确的信号之一，意味着该关键能源通道短期内重开可能性下降。来源：金十数据，2026-08-12。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"霍尔木兹海峡"},{t:"cat",l:"伊朗表态"}], links: [{ text: "金十数据", url: "https://xnews.jin10.com/details/227186" }], new: true },
-  { date: "08-12", day: "12", title: "✨新增｜红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%", desc: "据 Alphaliner，东亚至印度次大陆航线部署运力同比减少约31.2万TEU，其中 HMM 撤出11.5万TEU、SeaLead 清算撤出6.6万TEU为主因。来源：Seatrade Maritime。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true }
+  { date: "08-12", day: "12", title: "✨新增｜红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%", desc: "据 Alphaliner，东亚至印度次大陆航线部署运力同比减少约31.2万TEU，其中 HMM 撤出11.5万TEU、SeaLead 清算撤出6.6万TEU为主因。来源：Seatrade Maritime。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true },
+  { date: "08-17", day: "17", title: "✨新增｜伊朗议长卡利巴夫：霍尔木兹海峡局势不会恢复至战前状态，与胡塞红海袭船形成“两峡”协同锁喉", desc: "伊朗议长卡利巴夫7月22日明确表示“霍尔木兹海峡局势不会恢复至战前状态”。分析人士指出，胡塞武装在红海的袭击正是为伊朗提供谈判筹码，在“霍尔木兹-曼德海峡”两峡形成协同“锁喉”之势。若两大航道同时长期中断，油价可能飙升至每桶120-130美元，全球通胀将全面反弹。来源：腾讯新闻/南方周末，2026-08-06/08-01。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油价"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }, { text: "南方周末", url: "https://news.qq.com/rain/a/20260801A00YB100" }], new: true },
+  { date: "08-17", day: "17", title: "✨新增｜绕行好望角成本激增：航程增加19天，燃料成本从126万飙升至287万美元", desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"成本传导"},{t:"cat",l:"红海安全"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }], new: true }
 ];;;
 
 // ========== HELPER: Render source links ==========
