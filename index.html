@@ -642,154 +642,19 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-18 上午微信检索",
-  source: "上午微信检索(web_search+web_fetch)：检索\u201cSeaLead 中联航运 制裁 2026\u201d+\u201c红海 胡塞 航运 最新\u201d，抓取 marinersupdate/华尔街见闻(shippingdigest)3篇正文。SeaLead相关（清算、OFAC三波制裁、GL Z、Corten/CULines接手、DOJ没收240万美元）均已在库无新增；红海新增4条：沙特红海石油出口AIS\u201c数据黑洞\u201d、马士基/赫伯罗特AE15新增吉达港复航、全球关键航运要道运费创纪录、土耳其参加吉达护航联盟会议",
+  time: "2026-08-18 上午LinkedIn检索",
+  source: "上午LinkedIn检索(web_search+web_fetch)：关键词SeaLead/sealead shipping/red sea/houthi/container。SeaLead相关（清算、General License Z、Corten/CU Lines接手、DOJ没收、Martin Kaalund制裁）均已在库，仅补充船队规模争议细节；红海新增4条：Lloyd's List 8/6简报（主流油轮过境降42%、VLCC流量翻4倍减载过苏伊士、JWC战争险区北扩800公里）、胡塞威胁扩大北红海袭击+美伊阿曼传60天临时重开霍尔木兹协议、6艘Bahri VLCC绕行好望角+HOCC否认通行费、7/31 GasLog Shanghai受损+SCFI反弹4.67%",
   status: "red",
-  statusText: "🔴 紧急（8/18 上午微信检索：SeaLead无新增；红海新增4条——沙特AIS数据黑洞、马士基扩大复航、运费纪录、土耳其护航联盟。）",
-  vs: "vs 08-17 下午微信检索：本轮上午微信检索\u201cSeaLead 中联航运 制裁 2026\u201d+\u201c红海 胡塞 航运 最新\u201d，SeaLead 无新增；红海新增上述4条——沙特红海石油出口AIS\u201c数据黑洞\u201d（三家机构出口估算相差数百万桶/日）、马士基/赫伯罗特AE15新增吉达港复航（封锁后首艘马士基大船驶出曼德海峡）、全球关键航运要道运费集体创纪录（海湾-亚洲石油运费2005年以来最高）、土耳其确认参加吉达红海国际护航联盟会议（也门面临2022年停火以来最高战争风险）。",
+  statusText: "🔴 紧急（8/18 上午LinkedIn检索：SeaLead仅补充船队规模争议无重大新增；红海新增4条——主流油轮过境降42%、胡塞威胁北红海/苏伊士、美伊阿曼传60天重开霍尔木兹方案、6艘VLCC绕行好望角。）",
+  vs: "vs 8/17 下午微信检索：本轮上午LinkedIn检索覆盖SeaLead/red sea/houthi/container关键词，SeaLead清算与资产处置均已在库，仅补充清算时船队规模争议（Splash247 4艘 vs Maritime Executive 8艘）及Navilink 5CX服务终止；红海新增Lloyd's List 8/6简报数据（主流油轮过境降42%、VLCC流量翻4倍减载过苏伊士、JWC战争险区北扩约800公里）、胡塞威胁扩大北红海袭击阻止苏伊士过境及美伊阿曼60天临时重开霍尔木兹传闻、6艘Bahri VLCC绕行好望角+HOCC否认通行费、7/31 GasLog Shanghai受损及SCFI反弹4.67%与船公司8月起加收EFS。",
   findings: [
-    {
-      level: "red",
-      date: "08-18",
-      title: "✨新增｜上午微信检索：沙特红海石油出口陷\u201c数据黑洞\u201d，油轮大规模关闭AIS，三家机构出口估算相差数百万桶/日",
-      desc: "自7/20胡塞封锁生效以来沙特亚布港装载频繁以\u201c暗船\u201d方式运行，上周所有提货作业未开启AIS，西海岸约70%装载处于\u201c暗船\u201d状态；8/3当周亚布港原油出口估算 Vortexa 238万桶/日 vs Kpler 178万桶/日 vs AXSMarine 85万桶/日，同一港口数据相差数百万桶/日；IEA/OPEC 难以独立验证沙特实际出口量；沙特转向北方路线经苏伊士运河/SUMED管道出口，锡迪凯里尔装船量创纪录达217万桶/日。",
-      links: [
-        { text: "网易/华尔街见闻", url: "https://dy.163.com/article/L4AN40E305198NMR.html" },
-        { text: "今日头条", url: "https://www.toutiao.com/article/7674183310330872320/" }
-      ]
-    },
-    {
-      level: "yellow",
-      date: "08-18",
-      title: "✨新增｜上午微信检索：马士基/赫伯罗特扩大红海复航，AE15新增吉达港挂靠，封锁后首艘装载沙特货马士基大船驶出曼德海峡",
-      desc: "AE15航线（Gemini Cooperation）新增沙特吉达港挂靠，由Madison Maersk 632W航次执行，航线为青岛-光阳-宁波-丹戎帕拉帕斯-吉达-苏伊士-塞得港-达米埃塔-苏伊士-可伦坡-新加坡-青岛；独立运营的MECL航线（印度-中东-美东）8月起东行新增吉达；马士基强调恢复红海取决于安全形势、保留绕行好望角备选；8/12 A.P. MOLLER号关闭AIS驶出曼德海峡，为胡塞7/21封锁后第一艘装载沙特货物驶出曼德海峡的马士基大型集装箱船，执行AE19航线。",
-      links: [
-        { text: "shippingdigest.tw", url: "https://shippingdigest.tw/news/20260812n3" },
-        { text: "微博", url: "https://weibo.com/1663937380/5331489619182369" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-18",
-      title: "✨新增｜上午微信检索：全球关键航运要道运费集体创纪录，海湾-亚洲石油运费创2005年以来最高",
-      desc: "Argus数据显示海湾到亚洲石油运费8/10达15.22美元/桶，为2005年评估以来最高；黑海-地中海油轮运费同步创新高；巴拿马运河过闸费8月初达110万/250万美元创纪录；莱茵河驳船运费2012年来最高；远东至美东即期运费同比涨234%至10249美元/FEU；Argus定价负责人称这是航运市场有记录以来最严重干扰，超新冠疫情和俄罗斯制裁。",
-      links: [
-        { text: "今日头条/金融界", url: "https://www.toutiao.com/article/7674894742039134783/" }
-      ]
-    },
-    {
-      level: "yellow",
-      date: "08-18",
-      title: "✨新增｜上午微信检索：土耳其确认参加吉达红海国际护航联盟会议，也门面临2022年停火以来最高战争风险",
-      desc: "8/13土耳其国防部确认土方参加吉达红海国际护航联盟会议，土/沙/巴8/7《麦加联合防务协议》推进联合军演与政治军事协调；联合国也门问题特使格伦德贝里8/13警告也门面临2022年停火以来重新滑向大规模战争的最高风险；8/15胡塞向也门政府控制的穆哈港发动导弹袭击至少1死8伤。",
-      links: [
-        { text: "今日头条", url: "https://www.toutiao.com/article/7674183310330872320/" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-17",
-      title: "✨新增｜下午微信检索：伊朗议长卡利巴夫称霍尔木兹海峡局势不会恢复至战前状态，与胡塞红海袭船形成“两峡”协同锁喉",
-      desc: "伊朗议长卡利巴夫7月22日明确表示“霍尔木兹海峡局势不会恢复至战前状态”。分析人士指出，胡塞武装在红海的袭击正是为伊朗提供谈判筹码，在“霍尔木兹-曼德海峡”两峡形成协同“锁喉”之势。若两大航道同时长期中断，油价可能飙升至每桶120-130美元，全球通胀将全面反弹。来源：腾讯新闻/南方周末，2026-08-06/08-01。",
-      links: [
-        { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" },
-        { text: "南方周末", url: "https://news.qq.com/rain/a/20260801A00YB100" }
-      ]
-    },
-    {
-      level: "yellow",
-      date: "08-17",
-      title: "✨新增｜下午微信检索：绕行好望角成本激增，航程增加19天，燃料成本从126万飙升至287万美元",
-      desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。",
-      links: [
-        { text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-14",
-      title: "✨新增｜上午微信检索：霍尔木兹海峡通行船舶降至近3个月低位，5日移动均约13艘",
-      desc: "截至8月11日（周二），经霍尔木兹海峡通行船舶数量5日移动平均约13艘，接近今年5月12日以来最低点，涵盖货轮、油轮等全部船舶类型。美国能源部长称美方护航下经霍尔木兹海峡石油7日均出口量接近每日900万桶，远高于独立追踪机构数据，凸显航运动态缺乏透明度。来源：新浪财经/每日经济新闻，2026-08-13。",
-      links: [
-        { text: "新浪财经", url: "https://finance.sina.com.cn/roll/2026-08-13/doc-inineuqm9917194.shtml" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-14",
-      title: "✨新增｜上午微信检索：沙特、土耳其、巴基斯坦签署《麦加共同防务协议》",
-      desc: "8月7日，沙特王储兼首相穆罕默德、土耳其总统埃尔多安、巴基斯坦总理夏巴兹在沙特麦加共同签署《麦加共同防务协议》，核心条款规定对三国中任一国的武装攻击视为对三国全体攻击（被类比为“中东版北约第五条”）。协议签署4天后胡塞武装即对红海沙特商船发动袭击，其实际效力受外界审视。来源：今日头条，2026-08-12。",
-      links: [
-        { text: "今日头条", url: "https://www.toutiao.com/article/7672996512208536104" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-14",
-      title: "✨新增｜上午微信检索：伊朗最高安全官员雷扎伊称不接受停战条件则霍尔木兹不开放",
-      desc: "伊朗最高安全官员穆赫辛·雷扎伊（Mohsen Rezaei）8月12日表态：除非美国接受伊朗停战条件——解冻被冻结资产并结束包括黎巴嫩和加沙在内的整个地区战事，否则霍尔木兹海峡不会重新开放。这是当前最明确的信号之一，意味着该关键能源通道短期内重开可能性下降。来源：金十数据，2026-08-12。",
-      links: [
-        { text: "金十数据", url: "https://xnews.jin10.com/details/227186" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-13",
-      title: "✨新增｜晚间微信检索：SeaLead清算资产处置，Corten接管集装箱设备，清算人Cosimo Borrelli任命，GL Z至9/12",
-      desc: "Corten Shipping接管SeaLead大部分集装箱设备（主营俄罗斯及波斯湾航线）；8月3日Admiralty Asia Partners合伙人Cosimo Borrelli被任命为清算人；OFAC签发General License Z允许SeaLead及三艘被封锁船舶开展有限清算活动至2026年9月12日。",
-      links: [
-        { text: "kjdsnews", url: "https://www.kjdsnews.com/a/2917946.html" },
-        { text: "marinersupdate", url: "https://marinersupdate.com/blog/sealeads-rise-ends-in-liquidation-after-us-sanctions" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-12",
-      title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348\u5fae\u4fe1\u68c0\u7d22\uff1a\u80e1\u585e\u66fc\u5fb7\u6d77\u5ce1\u518d\u88ad\u8d27\u8f6e\u81f46\u6b7b\uff0c\u903e\u4e00\u5e74\u6765\u7ea2\u6d77\u822a\u8fd0\u9996\u6b21\u62a5\u544a\u4eba\u5458\u4f24\u4ea1\uff0c\u5e03\u6cb9\u903c\u8fd1$90",
-      desc: "8\u670812\u65e5\uff0c\u4f0a\u6717\u652f\u6301\u4e0b\u7684\u80e1\u585e\u6b66\u88c5\u5728\u66fc\u5fb7\u6d77\u5ce1\u5bf9\u4e00\u8258\u8d27\u8f6e\u53d1\u52a8\u88ad\u51fb\uff0c\u9020\u62106\u4eba\u6b7b\u4ea1\uff0c\u8fd9\u662f\u903e\u4e00\u5e74\u6765\u7ea2\u6d77\u822a\u8fd0\u9047\u88ad\u4e8b\u4ef6\u4e2d\u9996\u6b21\u62a5\u544a\u4eba\u5458\u4f24\u4ea1\u3002\u6570\u5c0f\u65f6\u540e\u7f8e\u519b\u5411\u4e00\u8258\u96c6\u88c5\u7bb1\u8239\u53d1\u5c04\u5bfc\u5f39\uff0c\u6307\u5176\u8bd5\u56fe\u7a81\u7834\u534e\u76db\u987f\u5bf9\u4f0a\u6717\u6e2f\u53e3\u7684\u5c01\u9501\u3002\u57fa\u51c6\u5e03\u4f26\u7279\u539f\u6cb9\u6da8\u7ea60.93%\u81f3$89.74/\u6876\uff0cWTI\u6da80.97%\u81f3$84.01/\u6876\u3002\u5c3d\u7ba1\u5916\u4ea4\u5c42\u9762\u4f20\u51fa\u970d\u5c14\u6728\u5179\u6d77\u5ce1\u6709\u671b\u91cd\u65b0\u5f00\u653e\u7684\u6d88\u606f\uff0c\u7ea2\u6d77\u53ca\u963f\u66fc\u6e7e\u6d77\u57df\u9488\u5bf9\u5546\u8239\u7684\u81f4\u547d\u88ad\u51fb\u4f7f\u5168\u7403\u5173\u952e\u822a\u8fd0\u901a\u9053\u4f9b\u5e94\u98ce\u9669\u8fdb\u4e00\u6b65\u5347\u6e29\u3002\u6765\u6e90\uff1a\u91d1\u878d\u754c/\u667a\u901a\u8d22\u7ecf\uff0c2026-08-12\u3002",
-      links: [
-        { text: "\u91d1\u878d\u754c/\u667a\u901a\u8d22\u7ecf", url: "https://futures.jrj.com.cn/2026/08/12144658086789.shtml" }
-      ]
-    },
-    {
-      level: "red",
-      date: "08-11",
-      title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348\u5fae\u4fe1\u68c0\u7d22\uff1a\u80e1\u585e\u5bfc\u5f39\u51fb\u4e2d\u201c\u63d0\u54c8\u9a6c\u201d\u53f7\u6c99\u7279\u5546\u8239\u81f43\u6b7b7\u4f24\uff0c\u7ea2\u6d77\u822a\u8fd0\u9996\u6b21\u62a5\u544a\u4eba\u5458\u6b7b\u4ea1",
-      desc: "8\u670811\u65e5\u4e0a\u5348\uff0c\u80e1\u585e\u6b66\u88c5\u5411\u66fc\u5fb7\u6d77\u5ce1\u4e00\u8258\u6c99\u7279\u5546\u8239\u201c\u63d0\u54c8\u9a6c\u201d\u53f7\u53d1\u5c04\u53cd\u8230\u5bfc\u5f39\uff0c\u8239\u4f53\u88ab\u51fb\u4e2d\u540e\u5185\u90e8\u8d77\u706b\u30023\u540d\u8239\u5458\u5f53\u573a\u6b7b\u4ea1\uff082\u540d\u5df4\u57fa\u65af\u5766\u4eba\u30011\u540d\u5370\u5ea6\u5c3c\u897f\u4e9a\u4eba\uff09\uff0c7\u4eba\u53d7\u4f24\uff0c1\u4eba\u4e0b\u843d\u4e0d\u660e\u3002\u80e1\u585e\u58f0\u79f0\u76ee\u6807\u662f\u201c\u6c99\u7279\u519b\u4e8b\u88c5\u5907\u8fd0\u8f93\u8239\u201d\uff0c\u4e5f\u95e8\u6d77\u5cb8\u5de1\u536b\u961f\u79f0\u7cfb\u666e\u901a\u5546\u8239\u3002\u8fd9\u662f\u80e1\u585e7\u670820\u65e5\u5bf9\u6c99\u7279\u5b9e\u65bd\u6d77\u4e0a\u7981\u8fd0\u4ee5\u6765\u9996\u6b21\u9020\u6210\u4eba\u5458\u6b7b\u4ea1\u7684\u7ea2\u6d77\u822a\u8fd0\u88ad\u51fb\u3002\u6765\u6e90\uff1a\u7f51\u6613/\u79d1\u6280\u751f\u6d3b\u5feb\u8baf\uff0c2026-08-12\u3002",
-      links: [
-        { text: "\u7f51\u6613/\u79d1\u6280\u751f\u6d3b\u5feb\u8baf", url: "https://www.163.com/dy/article/L44PGGLJ0514EMD3.html" }
-      ]
-    },
-    {
-      level: "yellow",
-      date: "07-15",
-      title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348LinkedIn\u68c0\u7d22\uff1a\u9a6c\u58eb\u57faWAF6\u6062\u590d\u7ea2\u6d77+\u5b89\u7406\u4f1a\u51b3\u8bae\u5ef6\u957f+\u82cf\u4f0a\u58eb\u9644\u52a0\u8d39",
-      desc: "\u2460\u9a6c\u58eb\u57fa(Maersk)\u5ba3\u5e03\u901a\u8fc7WAF6\u822a\u7ebf\u6062\u590d\u7ea2\u6d77\u670d\u52a1\uff0c\u5927\u578b\u822a\u8fd0\u516c\u53f8\u91c7\u53d6\u6df7\u5408\u8def\u7531\u7b56\u7565\uff1b\u2461\u8054\u5408\u56fd\u5b89\u7406\u4f1a7\u6708\u5173\u6ce8\u7ea2\u6d77\u6d77\u4e0a\u5b89\u5168\uff0c\u53ef\u80fd\u5ef6\u957f\u7b2c2722/2812\u53f7\u51b3\u8bae\u6708\u62a5\u4e49\u52a1\uff1b\u2462\u82cf\u4f0a\u58eb\u8fd0\u6cb3\u7ba1\u7406\u5c40\u81ea7/15\u8d77\u52a0\u5f81\u8fc7\u5883\u9644\u52a0\u8d39\uff0c\u5f71\u54cd\u8239\u4e1c\u6210\u672c\u6bd4\u8f83\u3002",
-      links: [
-        { text: "MaritimeNews", url: "https://www.maritimenews.com/red-sea/red-sea-shipping-july-2026-developments" }
-      ]
-    },
-    {
-      level: "red",
-      date: "07-14",
-      title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348LinkedIn\u68c0\u7d22\uff1aOFAC sb0562\u786e\u8ba4SeaLead\u56db\u5bb6\u5b50\u516c\u53f8+\u5173\u8054\u5b9e\u4f53\u5165SDN\uff0c\u6307\u5411\u4e3a\u80e1\u585e\u8fd0\u8f93",
-      desc: "\u7f8e\u56fd\u8d22\u653f\u90e8OFAC 7/14\u53d1\u5e03sb0562\u5c06\u65b0\u52a0\u5761Sea Lead Shipping PTE. Ltd.\u53ca\u8fea\u62dcDMCC\u3001\u9a6c\u7ecd\u5c14\u7fa4\u5c9b\u3001\u5370\u5ea6\u4ee3\u7406\u56db\u5bb6\u5b50\u516c\u53f8\u5168\u90e8\u5217\u5165SDN\uff0c\u540c\u65f6\u5236\u88c1\u8fea\u62dcWe Freight Shipping LLC\uff08\u8fd0\u8f93\u4e2d\u4ecb\uff09\u548cVolta Shipping Services LLC\u7b49\u5173\u8054\u5b9e\u4f53\u3002SeaLead\u88ab\u8ba4\u5b9a\u4e3aShamkhani\u975e\u6cd5\u822a\u8fd0\u7f51\u7edc\u5173\u952e\u96c6\u88c5\u7bb1\u822a\u8fd0\u516c\u53f8\uff0c\u7ba1\u7406\u8fd0\u8425SHENTON WAY\u3001TANJONG PAGAR 1\u3001PAYA LEBAR\u7b49\u8239\u8236\uff0c\u88ab\u6307\u5411\u4e5f\u95e8\u80e1\u585e\u6b66\u88c5\uff08Ansarallah\uff09\u8fd0\u9001\u8d27\u7269\u3002\u7d2f\u8ba1\u5236\u88c1\u8d85200\u5b9e\u4f53/\u4e2a\u4eba/\u8239\u8236\u3002",
-      links: [
-        { text: "OFAC Press Release sb0562", url: "https://home.treasury.gov/news/press-releases/sb0562" }
-      ]
-    },
-    {
-      level: "red",
-      date: "07-05",
-      title: "\u2728\u65b0\u589e\uff5c\u4e0b\u5348LinkedIn\u68c0\u7d22\uff1a7\u6708\u521d\u8377\u53f0\u8fbe\u6d77\u57df\u8d27\u8239\u906d\u5c0f\u8247\u5f00\u706b\u88ad\u51fb\uff0c\u5b89\u4fdd\u8fd8\u51fb\u903c\u9000",
-      desc: "2026\u5e747\u6708\u521d\uff0c\u4e00\u8258\u8d27\u8239\u5728\u4e5f\u95e8\u8377\u53f0\u8fbe(Hodeidah)\u897f\u5357\u7ea630\u6d77\u91cc\u5904\u906d\u4e0d\u660e\u6b66\u88c5\u4eba\u5458\u4e58\u5750\u5c0f\u8247(skiff)\u5f00\u706b\u88ad\u51fb\u3002\u8239\u4e0a\u5b89\u4fdd\u4eba\u5458\u8fd8\u51fb\u540e\u88ad\u51fb\u8005\u64a4\u9000\u81f3\u53e6\u4e00\u8258\u5173\u95edAIS\u7684\u8239\u53ea\u3002UKMTO\u786e\u8ba4\u6240\u6709\u8239\u5458\u548c\u8d27\u7269\u5b89\u5168\u3002",
-      links: [
-        { text: "UKMTO / MaritimeNews", url: "https://www.maritimenews.com/red-sea/red-sea-shipping-july-2026-developments" }
-      ]
-    }
+    { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：Lloyd's List红海简报——主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——在延布减载或在Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ] },
+    { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：胡塞威胁扩大北红海袭击阻止苏伊士过境；美伊阿曼接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称在延布附近袭击沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”。Axios 8/5援引美方官员：美伊阿曼正接近达成60天临时协议重开霍尔木兹海峡（北向经伊朗水域、南向经阿曼水域，可续期）。来源：TWZ/Axios，2026-08-05。", links: [ { text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" } ] },
+    { level: "yellow", date: "08-18", title: "✨新增｜上午LinkedIn检索：6艘沙特Bahri VLCC亚丁湾掉头绕行好望角；胡塞HOCC否认曼德通行费计划", desc: "8/2-8/3六艘沙特Bahri空载VLCC在亚丁湾掉头、编队绕行非洲好望角返回红海港口（航程至少多25天）；两艘载沙特原油油轮（Lesvos、Desh Vaibhav）关闭AIS驶出曼德海峡。8/1胡塞人道主义行动协调中心（HOCC）否认曼德海峡通行费计划，称通行服务“自愿且免费”，警告船公司勿向任何人付费，但对沙特封锁维持不变。来源：Mighty Shipping/GCC Freight，2026-08-03。", links: [ { text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" } ] },
+    { level: "yellow", date: "08-18", title: "✨新增｜上午LinkedIn检索：7/31 GasLog Shanghai LNG船驶出霍尔木兹受损；SCFI 7/31反弹4.67%，船公司8月起加收EFS", desc: "7/31 GasLog旗下15.5万方LNG船GasLog Shanghai驶出霍尔木兹海峡时受损（船员安全）；UKMTO同日报告两起事件（阿曼Lima东北油轮被射弹击中、Khasab东北近距离爆炸）。SCFI综合指数7/31报3205.97点、周涨4.67%；Drewry WCI报$4,255/FEU仍缓降；多家船公司8月起加收紧急燃油附加费（EFS）。来源：Mighty Shipping，2026-08-04。", links: [ { text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" } ] }
   ],
 
-  cuImpact: "本轮上午微信检索：SeaLead相关均已在库无新增；红海新增4条——沙特红海石油出口AIS\u201c数据黑洞\u201d加剧运价与保险不确定性、马士基/赫伯罗特等复航与胡塞封锁并存（复航取决于安全形势）、全球关键航运要道运费创纪录推高成本（海湾-亚洲石油运费2005年以来最高）、土耳其参与吉达护航联盟会议或影响区域安全格局。中联航运中东/红海航线须持续评估AIS数据失真下的运价与保险不确定性、复航与封锁并存的航行安全、运费创纪录带来的成本压力及区域安全格局变化。"
+  cuImpact: "本轮上午LinkedIn检索：SeaLead清算与资产处置均已在库，仅补充清算时船队规模争议（4艘vs8艘、两艘改挂伊朗旗）与Navilink 5CX服务终止提示。红海新增4条——Lloyd's List 8/6简报主流油轮过境降42%、VLCC流量翻4倍减载过苏伊士、JWC战争险区北扩约800公里；胡塞威胁扩大北红海袭击阻止苏伊士过境+美伊阿曼传60天临时重开霍尔木兹协议；6艘Bahri VLCC绕行好望角+HOCC否认通行费；7/31 GasLog Shanghai受损+SCFI反弹4.67%。中联航运中东/红海航线须持续评估霍尔木兹与曼德海峡双重阻塞下的船员安全、战争险保费（JWC北扩后吉达/延布挂靠成本上升）及绕行成本，并跟踪美伊阿曼60天临时协议进展作为9-10月运力松动的领先信号。"
 };
 
 // ========== DAILY DATA ==========
@@ -1509,6 +1374,28 @@ const dailyData = [
       "红海与霍尔木兹冲突致东印度次大陆集运运力同比下降14%，HMM撤出11.5万TEU、SeaLead撤出6.6万TEU"
     ]
   },
+  {
+    date: "2026-08-18", display: "8/18", weekday: "周二",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 4, redCount: 3, yellowCount: 1, blueCount: 0,
+    cuStatus: "胡塞威胁扩大北红海袭击阻止苏伊士过境+美伊阿曼传60天临时重开霍尔木兹协议+主流油轮过境量降42%+SeaLead船队规模存争议，CULines RES/CGX/CGS航线持续评估中东航运风险",
+    summary: "LinkedIn检索：Lloyd's List红海简报主流油轮过境降42%、VLCC流量翻4倍减载过苏伊士、JWC战争险区北扩800公里；胡塞威胁扩大北红海袭击+美伊阿曼传60天临时重开霍尔木兹协议；SeaLead清算船队规模争议（4艘vs8艘）",
+    keyEvents: [
+      "✨新增｜Lloyd's List红海简报8/6：主流油轮过境量降42%至53次，VLCC流量翻4倍并减载/部分卸货通过苏伊士，JWC战争险区域向北扩大约800公里",
+      "✨新增｜胡塞8/5宣称袭击延布Wafa号并威胁将打击扩大至北红海阻止苏伊士过境；Axios称美伊阿曼接近达成60天临时协议重开霍尔木兹",
+      "✨新增｜6艘沙特Bahri VLCC亚丁湾掉头绕行好望角；7/31 GasLog Shanghai LNG船出霍尔木兹受损",
+      "✨新增｜SeaLead清算船队规模存争议：Splash247称4艘/全球第80，Maritime Executive称8艘约1万TEU；Navilink确认5CX亚洲-地中海服务终止"
+    ],
+    sealeadEvents: [
+      "✨新增｜SeaLead清算时船队规模存争议：Splash247称4艘跌至第80位，Maritime Executive称8艘约1万TEU，其中2艘清算前改挂伊朗旗试图规避；Navilink确认5CX亚洲-地中海服务终止并提示货代立即改配承运人"
+    ],
+    redseaEvents: [
+      "✨新增｜Lloyd's List红海简报8/6：主流油轮过境降42%至53次，VLCC流量翻4倍减载/部分卸货过苏伊士，JWC战争险区北扩约800公里，吉达/延布加收保费",
+      "✨新增｜胡塞8/5威胁扩大北红海袭击阻止苏伊士过境；Axios：美伊阿曼接近达成60天临时协议重开霍尔木兹",
+      "✨新增｜6艘沙特Bahri VLCC亚丁湾掉头绕行好望角（+25天）；8/1胡塞HOCC否认曼德通行费计划称自愿且免费",
+      "✨新增｜7/31 GasLog Shanghai LNG船出霍尔木兹受损，UKMTO同日报告两起袭击；SCFI 7/31反弹4.67%"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -2078,7 +1965,11 @@ const keyEvents = [
   { date: "08-12", day: "12", title: "✨新增｜东印度次大陆自东亚集运运力同比下降14%", desc: "红海与霍尔木兹海峡冲突持续重塑亚洲航线部署，SeaLead 与 HMM 占运力缩减主要部分；CMA CGM、MSC 等反向增补运力。来源：Seatrade Maritime / Alphaliner。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"运力收缩"},{t:"cat",l:"红海安全"}], links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/containers/indian-subcontinent-container-capacity-from-east-asia-falls-14-" }], new: true },
   { date: "08-08", day: "08", title: "✨新增｜SeaLead 停运清算，CULines 承接部分运力并扩至48艘", desc: "中联航运 CULines 接收 SeaLead 相关运力后船队扩至48艘，并订造6艘新船。来源：AMZ123。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"CULines"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/GyRSbH8o" }], new: true },
   { date: "08-17", day: "17", title: "✨新增｜伊朗议长卡利巴夫：霍尔木兹海峡局势不会恢复至战前状态，与胡塞红海袭船形成“两峡”协同锁喉", desc: "伊朗议长卡利巴夫7月22日明确表示“霍尔木兹海峡局势不会恢复至战前状态”。分析人士指出，胡塞武装在红海的袭击正是为伊朗提供谈判筹码，在“霍尔木兹-曼德海峡”两峡形成协同“锁喉”之势。若两大航道同时长期中断，油价可能飙升至每桶120-130美元，全球通胀将全面反弹。来源：腾讯新闻/南方周末，2026-08-06/08-01。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油价"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }, { text: "南方周末", url: "https://news.qq.com/rain/a/20260801A00YB100" }], new: true },
-  { date: "08-17", day: "17", title: "✨新增｜绕行好望角成本激增：航程增加19天，燃料成本从126万飙升至287万美元", desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"成本传导"},{t:"cat",l:"红海安全"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }], new: true }
+  { date: "08-17", day: "17", title: "✨新增｜绕行好望角成本激增：航程增加19天，燃料成本从126万飙升至287万美元", desc: "沙特约75%出口原油经红海运输，航线受阻意味着绕行非洲好望角将增加19天航程，燃料成本从126万美元飙升至287万美元。曼德海峡日均通行量已从此前的30-50艘骤降至不足20艘，红海航运风险持续推高运输成本。来源：腾讯新闻，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"成本传导"},{t:"cat",l:"红海安全"}], links: [{ text: "腾讯新闻", url: "https://new.qq.com/rain/a/20260806A0ESVZ00" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜Lloyd's List红海简报：主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——VLCC在延布减载或在埃及Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海数据"},{t:"cat",l:"战争险"}], links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜胡塞威胁扩大北红海袭击阻止苏伊士过境；Axios：美伊阿曼接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称在延布附近袭击沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”，因沙特已把油轮改道北方。Axios 8/5援引美方官员报道，美伊阿曼正接近达成60天临时协议重开霍尔木兹海峡：北向船走伊朗水域、南向船走阿曼水域，可续期。来源：TWZ/Axios，2026-08-05。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"霍尔木兹"}], links: [{ text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜6艘沙特Bahri VLCC亚丁湾掉头绕行好望角；8/1胡塞HOCC否认曼德通行费计划", desc: "8/2-8/3六艘沙特Bahri空载VLCC在亚丁湾掉头、编队绕行非洲好望角返回红海港口（航程至少多25天）；两艘载沙特原油油轮（Lesvos、Desh Vaibhav）关闭AIS驶出曼德海峡。8/1胡塞人道主义行动协调中心（HOCC）否认曼德海峡通行费计划，称通行服务“自愿且免费”，警告船公司勿向任何人付费，但对沙特封锁维持不变。来源：Mighty Shipping/GCC Freight，2026-08-03。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"航运改道"},{t:"cat",l:"胡塞封锁"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }, { text: "GCC Freight", url: "https://gcc-freight.com/en/blog/houthi-red-sea-fees-denial-saudi-tankers-africa-china-shipping/" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜7/31 GasLog Shanghai LNG船驶出霍尔木兹受损；SCFI 7/31反弹4.67%，多家船公司8月起加收EFS", desc: "7/31 GasLog旗下15.5万方LNG船GasLog Shanghai驶出霍尔木兹海峡时受损（船员安全）；UKMTO同日报告两起事件：一艘油轮在阿曼Lima东北约11海里被不明射弹击中，一艘在Khasab东北21海里报告近距离爆炸。SCFI综合指数7/31报3205.97点、周涨4.67%；Drewry WCI报$4,255/FEU仍缓降；多家船公司宣布8月起加收紧急燃油附加费（EFS）。来源：Mighty Shipping，2026-08-04。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹"},{t:"cat",l:"运价"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }], new: true }
 ];;;
 
 // SeaLead-specific key events
@@ -2259,7 +2150,9 @@ const sealeadKeyEvents = [
   { date: "08-13", day: "13", title: "✨新增｜OFAC 7/14制裁清单细节：冻结SeaLead三艘关联集装箱船Paya Lebar、Shenton Way、Tanjong Pagar 1，累计制裁超200项", desc: "OFAC于7月14日将Sea Lead Shipping Pte Ltd及迪拜、马绍尔群岛、印度子公司一并列入SDN名单，同时制裁Shamkhani网络超50个个人、实体与船只（含We Freight集团、Volta Shipping、Aare Lines、Hansa Shipping等），累计制裁超200项；冻结三艘SeaLead关联集装箱船Paya Lebar、Shenton Way、Tanjong Pagar 1。来源：nationaldossier.com/owlbrief.com/trasportoeuropa.it。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"OFAC制裁"},{t:"cat",l:"SDN名单"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
   { date: "08-13", day: "13", title: "✨新增｜SeaLead清算净资产明细：690万现金+1990万船舶+2620万集装箱，无长期债务", desc: "SeaLead Shipping于8月4日启动自愿清算，任命Cosimo Borrelli（Kroll亚太重组负责人）为清算人。公司7月底提交清算申请，净资产约3740万美元（含690万现金、1990万船舶、2620万集装箱），无长期债务，董事会称一年内可清偿全部负债。来源：trasportoeuropa.it/同花顺财经/出海网。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }, { text: "同花顺财经", url: "https://m.10jqka.com.cn/20260807/c678765204.shtml" }], new: true },
   { date: "08-11", day: "11", title: "✨新增｜海领船务 SeaLead 因美国制裁停止运营并进入自愿清算", desc: "7月下旬提交自愿清算申请，8月3日 Admiralty Asia Partners 合伙人 Cosimo Borrelli 被任命为清算人；公司净资产约3740万美元，无长期债务，流动负债含供应商1500万美元、员工薪酬50万美元。来源：中国船舶代理及无船承运人协会。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"OFAC制裁"}], links: [{ text: "中国船舶代理及无船承运人协会", url: "http://www.casa.org.cn/col/col18053/art/2026/art_b23f2a2e946c4ac0b60b9ccc58a57806.html" }], new: true },
-  { date: "08-07", day: "07", title: "✨新增｜SeaLead 仅剩4艘船，退出集运市场并启动清算", desc: "从全球第13位、峰值运力约20.8万TEU跌至仅剩4艘船（不足1万TEU），跌出 Alphaliner 全球百强。来源：AMZ123 / The Loadstar。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"运力萎缩"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/IhCpsPDd" }, { text: "The Loadstar", url: "https://theloadstar.com/us-treasury-sanctions-six-vessels-of-struggling-sealead/" }], new: true }
+  { date: "08-07", day: "07", title: "✨新增｜SeaLead 仅剩4艘船，退出集运市场并启动清算", desc: "从全球第13位、峰值运力约20.8万TEU跌至仅剩4艘船（不足1万TEU），跌出 Alphaliner 全球百强。来源：AMZ123 / The Loadstar。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"运力萎缩"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/IhCpsPDd" }, { text: "The Loadstar", url: "https://theloadstar.com/us-treasury-sanctions-six-vessels-of-struggling-sealead/" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜SeaLead清算时船队规模存争议：Splash247称4艘/全球第80，Maritime Executive称8艘约1万TEU，清算前两艘改挂伊朗旗", desc: "关于SeaLead清算时剩余船队规模，业内数据分歧：Splash247称仅4艘在营、全球排名从第13跌至第80；Maritime Executive则报道剩余8艘约1万TEU，并称清算前数日有两艘船改挂伊朗旗试图将其置于清算程序之外。Linerlytica数据：4月运力已降至14艘/62,521 TEU，部分受霍尔木兹临时关闭影响。公司同期关闭多家海外办事处、裁员并重组管理层，4月将首席运营官Cho Kit Wei升任CEO。来源：TrasportoEuropa/Lloyd's List，2026-08-10。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜Navilink：SeaLead崩溃确立OFAC三级制裁模板，5CX亚洲-地中海服务终止，货代需立即重订舱并做合规筛查", desc: "Navilink Global分析：SeaLead崩溃显示OFAC“船舶制裁→子公司制裁→公司制裁”三级模板可在12个月内击垮中型全球承运人；影响最大航线为亚洲区域内及亚洲-红海航线，5CX亚洲-地中海服务终止在运力紧张市场再移除一个舱位选项。建议：SeaLead在途/已订舱货物立即改配替代承运人；对所有承运人开展OFAC合规筛查；关注同为Shamkhani网络成员的Aare Lines、Hansa Shipping、Lubeck Shipping、Volta Shipping、WeFreight Shipping后续执法动向。来源：Navilink Global，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"OFAC合规"}], links: [{ text: "Navilink Global", url: "https://navilinkglobal.com/news/the-worlds-13th-largest-container-line-just-collapsed-iran-sanctions-killed-it" }], new: true }
 ];;;
 
 // Red Sea / Houthi-specific key events
@@ -2716,7 +2609,11 @@ const redseaKeyEvents = [
     links: [{ text: "今日头条/金融界", url: "https://www.toutiao.com/article/7674894742039134783/" }], new: true},
   { date: "08-18", day: "18", title: "✨新增｜上午微信检索：土耳其确认参加吉达红海国际护航联盟会议，也门面临2022年停火以来最高战争风险", desc: "8/13土耳其国防部确认土方参加吉达红海国际护航联盟会议，土/沙/巴8/7《麦加联合防务协议》推进联合军演与政治军事协调；联合国也门问题特使格伦德贝里8/13警告也门面临2022年停火以来重新滑向大规模战争的最高风险；8/15胡塞向也门政府控制的穆哈港发动导弹袭击至少1死8伤。",
     tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"多边安全"}],
-    links: [{ text: "今日头条", url: "https://www.toutiao.com/article/7674183310330872320/" }], new: true }
+    links: [{ text: "今日头条", url: "https://www.toutiao.com/article/7674183310330872320/" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜Lloyd's List红海简报8/6：主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后曼德海峡总过境量降24%并趋稳（7/20当周269次 vs 封锁前354次，7/27-8/2为266次），但主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），VLCC流量翻4倍——在延布减载或在Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海数据"},{t:"cat",l:"战争险"}], links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜胡塞8/5袭击Wafa号并威胁扩大北红海打击阻止苏伊士过境；美伊阿曼据报接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称以多枚弹道导弹在延布附近精确击中沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”，因沙特已将油轮从南红海改道北方。Axios 8/5援引美方官员：美伊阿曼接近达成60天临时协议重开霍尔木兹（北向经伊朗水域、南向经阿曼水域，可延长）。来源：TWZ/Daily Sabah，2026-08-05。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞袭击"},{t:"cat",l:"霍尔木兹"}], links: [{ text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" }, { text: "Daily Sabah", url: "https://www.dailysabah.com/world/mid-east/yemens-houthis-reportedly-strike-saudi-tanker-transiting-red-sea" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜6艘沙特Bahri VLCC掉头绕行好望角；两艘沙特原油油轮暗航驶出曼德海峡；8/1胡塞HOCC否认通行费计划", desc: "8/2-8/3六艘沙特Bahri空载VLCC在亚丁湾掉头编队绕行非洲好望角（至少多25天）；两艘载沙特原油油轮（Lesvos、Desh Vaibhav）关闭AIS驶出曼德海峡，延布港8/3出现封锁以来最繁忙靠泊日。8/1胡塞运营的人道主义行动协调中心（HOCC）否认曼德海峡通行费计划，称通行服务“自愿且免费”，警告船公司勿向任何人付费，但对沙特封锁维持不变。来源：Mighty Shipping/GCC Freight，2026-08-03。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"航运改道"},{t:"cat",l:"胡塞封锁"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }, { text: "GCC Freight", url: "https://gcc-freight.com/en/blog/houthi-red-sea-fees-denial-saudi-tankers-africa-china-shipping/" }], new: true },
+  { date: "08-18", day: "18", title: "✨新增｜7/31 GasLog Shanghai LNG船驶出霍尔木兹受损，UKMTO同日报告两起袭击；SCFI 7/31反弹4.67%", desc: "7/31 GasLog运营的15.5万方LNG船GasLog Shanghai驶出霍尔木兹海峡时受损（船员安全）；UKMTO同日报告两起事件：一艘油轮在阿曼Lima东北约11海里被不明射弹击中、失去控制并遭机舱损坏，另一艘在Khasab东北21海里报告近距离爆炸，船只接近美国协调的阿曼航道时仍遭袭击。SCFI 7/31报3205.97点周涨4.67%，多家船公司8月起加收紧急燃油附加费（EFS）。来源：Mighty Shipping，2026-08-04。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹"},{t:"cat",l:"LNG"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }], new: true }
 ];;;
 
 // ========== HELPER: Render source links ==========
