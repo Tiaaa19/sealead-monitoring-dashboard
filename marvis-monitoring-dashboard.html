@@ -642,11 +642,11 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-18 下午微信检索",
-  source: "下午微信检索(web_search+web_fetch)：关键词SeaLead 航运 制裁 最新消息/红海 胡塞 曼德海峡 2026。SeaLead无新增制裁动态（OFAC 3月制裁SeaLead实体为旧闻，已在库）；红海新增1条：8/10胡塞导弹无人机袭击摩卡港致7死+同日吉赞阿美炼油厂起火（财联社）。塔哈马号袭击（8/11-12）、麦加共同防务协议均已入库，本轮为多源印证。",
+  time: "2026-08-19 下午微信检索（无新增）",
+  source: "下午微信检索(web_search+web_fetch)：关键词SeaLead 航运 制裁 最新消息/红海 胡塞 曼德海峡 2026。SeaLead无新增制裁动态（7/31自愿清盘、8/3清算人Cosimo Borrelli任命、OFAC GL Z至9/12、Corten/中联航运接手资产、次大陆运力降14%等均已入库）；红海无新增事件（胡塞累计袭8艘沙特油轮、29艘返航或改道、曼德日均通行不足20艘、绕行好望角+19天成本287万美元、8/10摩卡港袭击7死等均已入库）。本轮为8/6-8/12旧闻多源印证，无新增。",
   status: "red",
-  statusText: "🔴 紧急（8/18 下午微信检索：红海新增1条——胡塞8/10袭击摩卡港致7死、吉赞阿美炼油厂起火；SeaLead无新增制裁动态。）",
-  vs: "vs 8/18 上午LinkedIn检索：本轮下午微信检索覆盖SeaLead/红海/胡塞/曼德海峡关键词，SeaLead无新增制裁动态（3月OFAC制裁为旧闻已在库）；红海新增财联社8/10摩卡港袭击事件（7死、至少25枚炮弹击中港口设施）及同日吉赞阿美炼油厂无人机袭击起火，胡塞与也门政府2022年停火以来首次大规模交火。塔哈马号6死事件与麦加共同防务协议已在库，本轮为多源印证。",
+  statusText: "🔴 紧急（8/19 下午微信检索：无新增——SeaLead清盘后续与红海袭船事件均已在库，本轮为多源印证。）",
+  vs: "vs 8/18 下午LinkedIn检索：本轮午后微信检索覆盖SeaLead/红海/胡塞/曼德海峡关键词，SeaLead无新增制裁动态（清盘、GL Z、Corten/中联接手Danaos租约、Kaalund被制裁等均在库）；红海无新增事件（8/6腾讯新闻胡塞累计袭8艘油轮+29艘返航+曼德通行不足20艘+绕行287万美元、8/10摩卡港袭击7死等均已在库）。本轮为旧闻多源印证，无新增。",
   findings: [
     { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：Lloyd's List红海简报——主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——在延布减载或在Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ] },
     { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：胡塞威胁扩大北红海袭击阻止苏伊士过境；美伊阿曼接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称在延布附近袭击沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”。Axios 8/5援引美方官员：美伊阿曼正接近达成60天临时协议重开霍尔木兹海峡（北向经伊朗水域、南向经阿曼水域，可续期）。来源：TWZ/Axios，2026-08-05。", links: [ { text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" } ] },
@@ -655,7 +655,7 @@ const latestUpdateData = {
     { level: "red", date: "08-10", title: "✨新增｜下午微信检索：胡塞导弹无人机袭击曼德海峡摩卡港致7死，同日吉赞阿美炼油厂起火", desc: "8/10胡塞武装对摩卡港发动导弹和无人机袭击，7人死亡，至少25枚炮弹击中经济区、员工宿舍、仓库、储油罐等港口设施；同日胡塞无人机袭击沙特吉赞省阿美炼油厂，日产40万桶炼油厂发生火灾已控制。胡塞称回应沙特增派部队。沙特、巴基斯坦、土耳其已签署联合防务协议。来源：财联社，2026-08-10。", links: [ { text: "财联社", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_0426a7961d973152" } ] }
   ],
 
-  cuImpact: "中联航运影响评估：本轮红海新增8/10摩卡港袭击与吉赞炼油厂火灾，胡塞打击范围从海上船舶扩展至曼德海峡沿岸港口与沙特炼油设施，红海战争险与绕行成本压力持续；SeaLead无新增制裁动态，CULines接手资产暂无新进展。"
+  cuImpact: "中联航运影响评估：本轮无新增。SeaLead清盘后续（GL Z至9/12、Corten/中联接手资产）与红海袭船、绕行成本压力均延续此前判断；CULines中东/红海航线（RES/CGX/CGS）需持续评估船员安全、战争险保费与绕行成本。"
 };
 
 // ========== DAILY DATA ==========
