@@ -642,12 +642,14 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-20 上午LinkedIn检索（SeaLead新增2条/红海无新增）",
-  source: "上午LinkedIn检索(web_search+web_fetch)：关键词SeaLead sealead shipping red sea houthi container，读取tzp.news、navilinkglobal、trasportoeuropa、marinersupdate、中国航务周刊、海事服务网等正文。SeaLead新增2条：①清算资产构成明细（现金690万美元/船舶估值1990万/集装箱资产2620万、无长期负债、净资产3740万一年内清偿）；②马来西亚子公司7月底仍以NVOCC承揽订舱被各大船司谨慎对待、8/5正式停运。其余（OFAC 7/14指定实体+3船、7/23制裁6船约10,500TEU、7/31自愿清盘、8/3清算人任命、GL Z至9/12、DoJ没收$2.4M、53船→4船等）均为旧闻多源印证；红海无新增事件（Pumba/Pinocchio袭船、ONE/SeaLead红海新航线、Lloyd's List过境数据等均在库）。",
+  time: "2026-08-20 下午微信检索（红海新增1条/SeaLead新增1条）",
+  source: "下午微信检索(web_search+web_fetch)：关键词SeaLead 航运 制裁 最新消息 / 红海 胡塞 曼德海峡 2026；web_fetch正文：Lloyd's List Red Sea Brief 8/6、TrasportoEuropa SeaLead清算、in-supply SeaLead资产转移。SeaLead新增1条：清算致印度次大陆-东亚航线部署运力同比下降14%（撤出约31.2万TEU中SeaLead贡献6.6万TEU），HMM同期撤出11.5万TEU，两者合计占航线降幅近90%，Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致（Seatrade Maritime 8/12）。红海新增1条：Lloyd's List 8/6周报——曼德海峡周通行量降至266-269次（封锁前354次降约24%）、主流油轮-42%至53次、VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载）、JWC红海战争险区域北扩约800km（吉达/延布等沙特北部港口需额外保费）、8/4也门沿岸dhow被击中沉没+8/5亚丁湾油轮船长报告附近巨响爆炸、胡塞否认拟收过境费（称安全通行保证仍自愿免费）。其余（TrasportoEuropa清算时间线/改挂伊朗旗/Cho Kit Wei升任CEO、in-supply Corten接管集装箱设备与CU Lines吸收运力、BBC/虎嗅/环球时报红海背景等）为旧闻多源印证（8/10-8/12已记录）。",
   status: "red",
-  statusText: "🔴 紧急（8/20 上午LinkedIn检索：SeaLead新增2条——清算资产构成明细+马来西亚NVOCC承揽订舱/8/5正式停运；红海无新增，均为旧闻多源印证。）",
-  vs: "vs 8/19 下午LinkedIn检索（无新增）：本轮检索覆盖SeaLead sealead shipping red sea houthi container关键词，SeaLead新增2条（清算资产构成明细、马来西亚子公司NVOCC承揽订舱与8/5正式停运），其余（OFAC 7/14指定、7/23制裁6船、清盘、GL Z、DoJ没收$2.4M、Corten/中联接手、53船→4船等）均在库；红海无新增事件（7月胡塞袭船、UNSC 2812、Lloyd's List过境数据等均已入库）。",
+  statusText: "🔴 紧急（8/20 下午微信检索：红海新增1条——Lloyd's List 8/6周报曼德周通行量降至266-269次降约24%/主流油轮-42%/VLCC减载绕苏伊士+Sumed/JWC战争险区北扩800km；SeaLead新增1条——清算致印度次大陆-东亚航线运力同比降14%、SeaLead撤出6.6万TEU+HMM撤出11.5万TEU占降幅近90%。）",
+  vs: "vs 8/20 上午LinkedIn检索（SeaLead新增2条/红海无新增）：本轮下午微信检索新增SeaLead 1条——清算致印度次大陆-东亚航线部署运力同比降14%，撤出31.2万TEU中SeaLead贡献6.6万TEU、HMM撤出11.5万TEU（合计占降幅近90%），Alphaliner指系美国对涉伊关联制裁所致（Seatrade Maritime 8/12）；红海新增1条——Lloyd's List 8/6周报（曼德周通行量266-269次降约24%、主流油轮-42%至53次、VLCC经苏伊士通行翻4倍减载+Sumed绕行、JWC战争险区北扩约800km、8/4也门dhow被击沉、8/5亚丁湾爆炸报告、胡塞否认收过境费）。上午清算资产构成、马来西亚NVOCC停运等仍在库；TrasportoEuropa/in-supply/BBC/虎嗅/环球时报等均为旧闻多源印证（8/10-8/12已记录）。",
   findings: [
+    { level: "red", date: "08-20", title: "✨新增｜下午微信检索：Lloyd's List红海周报——曼德海峡周通行量降至266-269次（封锁前354次降约24%），主流油轮-42%至53次，VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载），JWC战争险区域北扩约800km", desc: "Lloyd's List Intelligence 8/6周报：曼德海峡周通行量降至266-269次（封锁前354次，降约24%）；主流油轮（非影子船队）-42%至53次；VLCC经苏伊士运河通行量翻4倍，采用Ain Sukhna减载→苏伊士→Sidi Kerir经Sumed管道补载的绕行机制；联合战争委员会（JWC）将红海战争险区域北扩约800km，吉达/延布等沙特北部港口需支付额外保费；8/4也门沿岸一艘dhow被击中沉没、8/5亚丁湾一艘油轮船长报告附近巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ], new: true },
+    { level: "red", date: "08-20", title: "✨新增｜下午微信检索：SeaLead清算致印度次大陆-东亚航线运力同比下降14%——撤出31.2万TEU中SeaLead贡献6.6万TEU，HMM撤出11.5万TEU合计占降幅近90%", desc: "Seatrade Maritime/Alphaliner 8/12：SeaLead清算致印度次大陆-东亚航线部署运力同比下降14%（撤出约31.2万TEU中SeaLead贡献6.6万TEU），HMM同期撤出11.5万TEU，两者合计占航线降幅近90%；Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致。来源：Seatrade Maritime，2026-08-12。", links: [ { text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com" } ], new: true },
     { level: "red", date: "08-20", title: "✨新增｜上午LinkedIn检索：SeaLead清算资产构成披露——现金690万美元+船舶估值1990万+集装箱资产2620万，无长期负债净资产3740万一年内清偿", desc: "中国航务周刊/海事服务网8/7：SeaLead清算资产包括现金约690万美元、船舶估值1990万美元、集装箱资产2620万美元；无长期债务，流动负债仅应付供应商1500万美元+员工薪酬50万美元；净资产约3740万美元，董事确认可在清盘程序启动后一年内偿还全部债务；清算人Cosimo Borrelli（Admiralty Asia Partners/鼎晋）负责资产处置与债务清偿。来源：中国航务周刊/海事服务网，2026-08-07。", links: [ { text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }, { text: "海事服务网", url: "https://wap.cnss.com.cn/html/cnss/finance/article/2026/7bcdc3bb58d44d0cbdf63d503f60dc4d.html" } ] },
     { level: "yellow", date: "08-20", title: "✨新增｜上午LinkedIn检索：SeaLead马来西亚子公司7月底仍以NVOCC承揽订舱，8/5正式停止交易（The Loadstar）", desc: "截至2026年7月底SeaLead Shipping Malaysia仍以无船承运人（NVOCC）身份承揽订舱，但各大船公司态度谨慎；SeaLead于8/5正式停止交易，资产处置暂无后续披露。来源：The Loadstar/中国航务周刊，2026-08-07。", links: [ { text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" } ] },
     { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：Lloyd's List红海简报——主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——在延布减载或在Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ] },
@@ -1419,6 +1421,28 @@ const dailyData = [
       "旧闻印证｜本轮LinkedIn检索红海话题均为2024-2026年7月旧闻多源印证（Pumba/Pinocchio袭船、ONE/SeaLead红海新航线、Lloyd's List过境数据等均在库），无新增红海事件"
     ]
   },
+  {
+    date: "2026-08-20", display: "8/20", weekday: "周四",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 2, redCount: 2, yellowCount: 0, blueCount: 0,
+    cuStatus: "SeaLead清算撤出印度次大陆-东亚航线6.6万TEU（叠加HMM撤出11.5万TEU合计占降幅近90%），区域运力收缩利好CULines航线议价与份额承接；红海VLCC减载+Sumed绕行机制与JWC战争险区北扩800km抬升中东航线保费与运营成本，RES/CGX/CGS需持续评估",
+    summary: "下午微信检索：Lloyd's List 8/6红海周报（曼德周通行量266-269次降约24%、主流油轮-42%至53次、VLCC经苏伊士翻4倍减载+Sumed绕行、JWC战争险区北扩800km、也门dhow被击沉、胡塞否认收过境费）+SeaLead清算致印度次大陆-东亚航线运力同比降14%（SeaLead撤出6.6万TEU/HMM撤出11.5万TEU）",
+    keyEvents: [
+      "✨新增｜红海：Lloyd's List 8/6周报——曼德海峡周通行量降至266-269次（封锁前354次降约24%），主流油轮-42%至53次；VLCC经苏伊士运河通行翻4倍，采用Ain Sukhna减载→苏伊士→Sidi Kerir经Sumed管道补载绕行机制；JWC将红海战争险区域北扩约800km，吉达/延布等沙特北部港口需额外保费；8/4也门沿岸dhow被击中沉没、8/5亚丁湾油轮船长报告附近巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费",
+      "✨新增｜SeaLead：清算致印度次大陆-东亚航线部署运力同比下降14%（撤出约31.2万TEU中SeaLead贡献6.6万TEU），HMM同期撤出11.5万TEU，两者合计占航线降幅近90%；Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致",
+      "旧闻印证｜TrasportoEuropa清算时间线/改挂伊朗旗/Cho Kit Wei升任CEO、in-supply Corten接管集装箱设备与CU Lines吸收运力、BBC/虎嗅/环球时报红海背景等均在库（8/10-8/12已记录）"
+    ],
+    sealeadEvents: [
+      "✨新增｜Alphaliner/Seatrade Maritime 8/12：SeaLead清算致印度次大陆-东亚航线运力同比降14%，SeaLead撤出6.6万TEU，HMM撤出11.5万TEU，合计占降幅近90%",
+      "✨新增｜Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致",
+      "旧闻印证｜TrasportoEuropa清算时间线/改挂伊朗旗/Cho Kit Wei升任CEO、in-supply Corten接管集装箱设备与CU Lines吸收运力（8/10-8/12已在库）"
+    ],
+    redseaEvents: [
+      "✨新增｜Lloyd's List 8/6周报：曼德海峡周通行量266-269次（封锁前354次降约24%），主流油轮-42%至53次；VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载）",
+      "✨新增｜JWC红海战争险区域北扩约800km，吉达/延布等沙特北部港口需额外保费；8/4也门沿岸dhow被击沉、8/5亚丁湾油轮船长报告巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费",
+      "旧闻印证｜BBC/虎嗅/环球时报红海背景报道（2024-2026年7月旧闻）均在库"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1431,6 +1455,12 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-20", day: "20", title: "✨新增｜下午微信检索：Lloyd's List 8/6红海周报——曼德周通行量降至266-269次降约24%，VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载），JWC战争险区域北扩约800km", desc: "Lloyd's List Intelligence 8/6周报：曼德海峡周通行量降至266-269次（封锁前354次，降约24%）；主流油轮（非影子船队）-42%至53次；VLCC经苏伊士运河通行量翻4倍，采用Ain Sukhna减载→苏伊士→Sidi Kerir经Sumed管道补载的绕行机制；联合战争委员会（JWC）将红海战争险区域北扩约800km，吉达/延布等沙特北部港口需支付额外保费；8/4也门沿岸一艘dhow被击中沉没、8/5亚丁湾一艘油轮船长报告附近巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费。来源：Lloyd's List Intelligence，2026-08-06。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}],
+    links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" }], new: true},
+  { date: "08-20", day: "20", title: "✨新增｜下午微信检索：SeaLead清算致印度次大陆-东亚航线运力同比降14%——撤出31.2万TEU中SeaLead贡献6.6万TEU，HMM撤出11.5万TEU合计占降幅近90%", desc: "Seatrade Maritime/Alphaliner 8/12：SeaLead清算致印度次大陆-东亚航线部署运力同比下降14%（撤出约31.2万TEU中SeaLead贡献6.6万TEU），HMM同期撤出11.5万TEU，两者合计占航线降幅近90%；Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致。来源：Seatrade Maritime，2026-08-12。",
+    tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead"}],
+    links: [{ text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com" }], new: true},
   { date: "08-07", day: "07", title: "✨新增｜SeaLead正式清算，CULines/MSC瓜分其运力", desc: "新加坡海领船务因OFAC制裁正式停止运营并提交清算，资产约5,440万美元。CULines接手Express Berlin和Racine两艘集装箱船拓展远东-中东航线，MSC接手另外三艘。SeaLead的退出标志着美国对涉伊航运制裁的又一重大案例。来源：中国航务周刊，2026-08-07。",
     tags: [{t:"red",l:"\ud83d\udd34\u7d27\u6025"},{t:"cat",l:"SeaLead"},{t:"cat",l:"CULines"}],
     links: [{ text: "\u4e2d\u56fd\u822a\u52a1\u5468\u520a", url: "https://www.163.com/dy/article/L3OD9RUF0530KEJV.html" }], new: true},
