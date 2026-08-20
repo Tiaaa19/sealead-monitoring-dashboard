@@ -642,12 +642,14 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-19 下午LinkedIn检索（无新增）",
-  source: "下午LinkedIn检索(web_search+web_fetch)：关键词SeaLead shipping OFAC制裁 2026/红海 航运 最新 2026年7月，读取marinersupdate与maritimenews等正文。SeaLead无新增制裁动态（7/14 OFAC指定新加坡/迪拜/马绍尔/印度实体+3船封锁、7/31自愿清盘、8/3清算人Cosimo Borrelli任命、GL Z至9/12含5类清盘活动、DoJ 3/6民事没收$2.4M、53船→4船/第13→80位等均已入库）；红海无新增事件（7月初荷台达海域货船遭小艇袭击、UNSC 2722/2812月报延长至7/15、MARAD美旗船安全指引、SCA 7/15运河附加费、马士基WAF6复航等均已入库）。本轮为8/6-8/12旧闻多源印证，无新增。",
+  time: "2026-08-20 上午LinkedIn检索（SeaLead新增2条/红海无新增）",
+  source: "上午LinkedIn检索(web_search+web_fetch)：关键词SeaLead sealead shipping red sea houthi container，读取tzp.news、navilinkglobal、trasportoeuropa、marinersupdate、中国航务周刊、海事服务网等正文。SeaLead新增2条：①清算资产构成明细（现金690万美元/船舶估值1990万/集装箱资产2620万、无长期负债、净资产3740万一年内清偿）；②马来西亚子公司7月底仍以NVOCC承揽订舱被各大船司谨慎对待、8/5正式停运。其余（OFAC 7/14指定实体+3船、7/23制裁6船约10,500TEU、7/31自愿清盘、8/3清算人任命、GL Z至9/12、DoJ没收$2.4M、53船→4船等）均为旧闻多源印证；红海无新增事件（Pumba/Pinocchio袭船、ONE/SeaLead红海新航线、Lloyd's List过境数据等均在库）。",
   status: "red",
-  statusText: "🔴 紧急（8/19 下午LinkedIn检索：无新增——SeaLead清盘后续与红海7月综合动态均已在库，本轮为多源印证。）",
-  vs: "vs 8/19 下午微信检索：本轮LinkedIn检索覆盖SeaLead shipping OFAC制裁/红海航运2026年7月关键词，SeaLead无新增制裁动态（OFAC 7/14指定、清盘、GL Z、DoJ没收$2.4M、Corten/中联接手等均在库）；红海无新增事件（7月初荷台达小艇袭击、UNSC 2812、MARAD安全指引、SCA 7/15附加费、马士基WAF6复航等均已入库）。本轮为旧闻多源印证，无新增。",
+  statusText: "🔴 紧急（8/20 上午LinkedIn检索：SeaLead新增2条——清算资产构成明细+马来西亚NVOCC承揽订舱/8/5正式停运；红海无新增，均为旧闻多源印证。）",
+  vs: "vs 8/19 下午LinkedIn检索（无新增）：本轮检索覆盖SeaLead sealead shipping red sea houthi container关键词，SeaLead新增2条（清算资产构成明细、马来西亚子公司NVOCC承揽订舱与8/5正式停运），其余（OFAC 7/14指定、7/23制裁6船、清盘、GL Z、DoJ没收$2.4M、Corten/中联接手、53船→4船等）均在库；红海无新增事件（7月胡塞袭船、UNSC 2812、Lloyd's List过境数据等均已入库）。",
   findings: [
+    { level: "red", date: "08-20", title: "✨新增｜上午LinkedIn检索：SeaLead清算资产构成披露——现金690万美元+船舶估值1990万+集装箱资产2620万，无长期负债净资产3740万一年内清偿", desc: "中国航务周刊/海事服务网8/7：SeaLead清算资产包括现金约690万美元、船舶估值1990万美元、集装箱资产2620万美元；无长期债务，流动负债仅应付供应商1500万美元+员工薪酬50万美元；净资产约3740万美元，董事确认可在清盘程序启动后一年内偿还全部债务；清算人Cosimo Borrelli（Admiralty Asia Partners/鼎晋）负责资产处置与债务清偿。来源：中国航务周刊/海事服务网，2026-08-07。", links: [ { text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }, { text: "海事服务网", url: "https://wap.cnss.com.cn/html/cnss/finance/article/2026/7bcdc3bb58d44d0cbdf63d503f60dc4d.html" } ] },
+    { level: "yellow", date: "08-20", title: "✨新增｜上午LinkedIn检索：SeaLead马来西亚子公司7月底仍以NVOCC承揽订舱，8/5正式停止交易（The Loadstar）", desc: "截至2026年7月底SeaLead Shipping Malaysia仍以无船承运人（NVOCC）身份承揽订舱，但各大船公司态度谨慎；SeaLead于8/5正式停止交易，资产处置暂无后续披露。来源：The Loadstar/中国航务周刊，2026-08-07。", links: [ { text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" } ] },
     { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：Lloyd's List红海简报——主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——在延布减载或在Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ] },
     { level: "red", date: "08-18", title: "✨新增｜上午LinkedIn检索：胡塞威胁扩大北红海袭击阻止苏伊士过境；美伊阿曼接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称在延布附近袭击沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”。Axios 8/5援引美方官员：美伊阿曼正接近达成60天临时协议重开霍尔木兹海峡（北向经伊朗水域、南向经阿曼水域，可续期）。来源：TWZ/Axios，2026-08-05。", links: [ { text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" } ] },
     { level: "yellow", date: "08-18", title: "✨新增｜上午LinkedIn检索：6艘沙特Bahri VLCC亚丁湾掉头绕行好望角；胡塞HOCC否认曼德通行费计划", desc: "8/2-8/3六艘沙特Bahri空载VLCC在亚丁湾掉头、编队绕行非洲好望角返回红海港口（航程至少多25天）；两艘载沙特原油油轮（Lesvos、Desh Vaibhav）关闭AIS驶出曼德海峡。8/1胡塞人道主义行动协调中心（HOCC）否认曼德海峡通行费计划，称通行服务“自愿且免费”，警告船公司勿向任何人付费，但对沙特封锁维持不变。来源：Mighty Shipping/GCC Freight，2026-08-03。", links: [ { text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" } ] },
@@ -655,7 +657,7 @@ const latestUpdateData = {
     { level: "red", date: "08-10", title: "✨新增｜下午微信检索：胡塞导弹无人机袭击曼德海峡摩卡港致7死，同日吉赞阿美炼油厂起火", desc: "8/10胡塞武装对摩卡港发动导弹和无人机袭击，7人死亡，至少25枚炮弹击中经济区、员工宿舍、仓库、储油罐等港口设施；同日胡塞无人机袭击沙特吉赞省阿美炼油厂，日产40万桶炼油厂发生火灾已控制。胡塞称回应沙特增派部队。沙特、巴基斯坦、土耳其已签署联合防务协议。来源：财联社，2026-08-10。", links: [ { text: "财联社", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_0426a7961d973152" } ] }
   ],
 
-  cuImpact: "中联航运影响评估：本轮无新增。SeaLead清盘后续（GL Z至9/12、Corten/中联接手资产）与红海袭船、绕行成本压力均延续此前判断；CULines中东/红海航线（RES/CGX/CGS）需持续评估船员安全、战争险保费与绕行成本。"
+  cuImpact: "中联航运影响评估：本轮SeaLead新增清算资产构成与马来西亚NVOCC承揽细节，资产处置与合规边界仍延续此前判断；CULines已接手Express Berlin等退租运力，需持续关注清算资产后续处置对运力市场的影响。红海袭船、绕行成本压力均延续此前判断；CULines中东/红海航线（RES/CGX/CGS）需持续评估船员安全、战争险保费与绕行成本。"
 };
 
 // ========== DAILY DATA ==========
@@ -1397,6 +1399,26 @@ const dailyData = [
       "✨新增｜7/31 GasLog Shanghai LNG船出霍尔木兹受损，UKMTO同日报告两起袭击；SCFI 7/31反弹4.67%"
     ]
   },
+  {
+    date: "2026-08-20", display: "8/20", weekday: "周四",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 2, redCount: 1, yellowCount: 1, blueCount: 0,
+    cuStatus: "SeaLead清算资产构成与马来西亚NVOCC承揽细节披露，CULines接手运力需持续关注合规与资产处置进展",
+    summary: "上午LinkedIn检索：SeaLead清算资产构成明细（现金690万/船舶1990万/集装箱2620万）+马来西亚子公司7月底仍以NVOCC承揽订舱+8/5正式停运；红海无新增事件（旧闻多源印证）",
+    keyEvents: [
+      "✨新增｜SeaLead清算资产构成披露：现金690万美元、船舶估值1990万、集装箱资产2620万，无长期负债，流动负债约1550万美元，董事声明净资产3740万一年内可清偿",
+      "✨新增｜The Loadstar：截至7月底SeaLead马来西亚子公司仍以NVOCC身份承揽订舱，各大船公司态度谨慎；SeaLead于8/5正式停止交易",
+      "旧闻印证｜7/23 OFAC制裁SeaLead及6艘船（约10,500 TEU）报道与7/14/7/24现有记录互为印证；Navilink/TrasportoEuropa/Mariner's Update清算全景均已在库"
+    ],
+    sealeadEvents: [
+      "✨新增｜SeaLead清算资产明细：现金690万美元+船舶1990万+集装箱2620万，流动负债约1550万（供应商1500万+薪酬50万），净资产3740万，董事声明一年内清偿",
+      "✨新增｜截至2026年7月底SeaLead马来西亚子公司仍以NVOCC承揽订舱但各大船司谨慎，8/5正式停止交易（The Loadstar/中国航务周刊）",
+      "旧闻印证｜tzp.news 7/23：OFAC制裁SeaLead及6艘船约10,500 TEU，与7/14指定实体+7/24制裁3艘现役船为同一轮行动的不同口径"
+    ],
+    redseaEvents: [
+      "旧闻印证｜本轮LinkedIn检索红海话题均为2024-2026年7月旧闻多源印证（Pumba/Pinocchio袭船、ONE/SeaLead红海新航线、Lloyd's List过境数据等均在库），无新增红海事件"
+    ]
+  },
 ];
 
 const routeRisks = [
@@ -1970,7 +1992,9 @@ const keyEvents = [
   { date: "08-18", day: "18", title: "✨新增｜Lloyd's List红海简报：主流油轮过境量降42%至53次，VLCC流量翻4倍减载过苏伊士，JWC战争险区域北扩约800公里", desc: "Lloyd's List Intelligence 8/6简报：胡塞对沙特海上封锁后，曼德海峡主流油轮（非影子船队）过境量骤降42%至53次；苏伊士运河总过境量基本不变（275 vs 273次），但VLCC流量翻4倍——VLCC在延布减载或在埃及Ain Sukhna部分卸货以满足苏伊士吃水限制，过运河后到Sidi Kerir经苏麦德管线补满。联合战争委员会（JWC）将红海战争险区域向北扩大约800公里，挂靠吉达、延布等沙特北部港口需支付额外保费。来源：Lloyd's List Intelligence，2026-08-06。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海数据"},{t:"cat",l:"战争险"}], links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" }], new: true },
   { date: "08-18", day: "18", title: "✨新增｜胡塞威胁扩大北红海袭击阻止苏伊士过境；Axios：美伊阿曼接近达成60天临时重开霍尔木兹协议", desc: "胡塞8/5宣称在延布附近袭击沙特油轮Wafa（封锁以来第8艘被袭），发言人Yahya Saree宣布将升级打击北红海沙特油轮“以封闭所有通道、阻止过境”，因沙特已把油轮改道北方。Axios 8/5援引美方官员报道，美伊阿曼正接近达成60天临时协议重开霍尔木兹海峡：北向船走伊朗水域、南向船走阿曼水域，可续期。来源：TWZ/Axios，2026-08-05。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"霍尔木兹"}], links: [{ text: "TWZ", url: "https://www.twz.com/news-features/houthis-to-expand-shipping-attacks-to-northern-red-sea" }], new: true },
   { date: "08-18", day: "18", title: "✨新增｜6艘沙特Bahri VLCC亚丁湾掉头绕行好望角；8/1胡塞HOCC否认曼德通行费计划", desc: "8/2-8/3六艘沙特Bahri空载VLCC在亚丁湾掉头、编队绕行非洲好望角返回红海港口（航程至少多25天）；两艘载沙特原油油轮（Lesvos、Desh Vaibhav）关闭AIS驶出曼德海峡。8/1胡塞人道主义行动协调中心（HOCC）否认曼德海峡通行费计划，称通行服务“自愿且免费”，警告船公司勿向任何人付费，但对沙特封锁维持不变。来源：Mighty Shipping/GCC Freight，2026-08-03。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"航运改道"},{t:"cat",l:"胡塞封锁"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }, { text: "GCC Freight", url: "https://gcc-freight.com/en/blog/houthi-red-sea-fees-denial-saudi-tankers-africa-china-shipping/" }], new: true },
-  { date: "08-18", day: "18", title: "✨新增｜7/31 GasLog Shanghai LNG船驶出霍尔木兹受损；SCFI 7/31反弹4.67%，多家船公司8月起加收EFS", desc: "7/31 GasLog旗下15.5万方LNG船GasLog Shanghai驶出霍尔木兹海峡时受损（船员安全）；UKMTO同日报告两起事件：一艘油轮在阿曼Lima东北约11海里被不明射弹击中，一艘在Khasab东北21海里报告近距离爆炸。SCFI综合指数7/31报3205.97点、周涨4.67%；Drewry WCI报$4,255/FEU仍缓降；多家船公司宣布8月起加收紧急燃油附加费（EFS）。来源：Mighty Shipping，2026-08-04。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹"},{t:"cat",l:"运价"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }], new: true }
+  { date: "08-18", day: "18", title: "✨新增｜7/31 GasLog Shanghai LNG船驶出霍尔木兹受损；SCFI 7/31反弹4.67%，多家船公司8月起加收EFS", desc: "7/31 GasLog旗下15.5万方LNG船GasLog Shanghai驶出霍尔木兹海峡时受损（船员安全）；UKMTO同日报告两起事件：一艘油轮在阿曼Lima东北约11海里被不明射弹击中，一艘在Khasab东北21海里报告近距离爆炸。SCFI综合指数7/31报3205.97点、周涨4.67%；Drewry WCI报$4,255/FEU仍缓降；多家船公司宣布8月起加收紧急燃油附加费（EFS）。来源：Mighty Shipping，2026-08-04。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"霍尔木兹"},{t:"cat",l:"运价"}], links: [{ text: "Mighty Shipping", url: "https://www.mightyshipping.com/en/blog/2026-07-01-hormuz-reopening-july-freight-outlook" }], new: true },
+  { date: "08-20", day: "20", title: "✨新增｜SeaLead清算资产构成披露：现金690万美元+船舶估值1990万+集装箱资产2620万，无长期负债净资产3740万一年内清偿", desc: "中国航务周刊/海事服务网8/7：SeaLead清算资产包括现金约690万美元、船舶估值1990万美元、集装箱资产2620万美元；公司无长期债务，流动负债仅为应付供应商1500万美元与应付员工薪酬50万美元；净资产约3740万美元，董事确认可在清盘程序启动后一年内偿还全部债务。清算人Cosimo Borrelli（Admiralty Asia Partners/鼎晋）负责资产处置与债务清偿。来源：中国航务周刊/海事服务网，2026-08-07。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }, { text: "海事服务网", url: "https://wap.cnss.com.cn/html/cnss/finance/article/2026/7bcdc3bb58d44d0cbdf63d503f60dc4d.html" }], new: true },
+  { date: "08-20", day: "20", title: "✨新增｜The Loadstar：SeaLead马来西亚子公司7月底仍以NVOCC承揽订舱，8/5正式停止交易", desc: "据The Loadstar报道，截至2026年7月底SeaLead Shipping Malaysia仍试图以无船承运人（NVOCC）身份继续承揽订舱业务，但各大船公司对其态度谨慎；SeaLead于8月5日正式停止交易。中国航务周刊记者联系SeaLead及多方求证后续资产处置，暂无披露。来源：The Loadstar/中国航务周刊，2026-08-07。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"合规"}], links: [{ text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }], new: true }
 ];;;
 
 // SeaLead-specific key events
@@ -2154,6 +2178,8 @@ const sealeadKeyEvents = [
   { date: "08-07", day: "07", title: "✨新增｜SeaLead 仅剩4艘船，退出集运市场并启动清算", desc: "从全球第13位、峰值运力约20.8万TEU跌至仅剩4艘船（不足1万TEU），跌出 Alphaliner 全球百强。来源：AMZ123 / The Loadstar。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"运力萎缩"}], links: [{ text: "AMZ123", url: "https://www.amz123.com/t/IhCpsPDd" }, { text: "The Loadstar", url: "https://theloadstar.com/us-treasury-sanctions-six-vessels-of-struggling-sealead/" }], new: true },
   { date: "08-18", day: "18", title: "✨新增｜SeaLead清算时船队规模存争议：Splash247称4艘/全球第80，Maritime Executive称8艘约1万TEU，清算前两艘改挂伊朗旗", desc: "关于SeaLead清算时剩余船队规模，业内数据分歧：Splash247称仅4艘在营、全球排名从第13跌至第80；Maritime Executive则报道剩余8艘约1万TEU，并称清算前数日有两艘船改挂伊朗旗试图将其置于清算程序之外。Linerlytica数据：4月运力已降至14艘/62,521 TEU，部分受霍尔木兹临时关闭影响。公司同期关闭多家海外办事处、裁员并重组管理层，4月将首席运营官Cho Kit Wei升任CEO。来源：TrasportoEuropa/Lloyd's List，2026-08-10。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "TrasportoEuropa", url: "https://www.trasportoeuropa.it/english/sealead-shipping-enters-liquidation-after-us-sanctions" }], new: true },
   { date: "08-18", day: "18", title: "✨新增｜Navilink：SeaLead崩溃确立OFAC三级制裁模板，5CX亚洲-地中海服务终止，货代需立即重订舱并做合规筛查", desc: "Navilink Global分析：SeaLead崩溃显示OFAC“船舶制裁→子公司制裁→公司制裁”三级模板可在12个月内击垮中型全球承运人；影响最大航线为亚洲区域内及亚洲-红海航线，5CX亚洲-地中海服务终止在运力紧张市场再移除一个舱位选项。建议：SeaLead在途/已订舱货物立即改配替代承运人；对所有承运人开展OFAC合规筛查；关注同为Shamkhani网络成员的Aare Lines、Hansa Shipping、Lubeck Shipping、Volta Shipping、WeFreight Shipping后续执法动向。来源：Navilink Global，2026-08-06。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"OFAC合规"}], links: [{ text: "Navilink Global", url: "https://navilinkglobal.com/news/the-worlds-13th-largest-container-line-just-collapsed-iran-sanctions-killed-it" }], new: true },
+  { date: "08-20", day: "20", title: "✨新增｜SeaLead清算资产构成明细：现金690万美元/船舶1990万/集装箱2620万，无长期负债，净资产3740万一年内清偿", desc: "SeaLead清算资产构成：现金约690万美元、船舶估值1990万美元、集装箱资产2620万美元；无长期债务，流动负债仅应付供应商1500万美元+员工薪酬50万美元；净资产约3740万美元。董事确认可在清算启动后一年内偿还全部债务。清算人Cosimo Borrelli（Admiralty Asia Partners/鼎晋）为亚太破产清算界知名人士。来源：中国航务周刊/海事服务网，2026-08-07。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"SeaLead清算"}], links: [{ text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }, { text: "海事服务网", url: "https://wap.cnss.com.cn/html/cnss/finance/article/2026/7bcdc3bb58d44d0cbdf63d503f60dc4d.html" }], new: true },
+  { date: "08-20", day: "20", title: "✨新增｜SeaLead马来西亚子公司7月底仍以NVOCC承揽订舱被各大船司谨慎对待，8/5正式停运（The Loadstar）", desc: "截至2026年7月底，SeaLead Shipping Malaysia仍试图以无船承运人（NVOCC）身份继续承揽订舱业务，但各大船公司对其态度谨慎；SeaLead于8月5日正式停止交易。来源：The Loadstar/中国航务周刊，2026-08-07。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"SeaLead清算"},{t:"cat",l:"合规"}], links: [{ text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }], new: true },
   { date: "08-10", day: "10", title: "✨新增｜胡塞导弹无人机袭击曼德海峡摩卡港致7死，同日吉赞阿美炼油厂起火——2022年停火以来首次大规模交火", desc: "8/10胡塞武装对曼德海峡附近的摩卡港发动导弹和无人机袭击，造成7人死亡（含平民和军人），至少25枚炮弹击中经济区、员工宿舍、仓库、私营加油站、储油罐等港口设施，近期刚修复的基础设施遭严重破坏。同日早些时候胡塞以无人机袭击沙特南部吉赞省的沙特阿美炼油厂综合体，日产40万桶炼油厂发生火灾（已控制，无人员伤亡）。胡塞称是对沙特增派部队及袭击也门西海岸和塔伊兹省的回应。沙特、巴基斯坦、土耳其上周五签署联合防务协议。此轮交火标志胡塞与也门政府紧张局势急剧升级，系2022年停火协议以来首次大规模交火。来源：财联社，2026-08-10。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"胡塞袭击"},{t:"cat",l:"红海安全"}], links: [{ text: "财联社", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_0426a7961d973152" }], new: true }
 ];;;
 
