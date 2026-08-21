@@ -642,12 +642,13 @@ function switchPage(pageId, ev) {
 
 // ========== LATEST UPDATE DATA ==========
 const latestUpdateData = {
-  time: "2026-08-21 下午微信检索（无新增）",
-  source: "下午微信检索(web_search+web_fetch)：关键词SeaLead 航运 制裁 最新消息 / 红海 胡塞 曼德海峡 2026；web_fetch正文候选：中国船代协会/TrasportoEuropa SeaLead清算（7月下旬自愿清算、8/3清算人Cosimo Borrelli、资产构成690万现金+1990万船舶+2620万集装箱、净资产3740万一年内清偿）、in-supply SeaLead资产流向对手（Corten接管集装箱设备、CU Lines吸收租约运力）、Seatrade Maritime印度次大陆-东亚运力降14%（SeaLead 6.6万TEU撤出）、Lloyd\'s List Red Sea Brief 8/6（曼德266-269次、VLCC绕行、JWC战争险北扩800km）、摩卡港袭击/吉赞炼油厂起火。核对结果：SeaLead清算/GL Z/Borrelli清算人/Corten+CU Lines资产转移/14%运力撤出/马来西亚NVOCC、Lloyd\'s 8/6周报、JWC战争险北扩、6艘Bahri VLCC绕行、摩卡港袭击/吉赞炼油厂等候选事件均已在库（8/10-8/20已记录），本轮无新增。"
+  time: "2026-08-21 下午LinkedIn检索",
+  source: "下午LinkedIn检索(web_search+web_fetch)：关键词SeaLead shipping OFAC制裁 2026 / 红海 航运 最新 2026年7月；web_fetch正文候选：Mariner's Update SeaLead清算全景（7/14 OFAC指定Sea Lead Shipping+迪拜/马绍尔/印度子公司、封锁Paya Lebar/Shenton Way/Tanjong Pagar 1三船、GL Z有限清盘授权至9/12、53艘→4艘、全球第13→约第80位）、广州航运交易所双海峡航运扰动（7/20胡塞对沙特海上禁运、7/21曼德29艘-34%/霍尔木兹9艘-31%、马士基8/10起远东-沙特旺季附加费20GP 1000美元/40GP&45GP 2000美元、达飞8/1起EFS、ONE 8/15起EFS、VLCC日租金20-30万美元、战争险0.3%→0.75%、WTI 7/23涨6.17%至92.19/布伦特100.69）、海运圈聚焦红海局势升级（埃及达米埃塔港遭无人机袭击、沙特牵头多国海事安全联盟、曼德油轮通航7/20-26环比暴跌40.7%、胡塞-索马里青年党合作网、IR Consilium警告）。核对结果：SeaLead清算/GL Z/Borrelli清算人/资产构成/沙特14国联盟/达米埃塔港/曼德40.7%通航下降/战争险0.75%/油价破百/暗航盛行等候选事件均已在库（8/10-8/20已记录）；唯一新数据点为马士基远东-沙特航线旺季附加费（8/10生效），本轮已入库。",
   status: "red",
-  statusText: "🔴 紧急（8/21 下午微信检索：无新增——SeaLead清算/GL Z至9/12/清算人Borrelli/Corten接管集装箱+CU Lines吸收租约运力/印度次大陆运力降14%、Lloyd\'s 8/6周报曼德266-269次降约24%/JWC战争险区北扩约800km、摩卡港袭击/吉赞炼油厂起火等候选事件均已入库，仅同步头部时间戳标注无新增。）",
-  vs: "vs 8/20 下午LinkedIn检索（无新增）：本轮下午微信检索无新增——SeaLead主题（清算/GL Z有限清盘至9/12/Borrelli清算人/Corten接管集装箱设备+CU Lines吸收租约运力/印度次大陆运力降14%/马来西亚NVOCC）与红海主题（胡塞对沙特海上封锁/摩卡港袭击/吉赞炼油厂起火/Lloyd\'s 8/6周报曼德266-269次/JWC战争险区北扩约800km/6艘Bahri VLCC绕行）均为已入库事件的旧闻多源印证（8/10-8/20已记录），本轮仅更新头部时间戳标注无新增，未新增findings条目。",
+  statusText: "🔴 紧急（8/21 下午LinkedIn检索：本轮1条新增——马士基8/10起远东-沙特旺季附加费20GP 1000/40GP 2000美元，达飞8/1、ONE 8/15起EFS；SeaLead清算/GL Z至9/12/清算人Borrelli/资产构成、沙特14国联盟/达米埃塔港/曼德40.7%通航下降/战争险0.75%/油价破百等候选事件均已在库（8/10-8/20已记录），为旧闻多源印证。）",
+  vs: "vs 8/21 下午微信检索（无新增）：本轮下午LinkedIn检索新增马士基远东-沙特旺季附加费（8/10生效20GP 1000美元/40GP&45GP 2000美元）及达飞/ONE紧急燃油附加费时间表——中东航线运费信号首次入库；SeaLead主题（清算/GL Z有限清盘至9/12/Borrelli清算人/Corten接管+CU Lines吸收租约运力/印度次大陆运力降14%）与红海主题（胡塞对沙特海上封锁/曼德通航暴跌40.7%/沙特14国防御联盟/埃及达米埃塔港遭袭/JWC战争险区北扩800km/暗航盛行/美沙核能协议）均为已入库事件的旧闻多源印证（8/10-8/20已记录），仅头部时间戳更新。",
   findings: [
+    { level: "yellow", date: "08-21", title: "✨新增｜下午LinkedIn检索：马士基8/10起上调远东发往沙特航线旺季附加费——20GP 1000美元/40GP&45GP 2000美元；达飞8/1、ONE 8/15起加收紧急燃油附加费", desc: "广州航运交易所7/29汇编（来源：新华社/中国能源报/马士基/达飞/ONE官方公告）：马士基7/23调价通知规定自8/10起上调远东发往沙特航线旺季附加费（PSS），20GP集装箱1000美元、40GP/45GP集装箱2000美元；达飞7/21公告自8/1起对所有长途及区域内航线实施紧急燃油附加费（EFS），ONE自8/15起执行；马士基7/22起暂停三组海湾地区海运转陆运订舱、全面暂停乌克兰乔尔诺莫尔斯克港航线。红海/霍尔木兹双海峡危机推动中东航线运价与附加费持续上行，构成CULines中东航线（RES/CGX/CGS）运价竞争的直接参照。来源：广州航运交易所，2026-07-29。", links: [ { text: "广州航运交易所", url: "https://www.shippingex.cn/newsContent?articleId=15709" } ], new: true },
     { level: "red", date: "08-20", title: "✨新增｜下午微信检索：Lloyd's List红海周报——曼德海峡周通行量降至266-269次（封锁前354次降约24%），主流油轮-42%至53次，VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载），JWC战争险区域北扩约800km", desc: "Lloyd's List Intelligence 8/6周报：曼德海峡周通行量降至266-269次（封锁前354次，降约24%）；主流油轮（非影子船队）-42%至53次；VLCC经苏伊士运河通行量翻4倍，采用Ain Sukhna减载→苏伊士→Sidi Kerir经Sumed管道补载的绕行机制；联合战争委员会（JWC）将红海战争险区域北扩约800km，吉达/延布等沙特北部港口需支付额外保费；8/4也门沿岸一艘dhow被击中沉没、8/5亚丁湾一艘油轮船长报告附近巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费。来源：Lloyd's List Intelligence，2026-08-06。", links: [ { text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" } ], new: true },
     { level: "red", date: "08-20", title: "✨新增｜下午微信检索：SeaLead清算致印度次大陆-东亚航线运力同比下降14%——撤出31.2万TEU中SeaLead贡献6.6万TEU，HMM撤出11.5万TEU合计占降幅近90%", desc: "Seatrade Maritime/Alphaliner 8/12：SeaLead清算致印度次大陆-东亚航线部署运力同比下降14%（撤出约31.2万TEU中SeaLead贡献6.6万TEU），HMM同期撤出11.5万TEU，两者合计占航线降幅近90%；Alphaliner评论SeaLead近十年运营终结系美国对涉伊关联制裁所致。来源：Seatrade Maritime，2026-08-12。", links: [ { text: "Seatrade Maritime", url: "https://www.seatrade-maritime.com" } ], new: true },
     { level: "red", date: "08-20", title: "✨新增｜上午LinkedIn检索：SeaLead清算资产构成披露——现金690万美元+船舶估值1990万+集装箱资产2620万，无长期负债净资产3740万一年内清偿", desc: "中国航务周刊/海事服务网8/7：SeaLead清算资产包括现金约690万美元、船舶估值1990万美元、集装箱资产2620万美元；无长期债务，流动负债仅应付供应商1500万美元+员工薪酬50万美元；净资产约3740万美元，董事确认可在清盘程序启动后一年内偿还全部债务；清算人Cosimo Borrelli（Admiralty Asia Partners/鼎晋）负责资产处置与债务清偿。来源：中国航务周刊/海事服务网，2026-08-07。", links: [ { text: "中国航务周刊", url: "https://dy.163.com/article/L3OD9RUF0530KEJV.html" }, { text: "海事服务网", url: "https://wap.cnss.com.cn/html/cnss/finance/article/2026/7bcdc3bb58d44d0cbdf63d503f60dc4d.html" } ] },
@@ -659,7 +660,7 @@ const latestUpdateData = {
     { level: "red", date: "08-10", title: "✨新增｜下午微信检索：胡塞导弹无人机袭击曼德海峡摩卡港致7死，同日吉赞阿美炼油厂起火", desc: "8/10胡塞武装对摩卡港发动导弹和无人机袭击，7人死亡，至少25枚炮弹击中经济区、员工宿舍、仓库、储油罐等港口设施；同日胡塞无人机袭击沙特吉赞省阿美炼油厂，日产40万桶炼油厂发生火灾已控制。胡塞称回应沙特增派部队。沙特、巴基斯坦、土耳其已签署联合防务协议。来源：财联社，2026-08-10。", links: [ { text: "财联社", url: "https://so.html5.qq.com/page/real/search_news?docid=70000021_0426a7961d973152" } ] }
   ],
 
-  cuImpact: "中联航运影响评估：本轮SeaLead新增清算资产构成与马来西亚NVOCC承揽细节，资产处置与合规边界仍延续此前判断；CULines已接手Express Berlin等退租运力，需持续关注清算资产后续处置对运力市场的影响。红海袭船、绕行成本压力均延续此前判断；CULines中东/红海航线（RES/CGX/CGS）需持续评估船员安全、战争险保费与绕行成本。"
+  cuImpact: "中联航运影响评估：本轮新增马士基远东-沙特旺季附加费（8/10生效20GP 1000美元/40GP&45GP 2000美元）及达飞/ONE紧急燃油附加费时间表，中东航线成本上行将推高区域运价中枢，CULines RES/CGX/CGS航线可参照定价并评估运价传导；SeaLead清算资产处置与CULines承接退租运力（Express Berlin等）延续此前判断；红海袭船、战争险保费与绕行成本压力均延续此前判断，船员安全与保险替代方案仍需持续评估。"
 };
 
 // ========== DAILY DATA ==========
@@ -1443,6 +1444,24 @@ const dailyData = [
       "旧闻印证｜BBC/虎嗅/环球时报红海背景报道（2024-2026年7月旧闻）均在库"
     ]
   },
+  {
+    date: "2026-08-21", display: "8/21", weekday: "周五",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 1, redCount: 0, yellowCount: 1, blueCount: 0,
+    cuStatus: "马士基8/10起远东-沙特旺季附加费上调（20GP 1000/40GP 2000美元）+达飞/ONE紧急燃油附加费，中东航线成本上行推高运价中枢，CULines RES/CGX/CGS航线可参照定价",
+    summary: "下午LinkedIn检索：马士基8/10起上调远东发往沙特航线旺季附加费（20GP 1000美元/40GP&45GP 2000美元），达飞8/1、ONE 8/15起紧急燃油附加费；SeaLead/红海主题候选事件均为旧闻多源印证（已在库）",
+    keyEvents: [
+      "✨新增｜马士基8/10起远东发往沙特航线旺季附加费：20GP 1000美元、40GP/45GP 2000美元；达飞8/1起、ONE 8/15起紧急燃油附加费（广州航运交易所7/29汇编）",
+      "旧闻印证｜SeaLead清算/GL Z至9/12/清算人Borrelli、沙特14国防御联盟、埃及达米埃塔港遭袭、曼德通航暴跌40.7%、战争险0.75%、油价破百、暗航盛行等均已在库（8/10-8/20已记录）"
+    ],
+    sealeadEvents: [
+      "旧闻印证｜SeaLead清算/GL Z有限清盘至9/12/清算人Cosimo Borrelli/资产构成/印度次大陆运力降14%等（8/10-8/20已记录，Mariner's Update/TrasportoEuropa/JCtrans等多源印证）"
+    ],
+    redseaEvents: [
+      "✨新增｜马士基8/10起远东-沙特旺季附加费20GP 1000/40GP 2000美元，达飞8/1、ONE 8/15起紧急燃油附加费；VLCC日租金20-30万美元、战争险0.3%→0.75%（广州航运交易所7/29）",
+      "旧闻印证｜胡塞对沙特海上禁运/曼德通航暴跌40.7%/沙特14国防御联盟/达米埃塔港遭袭/JWC战争险区北扩800km/暗航盛行/美沙核能协议等均已在库"
+    ]
+  }
 ];
 
 const routeRisks = [
@@ -1455,6 +1474,9 @@ const routeRisks = [
 
 // ========== KEY EVENTS (with source links) ==========
 const keyEvents = [
+  { date: "08-21", day: "21", title: "✨新增｜下午LinkedIn检索：马士基8/10起远东发往沙特航线旺季附加费——20GP 1000美元/40GP&45GP 2000美元；达飞8/1、ONE 8/15起紧急燃油附加费", desc: "广州航运交易所7/29汇编（来源：新华社/中国能源报/马士基/达飞/ONE官方公告）：马士基7/23调价通知规定自8/10起上调远东发往沙特航线旺季附加费（PSS），20GP集装箱1000美元、40GP/45GP集装箱2000美元；达飞7/21公告自8/1起对所有长途及区域内航线实施紧急燃油附加费（EFS），ONE自8/15起执行；马士基7/22起暂停三组海湾地区海运转陆运订舱、全面暂停乌克兰乔尔诺莫尔斯克港航线。红海/霍尔木兹双海峡危机推动中东航线运价与附加费持续上行。来源：广州航运交易所，2026-07-29。",
+    tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"运价附加费"},{t:"cat",l:"中东航线"}],
+    links: [{ text: "广州航运交易所", url: "https://www.shippingex.cn/newsContent?articleId=15709" }], new: true},
   { date: "08-20", day: "20", title: "✨新增｜下午微信检索：Lloyd's List 8/6红海周报——曼德周通行量降至266-269次降约24%，VLCC经苏伊士运河通行翻4倍（Ain Sukhna减载→Sidi Kerir经Sumed补载），JWC战争险区域北扩约800km", desc: "Lloyd's List Intelligence 8/6周报：曼德海峡周通行量降至266-269次（封锁前354次，降约24%）；主流油轮（非影子船队）-42%至53次；VLCC经苏伊士运河通行量翻4倍，采用Ain Sukhna减载→苏伊士→Sidi Kerir经Sumed管道补载的绕行机制；联合战争委员会（JWC）将红海战争险区域北扩约800km，吉达/延布等沙特北部港口需支付额外保费；8/4也门沿岸一艘dhow被击中沉没、8/5亚丁湾一艘油轮船长报告附近巨响爆炸；胡塞否认拟收过境费，称安全通行保证仍自愿免费。来源：Lloyd's List Intelligence，2026-08-06。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"}],
     links: [{ text: "Lloyd's List Intelligence", url: "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-6-august-2026" }], new: true},
@@ -2215,6 +2237,9 @@ const sealeadKeyEvents = [
 
 // Red Sea / Houthi-specific key events
 const redseaKeyEvents = [
+  { date: "08-21", day: "21", title: "✨新增｜下午LinkedIn检索：马士基8/10起上调远东-沙特旺季附加费20GP 1000美元/40GP&45GP 2000美元；达飞8/1、ONE 8/15起紧急燃油附加费，中东航线成本上行", desc: "广州航运交易所7/29汇编：马士基自8/10起上调远东发往沙特航线旺季附加费（20GP 1000美元、40GP/45GP 2000美元）；达飞自8/1、ONE自8/15起对长途及区域内航线实施紧急燃油附加费；马士基7/22暂停三组海湾地区海转陆订舱。红海对沙特禁运+霍尔木兹危机双线推高中东航线运价与附加费。来源：广州航运交易所，2026-07-29。",
+    tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"运价附加费"},{t:"cat",l:"中东航线"}],
+    links: [{ text: "广州航运交易所", url: "https://www.shippingex.cn/newsContent?articleId=15709" }], new: true},
   { date: "08-12", day: "12", title: "✨新增｜胡塞曼德海峡再袭货轮致6死，逾一年来红海航运首次报告人员伤亡，布油逼近$90", desc: "8月12日，胡塞武装在曼德海峡对一艘货轮发动袭击，造成6人死亡，这是逾一年来红海航运遇袭事件中首次报告人员伤亡。数小时后美军向一艘集装箱船发射导弹，指其试图突破华盛顿对伊朗港口的封锁。布伦特原油涨至$89.74/桶，WTI油至$84.01/桶。尽管外交层面传出霍尔木兹海峡有望重新开放，红海及阿曼湾海域针对商船的致命袭击使全球关键航运通道供应风险进一步升温。来源：金融界/智通财经，2026-08-12。",
     tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"油价"}],
     links: [{ text: "金融界/智通财经", url: "https://futures.jrj.com.cn/2026/08/12144658086789.shtml" }], new: true},
