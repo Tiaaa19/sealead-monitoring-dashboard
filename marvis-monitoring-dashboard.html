@@ -468,6 +468,7 @@
   <button class="tab-btn active" onclick="switchPage('summary', event)"><span class="tab-icon">📊</span> 汇总</button>
   <button class="tab-btn" onclick="switchPage('sealead', event)"><span class="tab-icon">🚢</span> SeaLead 制裁</button>
   <button class="tab-btn" onclick="switchPage('redsea', event)"><span class="tab-icon">⚠️</span> 红海胡塞危机</button>
+  <button class="tab-btn" onclick="switchPage('culklang', event)"><span class="tab-icon">🛳️</span> CUL Klang</button>
 </div>
 
 <!-- ==================== PAGE 1: SUMMARY ==================== -->
@@ -620,6 +621,61 @@
         </thead>
         <tbody id="redseaRouteTableBody"></tbody>
       </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: CUL KLANG (独立板块) ==================== -->
+<div class="page-section" id="page-culklang">
+  <div class="container">
+
+    <!-- CUL Klang Status Hero -->
+    <div class="status-hero">
+      <div class="status-light red">🛳️</div>
+      <div class="status-info">
+        <h2>CUL Klang 专版 — 中联航运自有运营船舶安全事件独立追踪</h2>
+        <p class="summary">中联航运（CULines）运营的新加坡籍集装箱船 CUL Klang（“中联巴生”轮）10/7 在红海南部、曼德海峡以北过境时遭不明小艇开火骚扰，小艇随后驶离、船员无人受伤、船舶继续北行，暂无组织宣称负责；该船 AIS 广播显示“China owned &amp; CHN crew”。本板块独立汇总该轮船舶档案、事件脉络与合规/保险/航线运营影响，便于单独跟踪中资自有运力在红海航段的安全态势。</p>
+      </div>
+      <div class="status-metrics">
+        <div class="metric"><div class="num" style="color:var(--cu-red)" id="culklangEventCount">1</div><div class="label">已记录事件</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-blue-info)">2433</div><div class="label">TEU 运力</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-blue-info)">35300</div><div class="label">载重吨 DWT</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-green)">2024</div><div class="label">交付年份</div></div>
+      </div>
+    </div>
+
+    <!-- Vessel Profile -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🚢</span> 船舶档案（CUL Klang · 中联巴生）</div>
+      <table class="route-table">
+        <thead>
+          <tr><th>项目</th><th>信息</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>船名</strong></td><td>CUL Klang（中文名“中联巴生”）</td></tr>
+          <tr><td><strong>船籍</strong></td><td>新加坡（Singapore-flagged）</td></tr>
+          <tr><td><strong>运营方</strong></td><td>中国中联航运（CULines / CUL Lines）</td></tr>
+          <tr><td><strong>交付年份</strong></td><td>2024 年</td></tr>
+          <tr><td><strong>载重吨</strong></td><td>35,300 DWT</td></tr>
+          <tr><td><strong>集装箱运力</strong></td><td>2,433 TEU</td></tr>
+          <tr><td><strong>AIS 广播</strong></td><td>“China owned &amp; CHN crew”（中国船东 / 中国船员）</td></tr>
+          <tr><td><strong>经营区域</strong></td><td>地中海、中东及亚洲区域内航线</td></tr>
+          <tr><td><strong>当前状态</strong></td><td>10/7 遭小艇开火骚扰后继续红海北向航行，船员安全、无伤亡</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CUL Klang Impact -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🧭</span> 事件影响与处置提示</div>
+      <div class="timeline-cu" id="culklangImpact"></div>
+    </div>
+
+    <!-- CUL Klang Key Events Timeline -->
+    <div class="card">
+      <div class="card-title"><span class="icon">📅</span> CUL Klang 事件时间线（最新 → 最早）</div>
+      <div class="events-timeline" id="culklangEventsTimeline"></div>
     </div>
 
   </div>
@@ -2952,6 +3008,13 @@ function renderLinks(links) {
   </div>`;
 }
 
+// ========== CUL KLANG 独立板块数据 ==========
+const culklangKeyEvents = [
+  { date: "10-07", day: "07", title: "✨新增｜CUL Klang（中联巴生）轮红海南部、曼德海峡以北过境时遭不明小艇开火骚扰——小艇随后驶离、船员无人受伤、船舶继续北行；AIS 广播“China owned & CHN crew”，暂无组织宣称负责", desc: "Maritime Executive 2026-10-07 16:03:32 报道：10 月 7 日（周三）早间红海南部再报新事件，细节尚不清楚、暂无组织宣称负责。欧盟资助的海上安全中心印度洋（MSCIO）收到一艘过往集装箱船遭小艇骚扰的报告，该船称在红海南部、曼德海峡（Bab el-Mandeb）以北过境时被一艘小艇开火射击；小艇随后驶离该区域，集装箱船继续其红海北向航程，船员无人受伤。安全顾问将该船识别为新加坡籍 CUL Klang（35,300 载重吨），2024 年交付，由中国中联航运（CUL Lines）运营，公司经营地中海、中东及亚洲区域内航线；该船集装箱运力 2,433 TEU，其 AIS 广播显示“China owned & CHN crew”。报道援引背景称，以往有报告指该区域部分小艇或为渔船、仅系保护自身船只与渔网；胡塞武装此前称仅针对与沙特相关的船只，进一步令人怀疑其会针对一艘中国集装箱船。同期，也门沿岸沙特与政府军同胡塞的交战加剧（也门“国土盾牌”部队称参与塔伊兹 al-Waziya 一带大规模攻势，双方均称已重新控制曼德海峡沿岸战略要地）；UKMTO 10 月 4 日曾收到一艘油轮报告在亚丁湾、曼德海峡以南遭遇多次爆炸，红海上一次事件为 8 月底一艘油轮在延布外海被击中；EUNAVFOR Aspides 称继续护航以支撑航运业使用受挑战航线的信心。来源：Maritime Executive 2026-10-07。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"CUL Klang"},{t:"cat",l:"红海安全"},{t:"cat",l:"中联航运"}], links: [{ text: "Maritime Executive", url: "https://maritime-executive.com/index.php/article/shots-fired-at-chinese-containership-in-the-red-sea" }], new: true },
+];
+
+const culklangImpact = "<strong>事件影响与处置提示（CUL Klang）：</strong>① 本次属骚扰/警告性射击，未造成船员伤亡与船体实质损害，船舶按原计划继续北行，暂未构成航次中止事件；② 但事件对象为中国船东/中国船员背景的 CULines 自有运营船舶，与胡塞“仅针对沙特关联船只”的既往口径存在偏差，需高度关注后续是否出现针对中资/中联船舶的复制性事件；③ 建议对本轮经红海、曼德海峡航段的 CULines 船舶复核 ISPS 船舶保安措施、强化瞭望与航速/机动预案、并复核战争险条款与承保范围（含船员安全与雇主责任应急流程）；④ 同步跟踪 MSCIO、UKMTO、EUNAVFOR Aspides 后续通报，确认是否有组织认领及是否升级为导弹/无人机袭击。";
+
 // ========== RENDER ==========
 
 // --- Latest Update Section ---
@@ -3134,6 +3197,26 @@ routeRisks.forEach(r => {
       <td>${r.threat}</td>
       <td>${r.rec}</td>
     </tr>`;
+});
+
+// --- CUL Klang page: Impact ---
+document.getElementById('culklangImpact').innerHTML = culklangImpact;
+
+// --- CUL Klang page: Events Timeline ---
+const culklangEventsContainer = document.getElementById('culklangEventsTimeline');
+[...culklangKeyEvents].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach(e => {
+  const tagsHtml = e.tags.map(t => `<span class="event-tag ${t.t}">${t.l}</span>`).join('');
+  const linksHtml = renderLinks(e.links);
+  culklangEventsContainer.innerHTML += `
+    <div class="event-row">
+      <div class="event-date">${e.date.split('-')[0]}月<div class="day">${e.day}</div></div>
+      <div class="event-content">
+        <h4>${e.title}</h4>
+        <p>${e.desc}</p>
+        <div class="event-tags">${tagsHtml}</div>
+        ${linksHtml}
+      </div>
+    </div>`;
 });
 
 // ========== METRICS ==========
