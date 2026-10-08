@@ -502,6 +502,18 @@
   .link-mini-btn.danger { color: var(--cu-red); }
   .link-mini-btn.danger:hover { background: var(--cu-red-bg); }
   .link-empty { font-size: 12px; color: var(--text-secondary); padding: 8px 0; }
+
+  /* CUL Klang 页：已入库新闻链接汇总区块 */
+  .link-digest-stat { font-size: 13px; font-weight: 700; color: var(--cu-blue-dark); margin-bottom: 6px; }
+  .link-digest-note {
+    font-size: 12px; line-height: 1.7; color: var(--text-secondary);
+    padding: 10px 12px; background: var(--bg); border-left: 3px solid var(--cu-blue-info);
+    border-radius: 0 6px 6px 0; margin-bottom: 14px;
+  }
+  .link-digest-row { align-items: flex-start; }
+  .link-digest-row .link-item-title a { color: var(--cu-blue); text-decoration: none; }
+  .link-digest-row .link-item-title a:hover { text-decoration: underline; }
+  .link-digest-empty { font-size: 12px; color: var(--text-secondary); padding: 10px 0; }
   .link-preview {
     margin-top: 12px; padding: 12px; background: var(--bg); border: 1px solid var(--border);
     border-radius: 8px; font-size: 12px; font-family: Menlo, Consolas, monospace;
@@ -772,6 +784,12 @@
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> CUL Klang 事件时间线（最新 → 最早）</div>
       <div class="events-timeline" id="culklangEventsTimeline"></div>
+    </div>
+
+    <!-- CUL Klang 已入库新闻链接汇总（数据源：collectedLinks，动态读取、无第二份硬编码） -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🔗</span> 已入库新闻链接（CUL Klang 分类 · 按入库时间倒序）</div>
+      <div class="link-digest" id="culklangLinkDigest"></div>
     </div>
 
   </div>
@@ -3560,6 +3578,78 @@ function setLinkMsg(text, ok) {
   msg.textContent = text;
 }
 
+/* ===== CUL Klang 页：已入库新闻链接汇总 =====
+   数据源＝collectedLinks（同一数组，禁止第二份硬编码）
+   未来向 collectedLinks 追加 category="CUL Klang" 的条目会自动出现在该区块 */
+const LINK_DIGEST_CATEGORY = "CUL Klang";
+const LINK_DIGEST_KINDS = [
+  { name: "微信", hit: function (d) { return /(^|\.)weixin\.qq\.com$/i.test(d); } },
+  { name: "社媒", hit: function (d) { return /(^|\.)(x\.com|twitter\.com|facebook\.com|reddit\.com|instagram\.com|t\.me|youtube\.com|linkedin\.com)$/i.test(d); } },
+  { name: "航运专业媒体", hit: function (d) { return /(^|\.)(lloydslist\.com|maritime-executive\.com|tradewindsnews\.com|gcaptain\.com|splash247\.com|seatrade-maritime\.com|bairdmaritime\.com|hellenicshippingnews\.com)$/i.test(d); } }
+];
+const LINK_DIGEST_KIND_ORDER = ["微信", "社媒", "航运专业媒体", "其他"];
+
+function linkDigestKind(url) {
+  const d = domainOf(url);
+  for (let i = 0; i < LINK_DIGEST_KINDS.length; i++) {
+    try { if (LINK_DIGEST_KINDS[i].hit(d)) return LINK_DIGEST_KINDS[i].name; } catch (e) { /* 单条归类异常忽略 */ }
+  }
+  return "其他";
+}
+
+function linkDigestItems() {
+  const all = (typeof collectedLinks !== "undefined" && Array.isArray(collectedLinks)) ? collectedLinks : [];
+  return all.filter(x => x && x.url && String(x.category == null ? "" : x.category) === LINK_DIGEST_CATEGORY);
+}
+
+function renderCulklangLinkDigest() {
+  const box = document.getElementById("culklangLinkDigest");
+  if (!box) return;
+  try {
+    const items = linkDigestItems().slice().sort(function (a, b) {
+      const tb = Date.parse(b.addedAt || "");
+      const ta = Date.parse(a.addedAt || "");
+      if ((isNaN(tb) ? 0 : tb) !== (isNaN(ta) ? 0 : ta)) return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta);
+      return String(b.addedAt || "").localeCompare(String(a.addedAt || ""));
+    });
+    if (!items.length) {
+      box.innerHTML = '<div class="link-digest-empty">暂无已入库的 CUL Klang 新闻链接。可在「链接收集」页签提交并入库，入库后会自动显示在此处。</div>';
+      return;
+    }
+    const kinds = [];
+    let rows = "";
+    items.forEach(function (item) {
+      try {
+        const url = String(item.url || "");
+        const title = String(item.title == null ? "" : item.title).trim() || domainOf(url) || "（未命名链接）";
+        const kind = linkDigestKind(url);
+        if (kinds.indexOf(kind) === -1) kinds.push(kind);
+        const when = fmtLinkTime(item.addedAt) || "时间未知";
+        rows += '<div class="link-item link-digest-row">' +
+            '<div class="link-item-main">' +
+              '<div class="link-item-title"><a href="' + escHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escHtml(title) + '</a></div>' +
+              '<div class="link-item-meta">' +
+                '<span class="link-item-domain">' + escHtml(domainOf(url)) + '</span>' +
+                '<span>入库 ' + escHtml(when) + '</span>' +
+                '<span>' + escHtml(kind) + '</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+      } catch (err) {
+        if (typeof console !== "undefined" && console.warn) console.warn("CUL Klang 链接汇总单条渲染跳过：", err);
+      }
+    });
+    const covered = LINK_DIGEST_KIND_ORDER.filter(function (k) { return kinds.indexOf(k) !== -1; }).join("/");
+    box.innerHTML =
+      '<div class="link-digest-stat">共 ' + items.length + ' 条' + (covered ? ' · 覆盖 ' + escHtml(covered) : '') + '</div>' +
+      '<div class="link-digest-note">事件概述：本次集中报道 10-07 CUL Klang 在红海南部、曼德海峡以北遭小艇开火，船员无伤并继续北行，暂无组织认领。以下为该事件已正式入库的新闻来源，按入库时间由新到旧排列。</div>' +
+      rows;
+  } catch (e) {
+    if (typeof console !== "undefined" && console.warn) console.warn("CUL Klang 已入库链接汇总渲染异常：", e);
+    try { box.innerHTML = '<div class="link-digest-empty">CUL Klang 已入库链接汇总渲染异常，请刷新页面后重试。</div>'; } catch (e2) { /* 兜底失败不再上抛 */ }
+  }
+}
+
 function addCollectedLinks() {
   const input = document.getElementById("linkInput");
   const sel = document.getElementById("linkCategory");
@@ -3716,6 +3806,11 @@ function gotoLinkCollect() {
     renderLinkCollection();
   } catch (e) {
     if (typeof console !== 'undefined' && console.warn) console.warn('链接收集模块初始化异常：', e);
+  }
+  try {
+    renderCulklangLinkDigest();
+  } catch (e) {
+    if (typeof console !== 'undefined' && console.warn) console.warn('CUL Klang 已入库链接汇总初始化异常：', e);
   }
 })();
 </script>

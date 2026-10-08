@@ -203,6 +203,36 @@ __chkRows('汇总页时间线行数 == keyEvents 条数', 'eventsTimeline', fals
 __chkRows('SeaLead 页时间线行数 == sealeadKeyEvents 条数', 'sealeadEventsTimeline', false);
 __chkRows('红海页时间线行数 == redseaKeyEvents 条数（防截断）', 'redseaEventsTimeline', false);
 __chkRows('CUL Klang 页时间线行数 == culklangKeyEvents 条数 且非空', 'culklangEventsTimeline', true);
+// CUL Klang 页「已入库新闻链接」汇总区块断言（数据源必须 == collectedLinks 中 category 为 CUL Klang 的条数）
+(function () {
+  var box = __els['culklangLinkDigest'];
+  __chk('CUL Klang 页：已入库链接汇总区块已挂载', !!box, box ? '容器 culklangLinkDigest 存在' : '未找到容器 culklangLinkDigest');
+  if (!box) return;
+  var html = String(box.innerHTML || '');
+  var exp = __EXPECT.culklangDigestCount;
+  if (exp === undefined || exp === null) { __chk('CUL Klang 页：未解析到 collectedLinks 中 CUL Klang 条数', false); return; }
+  var got = __count(html, 'class="link-item link-digest-row"');
+  if (exp === 0) {
+    __chk('CUL Klang 页：无条目时渲染空态提示', html.indexOf('link-digest-empty') !== -1 && got === 0, '空态已渲染');
+    return;
+  }
+  __chk('CUL Klang 页：链接汇总渲染行数 == collectedLinks 中 CUL Klang 条数', got === exp, got + ' / ' + exp);
+  __chk('CUL Klang 页：链接汇总统计行含「共 N 条」', html.indexOf('共 ' + exp + ' 条') !== -1, '共 ' + exp + ' 条');
+  __chk('CUL Klang 页：链接汇总含事件概述', html.indexOf('事件概述') !== -1);
+  var expUrls = __EXPECT.culklangDigestUrls || [];
+  var miss = [];
+  for (var i = 0; i < expUrls.length; i++) {
+    if (html.indexOf(String(expUrls[i]).replace(/&/g, '&amp;')) === -1) miss.push(expUrls[i]);
+  }
+  __chk('CUL Klang 页：汇总条目 url 全部渲染（可点击 href）', miss.length === 0, miss.length ? miss.join(', ') : expUrls.length + ' 条');
+  var pos = -1, badOrder = [];
+  for (var k = 0; k < expUrls.length; k++) {
+    var p = html.indexOf(String(expUrls[k]).replace(/&/g, '&amp;'));
+    if (p !== -1 && p < pos) badOrder.push(expUrls[k]);
+    if (p !== -1) pos = p;
+  }
+  __chk('CUL Klang 页：汇总条目按 addedAt 倒序渲染', badOrder.length === 0, badOrder.length ? badOrder.join(', ') : '顺序正确');
+})();
 __chk('红海日卡片已渲染', __count(__els['redseaDailyGrid'].innerHTML, 'class="daily-card ') > 0, __count(__els['redseaDailyGrid'].innerHTML, 'class="daily-card ') + ' 张');
 __chk('顶部指标区已渲染', String(__els['metricRed'].textContent).length > 0, '红=' + __els['metricRed'].textContent);
 __chk('链接收集：分类 datalist 非空（模块已初始化）', __count(__els['linkCategoryList'].innerHTML, '<option') > 0, __count(__els['linkCategoryList'].innerHTML, '<option') + ' 项');
@@ -248,17 +278,25 @@ if m_cl:
     _items, _ = split_top_items(html, _br)
 
     def _field(seg, key):
-        mm = re.search(r'(?<![A-Za-z_])"%s"\s*:\s*"((?:[^"\\]|\\.)*)"' % key, seg)
+        # 兼容 collectedLinks 中的无引号键写法（如 { category: "CUL Klang", ... }）
+        mm = re.search(r'(?<![A-Za-z_])"?%s"?\s*:\s*"((?:[^"\\]|\\.)*)"' % key, seg)
         return mm.group(1) if mm else ""
     for _it in _items:
         builtin_links.append({"url": _field(_it, "url"),
                               "category": _field(_it, "category"),
-                              "title": _field(_it, "title")})
+                              "title": _field(_it, "title"),
+                              "addedAt": _field(_it, "addedAt")})
 expect["linkBuiltin"] = {
     "count": len(builtin_links),
     "urls": [b["url"] for b in builtin_links],
     "cats": sorted(set(b["category"] for b in builtin_links if b["category"])),
 }
+# CUL Klang 页「已入库新闻链接」汇总区块：期望行数 == collectedLinks 中 category 为 CUL Klang 的条数
+# 期望顺序 == 按 addedAt 倒序（与页面渲染一致）
+_cul_digest = [b for b in builtin_links if b["category"] == "CUL Klang" and b["url"]]
+_cul_digest_sorted = sorted(_cul_digest, key=lambda b: (b.get("addedAt") or "", b.get("url") or ""), reverse=True)
+expect["culklangDigestCount"] = len(_cul_digest)
+expect["culklangDigestUrls"] = [b["url"] for b in _cul_digest_sorted]
 combined = HARNESS.replace("__EXPECT_PLACEHOLDER__", json.dumps(expect)) + "\n" + "\n".join(
     "__runScript('页面内联脚本 #%d', %s);" % (i + 1, json.dumps(s, ensure_ascii=True))
     for i, s in enumerate(scripts)
