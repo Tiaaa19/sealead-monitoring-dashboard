@@ -422,6 +422,90 @@
   }
   .info-banner strong { font-weight: 700; }
 
+  /* ===== Link Collection (第5页签) ===== */
+  .entry-banner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    background: linear-gradient(135deg, var(--cu-blue) 0%, var(--cu-blue-dark) 100%);
+    color: #fff; border-radius: var(--radius);
+    padding: 16px 24px; margin-bottom: 24px; box-shadow: var(--shadow);
+  }
+  .entry-banner-text { font-size: 13px; line-height: 1.6; }
+  .entry-banner-text strong { font-size: 15px; }
+  .entry-banner-btn {
+    background: #fff; color: var(--cu-blue-dark); border: none;
+    font-size: 14px; font-weight: 700; padding: 10px 22px;
+    border-radius: 22px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .entry-banner-btn:hover { background: var(--cu-blue-light); transform: translateY(-1px); }
+
+  .link-form-row { margin-bottom: 14px; }
+  .link-form-label {
+    display: block; font-size: 12px; font-weight: 600;
+    color: var(--text-secondary); margin-bottom: 6px;
+  }
+  .link-select, .link-textarea {
+    width: 100%; border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; font-size: 13px; font-family: inherit;
+    color: var(--text); background: #fff;
+  }
+  .link-textarea { resize: vertical; line-height: 1.7; }
+  .link-select:focus, .link-textarea:focus {
+    outline: none; border-color: var(--cu-blue); box-shadow: 0 0 0 3px var(--cu-blue-light);
+  }
+  .link-form-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .link-btn {
+    border: 1px solid var(--cu-blue); background: #fff; color: var(--cu-blue);
+    font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 8px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .link-btn:hover { background: var(--cu-blue-light); }
+  .link-btn.primary { background: var(--cu-blue); color: #fff; }
+  .link-btn.primary:hover { background: var(--cu-blue-dark); }
+  .link-form-hint { font-size: 12px; font-weight: 600; }
+  .link-form-hint.ok { color: var(--cu-green); }
+  .link-form-hint.err { color: var(--cu-red); }
+
+  .link-group { margin-bottom: 20px; }
+  .link-group:last-child { margin-bottom: 0; }
+  .link-group-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid var(--border);
+  }
+  .link-group-name { font-size: 14px; font-weight: 700; color: var(--cu-blue-dark); }
+  .link-group-count {
+    font-size: 11px; font-weight: 600; color: var(--cu-gray);
+    background: var(--cu-gray-bg); border-radius: 10px; padding: 1px 8px;
+  }
+  .link-item {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 12px; padding: 10px 12px; border-bottom: 1px solid var(--border);
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-item-main { min-width: 0; flex: 1; }
+  .link-item-title { font-size: 13px; font-weight: 600; color: var(--text); word-break: break-all; }
+  .link-item-meta {
+    font-size: 11px; color: var(--text-secondary); margin-top: 4px;
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
+  .link-item-domain { color: var(--cu-blue-info); }
+  .link-item-actions { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
+  .link-mini-btn {
+    font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+    border: 1px solid var(--border); background: #fff; color: var(--cu-blue);
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+  }
+  .link-mini-btn:hover { background: var(--cu-blue-light); }
+  .link-mini-btn.danger { color: var(--cu-red); }
+  .link-mini-btn.danger:hover { background: var(--cu-red-bg); }
+  .link-empty { font-size: 12px; color: var(--text-secondary); padding: 8px 0; }
+  .link-preview {
+    margin-top: 12px; padding: 12px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 12px; font-family: Menlo, Consolas, monospace;
+    color: var(--text-secondary); white-space: pre-wrap; word-break: break-all;
+    max-height: 220px; overflow: auto; display: none;
+  }
+
   /* Footer */
   .footer {
     text-align: center;
@@ -469,11 +553,20 @@
   <button class="tab-btn" onclick="switchPage('sealead', event)"><span class="tab-icon">🚢</span> SeaLead 制裁</button>
   <button class="tab-btn" onclick="switchPage('redsea', event)"><span class="tab-icon">⚠️</span> 红海胡塞危机</button>
   <button class="tab-btn" onclick="switchPage('culklang', event)"><span class="tab-icon">🛳️</span> CUL Klang</button>
+  <button class="tab-btn" id="tabBtnLink" onclick="switchPage('linkcollect', event)"><span class="tab-icon">🔗</span> 链接收集</button>
 </div>
 
 <!-- ==================== PAGE 1: SUMMARY ==================== -->
 <div class="page-section active" id="page-summary">
   <div class="container">
+
+    <!-- Link Collection Entry (top of summary) -->
+    <div class="entry-banner">
+      <div class="entry-banner-text">
+        <strong>🔗 链接收集</strong> — 把你手动发现的网络链接按分类录入本面板，先存本机、确认后可生成入库代码交由 Marvis 永久入库
+      </div>
+      <button class="entry-banner-btn" onclick="gotoLinkCollect()">前往「链接收集」 →</button>
+    </div>
 
     <!-- Latest Update (top of page) -->
     <div class="latest-update" id="latestUpdate">
@@ -676,6 +769,53 @@
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> CUL Klang 事件时间线（最新 → 最早）</div>
       <div class="events-timeline" id="culklangEventsTimeline"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: LINK COLLECTION (链接收集) ==================== -->
+<div class="page-section" id="page-linkcollect">
+  <div class="container">
+
+    <!-- Link Collection Status Hero -->
+    <div class="status-hero">
+      <div class="status-light red">🔗</div>
+      <div class="status-info">
+        <h2>链接收集 — 自助录入你发现的网络链接</h2>
+        <p class="summary">把你手动发现的网络链接按分类录入，系统会按分类沉淀进面板信息。录入内容先暂存在本机浏览器（localStorage），可随时删除或点“复制入库代码”把片段发给 Marvis 做永久入库；正式入库条目会随仪表盘一起发布，本地暂存条目仅在本机可见。</p>
+      </div>
+      <div class="status-metrics">
+        <div class="metric"><div class="num" style="color:var(--cu-blue-info)" id="linkLocalCount">0</div><div class="label">本地暂存</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-green)" id="linkBuiltinCount">0</div><div class="label">已正式入库</div></div>
+      </div>
+    </div>
+
+    <!-- Add Link Form -->
+    <div class="card">
+      <div class="card-title"><span class="icon">➕</span> 新增链接</div>
+      <div class="link-form">
+        <div class="link-form-row">
+          <label class="link-form-label" for="linkCategory">分类</label>
+          <select id="linkCategory" class="link-select"></select>
+        </div>
+        <div class="link-form-row">
+          <label class="link-form-label" for="linkInput">链接（每行一个，支持「链接 | 标题」写法，标题可省略）</label>
+          <textarea id="linkInput" class="link-textarea" rows="5" placeholder="https://example.com/article | 文章标题（标题可省略）"></textarea>
+        </div>
+        <div class="link-form-actions">
+          <button class="link-btn primary" onclick="addCollectedLinks()">添加</button>
+          <button class="link-btn" onclick="copyInboundCode()">复制入库代码</button>
+          <span class="link-form-hint" id="linkFormMsg"></span>
+        </div>
+        <div class="link-preview" id="linkCodePreview"></div>
+      </div>
+    </div>
+
+    <!-- Collected Links by Category -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🗂️</span> 已收集链接（按分类分组）</div>
+      <div id="linkGroups"></div>
     </div>
 
   </div>
@@ -3257,6 +3397,210 @@ const culklangEventsContainer = document.getElementById('culklangEventsTimeline'
       </div>
     </div>`;
 });
+
+// ========== LINK COLLECTION (第5页签：链接收集) ==========
+// 分类枚举常量
+const LINK_CATEGORIES = ["SeaLead 制裁", "红海胡塞危机", "CUL Klang", "航运运价与航道", "其他"];
+// 正式入库条目（由 Marvis 永久写入本数组；字段：category/title/url/note/addedAt）
+const collectedLinks = [];
+// 本地暂存 key
+const USER_LINKS_KEY = "sealead_dash_user_links_v1";
+
+function escHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+function loadUserLinks() {
+  try {
+    const raw = localStorage.getItem(USER_LINKS_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr.filter(x => x && x.url) : [];
+  } catch (e) { return []; }
+}
+function saveUserLinks(list) {
+  try { localStorage.setItem(USER_LINKS_KEY, JSON.stringify(list)); } catch (e) {}
+}
+function normalizeUrl(u) {
+  let s = String(u || "").trim();
+  if (!s) return "";
+  if (!/^https?:\/\//i.test(s)) s = "https://" + s;
+  return s;
+}
+function domainOf(u) {
+  const s = String(u || "");
+  const m = s.match(/^https?:\/\/([^\/?#:]+)/i);
+  if (m && m[1]) return m[1].replace(/^www\./i, "");
+  return s;
+}
+function fmtLinkTime(t) {
+  if (!t) return "";
+  const d = new Date(t);
+  if (isNaN(d.getTime())) return String(t);
+  const p = n => String(n).padStart(2, "0");
+  return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) +
+    " " + p(d.getHours()) + ":" + p(d.getMinutes());
+}
+function setLinkMsg(text, ok) {
+  const msg = document.getElementById("linkFormMsg");
+  if (!msg) return;
+  msg.className = "link-form-hint " + (ok ? "ok" : "err");
+  msg.textContent = text;
+}
+
+function addCollectedLinks() {
+  const input = document.getElementById("linkInput");
+  const sel = document.getElementById("linkCategory");
+  if (!input || !sel) return;
+  const category = sel.value || "其他";
+  const lines = String(input.value || "").split(/\r?\n/);
+  const list = loadUserLinks();
+  const now = new Date().toISOString();
+  const seen = {};
+  list.forEach(x => { seen[x.url] = 1; });
+  let added = 0, dup = 0, invalid = 0;
+  lines.forEach(line => {
+    const raw = line.trim();
+    if (!raw) return;
+    const parts = raw.split("|");
+    const urlPart = parts[0].trim();
+    const titlePart = parts.slice(1).join("|").trim();
+    const url = normalizeUrl(urlPart);
+    if (!url || !/^https?:\/\/[^\s/]+\.[^\s/]+/i.test(url)) { invalid++; return; }
+    if (seen[url]) { dup++; return; }
+    seen[url] = 1;
+    list.push({ category: category, title: titlePart || domainOf(url), url: url, note: "", addedAt: now });
+    added++;
+  });
+  if (added > 0) saveUserLinks(list);
+  if (added > 0) input.value = "";
+  if (added > 0) {
+    let t = "已添加 " + added + " 条到本地暂存";
+    if (dup) t += "，跳过重复 " + dup + " 条";
+    if (invalid) t += "，忽略无效 " + invalid + " 条";
+    setLinkMsg(t, true);
+  } else if (dup || invalid) {
+    setLinkMsg("未新增：重复 " + dup + " 条、无效 " + invalid + " 条", false);
+  } else {
+    setLinkMsg("请先输入至少一个链接", false);
+  }
+  renderLinkCollection();
+}
+
+function deleteUserLink(url) {
+  const list = loadUserLinks().filter(x => x.url !== url);
+  saveUserLinks(list);
+  renderLinkCollection();
+  setLinkMsg("已从本地暂存删除 1 条", true);
+}
+
+function copyInboundCode() {
+  const list = loadUserLinks();
+  if (!list.length) { setLinkMsg("本地暂存为空，暂无可入库条目", false); return; }
+  const rows = list.map(x => "  { category: " + JSON.stringify(x.category || "") +
+    ", title: " + JSON.stringify(x.title || "") +
+    ", url: " + JSON.stringify(x.url || "") +
+    ", note: " + JSON.stringify(x.note || "") +
+    ", addedAt: " + JSON.stringify(x.addedAt || "") + " },");
+  const code = "// 链接收集·待永久入库条目（追加进 dashboard 的 collectedLinks 数组）\n" +
+    "collectedLinks.push(\n" + rows.join("\n") + "\n);";
+  const preview = document.getElementById("linkCodePreview");
+  if (preview) { preview.textContent = code; preview.style.display = "block"; }
+  const done = function () { setLinkMsg("已复制 " + list.length + " 条入库代码，发给 Marvis 即可永久入库", true); };
+  const fail = function () { setLinkMsg("复制失败，请手动复制下方代码片段", false); };
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, function () { fallbackCopy(code, done, fail); });
+    } else {
+      fallbackCopy(code, done, fail);
+    }
+  } catch (e) { fallbackCopy(code, done, fail); }
+}
+function fallbackCopy(text, done, fail) {
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    if (ok) { done(); } else { fail(); }
+  } catch (e) { fail(); }
+}
+
+function renderLinkCollection() {
+  const groupsEl = document.getElementById("linkGroups");
+  if (!groupsEl) return;
+  const local = loadUserLinks();
+  const builtin = collectedLinks.map(x => Object.assign({ _builtin: true }, x));
+  const merged = builtin.concat(local);
+
+  const localEl = document.getElementById("linkLocalCount");
+  const builtinEl = document.getElementById("linkBuiltinCount");
+  if (localEl) localEl.textContent = local.length;
+  if (builtinEl) builtinEl.textContent = builtin.length;
+
+  let html = "";
+  const cats = LINK_CATEGORIES.slice();
+  const extras = [];
+  merged.forEach(x => {
+    const c = x.category || "其他";
+    if (cats.indexOf(c) === -1 && extras.indexOf(c) === -1) extras.push(c);
+  });
+  cats.concat(extras).forEach(cat => {
+    const items = merged.filter(x => (x.category || "其他") === cat);
+    if (!items.length) return;
+    html += '<div class="link-group">' +
+      '<div class="link-group-head">' +
+      '<span class="link-group-name">' + escHtml(cat) + "</span>" +
+      '<span class="link-group-count">' + items.length + " 条</span>" +
+      "</div>";
+    items.forEach(item => {
+      const url = escHtml(item.url);
+      const title = escHtml(item.title || domainOf(item.url));
+      const badge = item._builtin
+        ? '<span class="event-tag blue">已正式入库</span>'
+        : '<span class="event-tag cat">本地暂存</span>';
+      const delBtn = item._builtin
+        ? ""
+        : '<button class="link-mini-btn danger" data-url="' + url + '" onclick="deleteUserLink(this.getAttribute(\'data-url\'))">删除</button>';
+      html += '<div class="link-item">' +
+        '<div class="link-item-main">' +
+        '<div class="link-item-title">' + title + "</div>" +
+        '<div class="link-item-meta">' +
+        '<span class="link-item-domain">' + escHtml(domainOf(item.url)) + "</span>" +
+        "<span>" + escHtml(fmtLinkTime(item.addedAt)) + "</span>" +
+        badge +
+        "</div></div>" +
+        '<div class="link-item-actions">' +
+        '<a class="link-mini-btn" href="' + url + '" target="_blank" rel="noopener">打开链接</a>' +
+        delBtn +
+        "</div></div>";
+    });
+    html += "</div>";
+  });
+  groupsEl.innerHTML = html || '<div class="link-empty">暂无已收集链接，请在上方录入（本地暂存不会自动发布）。</div>';
+}
+
+function gotoLinkCollect() {
+  switchPage("linkcollect");
+  const btn = document.getElementById("tabBtnLink");
+  if (btn) btn.classList.add("active");
+}
+
+(function initLinkCollection() {
+  const sel = document.getElementById("linkCategory");
+  if (sel) {
+    sel.innerHTML = LINK_CATEGORIES.map(c => '<option value="' + escHtml(c) + '">' + escHtml(c) + "</option>").join("");
+  }
+  renderLinkCollection();
+})();
 
 // ========== METRICS ==========
 const totalRed = dailyData.reduce((s,d) => s+d.redCount, 0);
