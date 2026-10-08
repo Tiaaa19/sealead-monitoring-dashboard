@@ -233,6 +233,36 @@ __chkRows('CUL Klang 页时间线行数 == culklangKeyEvents 条数 且非空', 
   }
   __chk('CUL Klang 页：汇总条目按 addedAt 倒序渲染', badOrder.length === 0, badOrder.length ? badOrder.join(', ') : '顺序正确');
 })();
+// CUL Klang 页「入库新闻要点汇总」区块断言（三段结构 + 行数 == 数据条数 + 来源编号关联 collectedLinks）
+(function () {
+  var box = __els['culklangPointDigest'];
+  __chk('CUL Klang 页：要点汇总区块已挂载', !!box, box ? '容器 culklangPointDigest 存在' : '未找到容器 culklangPointDigest');
+  if (!box) return;
+  var html = String(box.innerHTML || '');
+  var exp = __EXPECT.culklangPoints;
+  if (!exp) { __chk('CUL Klang 页：未解析到要点数据 CULKLANG_POINTS', false); return; }
+  __chk('CUL Klang 页：要点区块含三段结构标题',
+        html.indexOf('事件时间线') !== -1 && html.indexOf('多源口径对比') !== -1 && html.indexOf('关键事实与待证实项') !== -1,
+        '事件时间线 / 多源口径对比 / 关键事实与待证实项');
+  var gotT = __count(html, 'class="point-row"');
+  __chk('CUL Klang 页：事件时间线行数 == 数据条数', gotT === exp.timeline, gotT + ' / ' + exp.timeline);
+  var gotC = __count(html, 'class="point-cmp-row"');
+  __chk('CUL Klang 页：多源口径对比行数 == 数据条数', gotC === exp.comparison, gotC + ' / ' + exp.comparison);
+  var gotF = __count(html, 'class="point-fact-row"');
+  __chk('CUL Klang 页：关键事实行数 == 数据条数', gotF === exp.confirmed, gotF + ' / ' + exp.confirmed);
+  var gotP = __count(html, 'class="point-pending-row"');
+  __chk('CUL Klang 页：待证实项行数 == 数据条数', gotP === exp.pending, gotP + ' / ' + exp.pending);
+  var gotRef = __count(html, 'class="point-ref"');
+  __chk('CUL Klang 页：要点来源编号链接数 == refs 引用总数', gotRef === exp.refTotal, gotRef + ' / ' + exp.refTotal);
+  __chk('CUL Klang 页：要点汇总标注抓取情况与未抓取提示',
+        html.indexOf('抓取情况') !== -1 && html.indexOf('未能抓取') !== -1);
+  var missRef = [];
+  for (var i = 0; i < exp.refUrls.length; i++) {
+    if (html.indexOf(String(exp.refUrls[i]).replace(/&/g, '&amp;')) === -1) missRef.push(exp.refUrls[i]);
+  }
+  __chk('CUL Klang 页：要点引用来源全部落回 collectedLinks 条目（可点击）', missRef.length === 0,
+        missRef.length ? missRef.join(', ') : exp.refUrls.length + ' 个来源 url');
+})();
 __chk('红海日卡片已渲染', __count(__els['redseaDailyGrid'].innerHTML, 'class="daily-card ') > 0, __count(__els['redseaDailyGrid'].innerHTML, 'class="daily-card ') + ' 张');
 __chk('顶部指标区已渲染', String(__els['metricRed'].textContent).length > 0, '红=' + __els['metricRed'].textContent);
 __chk('链接收集：分类 datalist 非空（模块已初始化）', __count(__els['linkCategoryList'].innerHTML, '<option') > 0, __count(__els['linkCategoryList'].innerHTML, '<option') + ' 项');
@@ -297,6 +327,48 @@ _cul_digest = [b for b in builtin_links if b["category"] == "CUL Klang" and b["u
 _cul_digest_sorted = sorted(_cul_digest, key=lambda b: (b.get("addedAt") or "", b.get("url") or ""), reverse=True)
 expect["culklangDigestCount"] = len(_cul_digest)
 expect["culklangDigestUrls"] = [b["url"] for b in _cul_digest_sorted]
+# CUL Klang 页「入库新闻要点汇总」区块：期望行数 == CULKLANG_POINTS 各段条数
+# 期望来源编号链接数 == 数据中 refs 引用的 url 总数（来源编号映射回 collectedLinks）
+def _points_block():
+    i = html.index("const CULKLANG_POINTS")
+    j = html.index("\n};", i)
+    return html[i:j]
+
+def _arr_items(block, key):
+    m = re.search(r"(?<![A-Za-z_])%s\s*:\s*\[" % key, block)
+    if not m:
+        return None
+    return split_top_items(block, block.index("[", m.start()))[0]
+
+_cl_block = _points_block()
+_pt = {}
+_ref_total, _ref_urls = 0, []
+_ok = True
+for _k in ("timeline", "comparison", "confirmed", "pending"):
+    _items_pt = _arr_items(_cl_block, _k)
+    if _items_pt is None:
+        _ok = False
+        _pt[_k] = None
+        continue
+    _pt[_k] = len(_items_pt)
+    for _it in _items_pt:
+        _mr = re.search(r"refs\s*:\s*\[([^\]]*)\]", _it)
+        if not _mr:
+            continue
+        for _u in re.findall(r'"([^"]+)"', _mr.group(1)):
+            _ref_total += 1
+            if _u not in _ref_urls:
+                _ref_urls.append(_u)
+if _ok:
+    _pt["refTotal"] = _ref_total
+    _pt["refUrls"] = _ref_urls
+    expect["culklangPoints"] = _pt
+    print("\n[CUL Klang 要点汇总] 数据规模：时间线 %d / 对比 %d / 事实 %d / 待证实 %d，来源引用 %d 处（涉及 %d 个 url）"
+          % (_pt["timeline"], _pt["comparison"], _pt["confirmed"], _pt["pending"], _ref_total, len(_ref_urls)))
+else:
+    print("\nFAIL: 未解析到 CULKLANG_POINTS 完整四段数据")
+    fails.append("points-data")
+
 combined = HARNESS.replace("__EXPECT_PLACEHOLDER__", json.dumps(expect)) + "\n" + "\n".join(
     "__runScript('页面内联脚本 #%d', %s);" % (i + 1, json.dumps(s, ensure_ascii=True))
     for i, s in enumerate(scripts)

@@ -514,6 +514,30 @@
   .link-digest-row .link-item-title a { color: var(--cu-blue); text-decoration: none; }
   .link-digest-row .link-item-title a:hover { text-decoration: underline; }
   .link-digest-empty { font-size: 12px; color: var(--text-secondary); padding: 10px 0; }
+
+  /* CUL Klang 页：入库新闻要点汇总区块（三段结构，风格沿用链接汇总） */
+  .point-section-title { font-size: 13px; font-weight: 700; color: var(--cu-blue-dark); margin: 14px 0 6px; }
+  .point-row, .point-cmp-row, .point-fact-row, .point-pending-row {
+    display: flex; gap: 8px; align-items: flex-start;
+    font-size: 12px; line-height: 1.7; color: var(--text-secondary);
+    padding: 7px 0; border-bottom: 1px dashed var(--border);
+  }
+  .point-time { flex: 0 0 140px; font-weight: 700; color: var(--cu-blue); }
+  .point-text { flex: 1 1 auto; }
+  .point-refs { flex: 0 0 auto; white-space: nowrap; }
+  .point-ref {
+    display: inline-block; min-width: 15px; text-align: center; margin-left: 2px;
+    font-size: 11px; color: var(--cu-blue-info); text-decoration: none;
+  }
+  .point-ref:hover { text-decoration: underline; }
+  .point-label {
+    display: inline-block; font-size: 11px; line-height: 1.6; padding: 0 6px; border-radius: 10px;
+    margin-right: 4px; background: var(--cu-blue-info-bg); color: var(--cu-blue-info);
+  }
+  .point-label.warn { background: var(--cu-red-bg); color: var(--cu-red); }
+  .point-sources { font-size: 11.5px; line-height: 1.8; color: var(--text-secondary); margin: 8px 0 2px; }
+  .point-sources a { color: var(--cu-blue); text-decoration: none; }
+  .point-sources a:hover { text-decoration: underline; }
   .link-preview {
     margin-top: 12px; padding: 12px; background: var(--bg); border: 1px solid var(--border);
     border-radius: 8px; font-size: 12px; font-family: Menlo, Consolas, monospace;
@@ -790,6 +814,12 @@
     <div class="card">
       <div class="card-title"><span class="icon">🔗</span> 已入库新闻链接（CUL Klang 分类 · 按入库时间倒序）</div>
       <div class="link-digest" id="culklangLinkDigest"></div>
+    </div>
+
+    <!-- CUL Klang 入库新闻要点汇总（正文抓取 + 多源比对，来源条目与 collectedLinks 关联） -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🧾</span> 入库新闻要点汇总（正文抓取 · 多源比对）</div>
+      <div class="link-digest" id="culklangPointDigest"></div>
     </div>
 
   </div>
@@ -3650,6 +3680,160 @@ function renderCulklangLinkDigest() {
   }
 }
 
+/* ===== CUL Klang 页：入库新闻要点汇总（正文抓取 + 多源比对） =====
+   要点数据源＝CULKLANG_POINTS（每条要点通过 refs 关联入库来源 url）
+   来源编号＝collectedLinks 中 category="CUL Klang" 条目按 addedAt 倒序的序号
+   （与上方「已入库新闻链接」区块顺序一致，禁止第二份链接硬编码） */
+const CULKLANG_POINT_META = {
+  scope: "正文完整抓取 6 条（微信公众号 4、X 2），部分抓取 1 条（劳氏日报付费墙，仅取到标题、导语、要点与图片说明），未能抓取 3 条（The Maritime Executive 连接超时、Facebook 连接超时、Reddit 需登录被安防拦截）",
+  caution: "抓取失败的条目只按标题或摘要标注，未据标题推断正文；社媒未证实内容（如船舶起火）单列待证实，不写入多源一致事实。"
+};
+const CULKLANG_POINTS = {
+  timeline: [
+    { time: "10-06（UTC，未证实）", text: "社媒账号 @live_ais_com 发帖称「红海可能有船舶起火」，并自行标注 UNVERIFIED；该线索与 10-07 遇袭并非同一事件，暂无核实结论。", refs: ["https://x.com/live_ais_com/status/2107902439311749156"] },
+    { time: "10-07 约 06:15 UTC", text: "CUL Klang 在红海南部、曼德海峡以北（也门穆哈港附近）北向过境时，遭武装小艇开火；小艇随后驶离，未见登船报告。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://x.com/MerruX/status/2107904485607825664", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { time: "袭击后即时", text: "多源一致：全体船员安全、无人员受伤；未收到船体或货物损毁报告；船舶按原计划继续北向航行。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { time: "10-07 当日", text: "劳氏日报发布报道，副题明确 crew unharmed（船员无恙），并指出事发与穆哈周边战事重启、亚丁遭导弹袭击同期；中文来源多转述劳氏日报与 The Maritime Executive 口径。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g"] },
+    { time: "10-08 08:19–08:23 UTC", text: "入库来源共 10 条，集中归档至本仪表盘 CUL Klang 分类；截至入库时点，无任何组织公开认领此次袭击。", refs: ["https://maritime-executive.com/article/shots-fired-at-chinese-containership-in-the-red-sea", "https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://x.com/MerruX/status/2107904485607825664", "https://www.facebook.com/mohamedawazen/posts/%D9%8A%D8%A7-%D8%AA%D8%B1%D9%89-%D9%85%D9%8A%D9%86-%D8%B6%D8%B1%D8%A8%D9%87%D8%A7-%D8%A8%D9%82%D9%89-%D9%88%D9%8A%D8%A7-%D8%AA%D8%B1%D9%89-%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D9%87%D8%AA%D8%B9%D9%85%D9%84-%D8%A7%D9%8A%D9%87-%D8%B3%D9%81%D9%8A%D9%86%D8%A9-%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%B5%D9%8A%D9%86%D9%8A%D8%A9-%D8%AA%D8%AA%D8%B9%D8%B1%D8%B6-%D9%84%D9%87%D8%AC%D9%88%D9%85-%D9%81%D9%8A-%D8%AC/1641483770724568/", "http://reddit.com/r/oil/comments/1wztkqx/daily_oil_price_opinions_october_07_2026_all/", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] }
+  ],
+  comparison: [
+    { item: "事发时间", agree: "10-07 约 06:15 UTC，多源口径一致（中文来源表述为 10 月 7 日凌晨时段）", diff: "社媒只写 Wednesday（周三），未给具体时刻", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { item: "事发地点", agree: "红海南部、曼德海峡以北、也门穆哈港附近海域", diff: "距穆哈港约 15 海里等细节只见于中文转述，英文原始信源未给具体距离", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ"] },
+    { item: "船舶与运营方", agree: "新加坡旗集装箱船 CUL Klang，由中国中联航运（CU Lines / CULines）运营，IMO 9958535；AIS 广播 China owned & CHN crew", diff: "载箱量口径不一：2,400 TEU（劳氏日报、Live-AIS、The Maritime Executive）与 2,433 TEU（中联航运口径、中文转述）并存", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { item: "袭击方式", agree: "小艇或武装船只朝船舶方向开火，随后驶离，未见登船或劫持", diff: "是否有枪弹命中船体，各源均未确认；中文来源明确现有通报未说明是否曾试图登船", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { item: "船员伤亡", agree: "船员无恙（crew unharmed），全体船员安全，无人受伤", diff: "无分歧", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { item: "船舶后续状态", agree: "船舶继续北向航行，无改航、靠泊或滞留报告", diff: "社媒帖称船舶 caught on fire（起火），与继续北行口径冲突，且疑与 10-06 未证实的起火线索混同", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://x.com/MerruX/status/2107904485607825664", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ"] },
+    { item: "责任认领", agree: "截至 10-08 无任何组织公开认领", diff: "袭击者身份与动机不明；中文来源提示现阶段不应归咎胡塞武装或海盗，不宜政治化归因", refs: ["https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] }
+  ],
+  confirmed: [
+    { text: "事发时间约为 2026-10-07 06:15 UTC（北京时间约 14:15）。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { text: "涉事船舶为新加坡旗集装箱船 CUL Klang（IMO 9958535），由中联航运（CU Lines / CULines）运营，事发时北向过境红海南部。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ"] },
+    { text: "袭击方式为小艇或武装船只开枪，未登临船舶，袭击后驶离。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { text: "全体船员安全，无人员伤亡报告。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { text: "船舶未停航，按原计划继续北向航行。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] },
+    { text: "截至 2026-10-08，无组织公开宣称对本次袭击负责。", refs: ["https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw"] }
+  ],
+  pending: [
+    { text: "船体是否被枪弹击中、是否造成货物损伤：各源只表述无损坏报告，不等于确认无损毁。", refs: ["https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ"] },
+    { text: "载箱量口径分歧：2,400 TEU 与 2,433 TEU 并存，尚无统一结论。", refs: ["https://www.lloydslist.com/LL1158642/Chinese-operated-containership-fired-upon-off-Yemen-as-Red-Sea-security-concerns-intensify", "https://x.com/live_ais_com/status/2107902439311749156", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g"] },
+    { text: "袭击者身份与动机未证实；中文来源明确提示不应归咎胡塞武装或海盗。", refs: ["https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", "https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw"] },
+    { text: "X 账号 @MerruX 帖文称涉事船舶 caught on fire（起火）：与多方继续北行、无损伤报告的口径冲突，且疑将 10-06 标注 UNVERIFIED 的红海起火线索与 10-07 遇袭混同，不宜作为事故定性依据。", refs: ["https://x.com/MerruX/status/2107904485607825664", "https://x.com/live_ais_com/status/2107902439311749156"] },
+    { text: "距也门穆哈港约 15 海里、2024 年交付、35,300 DWT、2024-03-08 命名交付等档案细节，仅见于中文转述与 IMO 声明引用，未获英文原始信源逐字佐证。", refs: ["https://mp.weixin.qq.com/s/8X7Be7bEBNm0JnqsRuZLVw", "https://mp.weixin.qq.com/s/vR3S-8SNpb7lMx0V9eHV6g", "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ"] },
+    { text: "3 条来源未能抓取正文（The Maritime Executive 连接超时、Facebook 连接超时、Reddit 需登录被安防拦截），只凭标题或摘要判断，未参与逐条比对；其中 Reddit 条目主题为油价讨论，与本次事件关联性存疑。", refs: ["https://maritime-executive.com/article/shots-fired-at-chinese-containership-in-the-red-sea", "https://www.facebook.com/mohamedawazen/posts/%D9%8A%D8%A7-%D8%AA%D8%B1%D9%89-%D9%85%D9%8A%D9%86-%D8%B6%D8%B1%D8%A8%D9%87%D8%A7-%D8%A8%D9%82%D9%89-%D9%88%D9%8A%D8%A7-%D8%AA%D8%B1%D9%89-%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D9%87%D8%AA%D8%B9%D9%85%D9%84-%D8%A7%D9%8A%D9%87-%D8%B3%D9%81%D9%8A%D9%86%D8%A9-%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%B5%D9%8A%D9%86%D9%8A%D8%A9-%D8%AA%D8%AA%D8%B9%D8%B1%D8%B6-%D9%84%D9%87%D8%AC%D9%88%D9%85-%D9%81%D9%8A-%D8%AC/1641483770724568/", "http://reddit.com/r/oil/comments/1wztkqx/daily_oil_price_opinions_october_07_2026_all/"] }
+  ]
+};
+const CULKLANG_CIRCLED = ["①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩", "⑪", "⑫", "⑬", "⑭", "⑮"];
+
+/* 来源编号顺序＝与「已入库新闻链接」区块同一排序（addedAt 倒序、同一数组） */
+function culklangPointOrder() {
+  try {
+    const rows = linkDigestItems().slice().sort(function (a, b) {
+      const tb = Date.parse(b.addedAt || "");
+      const ta = Date.parse(a.addedAt || "");
+      if ((isNaN(tb) ? 0 : tb) !== (isNaN(ta) ? 0 : ta)) return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta);
+      return String(b.addedAt || "").localeCompare(String(a.addedAt || ""));
+    });
+    return rows.map(function (x) { return String(x.url || ""); });
+  } catch (e) { return []; }
+}
+
+function culklangRefsHtml(refs, order) {
+  const arr = Array.isArray(refs) ? refs : [];
+  const picked = [];
+  for (let i = 0; i < arr.length; i++) {
+    try {
+      const url = String(arr[i] || "");
+      if (!url) continue;
+      picked.push({ url: url, idx: order.indexOf(url) });
+    } catch (e) { /* 单条来源异常跳过，不牵连整块 */ }
+  }
+  /* 来源编号按序号升序展示，便于与上方链接区块逐条对照 */
+  picked.sort(function (a, b) {
+    const ia = a.idx < 0 ? 9999 : a.idx, ib = b.idx < 0 ? 9999 : b.idx;
+    return ia - ib;
+  });
+  let out = "";
+  for (let j = 0; j < picked.length; j++) {
+    const url = picked[j].url, idx = picked[j].idx;
+    const label = idx >= 0 ? CULKLANG_CIRCLED[idx] : "外链";
+    const tip = (idx >= 0 ? "来源 " + CULKLANG_CIRCLED[idx] + " · " : "") + domainOf(url);
+    out += '<a class="point-ref" href="' + escHtml(url) + '" target="_blank" rel="noopener noreferrer" title="' + escHtml(tip) + '">' + label + '</a>';
+  }
+  return out ? '<span class="point-refs">' + out + '</span>' : '';
+}
+
+function culklangSourceLegend(order) {
+  if (!order.length) return "";
+  const parts = [];
+  for (let i = 0; i < order.length; i++) {
+    const url = String(order[i] || "");
+    const label = CULKLANG_CIRCLED[i] || ("#" + (i + 1));
+    parts.push('<a href="' + escHtml(url) + '" target="_blank" rel="noopener noreferrer">' + label + " " + escHtml(domainOf(url)) + '</a>');
+  }
+  return '<div class="point-sources">来源编号对应上方「已入库新闻链接」区块自上而下顺序（按入库时间倒序），点击编号可跳转原文：' + parts.join(" · ") + '</div>';
+}
+
+function renderCulklangPointDigest() {
+  const box = document.getElementById("culklangPointDigest");
+  if (!box) return;
+  try {
+    const order = culklangPointOrder();
+    const P = (typeof CULKLANG_POINTS !== "undefined" && CULKLANG_POINTS) ? CULKLANG_POINTS : null;
+    if (!P) {
+      box.innerHTML = '<div class="link-digest-empty">入库新闻要点汇总数据缺失，请刷新页面后重试。</div>';
+      return;
+    }
+    const total = (P.timeline || []).length + (P.comparison || []).length + (P.confirmed || []).length + (P.pending || []).length;
+    if (!total) {
+      box.innerHTML = '<div class="link-digest-empty">暂无入库新闻要点，收集正文后可在此汇总。</div>';
+      return;
+    }
+    let rowsT = "", rowsC = "", rowsF = "", rowsP = "";
+    (P.timeline || []).forEach(function (x) {
+      try {
+        if (!x) return;
+        rowsT += '<div class="point-row"><span class="point-time">' + escHtml(x.time || "") + '</span>' +
+                '<span class="point-text">' + escHtml(x.text || "") + '</span>' + culklangRefsHtml(x.refs, order) + '</div>';
+      } catch (e) { /* 单条跳过 */ }
+    });
+    (P.comparison || []).forEach(function (x) {
+      try {
+        if (!x) return;
+        rowsC += '<div class="point-cmp-row"><span class="point-time">' + escHtml(x.item || "") + '</span>' +
+                '<span class="point-text"><span class="point-label">多方一致</span>' + escHtml(x.agree || "") +
+                '<br><span class="point-label warn">差异 / 单源</span>' + escHtml(x.diff || "") + '</span>' +
+                culklangRefsHtml(x.refs, order) + '</div>';
+      } catch (e) { /* 单条跳过 */ }
+    });
+    (P.confirmed || []).forEach(function (x) {
+      try {
+        if (!x) return;
+        rowsF += '<div class="point-fact-row"><span class="point-time"><span class="point-label">多源一致</span></span>' +
+                '<span class="point-text">' + escHtml(x.text || "") + '</span>' + culklangRefsHtml(x.refs, order) + '</div>';
+      } catch (e) { /* 单条跳过 */ }
+    });
+    (P.pending || []).forEach(function (x) {
+      try {
+        if (!x) return;
+        rowsP += '<div class="point-pending-row"><span class="point-time"><span class="point-label warn">待证实 / 单源</span></span>' +
+                '<span class="point-text">' + escHtml(x.text || "") + '</span>' + culklangRefsHtml(x.refs, order) + '</div>';
+      } catch (e) { /* 单条跳过 */ }
+    });
+    const meta = (typeof CULKLANG_POINT_META !== "undefined" && CULKLANG_POINT_META) ? CULKLANG_POINT_META : {};
+    let out = '<div class="link-digest-stat">共 ' + total + ' 条要点 · 关联 ' + order.length + ' 条入库来源</div>' +
+      '<div class="link-digest-note">抓取情况：' + escHtml(meta.scope || "") + '。说明：' + escHtml(meta.caution || "") + '</div>';
+    out += '<div class="point-section-title">一、事件时间线</div>' + (rowsT || '<div class="link-digest-empty">暂无时间线数据。</div>');
+    out += '<div class="point-section-title">二、多源口径对比</div>' + (rowsC || '<div class="link-digest-empty">暂无口径对比数据。</div>');
+    out += '<div class="point-section-title">三、关键事实与待证实项</div>' + (rowsF || '') + (rowsP || '') +
+      ((rowsF || rowsP) ? '' : '<div class="link-digest-empty">暂无事实条目。</div>');
+    out += culklangSourceLegend(order);
+    box.innerHTML = out;
+  } catch (e) {
+    if (typeof console !== "undefined" && console.warn) console.warn("CUL Klang 入库新闻要点汇总渲染异常：", e);
+    try { box.innerHTML = '<div class="link-digest-empty">CUL Klang 入库新闻要点汇总渲染异常，请刷新页面后重试。</div>'; } catch (e2) { /* 兜底失败不再上抛 */ }
+  }
+}
+
 function addCollectedLinks() {
   const input = document.getElementById("linkInput");
   const sel = document.getElementById("linkCategory");
@@ -3811,6 +3995,11 @@ function gotoLinkCollect() {
     renderCulklangLinkDigest();
   } catch (e) {
     if (typeof console !== 'undefined' && console.warn) console.warn('CUL Klang 已入库链接汇总初始化异常：', e);
+  }
+  try {
+    renderCulklangPointDigest();
+  } catch (e) {
+    if (typeof console !== 'undefined' && console.warn) console.warn('CUL Klang 入库新闻要点汇总初始化异常：', e);
   }
 })();
 </script>
