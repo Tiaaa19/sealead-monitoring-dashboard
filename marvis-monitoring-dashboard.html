@@ -3414,7 +3414,10 @@ function toggleCard(el) {
 // 分类枚举常量
 const LINK_CATEGORIES = ["SeaLead 制裁", "红海胡塞危机", "CUL Klang", "航运运价与航道", "其他"];
 // 正式入库条目（由 Marvis 永久写入本数组；字段：category/title/url/note/addedAt）
-const collectedLinks = [];
+const collectedLinks = [
+  { category: "CUL Klang", title: "【突发】HMM南美船火灾 + 中资船红海遇袭击！ 挂靠多个国内港口！", url: "https://mp.weixin.qq.com/s/SRhQTTvckyfc_1WikUfGxw", note: "", addedAt: "2026-10-08T08:19:00.049Z" },
+  { category: "CUL Klang", title: "全球安快报 | 中国集装箱船在红海遭开枪袭扰；尼日利亚多地爆发袭击", url: "https://mp.weixin.qq.com/s/pcVELKtMD-ZEXv3js7MozQ", note: "", addedAt: "2026-10-08T08:19:10.001Z" }
+];
 // 本地暂存 key
 const USER_LINKS_KEY = "sealead_dash_user_links_v1";
 // 自定义分类 key（与链接暂存分开持久化）

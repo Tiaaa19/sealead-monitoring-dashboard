@@ -8,7 +8,8 @@
 #   3) 数据完整性静态校验：所有 *KeyEvents 事件数组的必备字段（date / title / tags）
 #      与 tags 元素结构（t / l），防止脏数据再次进入页面
 #   4) 整页加载冒烟校验：DOM 打桩后由 jsc 真实执行页面脚本，断言
-#      「页面脚本无整页中断 + 各板块时间线渲染条数 == 数据条数 + 链接收集模块可交互」
+#      「页面脚本无整页中断 + 各板块时间线渲染条数 == 数据条数 + 链接收集模块可交互
+#        + collectedLinks 内置条目全部渲染并标记「已正式入库」」
 #      —— 旧版只做“语法 + 函数级仿真”，无法发现“整页时序中断”类缺陷（本次线上事故根因）
 #
 # 用法: bash validate.sh [html_file]     默认 index.html
@@ -206,6 +207,25 @@ __chk('红海日卡片已渲染', __count(__els['redseaDailyGrid'].innerHTML, 'c
 __chk('顶部指标区已渲染', String(__els['metricRed'].textContent).length > 0, '红=' + __els['metricRed'].textContent);
 __chk('链接收集：分类 datalist 非空（模块已初始化）', __count(__els['linkCategoryList'].innerHTML, '<option') > 0, __count(__els['linkCategoryList'].innerHTML, '<option') + ' 项');
 __chk('链接收集：分组区已渲染', String(__els['linkGroups'].innerHTML).length > 0);
+// 内置正式入库条目渲染断言（collectedLinks → 「已正式入库」标记）
+(function () {
+  var lb = __EXPECT.linkBuiltin;
+  if (!lb) { __chk('链接收集：未解析到 collectedLinks 数组', false); return; }
+  if (lb.count === 0) { __chk('链接收集：内置入库数组为空（无内置条目需断言）', true, '0 条'); return; }
+  var g = String(__els['linkGroups'].innerHTML);
+  var badge = __count(g, '已正式入库');
+  __chk('链接收集：内置条目「已正式入库」标记数 == collectedLinks 条数', badge === lb.count, badge + ' / ' + lb.count);
+  var missUrl = [];
+  for (var i = 0; i < lb.urls.length; i++) {
+    if (g.indexOf(String(lb.urls[i]).replace(/&/g, '&amp;')) === -1) missUrl.push(lb.urls[i]);
+  }
+  __chk('链接收集：内置条目 url 全部出现在分组区', missUrl.length === 0, missUrl.length ? missUrl.join(', ') : lb.urls.length + ' 条');
+  var missCat = [];
+  for (var j = 0; j < lb.cats.length; j++) {
+    if (g.indexOf(lb.cats[j]) === -1) missCat.push(lb.cats[j]);
+  }
+  __chk('链接收集：内置条目所属分类分组均已渲染', missCat.length === 0, missCat.length ? missCat.join(', ') : lb.cats.join(' / '));
+})();
 document.getElementById('linkCategory').value = '冒烟测试分类';
 addCustomCategory();
 __chk('链接收集：新增自定义分类生效', __els['linkCategoryList'].innerHTML.indexOf('冒烟测试分类') !== -1 && String(__els['linkFormMsg'].textContent).length > 0, String(__els['linkFormMsg'].textContent));
@@ -219,6 +239,26 @@ print('SMOKE_' + ((__fail === 0 && __scriptErrors.length === 0) ? 'OK' : 'FAIL')
 expect = {tid: len(arrays[n]) for n, tid in (
     ("keyEvents", "eventsTimeline"), ("sealeadKeyEvents", "sealeadEventsTimeline"),
     ("redseaKeyEvents", "redseaEventsTimeline"), ("culklangKeyEvents", "culklangEventsTimeline")) if n in arrays}
+
+# collectedLinks 内置正式入库条目（用于断言「已正式入库」渲染）
+builtin_links = []
+m_cl = re.search(r"^const collectedLinks\s*=\s*\[", html, re.M)
+if m_cl:
+    _br = html.index("[", m_cl.start())
+    _items, _ = split_top_items(html, _br)
+
+    def _field(seg, key):
+        mm = re.search(r'(?<![A-Za-z_])"%s"\s*:\s*"((?:[^"\\]|\\.)*)"' % key, seg)
+        return mm.group(1) if mm else ""
+    for _it in _items:
+        builtin_links.append({"url": _field(_it, "url"),
+                              "category": _field(_it, "category"),
+                              "title": _field(_it, "title")})
+expect["linkBuiltin"] = {
+    "count": len(builtin_links),
+    "urls": [b["url"] for b in builtin_links],
+    "cats": sorted(set(b["category"] for b in builtin_links if b["category"])),
+}
 combined = HARNESS.replace("__EXPECT_PLACEHOLDER__", json.dumps(expect)) + "\n" + "\n".join(
     "__runScript('页面内联脚本 #%d', %s);" % (i + 1, json.dumps(s, ensure_ascii=True))
     for i, s in enumerate(scripts)
