@@ -450,6 +450,9 @@
     color: var(--text); background: #fff;
   }
   .link-textarea { resize: vertical; line-height: 1.7; }
+  .link-cat-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .link-cat-row .link-select { flex: 1 1 220px; width: auto; min-width: 0; }
+  .link-form-hint-sub { font-size: 12px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
   .link-select:focus, .link-textarea:focus {
     outline: none; border-color: var(--cu-blue); box-shadow: 0 0 0 3px var(--cu-blue-light);
   }
@@ -796,8 +799,14 @@
       <div class="card-title"><span class="icon">➕</span> 新增链接</div>
       <div class="link-form">
         <div class="link-form-row">
-          <label class="link-form-label" for="linkCategory">分类</label>
-          <select id="linkCategory" class="link-select"></select>
+          <label class="link-form-label" for="linkCategory">分类（可选下拉预设，也可直接输入自定义分类）</label>
+          <div class="link-cat-row">
+            <input id="linkCategory" class="link-select" list="linkCategoryList" autocomplete="off" placeholder="选择或输入分类">
+            <button class="link-btn" onclick="addCustomCategory()">新增分类</button>
+            <button class="link-btn" onclick="deleteCustomCategory()">删除分类</button>
+          </div>
+          <datalist id="linkCategoryList"></datalist>
+          <div class="link-form-hint-sub">自定义分类会单独保存，并出现在分组列表与「复制入库代码」结果中；删除分类不会删除该分类下已收集的链接。</div>
         </div>
         <div class="link-form-row">
           <label class="link-form-label" for="linkInput">链接（每行一个，支持「链接 | 标题」写法，标题可省略）</label>
@@ -3405,6 +3414,45 @@ const LINK_CATEGORIES = ["SeaLead 制裁", "红海胡塞危机", "CUL Klang", "�
 const collectedLinks = [];
 // 本地暂存 key
 const USER_LINKS_KEY = "sealead_dash_user_links_v1";
+// 自定义分类 key（与链接暂存分开持久化）
+const USER_CATS_KEY = "sealead_dash_user_cats_v1";
+// 存储不可用时的统一提示
+const STORAGE_OFF_HINT = "（本机浏览器禁止本地存储，本条仅本次会话可见，可点「复制入库代码」做永久入库）";
+// 内存兜底：本机浏览器禁用 localStorage 时，条目仍在本次会话内可见
+let _memLinks = [];
+let _memCats = [];
+let _storageState = null; // null=未探测 / true=可用 / false=不可用
+
+function storageProbe() {
+  if (_storageState !== null) return _storageState;
+  try {
+    const k = USER_LINKS_KEY + "__probe__";
+    localStorage.setItem(k, "1");
+    _storageState = localStorage.getItem(k) === "1";
+    localStorage.removeItem(k);
+  } catch (e) { _storageState = false; }
+  return _storageState;
+}
+function lsReadArray(key, memFallback) {
+  const fallback = Array.isArray(memFallback) ? memFallback.slice() : [];
+  if (!storageProbe()) return fallback;
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : fallback;
+  } catch (e) { return fallback; }
+}
+function lsWriteArray(key, list) {
+  if (!storageProbe()) return false;
+  try {
+    localStorage.setItem(key, JSON.stringify(list));
+    const back = localStorage.getItem(key);
+    const parsed = back ? JSON.parse(back) : null;
+    if (!Array.isArray(parsed) || parsed.length !== list.length) return false;
+    return true;
+  } catch (e) { return false; }
+}
 
 function escHtml(s) {
   return String(s == null ? "" : s)
@@ -3415,15 +3463,61 @@ function escHtml(s) {
     .replace(/'/g, "&#39;");
 }
 function loadUserLinks() {
-  try {
-    const raw = localStorage.getItem(USER_LINKS_KEY);
-    if (!raw) return [];
-    const arr = JSON.parse(raw);
-    return Array.isArray(arr) ? arr.filter(x => x && x.url) : [];
-  } catch (e) { return []; }
+  const arr = lsReadArray(USER_LINKS_KEY, _memLinks);
+  return arr.filter(x => x && x.url);
 }
 function saveUserLinks(list) {
-  try { localStorage.setItem(USER_LINKS_KEY, JSON.stringify(list)); } catch (e) {}
+  _memLinks = (list || []).slice();
+  return lsWriteArray(USER_LINKS_KEY, _memLinks);
+}
+function loadUserCats() {
+  const arr = lsReadArray(USER_CATS_KEY, _memCats);
+  return arr.filter(x => typeof x === "string" && x.trim());
+}
+function saveUserCats(list) {
+  _memCats = (list || []).slice();
+  return lsWriteArray(USER_CATS_KEY, _memCats);
+}
+function allCategories() {
+  const out = LINK_CATEGORIES.slice();
+  loadUserCats().forEach(c => { if (out.indexOf(c) === -1) out.push(c); });
+  return out;
+}
+function renderCategoryOptions() {
+  const dl = document.getElementById("linkCategoryList");
+  const cats = allCategories();
+  if (dl) dl.innerHTML = cats.map(c => '<option value="' + escHtml(c) + '"></option>').join("");
+  const inp = document.getElementById("linkCategory");
+  if (inp && !String(inp.value || "").trim()) inp.value = cats[0] || "其他";
+}
+function addCustomCategory() {
+  const inp = document.getElementById("linkCategory");
+  if (!inp) return;
+  const name = String(inp.value || "").trim();
+  if (!name) { setLinkMsg("请先在分类框输入要新增的分类名称", false); return; }
+  if (LINK_CATEGORIES.indexOf(name) !== -1) { setLinkMsg("「" + name + "」已是预设分类，无需重复添加", false); return; }
+  const cats = loadUserCats();
+  if (cats.indexOf(name) !== -1) { setLinkMsg("自定义分类「" + name + "」已存在", false); return; }
+  cats.push(name);
+  const persisted = saveUserCats(cats);
+  renderCategoryOptions();
+  inp.value = name;
+  renderLinkCollection();
+  setLinkMsg("已新增自定义分类「" + name + "」" + (persisted ? "" : STORAGE_OFF_HINT), persisted);
+}
+function deleteCustomCategory() {
+  const inp = document.getElementById("linkCategory");
+  if (!inp) return;
+  const name = String(inp.value || "").trim();
+  if (!name) { setLinkMsg("请先在分类框选择或输入要删除的自定义分类", false); return; }
+  if (LINK_CATEGORIES.indexOf(name) !== -1) { setLinkMsg("「" + name + "」是预设分类，不可删除", false); return; }
+  const cats = loadUserCats();
+  if (cats.indexOf(name) === -1) { setLinkMsg("「" + name + "」不是自定义分类，无法删除", false); return; }
+  const persisted = saveUserCats(cats.filter(c => c !== name));
+  renderCategoryOptions();
+  renderLinkCollection();
+  setLinkMsg("已删除自定义分类「" + name + "」，该分类下已有条目仍保留在原分组" +
+    (persisted ? "" : STORAGE_OFF_HINT), persisted);
 }
 function normalizeUrl(u) {
   let s = String(u || "").trim();
@@ -3456,7 +3550,7 @@ function addCollectedLinks() {
   const input = document.getElementById("linkInput");
   const sel = document.getElementById("linkCategory");
   if (!input || !sel) return;
-  const category = sel.value || "其他";
+  const category = String(sel.value || "").trim() || "其他";
   const lines = String(input.value || "").split(/\r?\n/);
   const list = loadUserLinks();
   const now = new Date().toISOString();
@@ -3476,13 +3570,20 @@ function addCollectedLinks() {
     list.push({ category: category, title: titlePart || domainOf(url), url: url, note: "", addedAt: now });
     added++;
   });
-  if (added > 0) saveUserLinks(list);
-  if (added > 0) input.value = "";
   if (added > 0) {
-    let t = "已添加 " + added + " 条到本地暂存";
+    // 首次出现的自定义分类自动登记，便于后续在分类框下拉中复用
+    if (LINK_CATEGORIES.indexOf(category) === -1 && loadUserCats().indexOf(category) === -1) {
+      const nextCats = loadUserCats();
+      nextCats.push(category);
+      saveUserCats(nextCats);
+      renderCategoryOptions();
+    }
+    const persisted = saveUserLinks(list);
+    input.value = "";
+    let t = "已添加 " + added + (persisted ? " 条到本地暂存" : " 条" + STORAGE_OFF_HINT);
     if (dup) t += "，跳过重复 " + dup + " 条";
     if (invalid) t += "，忽略无效 " + invalid + " 条";
-    setLinkMsg(t, true);
+    setLinkMsg(t, persisted);
   } else if (dup || invalid) {
     setLinkMsg("未新增：重复 " + dup + " 条、无效 " + invalid + " 条", false);
   } else {
@@ -3493,9 +3594,9 @@ function addCollectedLinks() {
 
 function deleteUserLink(url) {
   const list = loadUserLinks().filter(x => x.url !== url);
-  saveUserLinks(list);
+  const persisted = saveUserLinks(list);
   renderLinkCollection();
-  setLinkMsg("已从本地暂存删除 1 条", true);
+  setLinkMsg("已从本地暂存删除 1 条" + (persisted ? "" : STORAGE_OFF_HINT), persisted);
 }
 
 function copyInboundCode() {
@@ -3547,7 +3648,7 @@ function renderLinkCollection() {
   if (builtinEl) builtinEl.textContent = builtin.length;
 
   let html = "";
-  const cats = LINK_CATEGORIES.slice();
+  const cats = allCategories();
   const extras = [];
   merged.forEach(x => {
     const c = x.category || "其他";
@@ -3595,10 +3696,7 @@ function gotoLinkCollect() {
 }
 
 (function initLinkCollection() {
-  const sel = document.getElementById("linkCategory");
-  if (sel) {
-    sel.innerHTML = LINK_CATEGORIES.map(c => '<option value="' + escHtml(c) + '">' + escHtml(c) + "</option>").join("");
-  }
+  renderCategoryOptions();
   renderLinkCollection();
 })();
 
