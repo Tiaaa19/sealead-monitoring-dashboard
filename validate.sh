@@ -7,10 +7,17 @@
 #   2) ASCII 引号扫描：CJK 上下文中误用半角引号（曾导致字符串截断）
 #   3) 数据完整性静态校验：所有 *KeyEvents 事件数组的必备字段（date / title / tags）
 #      与 tags 元素结构（t / l），防止脏数据再次进入页面
-#   4) 整页加载冒烟校验：DOM 打桩后由 jsc 真实执行页面脚本，断言
-#      「页面脚本无整页中断 + 各板块时间线渲染条数 == 数据条数 + 链接收集模块可交互
-#        + collectedLinks 内置条目全部渲染并标记「已正式入库」」
+#   4) 信息架构静态断言（A+B 改造后新增）：页内锚点目录 / 时间线 60vh 内滚动 /
+#      长文本 3 行截断样式 / 折叠头样式 / CUL Klang 来源清单与要点汇总合并为同一卡片 /
+#      筛选器挂载 / 四个指标卡置顶 / 每日明细区 32vh 内滚动 / 默认渲染策略常量
+#   5) 整页加载冒烟校验：DOM 打桩后由 jsc 真实执行页面脚本，断言
+#      「页面脚本无整页中断 + 时间线首屏默认行数符合新策略（最近 3 日、上限 12 条）
+#        + 展开全部后可达全量 == 数据条数 + 折叠头/分日小标题/统计行已渲染
+#        + 长文本 3 行截断元素存在 + findings 默认 10 条且等级筛选与展开全部生效
+#        + 每日详情默认仅最近一天入 DOM（其余按需生成）
+#        + 链接收集模块可交互 + collectedLinks 内置条目全部渲染并标记「已正式入库」」
 #      —— 旧版只做“语法 + 函数级仿真”，无法发现“整页时序中断”类缺陷（本次线上事故根因）
+#      —— A+B 改造前为「渲染行数 == 数据条数」单断言，改造后升级为双断言（默认窗口 + 全量）
 #
 # 用法: bash validate.sh [html_file]     默认 index.html
 # 退出码: 0 = 全部通过；1 = 存在失败项
@@ -128,8 +135,59 @@ for name, items in arrays.items():
     else:
         print("PASS: %s 共 %d 条，date/title/tags 齐备" % (name, len(items)))
 
-# --------------------------------------------------------- 4) 整页加载冒烟
-head("4. 整页加载冒烟校验（DOM 打桩 + jsc）")
+# ------------------------------------------- 4) 信息架构静态断言（A+B 改造）
+head("4. 信息架构静态断言（A+B 改造落地检查）")
+
+
+def _static(label, cond, extra=""):
+    if cond:
+        print("PASS: %s%s" % (label, ("  (%s)" % extra) if extra else ""))
+    else:
+        print("FAIL: %s%s" % (label, ("  (%s)" % extra) if extra else ""))
+        fails.append("static-%s" % label)
+
+
+_nav = html.count('<div class="sec-nav">')
+_static("四个页签均含页内锚点目录（sec-nav）", _nav == 4, "%d 处" % _nav)
+_static("时间线容器设 60vh 内部滚动", "max-height:60vh" in html and "overflow-y:auto" in html)
+_static("长文本 3 行截断样式（-webkit-line-clamp:3）已定义", "-webkit-line-clamp:3" in html)
+_static("折叠头 / 折叠体样式（.fold-head / .fold-body）已定义",
+        ".fold-head" in html and ".fold-body" in html)
+_static("每日明细区高度受限（.daily-detail max-height:32vh 内部滚动，防单日明细撑长页面）",
+        re.search(r"\.daily-detail\s*\{[^}]*max-height\s*:\s*32vh", html) is not None)
+_static("findings 默认渲染条数策略（未展开时只渲染最新 10 条）已定义",
+        re.search(r"defaultCount\s*:\s*10\b", html) is not None)
+_static("时间线默认展开天数策略（最近 3 天）已定义",
+        re.search(r"TIMELINE_DEFAULT_DAYS\s*=\s*3\b", html) is not None)
+_static("区块标题分级样式（.sec-title / .sec-sub）已定义", ".sec-title" in html and ".sec-sub" in html)
+_hero_total = html.count('<div class="status-hero"')
+_hero_ok = _hero_total >= 4
+for _pid in ("page-summary", "page-sealead", "page-redsea", "page-culklang"):
+    _s = html.find('id="%s"' % _pid)
+    if _s == -1:
+        _hero_ok = False
+        continue
+    _seg = html[_s:_s + 4000]
+    _ih = _seg.find('status-hero')
+    _ic = _seg.find('class="card"')
+    _in = _seg.find('sec-nav')
+    if _ih == -1 or (_ic != -1 and _ic < _ih) or (_in != -1 and _in < _ih):
+        _hero_ok = False
+_static("四个指标卡置顶（各页签首屏首个区块为 status-hero 指标区）", _hero_ok,
+        "共 %d 处 status-hero，4 个页签首个区块均为指标区" % _hero_total)
+_i_card = html.find('<div class="card" id="secCulklangDigest">')
+_i_link = html.find('id="culklangLinkDigest"')
+_i_pt = html.find('id="culklangPointDigest"')
+_static("CUL Klang 来源清单与要点汇总合并为同一卡片",
+        _i_card != -1 and 0 <= _i_card < _i_link < _i_pt and html[_i_card:_i_pt].count('<div class="card"') == 1,
+        "合并卡 secCulklangDigest")
+_static("CUL Klang 要点汇总置于可折叠区（fold-head + fold-body）",
+        'id="culklangPointHead"' in html and 'id="culklangPointWrap"' in html)
+_static("findings 等级筛选器已挂载", html.count('id="findingsLevel"') == 1)
+_static("每日监测日期范围筛选器已挂载", html.count('id="dailyRange"') == 1)
+
+# --------------------------------------------------------- 5) 整页加载冒烟
+head("5. 整页加载冒烟校验（DOM 打桩 + jsc）")
 
 HARNESS = r"""
 // ===== DOM 打桩（仅校验用，不改变被测页面代码）=====
@@ -199,10 +257,87 @@ function __chkRows(label, id, nonEmptyOnly) {
   if (exp === null) { __chk(label, nonEmptyOnly ? got > 0 : true, '未解析到数据条数，实渲染 ' + got + ' 行'); return; }
   __chk(label, nonEmptyOnly ? (got === exp && got > 0) : got === exp, got + ' / ' + exp);
 }
-__chkRows('汇总页时间线行数 == keyEvents 条数', 'eventsTimeline', false);
-__chkRows('SeaLead 页时间线行数 == sealeadKeyEvents 条数', 'sealeadEventsTimeline', false);
-__chkRows('红海页时间线行数 == redseaKeyEvents 条数（防截断）', 'redseaEventsTimeline', false);
-__chkRows('CUL Klang 页时间线行数 == culklangKeyEvents 条数 且非空', 'culklangEventsTimeline', true);
+// ===== 时间线折叠策略：首屏默认窗口 + 展开可达全量（双断言）=====
+function __tlCount(id, cls) { return __count(__els[id] ? String(__els[id].innerHTML || '') : '', cls); }
+function __chkTimeline(label, id, mustNonEmpty) {
+  var box = __els[id];
+  __chk(label + '：容器已挂载', !!box);
+  if (!box) return;
+  var expFull = (__EXPECT[id] === undefined) ? null : __EXPECT[id];
+  var expDefault = (__EXPECT.tlDefault && __EXPECT.tlDefault[id] !== undefined) ? __EXPECT.tlDefault[id] : null;
+  var days = (__EXPECT.tlDays && __EXPECT.tlDays[id] !== undefined) ? __EXPECT.tlDays[id] : null;
+  var gotDefault = __rows(id);
+  if (expFull === null || expDefault === null) {
+    __chk(label + '：首屏默认行数（未解析到数据）', mustNonEmpty ? gotDefault > 0 : true, '实渲染 ' + gotDefault + ' 行');
+    return;
+  }
+  __chk(label + '：首屏默认行数 == 最近 3 日（上限 12）',
+        gotDefault === expDefault && (!mustNonEmpty || gotDefault > 0), gotDefault + ' / ' + expDefault);
+  __chk(label + '：折叠头已渲染（其余日期可点击展开）',
+        (days === null || days <= 3) ? true : __tlCount(id, 'class="fold-head') > 0,
+        '折叠头 ' + __tlCount(id, 'class="fold-head') + ' 个 / 共 ' + days + ' 日');
+  __chk(label + '：分日小标题已渲染', __tlCount(id, 'class="tl-day-head"') > 0, __tlCount(id, 'class="tl-day-head"') + ' 个');
+  __chk(label + '：统计行含「共 N 条 · 分 M 日」',
+        String(__els[id + 'Stat'] ? __els[id + 'Stat'].innerHTML : '').indexOf('分 <strong>') !== -1);
+  expandTimelineFully(id);
+  var gotFull = __rows(id);
+  __chk(label + '：展开全部后可达全量 == 数据条数', gotFull === expFull && gotFull > 0, gotFull + ' / ' + expFull);
+}
+__chkTimeline('汇总页时间线', 'eventsTimeline', false);
+__chkTimeline('SeaLead 页时间线', 'sealeadEventsTimeline', false);
+__chkTimeline('红海页时间线', 'redseaEventsTimeline', false);
+__chkTimeline('CUL Klang 页时间线', 'culklangEventsTimeline', true);
+// ===== 长文本 3 行截断元素 =====
+__chk('时间线事件正文 3 行截断元素已渲染',
+      __tlCount('eventsTimeline', 'class="clamp3"') > 0, __tlCount('eventsTimeline', 'class="clamp3"') + ' 处');
+// ===== findings：默认最新 10 条 + 等级筛选 + 展开全部（双断言）=====
+(function () {
+  var box = __els['latestFindings'];
+  var conf = __EXPECT.findings || {};
+  __chk('总览 findings 容器已挂载', !!box);
+  if (!box || !conf.total) { __chk('总览 findings 数据未解析到', false); return; }
+  var got = __count(String(box.innerHTML || ''), 'class="latest-finding ');
+  __chk('总览 findings 首屏默认只渲染最新 ' + conf.default + ' 条', got === conf.default, got + ' / ' + conf.default);
+  __chk('总览 findings 统计行含「共 N 条 · 当前渲染 M 条」',
+        String(__els['findingsStat'] ? __els['findingsStat'].innerHTML : '').indexOf('当前渲染') !== -1);
+  document.getElementById('findingsLevel').value = 'red';
+  applyFindingsFilter();
+  var expRedDefault = Math.min(conf.default, conf.levels.red || 0);
+  var gotRed = __count(String(box.innerHTML || ''), 'class="latest-finding ');
+  __chk('总览 findings 等级筛选「紧急」生效（首屏仍为 ' + conf.default + ' 条）',
+        gotRed === expRedDefault && gotRed > 0, gotRed + ' / ' + expRedDefault);
+  toggleFindingsAll();
+  var gotRedAll = __count(String(box.innerHTML || ''), 'class="latest-finding ');
+  __chk('总览 findings 筛选后展开全部 == 该等级条数', gotRedAll === (conf.levels.red || -1), gotRedAll + ' / ' + (conf.levels.red || '?'));
+  document.getElementById('findingsLevel').value = 'all';
+  applyFindingsFilter();
+  toggleFindingsAll();
+  var gotAll = __count(String(box.innerHTML || ''), 'class="latest-finding ');
+  __chk('总览 findings 展开全部后可达全量 == findings 总条数', gotAll === conf.total, gotAll + ' / ' + conf.total);
+})();
+// ===== 每日监测详情：默认仅最近一天明细入 DOM，其余按需生成 =====
+function __chkDaily(label, id) {
+  var box = __els[id];
+  __chk(label + '：每日网格容器已挂载', !!box);
+  if (!box) return;
+  var html = String(box.innerHTML || '');
+  var cards = __count(html, 'class="daily-card ');
+  var gen = __count(html, 'data-gen="1"');
+  var ungen = __count(html, 'data-gen="0"');
+  __chk(label + '：日期卡片全部渲染（可切换）', cards > 0, cards + ' 张');
+  __chk(label + '：默认仅最近一天明细入 DOM（其余按需生成）',
+        gen === 1 && ungen === cards - 1, '已生成 ' + gen + ' / 未生成 ' + ungen);
+}
+__chkDaily('汇总页', 'dailyGrid');
+__chkDaily('SeaLead 页', 'sealeadDailyGrid');
+__chkDaily('红海页', 'redseaDailyGrid');
+(function () {
+  expandAllDailyDetails();
+  var box = __els['dailyGrid'];
+  var g = __count(String(box.innerHTML || ''), 'data-gen="1"');
+  var c = __count(String(box.innerHTML || ''), 'class="daily-card ');
+  __chk('汇总页：展开全部日期明细后明细全部生成（可达全量）', g === c && g > 0, g + ' / ' + c);
+})();
 // CUL Klang 页「已入库新闻链接」汇总区块断言（数据源必须 == collectedLinks 中 category 为 CUL Klang 的条数）
 (function () {
   var box = __els['culklangLinkDigest'];
@@ -299,6 +434,53 @@ print('SMOKE_' + ((__fail === 0 && __scriptErrors.length === 0) ? 'OK' : 'FAIL')
 expect = {tid: len(arrays[n]) for n, tid in (
     ("keyEvents", "eventsTimeline"), ("sealeadKeyEvents", "sealeadEventsTimeline"),
     ("redseaKeyEvents", "redseaEventsTimeline"), ("culklangKeyEvents", "culklangEventsTimeline")) if n in arrays}
+
+# ============ A+B 改造后新增：折叠 / 筛选策略的期望值 ============
+# 时间线：按日期分组（日期字符串倒序），默认展开最近 TIMELINE_DEFAULT_DAYS 日、上限 TIMELINE_DEFAULT_EVENTS 条
+TL_DAYS, TL_EVENTS = 3, 12
+
+
+def _day_counts(items):
+    c = {}
+    for it in items:
+        m = re.search(r'(?<![A-Za-z_])"?date"?\s*:\s*"([^"]*)"', it)
+        k = m.group(1) if m else ""
+        c[k] = c.get(k, 0) + 1
+    return c
+
+
+expect["tlDays"] = {}
+expect["tlDefault"] = {}
+for _n, _tid in (("keyEvents", "eventsTimeline"), ("sealeadKeyEvents", "sealeadEventsTimeline"),
+                 ("redseaKeyEvents", "redseaEventsTimeline"), ("culklangKeyEvents", "culklangEventsTimeline")):
+    if _n not in arrays:
+        continue
+    _c = _day_counts(arrays[_n])
+    expect["tlDays"][_tid] = len(_c)
+    _top = sum(v for _k, v in sorted(_c.items(), reverse=True)[:TL_DAYS])
+    expect["tlDefault"][_tid] = min(TL_EVENTS, _top)
+    print("[时间线折叠期望] %s：共 %d 条 / %d 日；首屏默认 %d 条，展开后全量 %d 条"
+          % (_n, len(arrays[_n]), len(_c), expect["tlDefault"][_tid], len(arrays[_n])))
+
+# findings（内嵌于 latestUpdateData.findings）：默认只渲染最新 10 条 + 等级筛选
+expect["findings"] = {"total": None, "default": None, "levels": {}}
+_m_fd = re.search(r"(?<![A-Za-z_])findings\s*:\s*\[", html)
+if _m_fd:
+    _fd_items, _ = split_top_items(html, html.index("[", _m_fd.start()))
+    expect["findings"] = {
+        "total": len(_fd_items),
+        "default": min(10, len(_fd_items)),
+        "levels": dict((lv, len([1 for it in _fd_items
+                                 if re.search(r'(?<![A-Za-z_])level\s*:\s*"%s"' % lv, it)]))
+                       for lv in ("red", "yellow", "blue")),
+    }
+    print("[findings 折叠期望] 共 %d 条（默认渲染 %d 条）；等级分布 red=%d / yellow=%d / blue=%d"
+          % (expect["findings"]["total"], expect["findings"]["default"],
+             expect["findings"]["levels"]["red"], expect["findings"]["levels"]["yellow"],
+             expect["findings"]["levels"]["blue"]))
+else:
+    print("FAIL: 未解析到 latestUpdateData.findings 数组")
+    fails.append("findings-data")
 
 # collectedLinks 内置正式入库条目（用于断言「已正式入库」渲染）
 builtin_links = []
@@ -404,5 +586,5 @@ print("\n=== 校验结论 ===")
 if fails:
     print("FAIL: 共 %d 项不通过 -> %s" % (len(fails), ", ".join(fails)))
     sys.exit(1)
-print("ALL PASS: 语法 / 引号 / 数据完整性 / 整页冒烟 全部通过")
+print("ALL PASS: 语法 / 引号 / 数据完整性 / 信息架构静态断言 / 整页冒烟 全部通过")
 PY

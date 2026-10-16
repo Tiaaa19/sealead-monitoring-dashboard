@@ -566,6 +566,59 @@
     .header { padding: 16px; }
     .tab-btn { padding: 12px 16px; font-size: 13px; }
   }
+
+  /* ================= A 轻量分层 + B 架构重排（信息架构压缩补丁） ================= */
+  .sec-nav { display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px 10px;
+             background:var(--bg); border:1px solid var(--border); border-radius:8px; margin:0 0 12px; font-size:12px; }
+  .sec-nav-label { font-weight:700; color:var(--cu-blue-dark); }
+  .sec-nav a { color:var(--cu-blue); text-decoration:none; padding:2px 8px; border:1px solid var(--border);
+               border-radius:12px; background:var(--card-bg); }
+  .sec-nav a:hover { background:var(--cu-blue-light); }
+  .sec-title { font-size:13px; font-weight:700; color:var(--cu-blue-dark); margin:10px 0 6px; line-height:1.4; }
+  .sec-title:first-child { margin-top:0; }
+  .sec-sub { font-size:12px; color:var(--text-secondary); margin:0 0 8px; line-height:1.5; }
+  .tl-day-head { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--cu-blue-dark);
+                 margin:10px 0 4px; padding-top:8px; border-top:1px dashed var(--border); }
+  .tl-day-dot { width:6px; height:6px; border-radius:50%; background:var(--cu-blue); display:inline-block; }
+  .fold-head { display:flex; align-items:center; gap:8px; padding:8px 12px; background:var(--bg);
+               border:1px solid var(--border); border-radius:8px; cursor:pointer; font-size:13px; font-weight:600;
+               color:var(--cu-blue-dark); margin:6px 0; user-select:none; line-height:1.4; }
+  .fold-head:hover { background:var(--cu-blue-light); }
+  .fold-head .fold-count { margin-left:auto; font-weight:500; font-size:12px; color:var(--text-secondary); }
+  .fold-head .fold-arrow { font-size:11px; color:var(--text-secondary); }
+  .fold-head.collapsed .fold-arrow { transform:rotate(-90deg); }
+  .fold-body.hidden { display:none; }
+  .events-timeline { max-height:60vh; overflow-y:auto; padding-right:6px; }
+  .clamp3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; cursor:zoom-in; }
+  .clamp3.open { display:block; -webkit-line-clamp:unset; overflow:visible; cursor:zoom-out; }
+  .filter-bar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:8px 10px; background:var(--bg);
+                border:1px solid var(--border); border-radius:8px; margin:0 0 10px; font-size:12px; }
+  .filter-bar label { font-weight:600; color:var(--cu-blue-dark); }
+  .filter-bar select { font-size:12px; padding:3px 6px; border:1px solid var(--border); border-radius:6px;
+                       background:var(--card-bg); color:var(--text-primary); }
+  .filter-stat { margin-left:auto; color:var(--text-secondary); }
+  .more-btn { display:block; width:100%; margin:10px 0 0; padding:8px; font-size:12px; font-weight:600;
+              color:var(--cu-blue); background:var(--bg); border:1px dashed var(--border); border-radius:8px; cursor:pointer; }
+  .more-btn:hover { background:var(--cu-blue-light); }
+  .daily-toggle-btn { margin-left:auto; padding:2px 8px; font-size:11px; color:var(--cu-blue); background:var(--card-bg);
+                      border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+  .link-item-no { display:inline-block; min-width:16px; margin-right:6px; color:var(--cu-blue-dark); font-weight:700; }
+  /* 视觉层级：压缩区块内边距与行距，主次区块间距区分 */
+  .container { padding:16px 18px 44px; }
+  .card { padding:16px 18px; margin-bottom:14px; }
+  .card-title { margin-bottom:10px; line-height:1.4; }
+  .latest-update { padding:16px 20px; margin-bottom:14px; }
+  .latest-findings { gap:8px; }
+  .latest-finding { padding:8px 12px; }
+  .latest-finding-desc { line-height:1.5; }
+  .status-hero { padding:16px 20px; margin-bottom:14px; }
+  .info-banner, .entry-banner { padding:12px 16px; margin-bottom:14px; }
+  .event-row { padding:8px 0; }
+  .daily-card { padding:12px 14px; margin-bottom:8px; }
+  .daily-card-summary { line-height:1.5; }
+  .daily-detail { line-height:1.5; max-height:32vh; overflow-y:auto; }
+  .link-digest-note { line-height:1.5; }
+
 </style>
 </head>
 <body>
@@ -599,6 +652,31 @@
 <div class="page-section active" id="page-summary">
   <div class="container">
 
+    <!-- A+B ①：四个指标卡（status-hero）置顶 -->
+    <!-- Status Hero（指标卡置顶） -->
+    <div class="status-hero" id="statusHero">
+      <div class="status-light red" id="statusLight">🔴</div>
+      <div class="status-info">
+        <h2 id="statusTitle">🔴 紧急 — 沙特联军反击胡塞 + 中资船被禁 + 古特雷斯呼吁降级 + 双峡分化</h2>
+        <p class="summary" id="statusSummary">沙特主导多国联军7/25凌晨对胡塞军事目标实施打击，冲突进入实战+反击阶段；中资汽车运输船获胡塞许可后又被取消并掉头，中国船豁免假设被证伪；联合国秘书长古特雷斯7/24呼吁立即降级；曼德海峡通航量回升至49艘但霍尔木兹海峡下降60%仅6艘。CU Lines RES航线挂靠吉达直接暴露于交叉火力范围，CGX/CGS经霍尔木兹外侧豪尔费坎分拨方案仍面临上游通道收窄风险。</p>
+      </div>
+      <div class="status-metrics">
+        <div class="metric"><div class="num" style="color:var(--cu-red)" id="metricRed">39</div><div class="label">紧急事件</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-yellow)" id="metricYellow">49</div><div class="label">重要事件</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-blue-info)" id="metricBlue">32</div><div class="label">关注事件</div></div>
+        <div class="metric"><div class="num" style="color:var(--cu-green)" id="metricSafe">9</div><div class="label">监测天数</div></div>
+      </div>
+    </div>
+
+    <!-- A+B ④：页内锚点目录（分级导航） -->
+    <div class="sec-nav">
+      <span class="sec-nav-label">本页导航</span>
+      <a href="#latestUpdate">最新监测动态</a>
+      <a href="#dailyGrid">每日监测详情</a>
+      <a href="#eventsTimeline">关键事件时间线</a>
+      <a href="#routeTableBody">航线风险矩阵</a>
+    </div>
+
     <!-- Link Collection Entry (top of summary) -->
     <div class="entry-banner">
       <div class="entry-banner-text">
@@ -614,35 +692,44 @@
         <span class="latest-time" id="latestTime">2026-07-27 15:00 | 下午微信</span>
         <span class="latest-vs" id="latestVs">vs早间监测（08:45）：新增3条核心数据更新——①Kpler双峡通行量具体数据（曼德11艘/霍尔木兹7艘创新低）；②中国VLCC穿越曼德海峡详细经过（AIS标注'中国船員及船東'获放行）；③沙特-胡塞冲突循环升级（导弹反击+延布港袭击）。其余为已知信息多源延伸。</span>
       </div>
-      <div class="latest-findings" id="latestFindings"></div>
+      <div class="filter-bar">
+        <label for="findingsLevel">等级筛选</label>
+        <select id="findingsLevel" onchange="applyFindingsFilter()">
+          <option value="all">全部等级</option>
+          <option value="red">🔴 紧急</option>
+          <option value="yellow">🟡 重要</option>
+          <option value="blue">🔵 关注</option>
+        </select>
+        <span class="filter-stat" id="findingsStat"></span>
+      </div>
+            <div class="latest-findings" id="latestFindings"></div>
+      <button class="more-btn" id="findingsMore" onclick="toggleFindingsAll()">展开全部监控条目 →</button>
       <div class="latest-cu-impact" id="latestCuImpact"></div>
-    </div>
-
-    <!-- Status Hero -->
-    <div class="status-hero" id="statusHero">
-      <div class="status-light red" id="statusLight">🔴</div>
-      <div class="status-info">
-        <h2 id="statusTitle">🔴 紧急 — 沙特联军反击胡塞 + 中资船被禁 + 古特雷斯呼吁降级 + 双峡分化</h2>
-        <p class="summary" id="statusSummary">沙特主导多国联军7/25凌晨对胡塞军事目标实施打击，冲突进入实战+反击阶段；中资汽车运输船获胡塞许可后又被取消并掉头，中国船豁免假设被证伪；联合国秘书长古特雷斯7/24呼吁立即降级；曼德海峡通航量回升至49艘但霍尔木兹海峡下降60%仅6艘。CU Lines RES航线挂靠吉达直接暴露于交叉火力范围，CGX/CGS经霍尔木兹外侧豪尔费坎分拨方案仍面临上游通道收窄风险。</p>
-      </div>
-      <div class="status-metrics">
-        <div class="metric"><div class="num" style="color:var(--cu-red)" id="metricRed">39</div><div class="label">紧急事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-yellow)" id="metricYellow">49</div><div class="label">重要事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-blue-info)" id="metricBlue">32</div><div class="label">关注事件</div></div>
-        <div class="metric"><div class="num" style="color:var(--cu-green)" id="metricSafe">9</div><div class="label">监测天数</div></div>
-      </div>
     </div>
 
     <!-- Daily Monitoring Details -->
     <div class="card">
       <div class="card-title"><span class="icon">📑</span> 每日监测详情（点击展开 · 最新在前）</div>
-      <div class="daily-grid" id="dailyGrid"></div>
+      <div class="filter-bar">
+        <label for="dailyRange">日期范围</label>
+        <select id="dailyRange" onchange="filterDailyByDate()">
+          <option value="0">全部日期</option>
+          <option value="3">最近 3 天</option>
+          <option value="7">最近 7 天</option>
+          <option value="14">最近 14 天</option>
+        </select>
+        <span class="filter-stat">默认仅展开最近一天明细，其余日期明细按需生成</span>
+      </div>
+            <div class="daily-grid" id="dailyGrid"></div>
+      <button class="more-btn" id="dailyGridMore" onclick="expandAllDailyDetails()">展开全部日期明细 →</button>
     </div>
 
     <!-- Key Events Timeline -->
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> 关键事件时间线（最新 → 最早）</div>
+      <div class="sec-sub" id="eventsTimelineStat"></div>
       <div class="events-timeline" id="eventsTimeline"></div>
+      <button class="more-btn" id="eventsTimelineMore" onclick="expandTimelineFully('eventsTimeline')">查看全部事件 →</button>
     </div>
 
     <!-- Route Risk Matrix -->
@@ -684,6 +771,14 @@
       </div>
     </div>
 
+    <!-- A+B ④：页内锚点目录（分级导航） -->
+    <div class="sec-nav">
+      <span class="sec-nav-label">本页导航</span>
+      <a href="#sealeadDailyGrid">每日进展</a>
+      <a href="#sealeadEventsTimeline">关键事件时间线</a>
+    </div>
+
+
     <div class="info-banner">
       <strong>事件链：</strong>OFAC SDN指定（7/14）→ GL X1到期回滚（7/17）→ GL Z过渡期至9/12 → SeaLead运力崩溃95.2%（7/20）→ ESL集装箱前缀禁令 → 行业物理拦截阶段。中方反制工具：《反外国制裁法》首次适用。
     </div>
@@ -692,12 +787,15 @@
     <div class="card">
       <div class="card-title"><span class="icon">📋</span> SeaLead 制裁每日进展（最新在前）</div>
       <div class="daily-grid" id="sealeadDailyGrid"></div>
+      <button class="more-btn" id="sealeadDailyGridMore" onclick="expandAllDailyDetails()">展开全部日期明细 →</button>
     </div>
 
     <!-- SeaLead Key Events Timeline -->
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> SeaLead 制裁关键事件（最新 → 最早）</div>
+      <div class="sec-sub" id="sealeadEventsTimelineStat"></div>
       <div class="events-timeline" id="sealeadEventsTimeline"></div>
+      <button class="more-btn" id="sealeadEventsTimelineMore" onclick="expandTimelineFully('sealeadEventsTimeline')">查看全部事件 →</button>
     </div>
 
   </div>
@@ -722,6 +820,15 @@
       </div>
     </div>
 
+    <!-- A+B ④：页内锚点目录（分级导航） -->
+    <div class="sec-nav">
+      <span class="sec-nav-label">本页导航</span>
+      <a href="#redseaDailyGrid">每日进展</a>
+      <a href="#redseaEventsTimeline">关键事件时间线</a>
+      <a href="#redseaRouteTableBody">航线风险矩阵</a>
+    </div>
+
+
     <div class="info-banner">
       <strong>危机升级链：</strong>胡塞海上禁运宣布（7/20）→ 吉达港拥堵3.93天（7/22）→ 胡塞实战袭击沙特油轮+UKMTO确认（7/23）→ 伊朗霍尔木兹布雷+IRGC声明完全封锁 → 班轮公司EFS附加费集体启动 → 战争险飙升10-20倍。CU Lines RES/CGX/CGS航线全部进入高危区。
     </div>
@@ -730,12 +837,15 @@
     <div class="card">
       <div class="card-title"><span class="icon">📋</span> 红海胡塞危机每日进展（最新在前）</div>
       <div class="daily-grid" id="redseaDailyGrid"></div>
+      <button class="more-btn" id="redseaDailyGridMore" onclick="expandAllDailyDetails()">展开全部日期明细 →</button>
     </div>
 
     <!-- Red Sea Key Events Timeline -->
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> 红海胡塞危机关键事件（最新 → 最早）</div>
+      <div class="sec-sub" id="redseaEventsTimelineStat"></div>
       <div class="events-timeline" id="redseaEventsTimeline"></div>
+      <button class="more-btn" id="redseaEventsTimelineMore" onclick="expandTimelineFully('redseaEventsTimeline')">查看全部事件 →</button>
     </div>
 
     <!-- Route Risk Matrix (Red Sea specific) -->
@@ -777,6 +887,15 @@
       </div>
     </div>
 
+    <!-- A+B ④：页内锚点目录（分级导航） -->
+    <div class="sec-nav">
+      <span class="sec-nav-label">本页导航</span>
+      <a href="#culklangImpact">事件影响与处置</a>
+      <a href="#culklangEventsTimeline">事件时间线</a>
+      <a href="#culklangLinkDigest">来源清单与要点汇总</a>
+    </div>
+
+
     <!-- Vessel Profile -->
     <div class="card">
       <div class="card-title"><span class="icon">🚢</span> 船舶档案（CUL Klang · 中联巴生）</div>
@@ -807,19 +926,23 @@
     <!-- CUL Klang Key Events Timeline -->
     <div class="card">
       <div class="card-title"><span class="icon">📅</span> CUL Klang 事件时间线（最新 → 最早）</div>
+      <div class="sec-sub" id="culklangEventsTimelineStat"></div>
       <div class="events-timeline" id="culklangEventsTimeline"></div>
+      <button class="more-btn" id="culklangEventsTimelineMore" onclick="expandTimelineFully('culklangEventsTimeline')">查看全部事件 →</button>
     </div>
 
-    <!-- CUL Klang 已入库新闻链接汇总（数据源：collectedLinks，动态读取、无第二份硬编码） -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🔗</span> 已入库新闻链接（CUL Klang 分类 · 按入库时间倒序）</div>
+    <!-- A+B ③：来源清单 + 要点汇总合并为同一卡片（同源渲染，来源编号 ①–⑩ 一一对应） -->
+    <div class="card" id="secCulklangDigest">
+      <div class="card-title"><span class="icon">🧾</span> 入库新闻来源清单与要点汇总（正文抓取 · 多源比对）</div>
+      <div class="sec-title">① 已入库新闻来源清单（CUL Klang 分类 · 按入库时间倒序 · 编号 ①–⑩ 自上而下）</div>
       <div class="link-digest" id="culklangLinkDigest"></div>
-    </div>
-
-    <!-- CUL Klang 入库新闻要点汇总（正文抓取 + 多源比对，来源条目与 collectedLinks 关联） -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🧾</span> 入库新闻要点汇总（正文抓取 · 多源比对）</div>
-      <div class="link-digest" id="culklangPointDigest"></div>
+      <div class="fold-head collapsed" id="culklangPointHead" onclick="toggleFoldHead(this,'culklangPointWrap')">
+        <span class="fold-arrow">▼</span>② 入库新闻要点汇总（事件时间线 / 多源口径对比 / 关键事实与待证实项）
+        <span class="fold-count">点击展开 · 来源编号可点击跳转上方清单</span>
+      </div>
+      <div class="fold-body hidden" id="culklangPointWrap">
+        <div class="link-digest" id="culklangPointDigest"></div>
+      </div>
     </div>
 
   </div>
@@ -2126,6 +2249,28 @@ const dailyData = [
       "10/10 ✨新增｜上午LinkedIn检索：霍尔木兹—波斯湾油轮遇袭创战时新高、伊朗打击半径扩至波斯湾深处——IMO：截至10/4一周11艘油轮在霍尔木兹遇袭（开战以来单周最多）、本周再增5艘；10/5 阿联酋籍油轮“和平号”（On Peace）被炮弹击中致12名印度籍船员受伤、10/7 卡塔尔近岸油轮遭弹道袭击、10/9“宝石2号”在阿联酋近岸起火；IMO：自开战以来100起商船袭击已致至少24名船员死亡（自7月以来至少9名船员丧生）",
       "10/10 ✨新增｜上午LinkedIn检索：Kpler 10/9 口径——霍尔木兹海峡“仍然开放、但处于极高风险的通航状态”，日均至少10艘商业油轮与干散货船通过（此前10天日均超过20艘）；截至10/7七日均值海湾石油出口990万桶/日（较战前-42%）、经霍尔木兹原油出口850万桶/日（较战前-40%）、中东整体出口1530万桶/日（较战前-10%）",
       "10/10 ✨新增｜上午LinkedIn检索：美伊表态分化——特朗普称“伊朗战争很快就会结束”、美国能源价格将下降；伊朗总统佩泽希齐扬10/8与普京会晤时重申不会离开谈判桌、美伊已交换提案并作出修改；同期伊朗革命卫队宣布打击不再限于霍尔木兹海峡、打击半径扩至波斯湾深处"
+    ]
+  },
+
+  {
+    date: "2026-10-16", display: "10/16", weekday: "周五",
+    status: "red", statusText: "🔴 紧急",
+    eventCount: 7, redCount: 6, yellowCount: 1, blueCount: 1,
+    cuStatus: "10/16 合并检索（三渠道同轮）：CUL Klang（中联巴生）/中联航运线无新增实体事件，维持 10/07 遇袭要素",
+    summary: "合并检索（2026-10-16，三渠道同轮：微信公众号-搜狗微信搜索 / LinkedIn / WebSearch；keyword 覆盖 红海 曼德海峡 商船袭击 / 胡塞 袭船 / 沙特 也门 冲突 / CUL Klang / 中联巴生 / CULines / 中联航运）：红海/胡塞/曼德海峡线新增 7 条（红 6 / 黄 1）——联合国安理会10/15主席声明最强烈谴责胡塞袭红海和曼德海峡商业航运并强调保障商船船员安全、也门亚丁总统府10/15遭5枚弹道导弹袭击致5死16伤、胡塞称击中沙特\u201c台风\u201d战机与特朗普放话\u201c可能加入\u201d打击、联军称利雅得机场10月以来遇袭20次致17死333伤（累计口径校准）、沙特阿美宰赫兰办公楼10/13遇袭起火、联军打击萨那/荷台达/扎马尔燃料设施致2死2伤、埃尔多安10/13通话支持沙特（麦加防务联盟背景）；CUL Klang/中联航运线无新增。",
+    keyEvents: [
+      "✨新增｜联合国安理会10/15下午通过主席声明，最强烈谴责胡塞袭红海和曼德海峡商业航运、强调保障商船及船员安全",
+      "✨新增｜也门亚丁总统府10/15遭胡塞5枚弹道导弹袭击致至少5死16伤",
+      "🔵维持｜CUL Klang/中联航运线无新增实体事件，维持 10/07 遇袭要素"
+    ],
+    sealeadEvents: [
+      "🔵维持｜SeaLead 侧 OFAC 无新增指定、GL Z 未见延期"
+    ],
+    redseaEvents: [
+      "✨新增｜胡塞称10/15凌晨击中沙特\u201c台风\u201d战机（塔伊夫基地起飞、萨达省上空）；特朗普放话\u201c可能加入\u201d打击，沙特拦截弹告急",
+      "✨新增｜沙特阿美宰赫兰办公楼10/13晚遇袭引发有限火灾；联军打击萨那萨巴哈中央站及荷台达/萨那/扎马尔燃料设施致2死2伤",
+      "✨新增｜联军称胡塞10月以来对利雅得机场发动20次袭击致17死333伤（累计口径校准）",
+      "✨新增｜埃尔多安10/13与沙特王储通话表达支持、谴责胡塞（麦加防务联盟背景）"
     ]
   },
 
@@ -3481,6 +3626,13 @@ const redseaKeyEvents = [
   { date: "10-14", day: "14", title: "✨新增｜下午微信检索（10/15复核）：WFP 10-14 警告也门约80万人救生援助中断、超1800万人面临严重粮食不安全、约220万五岁以下儿童严重营养不良（含50万重度急性营养不良）；WHO 10-13 称霍乱疑似病例超8000例；红十字国际委员会 10-14 称医院不堪重负", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"也门人道危机"},{t:"cat",l:"微信检索"}] },
   { date: "10-13", day: "13", title: "✨新增｜下午微信检索（10/15复核）：联合国秘书长发言人迪雅里克称塔伊兹省基本物资短缺、面粉库存或不足三周耗尽、燃料短缺威胁供水；中国常驻联合国代表傅聪 10-09 安理会也门问题公开会呼吁立即停火恢复政治轨道；胡塞政治局成员布海提 10-12 称将打击美国利益；国际移民组织称流离失所者超21.7万（55%塔伊兹省）、2026年134,100名移民进入也门（+22%）", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"红海安全"},{t:"cat",l:"也门人道危机"},{t:"cat",l:"微信检索"}] },
   { date: "07-24", day: "24", title: "✨新增｜下午LinkedIn检索：RCL宏海箱运7/24取消TS Chennai 2604E中国-红海直达干线（定性不可抗力、费用全归货方）、嘉华航运KAWA 7/28吉达港全面风险管控", desc: "壹航运/汇峰国际货运（2026-07-31）：胡塞7/20沙特海上航运禁令后商船遇袭频发，多家船司紧急取消红海直达干线。RCL宏海箱运7/24取消TS Chennai轮2604E航次（中国至红海直达，与德翔海运共舱，挂靠青岛/上海/宁波/广州南沙/深圳蛇口，TSL/ONE共舱合作船企同步受影响），公告认定提单免责条款内不可抗力事件，本次地缘危机产生的一切额外成本与运营风险（装卸费/仓储费/绕航改道费/中转转运费/内陆拖车费/滞箱费/滞期费/港口杂费及附属支出）全部由货方自行承担；嘉华航运KAWA 7/28针对沙特吉达港进出口集装箱业务全面风险管控：在途/已装船货物航线强制调整无预警、临时跳港或航次直接取消、集装箱可能卸至其他安全替代港口，衍生费用由托运人/收货人自担；待出货吉达港订单搭乘4艘指定船舶的新订舱须立即退舱取消装货。红海航运风险由绕航/延误升级为航线停运+成本全额转嫁的系统性供应链危机。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"中东航运风险"},{t:"cat",l:"LinkedIn检索"}], links: [{ text: "壹航运/汇峰国际货运（2026-07-31）", url: "https://www.high-forwarders.com/news/the-risks-in-red-sea-shipping-have-escalated-dramatically-multiple-direct-domestic-shipping-routes-to-the-red-sea-have-been-suspended-and-all-resulting-costs-will-be-borne-by-the" }], new: true},
+  { date: "10-13", day: "13", title: "✨新增｜合并检索（10/16）：沙特国家石油公司（沙特阿美）东部宰赫兰一栋办公楼10/13晚遭袭引发\u201c有限规模\u201d火灾、未造成人员伤亡；同期沙特主导联军13日晚拦截并摧毁射向沙特境内的6枚导弹和3架无人机，拦截碎片造成人员受伤与建筑受损", desc: "中国日报网（2026-10-14）：沙特阿拉伯能源部14日凌晨发布声明称，沙特阿美位于该国东部城市宰赫兰的一栋办公楼13日晚遭到袭击，引发\u201c有限规模\u201d火灾，未造成人员伤亡。沙特主导多国联军13日晚称，当天拦截并摧毁射向沙特境内的6枚导弹和3架无人机；沙特民防部门消息称，导弹拦截碎片造成人员受伤、建筑受损。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"能源设施"},{t:"cat",l:"合并检索"}], links: [{ text: "中国日报网", url: "https://cn.chinadaily.com.cn/a/202610/14/WS6acf2dd0e4b09a165c78f3a6.html" }, { text: "腾讯新闻", url: "https://news.qq.com/rain/a/20261016A03V1F00" }], new: true},
+  { date: "10-13", day: "13", title: "✨新增｜合并检索（10/16）：沙特主导联军10/13证实打击也门石油公司萨那萨巴哈中央站及荷台达、萨那、扎马尔地下燃料储备库/燃料储罐/装卸码头，称旨在削弱胡塞威胁沙特、也门与红海南部航道的能力；当日荷台达省多处燃油设施空袭致2死2伤", desc: "中国日报网/腾讯新闻（2026-10-14/10-16）：沙特主导多国联军13日发表声明证实，当天实施特别军事行动，打击目标包括位于也门首都萨那的也门石油公司萨巴哈中央站，以及位于荷台达、萨那和扎马尔的地下燃料储备库、燃料储罐和用于燃料运输、卸载的码头设施，旨在削弱胡塞武装用于威胁沙特、也门及红海南部航道的相关能力；也门胡塞武装方面消息称，沙特当天对荷台达省多处燃油设施的空袭造成2人死亡、2人受伤。袭击前联军曾要求平民立即撤离并公布打击位置地图；胡塞警告任何针对萨那的打击都将招致对利雅得的报复，并敦促专家和工程师远离沙特石油设施。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"能源设施"},{t:"cat",l:"合并检索"}], links: [{ text: "中国日报网", url: "https://cn.chinadaily.com.cn/a/202610/14/WS6acf2dd0e4b09a165c78f3a6.html" }, { text: "腾讯新闻", url: "https://news.qq.com/rain/a/20261016A03V1F00" }], new: true},
+  { date: "10-13", day: "13", title: "✨新增｜合并检索（10/16）：土耳其总统埃尔多安10/13与沙特王储兼首相穆罕默德通电话，表达对沙特的坚定支持、强烈谴责胡塞袭击并对伤亡表示悲痛——背景为8/7《麦加共同防务协议》与10/5\u201c麦加防务联盟\u201d紧急会议同意在沙特部署军事力量", desc: "腾讯新闻（2026-10-16）：土耳其总统府13日说，埃尔多安当天与沙特王储兼首相穆罕默德通电话，表达对沙特的坚定支持，强烈谴责胡塞武装对沙特的袭击，并对袭击导致的伤亡表示悲痛。沙特、土耳其和巴基斯坦8月7日签署《麦加共同防务协议》，规定对三国中任何一国的武装攻击将被视为对三国全体的攻击；10月5日三国在利雅得召开\u201c麦加防务联盟\u201d紧急会议，同意立即在沙特部署军事力量。", tags: [{t:"yellow",l:"🟡重要"},{t:"cat",l:"红海安全"},{t:"cat",l:"外交联盟"},{t:"cat",l:"合并检索"}], links: [{ text: "腾讯新闻", url: "https://news.qq.com/rain/a/20261016A03V1F00" }], new: true},
+  { date: "10-15", day: "15", title: "✨新增｜合并检索（10/16）：也门亚丁总统府10/15遭胡塞5枚弹道导弹袭击，至少5死16伤——击中沙特主导联军在也门的作战指挥中心与武器仓库，也门总理及内阁幸免", desc: "中国新闻网（2026-10-16）：10月15日胡塞武装以5枚导弹袭击也门亚丁总统府，造成至少5人死亡、16人受伤；报道称打击目标包括沙特主导联军在也门的作战指挥中心及武器仓库，也门总理及内阁成员幸免。报道指出此轮暴力属典型\u201c报复循环\u201d——胡塞一面在红海西海岸与政府军拉锯，一面把导弹对准沙特境内（10月10日、11日利雅得哈立德国王国际机场接连遭袭，沙特阿美天然气和油田设施被点起大火），并称胡塞意在表明即便联军把重兵压在曼德海峡，也保不住自己后方最关键的指挥枢纽。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"也门战局"},{t:"cat",l:"合并检索"}], links: [{ text: "中国新闻网", url: "https://www.chinanews.com.cn/gj/2026/10-16/10715403.shtml" }], new: true},
+  { date: "10-15", day: "15", title: "✨新增｜合并检索（10/16）：胡塞称10/15凌晨以地对空导弹击中一架沙特\u201c台风\u201d战机（自沙特塔伊夫基地起飞、在也门萨达省上空被击中）并于15日下午公布画面；特朗普放话\u201c可能加入\u201d对胡塞的打击，沙特防空拦截弹库存告急正四处求援", desc: "央广网/中国新闻网（2026-10-16）：胡塞武装称，当地时间15日凌晨发射地对空导弹击中一架自沙特塔伊夫基地起飞的\u201c台风\u201d战斗机，称其\u201c随时可能坠毁\u201d，并于15日下午对外公布击中画面；沙特方面暂未回应。中国新闻网称，特朗普放话\u201c可能加入\u201d对胡塞的打击，沙特一侧则传出防空拦截弹库存告急、正四处求援的消息，也门战场正从一场地区内战变成牵动多国的\u201c第二战场\u201d。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"也门战局"},{t:"cat",l:"合并检索"}], links: [{ text: "央广网", url: "https://www.cnr.cn/newscenter/sq/20261016/t20261016_527843205.shtml" }, { text: "中国新闻网", url: "https://www.chinanews.com.cn/gj/2026/10-16/10715403.shtml" }], new: true},
+  { date: "10-15", day: "15", title: "✨新增｜合并检索（10/16）：沙特主导联军发言人10/15在利雅得发布会称，胡塞10月以来对利雅得哈立德国王国际机场已发动20次袭击、共致17死333伤；联军称已着手摧毁胡塞在萨那、萨达、阿姆兰的127处山区储存点及多个导弹发射平台", desc: "今日头条（央视，2026-10-16）：沙特阿拉伯主导的多国联军发言人图尔基·马利基15日在利雅得新闻发布会说，也门胡塞武装10月以来对利雅得哈立德国王国际机场已发动20次袭击，共造成17人死亡、333人受伤；他强调针对民用机场的袭击威胁国际民用航空安全，国际社会有责任应对此类跨境威胁，并称联军已着手摧毁胡塞在也门萨那、萨达和阿姆兰等地建立的山区储存网络（含127处储存点以及多个导弹发射平台），呼吁胡塞武装立即停止针对平民和民用设施的袭击。备注（口径校准）：17死333伤为10月以来20次袭击的累计口径，与库内10-07\u201c3死36伤\u201d、10-11\u201c12死309伤\u201d属同一事件簇（利雅得机场遭袭），不重复计入单次事件。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"口径校准"},{t:"cat",l:"合并检索"}], links: [{ text: "今日头条（央视）", url: "https://www.toutiao.com/article/7697024679852229154/" }], new: true},
+  { date: "10-15", day: "15", title: "✨新增｜合并检索（10/16）：联合国安理会10/15下午通过关于也门局势的主席声明（本月轮值主席国希腊发布），以最强烈措辞谴责胡塞持续袭击沙特（含民用航空与能源基础设施），并谴责其持续袭击红海和曼德海峡商业航运、强调必须保障商船及船员安全", desc: "央视网/新浪网（2026-10-16）：当地时间10月15日下午，联合国安理会通过关于也门局势的主席声明，由本月轮值主席国希腊发布。声明以最强烈措辞谴责胡塞武装持续对沙特阿拉伯发动袭击，包括针对民用航空和能源基础设施的袭击，并向遇难者家属以及沙特政府和人民表示最深切慰问、祝愿伤者早日康复；同时以最强烈措辞谴责胡塞武装持续袭击红海和曼德海峡的商业航运并发出威胁，强调必须保障商船及其船员的安全，各方必须遵守国际法特别是《联合国海洋法公约》、维护航行权利和自由，并重申尊重国际人道法；声明还确认沙特依据国际法享有自卫权，强调也门的持久和平无法通过暴力、胁迫或使用武力来实现。", tags: [{t:"red",l:"🔴紧急"},{t:"cat",l:"红海安全"},{t:"cat",l:"外交"},{t:"cat",l:"合并检索"}], links: [{ text: "央视网", url: "https://ysxw.cctv.cn/article.html?toc_style_id=feeds_default&item_id=12511989258456439509&channelId=1119" }, { text: "新浪网", url: "https://k.sina.com.cn/article_1893892941_70e2834d0200248gm.html" }], new: true},
 ];;;
 
 // ========== HELPER: Render source links ==========
@@ -3521,6 +3673,7 @@ const culklangKeyEvents = [
   { date: "10-11", day: "11", title: "🔵维持｜合并检索：CUL Klang/中联航运线无新增——10/07 遇袭要素（IMO 9958535、约 0615 UTC、摩卡港附近、Lloyd's List／Marisks 多源比对）与库内记录一致，本轮英文口径无新增实体事件", desc: "以 CUL Klang／中联巴生／CULines／中联航运＋红海 曼德海峡 商船袭击 合并检索（三渠道同轮），命中 Regulas Shipping 安全简报《MSCIO logs shots at CUL Klang north of Bab el-Mandeb》汇总的 MSCIO／Marisks（经 Kuehne+Nagel myKN 与 Lloyd's List 转述）口径：事件约 0615 UTC、位于也门摩卡西南约 15 海里、多发枪弹射向船舶驾驶台后袭击者撤离、船员无人受伤、船舶继续北向过境；MSCIO 未公布 IMO、UKMTO 未发布编号警告或通告。上述要素与库内 CULKLANG_POINTS 时间线及 IMO 9958535 记录一致，本轮无新增实体事件；归因纪律照录——不得将顾问机构点名等同于 UKMTO 官方产品、不得将无人认领的小艇射击视为已确认的胡塞命中。中联航运（CULines）本轮无新增航线／运力／制裁动态。已入 culklangKeyEvents 尾部及 10-10 dailyData。", tags: [{t:"blue",l:"🔵维持"},{t:"cat",l:"CUL Klang"},{t:"cat",l:"合并检索"}], links: [{ text: "Regulas Shipping：MSCIO logs shots at CUL Klang north of Bab el-Mandeb", url: "https://regulasshipping.com/blog/mscio-logs-shots-at-cul-klang-north-of-bab-el-mandeb" }], new: true },
   { date: "10-12", day: "12", title: "🔵维持｜合并检索（10/13）：CUL Klang（中联巴生）/中联航运线无新增实体事件——10/07 遇袭要素（IMO 9958535、约0615 UTC、摩卡港附近、Lloyd's List／MSCIO／Marisks 多源比对）与库内记录一致，本轮关键词（CUL Klang / 中联巴生 / CULines / 中联航运）命中结果经逐条比对均为已入库旧文；跟踪项：红海—吉达航段战争险与绕行评估、SBS（巴生-加尔各答）支线运营、1.4万TEU新造船交付节点均无新进展", desc: "本轮（2026-10-13）以 CUL Klang / 中联巴生 / CULines / 中联航运 为关键词同轮检索微信公众号（搜狗微信搜索）、LinkedIn 与 WebSearch，并与在库 culklangKeyEvents／findings／sealeadEvents 逐条比对：①无晚于 10-11 的新增实体事件，10/07 红海南部遇袭（小艇开火、无人受伤、继续北航）要素已完整入库且多源一致；②SeaLead 侧 OFAC 实体档案（SDN 58103，2026-07-14 指定）无新增指定、无移除或延期披露；③风险侧间接关联——本轮沙特本土机场与能源设施连续遇袭（利雅得机场停运延至10/18零时、海米斯穆谢特空军基地遇袭）与曼德—塔伊兹战线激战，继续抬升红海南段航次战争险与绕行概率，涉吉达挂靠航次建议逐航次安全评估（详见 redseaKeyEvents 本轮 10-12 五条）。", tags: [{t:"blue",l:"🔵维持"},{t:"cat",l:"CUL Klang"},{t:"cat",l:"合并检索"}], links: [{ text: "Regulas Shipping：MSCIO logs shots at CUL Klang north of Bab el-Mandeb", url: "https://regulasshipping.com/blog/mscio-logs-shots-at-cul-klang-north-of-bab-el-mandeb" }, { text: "央视网（2026-10-13）：沙特与胡塞武装互袭不断、利雅得机场停运延长（间接关联：红海南段战争险与绕行评估）", url: "https://ysxw.cctv.cn/article.html?toc_style_id=feeds_default&item_id=6040346501795882365&channelId=1119" }], new: true },
   { date: "10-15", day: "15", title: "🔵维持｜下午微信检索（10/15）：CUL Klang（中联巴生）/中联航运线无新增实体事件——keyword=SeaLead 航运 制裁 最新消息 命中结果经逐条比对均为已入库旧文，10/07 遇袭要素与库内一致", tags: [{t:"blue",l:"🔵关注"},{t:"cat",l:"CULines"},{t:"cat",l:"微信检索"}] },
+  { date: "10-16", day: "16", title: "🔵维持｜合并检索（10/16，三渠道同轮）：CUL Klang（中联巴生）/中联航运线无新增实体事件——10/07 红海南部遇袭要素一致无更新（IMO 9958535、约 0615 UTC、小艇警告射击、无船员伤亡与船体实质损伤）；中联航运 14,000TEU 新船订单（9/16）与 SBS 巴生-加尔各答支线（10/2 入局）已入库；SeaLead 侧 OFAC 无新增指定、GL Z 未见延期", desc: "本轮（2026-10-16）以 微信公众号（搜狗微信搜索）/ LinkedIn / WebSearch 三渠道同轮检索，keyword 覆盖 红海 曼德海峡 商船袭击 / 胡塞 袭船 / 沙特 也门 冲突 / CUL Klang / 中联巴生 / CULines / 中联航运；命中涉及中联巴生/中联航运的条目经逐条比对均为已入库旧文，未发现涉及该公司船舶安全与运营的新事件，故维持不变。", tags: [{t:"blue",l:"🔵维持"},{t:"cat",l:"CUL Klang"},{t:"cat",l:"中联航运"},{t:"cat",l:"合并检索"}], links: [], new: true},
 ];
 
 const culklangImpact = "<strong>事件影响与处置提示（CUL Klang）：</strong>① 本次属骚扰/警告性射击，未造成船员伤亡与船体实质损害，船舶按原计划继续北行，暂未构成航次中止事件；② 但事件对象为中国船东/中国船员背景的 CULines 自有运营船舶，与胡塞“仅针对沙特关联船只”的既往口径存在偏差，需高度关注后续是否出现针对中资/中联船舶的复制性事件；③ 建议对本轮经红海、曼德海峡航段的 CULines 船舶复核 ISPS 船舶保安措施、强化瞭望与航速/机动预案、并复核战争险条款与承保范围（含船员安全与雇主责任应急流程）；④ 同步跟踪 MSCIO、UKMTO、EUNAVFOR Aspides 后续通报，确认是否有组织认领及是否升级为导弹/无人机袭击；⑤ 中联航运 9/16 与沪东中华签署 2 艘 14000TEU 大型集装箱船建造合同（首批万箱级新造船订单），船队由区域支线/中型船型向主干线延伸，须跟踪其后续投船航线的红海/曼德敏感性与新造船订单融资方、制裁穿透尽调，并提前评估万箱船挂靠红海港口的风险敞口与保险安排。⑥ 本轮合并检索（2026-10-10）补充：CUL Klang 10/7 事件的承运人口径与红海安全口径已双线入库——港口圈/今日头条引 MSCIO 确认航次要素（巴生→吉达北向、2,433 TEU、新加坡船旗、AIS 标注“China owned & CHN crew”）、暂无组织认领、专家提示或为当地武装渔民误击，事件未升级为导弹/无人机袭击，维持高保安等级与战争险条款复核即可；同时中联航运自 10 月 2 日起入局 SBS 航线（巴生-加尔各答支线，与 Transworld 集团旗下 Straits Orient Lines、BLPL 联合运营，港序巴生→加尔各答→霍尔迪亚→巴生，经巴生枢纽衔接中东及红海网络），红海—南亚中转货流节点进一步集中于巴生港，需同步跟踪巴生枢纽的安保与中转衔接安排。";
@@ -3532,18 +3685,74 @@ document.getElementById('latestTime').textContent = latestUpdateData.time;
 document.getElementById('latestVs').textContent = latestUpdateData.vs;
 
 const latestFindingsEl = document.getElementById('latestFindings');
-[...latestUpdateData.findings]
-  .sort((a, b) => (b.date || '00-00').localeCompare(a.date || '00-00'))
-  .forEach(f => {
+// A+B 改造：findings 默认只渲染最新 10 条 + 等级筛选 + 「展开全部」；数据数组 latestUpdateData.findings 保持完整
+const FINDINGS_POLICY = { defaultCount: 10, viewAll: false, level: 'all' };
+function allFindingsSorted() {
+  return [...latestUpdateData.findings].sort((a, b) => (b.date || '00-00').localeCompare(a.date || '00-00'));
+}
+function renderFindings() {
+  if (!latestFindingsEl) return;
+  const all = allFindingsSorted();
+  const filtered = (FINDINGS_POLICY.level === 'all') ? all : all.filter(f => (f.level || '') === FINDINGS_POLICY.level);
+  const shown = FINDINGS_POLICY.viewAll ? filtered : filtered.slice(0, FINDINGS_POLICY.defaultCount);
+  let html = '';
+  shown.forEach(f => {
     const linksHtml = renderLinks(f.links);
     const dateLabel = f.date ? `<span class="latest-finding-date">${parseInt(f.date.split('-')[0])}月${parseInt(f.date.split('-')[1])}日</span>` : '';
-    latestFindingsEl.innerHTML += `
+    html += `
       <div class="latest-finding ${f.level}">
         <div class="latest-finding-title">${dateLabel}${f.title}</div>
-        <div class="latest-finding-desc">${f.desc}</div>
+        <div class="latest-finding-desc clamp3" onclick="toggleClamp(this)">${f.desc}</div>
         ${linksHtml}
       </div>`;
   });
+  latestFindingsEl.innerHTML = html;
+  const stat = document.getElementById('findingsStat');
+  if (stat) stat.innerHTML = `共 <strong>${filtered.length}</strong> 条 · 当前渲染 <strong>${shown.length}</strong> 条` + (FINDINGS_POLICY.level === 'all' ? '' : `（已筛选等级：${FINDINGS_POLICY.level}）`);
+  const more = document.getElementById('findingsMore');
+  if (more) {
+    if (shown.length < filtered.length) {
+      more.style.display = 'block';
+      more.setAttribute('data-mode', 'all');
+      more.textContent = `展开全部 ${filtered.length} 条 →`;
+    } else if (FINDINGS_POLICY.viewAll && filtered.length > FINDINGS_POLICY.defaultCount) {
+      more.style.display = 'block';
+      more.setAttribute('data-mode', 'top');
+      more.textContent = `收起，仅显示最新 ${FINDINGS_POLICY.defaultCount} 条 ▲`;
+    } else {
+      more.style.display = 'none';
+      more.setAttribute('data-mode', 'top');
+    }
+  }
+}
+function applyFindingsFilter() {
+  const sel = document.getElementById('findingsLevel');
+  FINDINGS_POLICY.level = (sel && sel.value) ? sel.value : 'all';
+  FINDINGS_POLICY.viewAll = false;
+  renderFindings();
+}
+function toggleFindingsAll() {
+  const more = document.getElementById('findingsMore');
+  FINDINGS_POLICY.viewAll = !(more && more.getAttribute('data-mode') === 'top');
+  renderFindings();
+}
+function toggleClamp(el) {
+  if (!el || !el.classList) return;
+  if (el.classList.contains('open')) { el.classList.remove('open'); }
+  else { el.classList.add('open'); }
+}
+function toggleFoldHead(head, bodyId) {
+  const body = document.getElementById(bodyId);
+  if (body) {
+    const hidden = String(body.className || '').indexOf('hidden') !== -1;
+    body.className = hidden ? 'fold-body' : 'fold-body hidden';
+  }
+  if (head) {
+    const c = String(head.className || '').indexOf('collapsed') !== -1;
+    head.className = c ? 'fold-head' : 'fold-head collapsed';
+  }
+}
+renderFindings();
 
 document.getElementById('latestCuImpact').innerHTML = `<strong>中联航运影响评估：</strong> ${latestUpdateData.cuImpact}`;
 
@@ -3563,122 +3772,215 @@ routeRisks.forEach(r => {
     </tr>`;
 });
 
-// --- Summary page: Daily Cards ---
-const dailyGrid = document.getElementById('dailyGrid');
-[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
-  if (!d.date || !Array.isArray(d.keyEvents)) return;
-  const detailDisplay = i === 0 ? 'block' : 'none';
-  dailyGrid.innerHTML += `
-    <div class="daily-card ${d.status}" onclick="toggleCard(this)">
+// --- A+B：三页签每日卡片统一渲染（默认只展开最近一天；其余明细按需生成，不再为全部日期预渲染入 DOM） ---
+const DAILY_DEFAULT_OPEN_DAYS = 1;
+const DAILY_STATE = { openDates: {}, expandedAll: false, rangeDays: 0 };
+const DAILY_KINDS = {
+  summary: { key: 'keyEvents', label: '关键事件', icon: '📑', stat: '发现' },
+  sealead: { key: 'sealeadEvents', label: 'SeaLead 制裁相关事件', icon: '🚢', stat: 'SeaLead事件' },
+  redsea: { key: 'redseaEvents', label: '红海/胡塞相关事件', icon: '⚠️', stat: '红海事件' }
+};
+function dailySortedRows() {
+  return [...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+}
+function dailyDetailHtml(list, label, cuStatus) {
+  let h = `<div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--cu-blue-dark);">${label}:</div>`;
+  h += list.map(e => `<div style="font-size:12px;color:var(--text-secondary);padding:2px 0;">• ${e}</div>`).join('');
+  h += `<div class="timeline-cu" style="margin-top:8px;"><strong>CU Lines:</strong> ${cuStatus}</div>`;
+  return h;
+}
+function isDailyOpen(d, isNewest) {
+  if (DAILY_STATE.expandedAll) return true;
+  if (Object.prototype.hasOwnProperty.call(DAILY_STATE.openDates, d.date)) return DAILY_STATE.openDates[d.date] === true;
+  return !!isNewest;
+}
+function renderDailyGrid(gridEl, kind) {
+  if (!gridEl) return;
+  const conf = DAILY_KINDS[kind] || DAILY_KINDS.summary;
+  let rows = dailySortedRows().filter(d => d && d.date && Array.isArray(d[conf.key]) && d[conf.key].length > 0);
+  if (DAILY_STATE.rangeDays > 0) rows = rows.slice(0, DAILY_STATE.rangeDays);
+  let html = '';
+  rows.forEach((d, i) => {
+    const list = d[conf.key];
+    const open = isDailyOpen(d, i < DAILY_DEFAULT_OPEN_DAYS);
+    const detailInner = open ? dailyDetailHtml(list, conf.label, d.cuStatus) : '';
+    html += `
+    <div class="daily-card ${d.status}">
       <div class="daily-card-header">
         <div>
           <div class="daily-card-date">${d.display} ${d.weekday}</div>
           <span class="timeline-badge ${d.status}">${d.statusText}</span>
         </div>
-        <div class="daily-card-status">${d.status === 'red' ? '🔴' : d.status === 'yellow' ? '🟡' : d.status === 'blue' ? '🔵' : '⚪'}</div>
+        <div class="daily-card-status">${conf.icon}</div>
       </div>
-      <div class="daily-card-summary">${d.summary}</div>
+      <div class="daily-card-summary clamp3" onclick="toggleClamp(this)">${d.summary}</div>
       <div class="daily-card-stats">
-        <span class="daily-stat">发现 <strong>${d.eventCount}</strong> 条</span>
+        <span class="daily-stat">${conf.stat} <strong>${list.length}</strong> 条</span>
         <span class="daily-stat">紧急 <strong style="color:var(--cu-red)">${d.redCount}</strong></span>
         <span class="daily-stat">CU: ${d.cuStatus.substring(0,12)}...</span>
+        <button class="daily-toggle-btn" data-open="${open ? '1' : '0'}" onclick="toggleDailyDetail('${d.date}')">${open ? '收起明细 ▲' : '展开明细 ▼'}</button>
       </div>
-      <div class="daily-detail" style="display:${detailDisplay};margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
-        <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--cu-blue-dark);">关键事件:</div>
-        ${d.keyEvents.map(e => `<div style="font-size:12px;color:var(--text-secondary);padding:2px 0;">• ${e}</div>`).join('')}
-        <div class="timeline-cu" style="margin-top:8px;"><strong>CU Lines:</strong> ${d.cuStatus}</div>
-      </div>
+      <div class="daily-detail" data-gen="${open ? '1' : '0'}" style="display:${open ? 'block' : 'none'};margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">${detailInner}</div>
     </div>`;
-});
+  });
+  gridEl.innerHTML = html;
+}
+function renderDailyGrids() {
+  renderDailyGrid(document.getElementById('dailyGrid'), 'summary');
+  renderDailyGrid(document.getElementById('sealeadDailyGrid'), 'sealead');
+  renderDailyGrid(document.getElementById('redseaDailyGrid'), 'redsea');
+}
+function toggleDailyDetail(date) {
+  const rows = dailySortedRows();
+  const newest = rows.length ? rows[0].date : null;
+  const cur = DAILY_STATE.openDates[date];
+  const wasOpen = Object.prototype.hasOwnProperty.call(DAILY_STATE.openDates, date) ? (cur === true) : (date === newest);
+  DAILY_STATE.openDates[date] = !wasOpen;
+  DAILY_STATE.expandedAll = false;
+  renderDailyGrids();
+}
+function expandAllDailyDetails() {
+  DAILY_STATE.expandedAll = true;
+  DAILY_STATE.openDates = {};
+  renderDailyGrids();
+}
+function filterDailyByDate() {
+  const sel = document.getElementById('dailyRange');
+  DAILY_STATE.rangeDays = (sel && sel.value) ? parseInt(sel.value, 10) || 0 : 0;
+  DAILY_STATE.expandedAll = false;
+  renderDailyGrids();
+}
+renderDailyGrids();
 
 // --- 通用：事件时间线渲染（容错版；单条脏数据/渲染异常不中断整页）---
-function renderEventTimeline(container, arr) {
-  if (!container || !Array.isArray(arr)) return;
-  [...arr].sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))).forEach(e => {
-    try {
-      if (!e || !e.date) return;
-      const tags = Array.isArray(e.tags) ? e.tags : [];              // tags 缺失按空数组处理
-      const tagsHtml = tags.map(t => `<span class="event-tag ${t && t.t}">${t && t.l}</span>`).join('');
-      const linksHtml = renderLinks(e.links);
-      container.innerHTML += `
+// A+B 改造：按日分组 + 默认只展开最近 3 天（约 12 条），其余为可点击折叠头（含当日条数）；
+//            事件正文 3 行截断可点击展开；「查看全部事件」可展开全量。数据数组保持完整。
+const TIMELINE_DEFAULT_DAYS = 3;
+const TIMELINE_DEFAULT_EVENTS = 12;
+const TIMELINE_STATE = {};
+
+function tlDayOf(e) {
+  const d = (e && e.date) ? String(e.date).trim() : '';
+  const m = d.match(/^(\d{1,2})-(\d{1,2})$/);
+  if (m) return { key: d, label: parseInt(m[1], 10) + '月' + parseInt(m[2], 10) + '日' };
+  return { key: d || '(日期未知)', label: d || '(日期未知)' };
+}
+function tlEventRow(e) {
+  const tags = Array.isArray(e.tags) ? e.tags : [];              // tags 缺失按空数组处理
+  const tagsHtml = tags.map(t => `<span class="event-tag ${t && t.t}">${t && t.l}</span>`).join('');
+  const linksHtml = renderLinks(e.links);
+  return `
     <div class="event-row">
       <div class="event-date">${e.date.split('-')[0]}月<div class="day">${e.day}</div></div>
       <div class="event-content">
         <h4>${e.title}</h4>
-        <p>${e.desc}</p>
+        <p class="clamp3" onclick="toggleClamp(this)">${e.desc}</p>
         <div class="event-tags">${tagsHtml}</div>
         ${linksHtml}
       </div>
     </div>`;
+}
+function renderEventTimeline(container, arr, opts) {
+  if (!container || !Array.isArray(arr)) return;
+  const o = Object.assign({ maxEvents: TIMELINE_DEFAULT_EVENTS, days: TIMELINE_DEFAULT_DAYS, withMore: true }, opts || {});
+  const tid = container.id || '';
+  const st = TIMELINE_STATE[tid] || (TIMELINE_STATE[tid] = { mode: 'default', manual: {} });
+  const sorted = [...arr].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  st.source = sorted;
+  st.opts = o;
+  // 分日分组（最新 → 最早），单条脏数据跳过但不断链
+  const groups = [];
+  let cur = null;
+  sorted.forEach(e => {
+    try {
+      if (!e || !e.date) return;
+      const dk = tlDayOf(e);
+      if (!cur || cur.key !== dk.key) { cur = { key: dk.key, label: dk.label, items: [] }; groups.push(cur); }
+      cur.items.push(e);
     } catch (err) {
-      // 单条事件渲染失败：跳过该条，避免打断后续所有初始化
-      if (typeof console !== 'undefined' && console.warn) console.warn('事件条目渲染跳过：', (e && e.date) || '?', err);
+      if (typeof console !== 'undefined' && console.warn) console.warn('事件分组跳过：', (e && e.date) || '?', err);
     }
   });
+  const total = groups.reduce((s, g) => s + g.items.length, 0);
+  const isAll = (st.mode === 'all');
+  let remain = isAll ? Infinity : o.maxEvents;
+  const plan = groups.map((g, gi) => {
+    if (st.manual[g.key]) return { g: g, open: true, rows: g.items.length, manual: true };
+    const inWindow = isAll ? true : (gi < o.days);
+    if (!inWindow) return { g: g, open: false, rows: 0, manual: false };
+    const take = Math.min(g.items.length, Math.max(remain, 0));
+    remain -= take;
+    return { g: g, open: take > 0, rows: take, manual: false };
+  });
+  let html = '';
+  let rendered = 0;
+  plan.forEach(p => {
+    if (!p.open) {
+      const unfolded = !!st.manual[p.g.key];
+      html += `<div class="fold-head ${unfolded ? '' : 'collapsed'}" onclick="toggleTimelineDay('${tid}','${p.g.key}')">` +
+        `<span class="fold-arrow">▼</span>${p.g.label} · ${p.g.items.length} 条` +
+        `<span class="fold-count">${unfolded ? '点击收起' : '点击展开'}</span></div>`;
+      return;
+    }
+    html += `<div class="tl-day-head"><span class="tl-day-dot"></span>${p.g.label} · ${p.g.items.length} 条</div>`;
+    for (let i = 0; i < p.rows; i++) {
+      const e = p.g.items[i];
+      try { html += tlEventRow(e); rendered++; }
+      catch (err) {
+        // 单条事件渲染失败：跳过该条，避免打断后续所有初始化
+        if (typeof console !== 'undefined' && console.warn) console.warn('事件条目渲染跳过：', (e && e.date) || '?', err);
+      }
+    }
+  });
+  container.innerHTML = html;
+  const stat = document.getElementById(tid + 'Stat');
+  if (stat) {
+    stat.innerHTML = `共 <strong>${total}</strong> 条 · 分 <strong>${groups.length}</strong> 日；当前渲染 <strong>${rendered}</strong> 条` +
+      (isAll ? '（已展开全量）' : `（默认展开最近 ${o.days} 日，其余按日折叠）`);
+  }
+  const more = document.getElementById(tid + 'More');
+  if (more) {
+    const left = total - rendered;
+    if (!o.withMore || left <= 0) { more.style.display = 'none'; more.textContent = ''; }
+    else {
+      more.style.display = 'block';
+      more.textContent = `查看全部事件（共 ${total} 条，剩余 ${left} 条）→`;
+      more.setAttribute('data-mode', 'all');
+    }
+  }
+}
+function reRenderTimeline(tid) {
+  const st = TIMELINE_STATE[tid];
+  if (!st) return;
+  renderEventTimeline(document.getElementById(tid), st.source || [], st.opts || {});
+}
+function expandTimelineFully(tid) {
+  const st = TIMELINE_STATE[tid];
+  if (!st) return;
+  st.mode = 'all';
+  st.manual = {};
+  reRenderTimeline(tid);
+}
+function toggleTimelineDay(tid, key) {
+  const st = TIMELINE_STATE[tid];
+  if (!st) return;
+  st.manual = st.manual || {};
+  st.manual[key] = !st.manual[key];
+  reRenderTimeline(tid);
 }
 
 // --- Summary page: Events Timeline ---
-renderEventTimeline(document.getElementById('eventsTimeline'), keyEvents);
+renderEventTimeline(document.getElementById('eventsTimeline'), keyEvents, { maxEvents: TIMELINE_DEFAULT_EVENTS, days: TIMELINE_DEFAULT_DAYS, withMore: true });
 
-// --- SeaLead page: Daily Cards (filtered) ---
-const sealeadDailyGrid = document.getElementById('sealeadDailyGrid');
-[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
-  if (!Array.isArray(d.sealeadEvents) || d.sealeadEvents.length === 0) return;
-  const detailDisplay = i === 0 ? 'block' : 'none';
-  sealeadDailyGrid.innerHTML += `
-    <div class="daily-card ${d.status}" onclick="toggleCard(this)">
-      <div class="daily-card-header">
-        <div>
-          <div class="daily-card-date">${d.display} ${d.weekday}</div>
-          <span class="timeline-badge ${d.status}">${d.statusText}</span>
-        </div>
-        <div class="daily-card-status">🚢</div>
-      </div>
-      <div class="daily-card-summary">${d.summary}</div>
-      <div class="daily-card-stats">
-        <span class="daily-stat">SeaLead事件 <strong>${d.sealeadEvents.length}</strong> 条</span>
-        <span class="daily-stat">CU: ${d.cuStatus.substring(0,12)}...</span>
-      </div>
-      <div class="daily-detail" style="display:${detailDisplay};margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
-        <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--cu-blue-dark);">SeaLead 制裁相关事件:</div>
-        ${d.sealeadEvents.map(e => `<div style="font-size:12px;color:var(--text-secondary);padding:2px 0;">• ${e}</div>`).join('')}
-        <div class="timeline-cu" style="margin-top:8px;"><strong>CU Lines:</strong> ${d.cuStatus}</div>
-      </div>
-    </div>`;
-});
+// --- SeaLead page: Daily Cards 由 renderDailyGrids() 统一渲染（见上） ---
 
 // --- SeaLead page: Events Timeline ---
-renderEventTimeline(document.getElementById('sealeadEventsTimeline'), sealeadKeyEvents);
+renderEventTimeline(document.getElementById('sealeadEventsTimeline'), sealeadKeyEvents, { maxEvents: TIMELINE_DEFAULT_EVENTS, days: TIMELINE_DEFAULT_DAYS, withMore: true });
 
-// --- Red Sea page: Daily Cards (filtered) ---
-const redseaDailyGrid = document.getElementById('redseaDailyGrid');
-[...dailyData].sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((d, i) => {
-  if (!Array.isArray(d.redseaEvents) || d.redseaEvents.length === 0) return;
-  const detailDisplay = i === 0 ? 'block' : 'none';
-  redseaDailyGrid.innerHTML += `
-    <div class="daily-card ${d.status}" onclick="toggleCard(this)">
-      <div class="daily-card-header">
-        <div>
-          <div class="daily-card-date">${d.display} ${d.weekday}</div>
-          <span class="timeline-badge ${d.status}">${d.statusText}</span>
-        </div>
-        <div class="daily-card-status">⚠️</div>
-      </div>
-      <div class="daily-card-summary">${d.summary}</div>
-      <div class="daily-card-stats">
-        <span class="daily-stat">红海事件 <strong>${d.redseaEvents.length}</strong> 条</span>
-        <span class="daily-stat">CU: ${d.cuStatus.substring(0,12)}...</span>
-      </div>
-      <div class="daily-detail" style="display:${detailDisplay};margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
-        <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--cu-blue-dark);">红海/胡塞相关事件:</div>
-        ${d.redseaEvents.map(e => `<div style="font-size:12px;color:var(--text-secondary);padding:2px 0;">• ${e}</div>`).join('')}
-        <div class="timeline-cu" style="margin-top:8px;"><strong>CU Lines:</strong> ${d.cuStatus}</div>
-      </div>
-    </div>`;
-});
+// --- Red Sea page: Daily Cards 由 renderDailyGrids() 统一渲染（见上） ---
 
 // --- Red Sea page: Events Timeline ---
-renderEventTimeline(document.getElementById('redseaEventsTimeline'), redseaKeyEvents);
+renderEventTimeline(document.getElementById('redseaEventsTimeline'), redseaKeyEvents, { maxEvents: TIMELINE_DEFAULT_EVENTS, days: TIMELINE_DEFAULT_DAYS, withMore: true });
 
 // --- Red Sea page: Route Risk Table ---
 const redseaRouteBody = document.getElementById('redseaRouteTableBody');
@@ -3697,7 +3999,7 @@ routeRisks.forEach(r => {
 document.getElementById('culklangImpact').innerHTML = culklangImpact;
 
 // --- CUL Klang page: Events Timeline ---
-renderEventTimeline(document.getElementById('culklangEventsTimeline'), culklangKeyEvents);
+renderEventTimeline(document.getElementById('culklangEventsTimeline'), culklangKeyEvents, { maxEvents: TIMELINE_DEFAULT_EVENTS, days: TIMELINE_DEFAULT_DAYS, withMore: true });
 
 // ========== METRICS ==========
 const totalRed = dailyData.reduce((s,d) => s+d.redCount, 0);
@@ -3890,6 +4192,9 @@ function linkDigestItems() {
   return all.filter(x => x && x.url && String(x.category == null ? "" : x.category) === LINK_DIGEST_CATEGORY);
 }
 
+// A+B ③：来源清单编号 ①–⑩（与要点汇总 culklangRefsHtml 使用同一排序，一一对应）
+const CULKLANG_CIRCLE = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'];
+function culklangCircleNo(i) { return CULKLANG_CIRCLE[i] || ('(' + (i + 1) + ')'); }
 function renderCulklangLinkDigest() {
   const box = document.getElementById("culklangLinkDigest");
   if (!box) return;
@@ -3906,7 +4211,7 @@ function renderCulklangLinkDigest() {
     }
     const kinds = [];
     let rows = "";
-    items.forEach(function (item) {
+    items.forEach(function (item, idx) {
       try {
         const url = String(item.url || "");
         const title = String(item.title == null ? "" : item.title).trim() || domainOf(url) || "（未命名链接）";
@@ -3915,7 +4220,7 @@ function renderCulklangLinkDigest() {
         const when = fmtLinkTime(item.addedAt) || "时间未知";
         rows += '<div class="link-item link-digest-row">' +
             '<div class="link-item-main">' +
-              '<div class="link-item-title"><a href="' + escHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escHtml(title) + '</a></div>' +
+              '<div class="link-item-title"><span class="link-item-no">' + culklangCircleNo(idx) + '</span><a href="' + escHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escHtml(title) + '</a></div>' +
               '<div class="link-item-meta">' +
                 '<span class="link-item-domain">' + escHtml(domainOf(url)) + '</span>' +
                 '<span>入库 ' + escHtml(when) + '</span>' +
@@ -3930,7 +4235,7 @@ function renderCulklangLinkDigest() {
     const covered = LINK_DIGEST_KIND_ORDER.filter(function (k) { return kinds.indexOf(k) !== -1; }).join("/");
     box.innerHTML =
       '<div class="link-digest-stat">共 ' + items.length + ' 条' + (covered ? ' · 覆盖 ' + escHtml(covered) : '') + '</div>' +
-      '<div class="link-digest-note">事件概述：本次集中报道 10-07 CUL Klang 在红海南部、曼德海峡以北遭小艇开火，船员无伤并继续北行，暂无组织认领。以下为该事件已正式入库的新闻来源，按入库时间由新到旧排列。</div>' +
+      '<div class="link-digest-note">事件概述：10-07 CUL Klang 在红海南部、曼德海峡以北遭小艇开火，船员无伤并继续北行，暂无组织认领。本卡片为同一事件的「来源清单 + 要点汇总」合并卡：上方按入库时间由新到旧列出已正式入库的新闻来源（编号 ①–⑩ 自上而下），与下方要点汇总中的可点击来源编号一一对应；事件时间线、多源口径对比与待证实项见要点汇总，此处不再重复叙述。</div>' +
       rows;
   } catch (e) {
     if (typeof console !== "undefined" && console.warn) console.warn("CUL Klang 已入库链接汇总渲染异常：", e);
