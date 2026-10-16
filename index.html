@@ -174,6 +174,42 @@
   }
   .latest-cu-impact strong { font-weight: 700; }
 
+  /* 检索回溯链：latestUpdateData.time / vs / cuImpact 三个巨型字符串块的结构化呈现
+     —— 原文按「｜回溯」分段、默认仅展开最新轮、容器与正文双重限高内部滚动，消除纯文本墙 */
+  .latest-chains { margin:0 0 12px; }
+  .chain-block { border:1px solid var(--border); border-radius:8px; background:var(--card-bg); }
+  .chain-block + .chain-block { margin-top:8px; }
+  .chain-bar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:8px 12px;
+               border-bottom:1px solid var(--border); background:var(--bg); border-radius:8px 8px 0 0; font-size:12px; }
+  .chain-bar .chain-title { font-weight:700; color:var(--text-primary); }
+  .chain-bar .chain-stat { color:var(--text-secondary); }
+  .chain-bar .chain-stat strong { color:var(--cu-blue-dark); }
+  .chain-actions { margin-left:auto; display:flex; gap:6px; }
+  .chain-mini { padding:2px 8px; font-size:11px; color:var(--cu-blue); background:var(--card-bg);
+                border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+  .chain-mini:hover { background:var(--cu-blue-light); }
+  .chain-list { display:flex; flex-direction:column; gap:6px; padding:8px 10px; max-height:28vh; overflow-y:auto; }
+  .chain-item { border:1px solid var(--border); border-radius:6px; background:var(--card-bg); }
+  .chain-item.current { border-color:var(--cu-red); }
+  .chain-head { display:flex; align-items:baseline; gap:8px; padding:6px 10px; cursor:pointer; font-size:12px; }
+  .chain-head:hover { background:var(--bg); }
+  .chain-head .chain-idx { flex:none; min-width:30px; padding:1px 5px; text-align:center; font-size:11px;
+                           font-weight:700; color:#fff; background:#4a90d9; border-radius:4px; }
+  .chain-item.current .chain-head .chain-idx { background:var(--cu-red); }
+  .chain-head .chain-label { font-weight:600; color:var(--text-primary); }
+  .chain-head .chain-date { flex:none; font-size:11px; font-weight:600; color:#fff; background:#7f8fa6;
+                            padding:1px 6px; border-radius:10px; }
+  .chain-head .chain-meta { font-size:11px; color:var(--text-secondary); }
+  .chain-head .chain-caret { margin-left:auto; flex:none; font-size:11px; color:var(--text-secondary);
+                             transition:transform .15s; }
+  .chain-head.chain-open .chain-caret { transform:rotate(180deg); }
+  .chain-body { display:none; padding:6px 10px 8px; border-top:1px dashed var(--border); }
+  .chain-body.open { display:block; }
+  .chain-text { max-height:22vh; overflow-y:auto; font-size:12px; line-height:1.6; color:var(--text-secondary);
+                background:var(--card-bg); border-radius:6px; padding:8px 10px;
+                white-space:pre-wrap; word-break:break-word; }
+  .cu-impact-label { font-weight:700; }
+
   /* Source Links */
   .source-link {
     display: inline-block;
@@ -611,6 +647,8 @@
   .latest-findings { gap:8px; }
   .latest-finding { padding:8px 12px; }
   .latest-finding-desc { line-height:1.5; }
+  .chain-list { max-height:26vh; }
+  .chain-text { max-height:20vh; }
   .status-hero { padding:16px 20px; margin-bottom:14px; }
   .info-banner, .entry-banner { padding:12px 16px; margin-bottom:14px; }
   .event-row { padding:8px 0; }
@@ -689,8 +727,13 @@
     <div class="latest-update" id="latestUpdate">
       <div class="latest-header">
         <span class="latest-badge">🔴 紧急</span>
-        <span class="latest-time" id="latestTime">2026-07-27 15:00 | 下午微信</span>
-        <span class="latest-vs" id="latestVs">vs早间监测（08:45）：新增3条核心数据更新——①Kpler双峡通行量具体数据（曼德11艘/霍尔木兹7艘创新低）；②中国VLCC穿越曼德海峡详细经过（AIS标注'中国船員及船東'获放行）；③沙特-胡塞冲突循环升级（导弹反击+延布港袭击）。其余为已知信息多源延伸。</span>
+        <span class="latest-time" id="latestTime">--</span>
+        <span class="latest-vs" id="latestVs">--</span>
+      </div>
+      <!-- 检索回溯链：time / vs 原文按「｜回溯」分段结构化（默认折叠 · 限高内部滚动），数据零改动 -->
+      <div class="latest-chains">
+        <div id="latestTimeChain"></div>
+        <div id="latestVsChain"></div>
       </div>
       <div class="filter-bar">
         <label for="findingsLevel">等级筛选</label>
@@ -3688,8 +3731,118 @@ const culklangImpact = "<strong>事件影响与处置提示（CUL Klang）：</s
 // ========== RENDER ==========
 
 // --- Latest Update Section ---
-document.getElementById('latestTime').textContent = latestUpdateData.time;
-document.getElementById('latestVs').textContent = latestUpdateData.vs;
+// 检索回溯链：latestUpdateData 的 time / vs / cuImpact 为多轮次堆叠的巨型字符串（合计约 2.6 万字），
+// 直接以纯文本连排会形成约 3000px 的文字墙。此处仅改渲染层：按「｜回溯」分段结构化，
+// 顶部只留一行轮次摘要，每个轮次默认折叠（仅最新轮展开）、容器与正文双重限高内部滚动。
+// 数据零改动——原文逐字保留在 .chain-text 内，未截断、未改写、未删除任何字符。
+var CHAIN_BLOCKS = {};
+var CHAIN_SPLIT = /\s*｜\s*回溯\s*/;
+function chainEsc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function chainSegs(raw) { return String(raw == null ? '' : raw).split(CHAIN_SPLIT); }
+function chainHeadText(seg) {
+  return String(seg == null ? '' : seg).replace(/^[\s🕐]+/, '').replace(/^vs\s+/i, '')
+    .replace(/^[【「“”"'《]+/, '');
+}
+function chainTitle(seg) {
+  var s = chainHeadText(seg);
+  var cut = s.search(/[（(：【〔\[]/);
+  var head = (cut > 0 && cut <= 30) ? s.slice(0, cut) : s.slice(0, 26);
+  head = head.replace(/[\s—－\-·、,，。]+$/, '').replace(/\s+/g, ' ').trim();
+  if (head.length >= 10) return head;
+  var m = s.match(/[（(【〔\[]([^）)】〕\]]{0,30})/);
+  var inner = m ? m[1].replace(/[，,：:；;].*$/, '').trim() : '';
+  var out = inner ? (head + ' · ' + inner) : head;
+  return out.slice(0, 40) || '检索轮次';
+}
+function chainTitleOf(raw) {
+  var segs = chainSegs(raw);
+  return segs.length ? chainTitle(segs[0]) : '--';
+}
+function chainDateOf(seg) {
+  var m = String(seg == null ? '' : seg).match(/(\d{4}-\d{2}-\d{2})/);
+  return m ? m[1] : '';
+}
+function chainMetaOf(seg) {
+  var s = String(seg == null ? '' : seg);
+  var m = s.match(/新增\s*(\d+)\s*条/);
+  var tag = m ? ('新增 ' + m[1] + ' 条') : (/无新增/.test(s) ? '本轮无新增' : '维持性核对');
+  var d = s.match(/红\s*(\d+)\s*\/\s*黄\s*(\d+)/);
+  if (d) tag += '（红 ' + d[1] + ' / 黄 ' + d[2] + '）';
+  return tag + ' · ' + s.length + ' 字';
+}
+function renderChainBlock(hostId, raw, cfg) {
+  var host = document.getElementById(hostId);
+  if (!host) return 0;
+  cfg = cfg || {};
+  var key = cfg.key || hostId;
+  var prefix = cfg.bodyIdPrefix || (key + 'ChainBody');
+  var segs = chainSegs(raw);
+  var rawLen = String(raw == null ? '' : raw).length;
+  var ids = [], items = '', sum = 0;
+  for (var i = 0; i < segs.length; i++) {
+    var bid = prefix + (i + 1), seg = segs[i];
+    ids.push(bid);
+    sum += seg.length;
+    var isCur = (i === 0);
+    var date = chainDateOf(seg);
+    items +=
+      '<div class="chain-item' + (isCur ? ' current' : '') + '">' +
+        '<div class="chain-head' + (isCur ? ' chain-open' : '') + '" onclick="toggleChain(\'' + bid + '\', this)">' +
+          '<span class="chain-idx">' + (isCur ? '最新' : (i < 9 ? '0' + (i + 1) : String(i + 1))) + '</span>' +
+          '<span class="chain-label">' + chainEsc(chainTitle(seg)) + '</span>' +
+          (date ? '<span class="chain-date">' + date + '</span>' : '') +
+          '<span class="chain-meta">' + chainEsc(chainMetaOf(seg)) + '</span>' +
+          '<span class="chain-caret">▾</span>' +
+        '</div>' +
+        '<div class="chain-body' + (isCur ? ' open' : '') + '" id="' + bid + '">' +
+          '<div class="chain-text">' + chainEsc(seg) + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+  host.innerHTML =
+    '<div class="chain-block" data-chain="' + key + '">' +
+      '<div class="chain-bar">' +
+        '<span class="chain-title">' + chainEsc(cfg.title || '检索回溯链') + '</span>' +
+        '<span class="chain-stat">共 <strong>' + segs.length + '</strong> 轮 · 原文 <strong>' + rawLen +
+          '</strong> 字（默认仅展开最新轮，其余点击轮次展开）</span>' +
+        '<span class="chain-actions">' +
+          '<button class="chain-mini" onclick="setChainAll(\'' + key + '\', true)">全部展开</button>' +
+          '<button class="chain-mini" onclick="setChainAll(\'' + key + '\', false)">全部折叠</button>' +
+        '</span>' +
+      '</div>' +
+      '<div class="chain-list">' + items + '</div>' +
+    '</div>';
+  if (cfg.leadHtml) host.innerHTML = cfg.leadHtml + host.innerHTML;
+  CHAIN_BLOCKS[key] = { ids: ids, host: hostId, count: segs.length, rawLen: rawLen, textLen: sum,
+                        dropChars: rawLen - sum, emptySegs: segs.filter(function (s) { return !s.length; }).length };
+  return segs.length;
+}
+function toggleChain(bodyId, head) {
+  var el = document.getElementById(bodyId);
+  if (!el) return;
+  var open = String(el.className || '').indexOf('open') !== -1;
+  el.className = open ? 'chain-body' : 'chain-body open';
+  if (head && typeof head.className === 'string') {
+    head.className = open ? 'chain-head' : 'chain-head chain-open';
+  }
+}
+function setChainAll(key, open) {
+  var b = CHAIN_BLOCKS[key];
+  if (!b) return 0;
+  for (var i = 0; i < b.ids.length; i++) {
+    var el = document.getElementById(b.ids[i]);
+    if (el) el.className = open ? 'chain-body open' : 'chain-body';
+  }
+  return b.ids.length;
+}
+document.getElementById('latestTime').textContent = '最新轮：' + chainTitleOf(latestUpdateData.time);
+document.getElementById('latestVs').textContent = 'vs 前次：' + chainTitleOf(latestUpdateData.vs).replace(/\s*前次\s*$/, '');
+renderChainBlock('latestTimeChain', latestUpdateData.time,
+  { key: 'time', title: '🕐 检索回溯链（原文分段保留）', bodyIdPrefix: 'timeChainBody' });
+renderChainBlock('latestVsChain', latestUpdateData.vs,
+  { key: 'vs', title: '🔁 轮次对比链（原文分段保留）', bodyIdPrefix: 'vsChainBody' });
 
 const latestFindingsEl = document.getElementById('latestFindings');
 // A+B 改造：findings 默认只渲染最新 10 条 + 等级筛选 + 「展开全部」；数据数组 latestUpdateData.findings 保持完整
@@ -3761,7 +3914,9 @@ function toggleFoldHead(head, bodyId) {
 }
 renderFindings();
 
-document.getElementById('latestCuImpact').innerHTML = `<strong>中联航运影响评估：</strong> ${latestUpdateData.cuImpact}`;
+renderChainBlock('latestCuImpact', latestUpdateData.cuImpact,
+  { key: 'cuImpact', title: '🛡 中联航运影响评估（逐轮回溯 · 原文分段保留）',
+    bodyIdPrefix: 'cuImpactChainBody', leadHtml: '<strong class="cu-impact-label">中联航运影响评估：</strong>' });
 
 // --- Update time ---
 document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });

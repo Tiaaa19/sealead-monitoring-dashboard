@@ -186,6 +186,23 @@ _static("CUL Klang 要点汇总置于可折叠区（fold-head + fold-body）",
 _static("findings 等级筛选器已挂载", html.count('id="findingsLevel"') == 1)
 _static("每日监测日期范围筛选器已挂载", html.count('id="dailyRange"') == 1)
 
+# --- 检索回溯链：最新监测动态区块 time / vs / cuImpact 结构化呈现（默认折叠 + 限高内部滚动）---
+_static("回溯链容器限高内部滚动（.chain-list max-height + overflow-y:auto）",
+        re.search(r"\.chain-list\s*\{[^}]*max-height\s*:\s*[0-9.]+vh[^}]*overflow-y\s*:\s*auto", html) is not None)
+_static("回溯链正文限高内部滚动（.chain-text max-height + overflow-y:auto）",
+        re.search(r"\.chain-text\s*\{[^}]*max-height\s*:\s*[0-9.]+vh[^}]*overflow-y\s*:\s*auto", html) is not None)
+_static("回溯链默认折叠（.chain-body display:none，展开态 .chain-body.open）",
+        re.search(r"\.chain-body\s*\{[^}]*display\s*:\s*none", html) is not None and ".chain-body.open" in html)
+_static("回溯链分段器（按「｜回溯」切分轮次）已定义",
+        re.search(r"CHAIN_SPLIT\s*=\s*/[^/]*回溯", html) is not None)
+_static("回溯链三处渲染入口已挂载（time / vs / cuImpact）",
+        html.count("renderChainBlock('latestTimeChain'") == 1
+        and html.count("renderChainBlock('latestVsChain'") == 1
+        and html.count("renderChainBlock('latestCuImpact'") == 1)
+_static("顶部摘要行替代巨型纯文本（time / vs 不再直塞 textContent）",
+        ("= latestUpdateData.time;" not in html) and ("= latestUpdateData.vs;" not in html)
+        and "chainTitleOf(latestUpdateData.time)" in html and "chainTitleOf(latestUpdateData.vs)" in html)
+
 # --------------------------------------------------------- 5) 整页加载冒烟
 head("5. 整页加载冒烟校验（DOM 打桩 + jsc）")
 
@@ -314,6 +331,59 @@ __chk('时间线事件正文 3 行截断元素已渲染',
   toggleFindingsAll();
   var gotAll = __count(String(box.innerHTML || ''), 'class="latest-finding ');
   __chk('总览 findings 展开全部后可达全量 == findings 总条数', gotAll === conf.total, gotAll + ' / ' + conf.total);
+})();
+// ===== 检索回溯链：time / vs / cuImpact 三个巨型字符串块的结构化呈现（默认折叠 + 限高内部滚动 + 零丢失）=====
+(function () {
+  var conf = __EXPECT.chain || {};
+  var hostMap = { time: 'latestTimeChain', vs: 'latestVsChain', cuImpact: 'latestCuImpact' };
+  if (!conf.time) { __chk('回溯链期望值未解析到', false); return; }
+  Object.keys(hostMap).forEach(function (k) {
+    var c = conf[k]; if (!c) return;
+    var box = __els[hostMap[k]];
+    var html = String(box ? box.innerHTML : '');
+    var meta = CHAIN_BLOCKS[k];
+    __chk('回溯链[' + k + ']：容器已挂载', !!box);
+    __chk('回溯链[' + k + ']：轮次条数 == 数据分段数',
+          __count(html, 'class="chain-item') === c.count && !!meta && meta.count === c.count,
+          __count(html, 'class="chain-item') + ' / ' + c.count);
+    __chk('回溯链[' + k + ']：原文块数 == 轮次数（每轮独立成块）',
+          __count(html, 'class="chain-text"') === c.count, __count(html, 'class="chain-text"') + ' / ' + c.count);
+    // 默认折叠态：仅最新轮展开
+    function openCount() {
+      var ids = (meta && meta.ids) || [];
+      var n = 0;
+      for (var i = 0; i < ids.length; i++) {
+        var el = __els[ids[i]];
+        if (el && String(el.className || '').indexOf('open') !== -1) n++;
+      }
+      return n;
+    }
+    __chk('回溯链[' + k + ']：默认仅展开最新轮（其余 ' + (c.count - 1) + ' 轮折叠）',
+          __count(html, 'class="chain-body open"') === 1 && __count(html, 'class="chain-item current"') === 1,
+          '初始展开 ' + __count(html, 'class="chain-body open"') + ' 个 / 标记最新轮 ' + __count(html, 'class="chain-item current"') + ' 个');
+    __chk('回溯链[' + k + ']：原文零丢失（仅消除「｜回溯」连接符 ' + c.drop + ' 字）',
+          !!meta && meta.rawLen === c.rawLen && meta.dropChars === c.drop && meta.emptySegs === c.empty,
+          meta ? ('原文 ' + meta.rawLen + ' 字 / 连接符 ' + meta.dropChars + ' 字 / 空段 ' + meta.emptySegs) : 'CHAIN_BLOCKS 未登记');
+    var expOpen = setChainAll(k, true);
+    __chk('回溯链[' + k + ']：全部展开可达全量轮次', expOpen === c.count && openCount() === c.count,
+          openCount() + ' / ' + c.count);
+    setChainAll(k, false);
+    __chk('回溯链[' + k + ']：全部折叠后无展开项', openCount() === 0, openCount() + ' 个展开');
+    setChainAll(k, false);
+    toggleChain(meta.ids[1], null);
+    __chk('回溯链[' + k + ']：单轮切换可展开第 2 轮', openCount() === 1, openCount() + ' 个展开');
+    setChainAll(k, false);
+  });
+  __chk('汇总页顶部摘要行已改为单行轮次摘要',
+        String(__els['latestTime'] ? __els['latestTime'].textContent : '').indexOf('最新轮：') === 0 &&
+        String(__els['latestVs'] ? __els['latestVs'].textContent : '').indexOf('vs 前次：') === 0,
+        String(__els['latestTime'] ? __els['latestTime'].textContent : ''));
+  __chk('汇总页摘要行首轮标题与数据一致',
+        String(__els['latestTime'] ? __els['latestTime'].textContent : '') === '最新轮：' + conf.time.firstTitle,
+        conf.time.firstTitle);
+  __chk('汇总页 vs 摘要行首轮标题与数据一致',
+        String(__els['latestVs'] ? __els['latestVs'].textContent : '') === 'vs 前次：' + conf.vs.firstTitleVs,
+        conf.vs.firstTitleVs);
 })();
 // ===== 每日监测详情：默认仅最近一天明细入 DOM，其余按需生成 =====
 function __chkDaily(label, id) {
@@ -481,6 +551,57 @@ if _m_fd:
 else:
     print("FAIL: 未解析到 latestUpdateData.findings 数组")
     fails.append("findings-data")
+
+# 检索回溯链（最新监测动态区块 latestUpdateData.time / vs / cuImpact）：期望分段数 / 原文长度 / 连接符消除字数
+def _chain_title(seg):
+    """与页面 chainTitle() 同规则的轮次标题提取（用于断言顶部摘要行）"""
+    s = re.sub(r"^[\s\U0001F550]+", "", seg)
+    s = re.sub(r"^vs\s+", "", s, flags=re.I)
+    s = re.sub(r"^[【「“”\"'《]+", "", s)
+    m = re.search(r"[（(：【〔\[]", s)
+    cut = m.start() if m else -1
+    head = s[:cut] if 0 < cut <= 30 else s[:26]
+    head = re.sub(r"[\s—－\-·、,，。]+$", "", head)
+    head = re.sub(r"\s+", " ", head).strip()
+    if len(head) >= 10:
+        return head
+    m2 = re.search(r"[（(【〔\[](.*?)([）)】〕\]]|$)", s)
+    inner = re.sub(r"[，,：:；;].*$", "", m2.group(1)).strip() if m2 else ""
+    out = (head + " · " + inner) if inner else head
+    return out[:40] or "检索轮次"
+
+
+def _lu_str(key):
+    m = re.search(r'(?<![A-Za-z_])%s\s*:\s*"((?:[^"\\]|\\.)*)"' % key, html)
+    return m.group(1) if m else None
+
+
+expect["chain"] = {}
+_chain_ok = True
+for _ck in ("time", "vs", "cuImpact"):
+    _raw = _lu_str(_ck)
+    if _raw is None:
+        print("FAIL: 未解析到 latestUpdateData.%s" % _ck)
+        _chain_ok = False
+        continue
+    _segs = re.split(r"\s*｜\s*回溯\s*", _raw)
+
+    def _u16len(s):
+        """与 JS String.length 同口径（代理对记 2），避免 emoji 造成字数比对偏差"""
+        return len(s.encode("utf-16-le")) // 2
+
+    expect["chain"][_ck] = {
+        "count": len(_segs),
+        "rawLen": _u16len(_raw),
+        "drop": _u16len(_raw) - sum(_u16len(s) for s in _segs),
+        "empty": len([s for s in _segs if not s]),
+        "firstTitle": _chain_title(_segs[0]),
+        "firstTitleVs": re.sub(r"\s*前次\s*$", "", _chain_title(_segs[0])),
+    }
+    print("[检索回溯链期望] %s：%d 轮 / 原文 %d 字 / 连接符消除 %d 字 / 首轮标题「%s」"
+          % (_ck, len(_segs), _u16len(_raw), expect["chain"][_ck]["drop"], expect["chain"][_ck]["firstTitle"]))
+if not _chain_ok:
+    fails.append("chain-data")
 
 # collectedLinks 内置正式入库条目（用于断言「已正式入库」渲染）
 builtin_links = []
