@@ -1,0 +1,4 @@
+*.bak
+*.bak_*
+patch_*.py
+temp_script.js
